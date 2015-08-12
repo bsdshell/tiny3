@@ -1,0 +1,29 @@
+code .string{
+    color:#FFFFFF;
+}
+
+.cString {
+    color:#FF0000;
+}
+
+.intString{
+    color:#3311FF;
+}
+
+.jString{
+    color:#0011FF;
+}
+
+.numString{
+    color:#AA11FF;
+}
+
+
+.codebg {
+    color:white;
+}
+
+.box {
+    border:solid green 1px;
+    background:#222222;
+}

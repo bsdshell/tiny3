@@ -1,0 +1,110 @@
+<html>
+    <title></title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="highlight.css">
+    </head>
+    <body>
+        <table align="center" width=100%>
+            <tr><th colspan="2"><a href="html/xcode.html">xcode</a></th></tr>
+            <tr ><th colspan="2"><a href="html/image.html">image</a></th></tr>
+            <tr><th colspan="2">GPG encrypt directory</th></tr>
+            <tr><td class="box">tar -czf myencrypt.tar.gz myencrypt</td><td class="box">tar directory</td></tr>
+            <tr><td class="box">tar -xzf myencrypt.tar.gz </td><td class="box">tar directory</td></tr>
+            <tr><td class="box">gpg -c myencrypt.tar.gz                        </td><td class="box">encrypt your tar file</td></tr>
+            <tr><td class="box">gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpg</td><td class="box">encrypt your tar file</td></tr>
+
+            <tr><th colspan="2">Git Stuff</th></tr>
+            <tr><td class="box">git branch myfeature_branch</td><td class="box">create git feature branch</td></tr>
+            <tr><td class="box">git branch -d delete_branch</td><td class="box">delete feature branch</td></tr>
+            <tr><td class="box">git branch -D delete_branch</td><td class="box">delete unmerged feature branch</td></tr>
+            <tr><td class="box">git checkout master<br>git merge --no-ff feature_branch</td><td class="box">merge feature branch to master</td></tr>
+            <tr><td class="box">git rm -r --cached myfile</td><td class="box">remove tracked file in .gitignore</td></tr>
+            <tr><td class="box">git rm -r --cached myfile</td><td class="box">remove file from your index</td></tr>
+            <tr><td class="box">git reflog</td><td class="box">how all the reference log</td></tr>
+
+            <tr><th colspan="2">Regular Expression [:help pattern]</th></tr>
+            <tr><td class="box">* &nbsp;</td><td class="box">zero or more</td></tr>
+            <tr><td class="box">+ &nbsp;</td><td class="box">one or more</td></tr>
+            <tr ><td class="box">? &nbsp;</td><td class="box">zero or one</td></tr>
+            <tr ><td class="box">*? &nbsp;</td><td class="box">zero or more non-greedy</td></tr>
+            <tr ><td class="box">+? &nbsp;</td><td class="box">one or more non-greedy</td></tr>
+            <tr ><td class="box">?? &nbsp;</td><td class="box">zero or one non-greedy</td></tr>
+            <tr ><td class="box">\=&nbsp;</td><td class="box">vim zero or one [:help \=]</td></tr>
+            <tr ><td class="box">\{n,m} &nbsp;</td><td class="box">match from n to m, greedy</td></tr>
+            <tr ><td class="box">\{-n,m} &nbsp;</td><td class="box">match from n to m, non-greedy</td></tr>
+            <tr ><td class="box">\{-} = * &nbsp;</td><td class="box">vim non-greedy [:help non-greedy]</td></tr>
+            <tr ><td class="box">\{-1,} = \+&nbsp;</td><td class="box">vim non-greedy [:help non-greedy]</td></tr>
+            <tr ><td class="box">%s/cat\zs\w\{3}/KK/gc &nbsp;</td><td class="box">Replace catdog catcow->catKK catKK [Set the first match to pattern after \zs [:help \zs]</td></tr>
+            <tr ><td class="box">/^\s*\zsif/ &nbsp;</td><td class="box">Match white space following if [:help \zs]</td></tr>
+            <tr ><td class="box">%s/\s*\ze$/KK/gc &nbsp;</td><td class="box">Replace white space to the end of line with KK [:help \ze]</td></tr>
+
+
+
+            <tr ><th colspan="2">Command line tips</th></tr>
+            <tr ><td class="box">cat /tmp/x.x | awk -F ':' '{print $1}'&nbsp;</td><td class="box">print the first field with delimiter : from x.x  [man awk]</td></tr>
+
+
+
+            <tr ><th colspan="2">Vim Tips</th></tr>
+            <tr ><td class="box">CTRL-E CTRL-Y</td><td class="box">Scroll up/down window [:help CTRL-E/CTRL-Y]</td></tr>
+            <tr ><td class="box">:mksession  sess.vim&nbsp;</td><td class="box">Store vim session [:help mksession]</td></tr>
+            <tr ><td class="box">vim -S sess.vim&nbsp;</td><td class="box">Restore vim session</td></tr>
+            <tr ><td class="box">:help pattern and /\\w &nbsp;</td><td class="box">Search the meaning of \w in Vim</td></tr>
+            <tr ><td class="box">cab  me :g/[-+]\s*(\w\+\s*\*\?)\s*\w\+/z#.1 &nbsp;</td><td class="box">abbreviate [iab insert mode, cab command mode, !ab both] </td></tr>
+            <tr ><td class="box">syn match MyLiteral /'\w\+'/ <br>
+                    hi  MyLiteral ctermfg=Red guifg=Blue ctermbg=Red guibg=Blue 
+                    </td><td class="box">Define your own highlight color group, put two lines in .vimrc/_vimrc file [:help :match :hi]</td></tr>
+            <tr ><td class="box">q/ &nbsp;</td><td class="box">Edit command line buffer </td></tr>
+            <tr ><td class="box">zf &nbsp;</td><td class="box">Create fold in visual mode [:help :zf]</td></tr>
+            <tr ><td class="box">zd &nbsp;</td><td class="box">Delete fold under cursor[:help :zd]</td></tr>
+            <tr ><td class="box">viw &nbsp;</td><td class="box">Visual mode, select the current word [:help text-ojbect]</td></tr>
+            <tr ><td class="box">vis &nbsp;</td><td class="box">Visual mode, select the current sentence [:help text-object]</td></tr>
+            <tr ><td class="box">a[ , a]&nbsp;</td><td class="box">Visual mode, select [] block including [ and ] select block [:help text-object]</td></tr>
+            <tr ><td class="box">i[ , i]&nbsp;</td><td class="box">Visual mode, select [] block excluding [ and ] inner block  [:help text-object]</td></tr>
+            <tr ><td class="box">a{ , a}&nbsp;</td><td class="box">Visual mode, select {} block including { and } {} block  [:help text-object]</td></tr>
+            <tr ><td class="box">i{ , i}&nbsp;</td><td class="box">Visual mode, select {} block excluding { and } inner block  [:help text-object]</td></tr>
+            <tr ><td class="box">a( , a)&nbsp;</td><td class="box">Visual mode, select () block including ( and ) () block  [:help text-object]</td></tr>
+            <tr ><td class="box">i( , i)&nbsp;</td><td class="box">Visual mode, select () block excluding ( and ) inner block  [:help text-object]</td></tr>
+            <tr ><td class="box">String "123" &nbsp;</td><td class="box">vim script variables[:help variables]</td></tr>
+            <tr ><td class="box">:saveas! newfile &nbsp;</td><td class="box">Rename file in the current buffer [:help :saveas]</td></tr>
+            <tr ><td class="box">:%s/\d\+/\=submatch(0) + 1/gc newfile &nbsp;</td><td class="box">Add one to each integer [:help submatch]</td></tr> 
+            <tr ><td class="box">:%s/String/\=tolower(submatch(0))/gc &nbsp;</td><td class="box">:s/pat/\=expr/  expr is interpreted as expression[:help sub-replace-expression]</td></tr>
+            <tr ><td class="box">:%s/String/\=tolower(submatch(0)) | %s/pattern/\=toupper(submatch(0))/gc &nbsp;</td><td class="box">Execute more than one commands [:help :\]</td></tr>
+            <tr ><td class="box">/pattern\c/ &nbsp;</td><td class="box">Search pattern ignorecase [:h /] /ignore</td></tr>
+            <tr ><td class="box">/{\(\_s.*\)\{0,4}} &nbsp;</td><td class="box">Search multiple lines e.g. {xxx\r xxx\r xxx} [:h \_s]</td></tr>
+
+            <tr ><td class="box">:set guifont &nbsp;</td><td class="box">Check what font Vim is using currently [:help guifont]</td></tr> 
+            <tr ><td class="box">:set guifont=Courier_New:h12:cANSI &nbsp;</td><td class="box">Set different font in Vim [:help guifont]</td></tr> 
+            <tr ><td class="box">:syn match MyKeyWord /MyName/ <br> :highlight MyKeyWord guifg=Green &nbsp;</td><td class="box">Highlight defined keyword in Vim[:help syn-match]</td></tr> 
+            <tr >
+                <td class="box"><font color="red">\s</font> whitespace character: Space and Tab    */\s* &nbsp;</td>
+                <td class="box">Check what font Vim is using currently [:help guifont]</td>
+            </tr> 
+            <tr ><td class="box"><font color="red">CTRL-a [ </font></td><td class="box">Copy mode</td></tr> 
+            <tr ><td class="box"><font color="red">CTRL-a ] </font></td><td class="box">Writ the content of paste buffer to stdin</td></tr> 
+            <tr ><td class="box"><font color="blue">git fetch <br> git checkout origin/master filepath </font></td><td class="box">git overwrite single file</td></tr> 
+            <tr ><td class="box"><font color="blue">Align = </font></td><td class="box">Install DrChip Alignment tool for Vim(Vim Align.vba :% :q)</td></tr> 
+
+            <tr ><td class="box"><font color="red">pbpaste </font></td><td class="box">Command-C copy and paste to clipboard. Provide copying and pasteing to the clipboard from command line. [man phpaste] </td></tr> 
+            <tr ><td class="box"><font color="red">ls -la | pbcopy </font></td><td class="box">pipe to pasteboard [man pbcopy]</td></tr> 
+
+            <tr ><th colspan="2">Window Tips</th></tr>
+            <tr ><td class="box">Close current active window &nbsp;</td><td class="box">Alt-F4</td></tr>
+            <tr ><td class="box">Mininum all windows &nbsp;</td><td class="box">Winkey-d</td></tr>
+
+            <tr ><th colspan="2">iOS Dev Tips</th></tr>
+            <tr ><td class="box">
+                    if you get linking error, the most scenarious problems are linking libraries errors<br>
+                    e.g. when you use some new API in your code, the API need dynamic libraries to run<br>
+            </td><td class="box">Linking error</td></tr>
+            <tr ><td class="box">First Add the dynamic libraries to your framework &nbsp;</td><td class="box">Add Lib to framework</td></tr>
+            <tr ><td class="box">
+                    (1) Select a target that you want to build a library<br>
+                    (2) Click on Build Phases<br>
+                    (3) Click on (+) sign<br>
+                    (4) Select a library or framwwork from the list and click Add<br>
+            </td><td class="box">Add Lib to framework</td></tr>
+            </table>
+    </body>
+</html>
