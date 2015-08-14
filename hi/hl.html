@@ -5,14 +5,20 @@
   <link rel="stylesheet" type="text/css" href="myhl.css">
   <title>getElementsByTagName example</title>
   <script>
+    function parse(str){
+        
+    }
     function getAllParaElems() {
       var htmlColl = document.getElementsByTagName("code");
       alert("length=[" + htmlColl.length + "]");
       alert("lengthchildNode=[" + htmlColl[0].length + "]");
+
+
+
       var innerthml = htmlColl[0].innerHTML;
 
       alert("name item=[" + htmlColl[0].childNodes[0].nodeValue + "]");
-      var mycode =htmlColl[0].childNodes[0].nodeValue;
+      var mycode = htmlColl[0].childNodes[0].nodeValue;
 
       var strReg1 = /(@interface)/g;
       var lineBreak = /(\r\n|\n|\r)/g;
@@ -25,7 +31,7 @@
                         [/(String)/g, "jString"],
                         [/([0-9]+)/g, "numString"],
                         [/(int)/g, "intString"],
-                        [/("[a-w]+")/g, "cString"],
+                        [/("[a-w ]+")/g, "cString"],
                         [/(KKKK)/g, "<br />"],
                         [/(PPPP)/g, "&nbsp;"]
                     ];
@@ -63,11 +69,13 @@
     }
   </script>
 </head> 
-<body onload="getAllParaElems()" style="border: solid green 3px">
+<body onload="getAllParaElems()" class="bodybox">
   <div class="box">
     <code class="codebg">
         String str = "this";
         int  num = 134;
+        int mynum = 44334;
+        String myString = "this is cool";
     </code>
   </div>
 </body>
