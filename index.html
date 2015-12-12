@@ -1,110 +1,1042 @@
-<html>
-    <title></title>
-    <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" type="text/css" href="highlight.css">
-    </head>
-    <body>
-        <table align="center" width=100%>
-            <tr><th colspan="2"><a href="html/xcode.html">xcode</a></th></tr>
-            <tr ><th colspan="2"><a href="html/image.html">image</a></th></tr>
-            <tr><th colspan="2">GPG encrypt directory</th></tr>
-            <tr><td class="box">tar -czf myencrypt.tar.gz myencrypt</td><td class="box">tar directory</td></tr>
-            <tr><td class="box">tar -xzf myencrypt.tar.gz </td><td class="box">tar directory</td></tr>
-            <tr><td class="box">gpg -c myencrypt.tar.gz                        </td><td class="box">encrypt your tar file</td></tr>
-            <tr><td class="box">gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpg</td><td class="box">encrypt your tar file</td></tr>
+<pre>
+        *GPG encrypt directory*
+        tar -czf myencrypt.tar.gz myencrypttar directory
+        tar -xzf myencrypt.tar.gz tar directory
+        gpg -c myencrypt.tar.gz                        encrypt your tar file
+        gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpgencrypt your tar file
 
-            <tr><th colspan="2">Git Stuff</th></tr>
-            <tr><td class="box">git branch myfeature_branch</td><td class="box">create git feature branch</td></tr>
-            <tr><td class="box">git branch -d delete_branch</td><td class="box">delete feature branch</td></tr>
-            <tr><td class="box">git branch -D delete_branch</td><td class="box">delete unmerged feature branch</td></tr>
-            <tr><td class="box">git checkout master<br>git merge --no-ff feature_branch</td><td class="box">merge feature branch to master</td></tr>
-            <tr><td class="box">git rm -r --cached myfile</td><td class="box">remove tracked file in .gitignore</td></tr>
-            <tr><td class="box">git rm -r --cached myfile</td><td class="box">remove file from your index</td></tr>
-            <tr><td class="box">git reflog</td><td class="box">how all the reference log</td></tr>
+        *Git Stuff*
+        git branch myfeature_branchcreate                   // git feature branch
+        git branch -d delete_branchdelete                   // [git delete] feature branch
+        git branch -D delete_branchdelete                   // unmerged feature branch
 
-            <tr><th colspan="2">Regular Expression [:help pattern]</th></tr>
-            <tr><td class="box">* &nbsp;</td><td class="box">zero or more</td></tr>
-            <tr><td class="box">+ &nbsp;</td><td class="box">one or more</td></tr>
-            <tr ><td class="box">? &nbsp;</td><td class="box">zero or one</td></tr>
-            <tr ><td class="box">*? &nbsp;</td><td class="box">zero or more non-greedy</td></tr>
-            <tr ><td class="box">+? &nbsp;</td><td class="box">one or more non-greedy</td></tr>
-            <tr ><td class="box">?? &nbsp;</td><td class="box">zero or one non-greedy</td></tr>
-            <tr ><td class="box">\=&nbsp;</td><td class="box">vim zero or one [:help \=]</td></tr>
-            <tr ><td class="box">\{n,m} &nbsp;</td><td class="box">match from n to m, greedy</td></tr>
-            <tr ><td class="box">\{-n,m} &nbsp;</td><td class="box">match from n to m, non-greedy</td></tr>
-            <tr ><td class="box">\{-} = * &nbsp;</td><td class="box">vim non-greedy [:help non-greedy]</td></tr>
-            <tr ><td class="box">\{-1,} = \+&nbsp;</td><td class="box">vim non-greedy [:help non-greedy]</td></tr>
-            <tr ><td class="box">%s/cat\zs\w\{3}/KK/gc &nbsp;</td><td class="box">Replace catdog catcow->catKK catKK [Set the first match to pattern after \zs [:help \zs]</td></tr>
-            <tr ><td class="box">/^\s*\zsif/ &nbsp;</td><td class="box">Match white space following if [:help \zs]</td></tr>
-            <tr ><td class="box">%s/\s*\ze$/KK/gc &nbsp;</td><td class="box">Replace white space to the end of line with KK [:help \ze]</td></tr>
+        git checkout master 
+        git merge --no-ff feature_branch // [git merge]merge feature branch to master
+
+        git rm -r --cached myfileremove                     // tracked file in .gitignore
+        git rm -r --cached myfileremove                     // file from your index
+        git refloghow                                       // all the reference log
+        git reset --hard 828c8c0b1995                       // revert to previous commit
+
+        *Regular Expression [:help pattern]*
+        * zero or more
+        + one or more
+        ? zero or one
+        *? zero or more non-greedy
+        +? one or more non-greedy
+
+        //vim command
+        =i{     // indent inner block[inside the bracket]
+        =a{     // indent a block [include the bracket] 
+        =2a{    // indent two blocks[ this block and cointaining block ]
+        >i{     // increase indent for inner block
+        <i{     // decrease indent for inner block
+        =%      // indent the block with cursor on { or }
+
+        grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* 
+        grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+        vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+        :bufdo %s/pattern/replacement #vim replace all buffers
+        vim $(grep -l --include="*.java" pattern .)
+        :bufdo %s/pattern/replacement #replace all buffers
+        /pattern\c #ignorecase
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+
+        history -d  xxx #remove history
+        add to vimrc file #vim change tabs to space
+        set tabstop=4
+        set shiftwidth=4
+        set expandtab
+        set showcmd
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+
+        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        vim $(grep -l --include="*.java" pattern .)
+        :bufdo %s/pattern/replacement #replace all buffers
+        /pattern\c #ignorecase
+
+        vim $(grep -l --include="*.java" pattern .)        // vim open all files from grep
+        vim $(find ./ -name \*.java -print)                // open all java file from find
+
+        :bufdo %s/pattern/replacement/ge | update          // vim replace all buffers
+        :zf                // Create fold under cursor
+        :zd                // Delete fold under cursor
+        :5gt               // goto tab 5, [in insert mode]
+        :tabmove 4         // move the current tab to position 4 [help :tabmove]
+        :tabc 11           // close tab 11
+
+        :set modeline      // display file name in each tabs page
+        :set ls=2
+
+        :set modeline      // display full file name in statusline [:help :statusline]
+        :set statusline=%F
+
+        y$                                             // copy character from cursor to the end of line     [:help yank]
+        vaw                                            // highlight word under cursor including white space [:help text-object]
+        viw                                            // hightlight word under cursor excluding white space[:help text-object]
+        awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file>
+        kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
+
+        vim $(grep -l --include="*.java" pattern .)                                                     // vim open all files from grep
+        vim $(find ./ -name \*.java -print)                                                             // open all java file from find
+
+        :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers
+        :zf                                                                                             // Create fold under cursor
+        :zd                                                                                             // Delete fold under cursor
+        5gt                                                                                             // goto tab 5, [in insert mode]
+        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        :tabc 11                                                                                        // close tab 11
+
+        :set modeline                                                                                   // display file name in each tabs page
+        :set ls=2
+
+        :set modeline                                                                                   // display full file name in statusline [:help :statusline]
+        :set statusline=%F
+
+        y$                                                                                              // copy character from cursor to the end of line     [:help yank]
+        vaw                                                                                             // highlight word under cursor including white space [:help text-object]
+        viw                                                                                             // hightlight word under cursor excluding white space[:help text-object]
+        awk '{for(i=0; i<NF; i++) print $1}' inputfile                                                  // print the first column from file>
+
+        sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt and direct to norm.txt
+
+        sed -i -e 's/oldstring/newstring/g' *                                                           // grep all the file *.php search oldstring and replace newstring
+        find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+        :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
+        '< and >'                                                                                       // first cursor position/last cursor position in registers in visual mode/selection
+        
+        :echo getline(".")                 // get current line string
+        :echo match("mystring", "st")      // return 2
+        :echo line(".")                    // line number of cursor
+        :echo line("'t")                   // line number of mark t
+        :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
+        :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
+        :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
+        :help debug-mode                   // debug vim script
+
+        
+        :echo getline(".")                                                                              // get current line string
+        :echo match("mystring", "st")                                                                   // return 2
+        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
+        \%V                                                                                             // visual selection block [:help \%V]
+        :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
+        :g/^$/d                             //delete empty line 
+        :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
+        :q: or q/                          // vim command history
+
+        :hi Search guifg=Brown guibg=Gray
+        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+
+        :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
+        :sort! n                           //reverse sorting
+
+        :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
+        :highlight MyKeyWord guifg=Green 
+        :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+        :set ma                             // set file modifiable on  [:h modifiable]
+
+        ctrl-]                              //class definition 
+        ctrl-t                              //back to previous window
+        :s/pattern/\=@a.submatch(0).@b/gc   // substitute with two registers
+
+        :redir @a // redirect ex command to register
+        :ls
+        :redir END
+
+        [-./[:alnum:]_~]\+      // filename regex
+
+        vim function
+        let list = readfile(filename)       // read file line by line
+        ================================================================================
+        NSLog(@"CHAR_MIN:   %c",   CHAR_MIN);
+        NSLog(@"CHAR_MAX:   %c",   CHAR_MAX);
+        NSLog(@"SHRT_MIN:   %hi",  SHRT_MIN);    // signed short int
+        NSLog(@"SHRT_MAX:   %hi",  SHRT_MAX);
+        NSLog(@"INT_MIN:    %i",   INT_MIN);
+        NSLog(@"INT_MAX:    %i",   INT_MAX);
+        NSLog(@"LONG_MIN:   %li",  LONG_MIN);    // signed long int
+        NSLog(@"LONG_MAX:   %li",  LONG_MAX);
+        NSLog(@"ULONG_MIN not defined, it's always zero: %lu", 0);
+        NSLog(@"ULONG_MAX:  %lu",  ULONG_MAX);   // unsigned long int
+        NSLog(@"LLONG_MIN:  %lli", LLONG_MIN);   // signed long long int
+        NSLog(@"LLONG_MAX:  %lli", LLONG_MAX);
+        NSLog(@"ULLONG_MIN not defined, it's always zero: %llu", 0);
+        NSLog(@"ULLONG_MAX: %llu", ULLONG_MAX);  // unsigned long long int
+        ================================================================================
+        UIBezierPath* path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:0];
+        [_shapeLayer setFrame:rect];
+        _shapeLayer.path = [path CGPath];
+        _shapeLayer.strokeColor = [[UIColor greenColor]CGColorRef];
+        _shapeLayer.fillColor = [[UIColor greenColor]CGColorRef];
+        _shapeLayer.lineWidth = 2;
+        [_shapeLayer setShadowPath:[path CGPath]];
+        //_shapeLayer.shouldRasterize = YES;
+        //[_shapeLayer setRasterizationScale:[UIScreen mainScreen].scale];
+        //[_shapeLayer setShadowOpacity:0.6];
+
+        //    for(CALayer* layer in myView.layer.sublayers){
+        //        [layer removeFromSuperlayer];
+        //    }
+        [myView.layer addSublayer:_shapeLayer];
+        ================================================================================
+        NSMutableDictionary* dict = [[NSMutableDictionary alloc]init];
+        [dict setObject:@"obj1" forKey:@"k1"];
+        [dict setObject:@"obj2" forKey:@"k2"];
+
+        NSString* key = @"k1";
+        NSString* strValue = [Dictionary objectForKey:key];
+        NSMutableSet* set = [[NSMutableSet alloc]init];
+        NSString* elem1 = @"str1";
+        NSString* elem2 = @"str2";
+        
+        [set addObject:elem1];
+        [set addObject:elem2];
+        [set removeObject:elem1];
+        XCTAssert([set count] == 1);
+
+        NSMutableSet* set1 = [NSMutableSet setWithObjects:@"obj1", @"obj2", @"obj3", nil];
+        XCTAssert([set1 count] == 3);
+        
+        NSMutableSet* set2 = [NSMutableSet setWithCapacity:2];
+        [set2 addObject:@"obj1"];
+        [set2 addObject:@"obj2"];
+        
+        // Predicate in NSMutableSet
+        NSMutableSet* set3 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
+        NSPredicate* startWithG = [NSPredicate predicateWithBlock:
+                                   ^BOOL(id evaluatedObject, NSDictionary* bindings){
+                                       if([evaluatedObject hasPrefix:@"G"]){
+                                           return YES;
+                                       }else{
+                                           return NO;
+                                       }
+                                   }];
+        [set3 filterUsingPredicate:startWithG];
+        XCTAssertTrue([set3 count] == 2);
+        
+        NSMutableSet* set4 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
+        NSArray* array = [set4 allObjects];
+        for(NSString* str in array){
+            if([str hasPrefix:@"G"]){
+                NSLog(str);
+                [set4 removeObject:str];
+            }
+        }
+        
+        NSMutableSet* set11 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
+        NSMutableSet* set12 = [NSMutableSet setWithObjects:@"Facebook", @"Apple", @"MS", nil];
+        NSMutableSet* result = [NSMutableSet setWithCapacity:10];
+        
+        [result unionSet:set11];
+        [result unionSet:set12];
+        
+        XCTAssertTrue([result count] == 6);
+        
+        [result intersectSet:set11];
+        XCTAssertTrue([result count] == 3);
+        
+        [result minusSet:set11];
+        XCTAssertTrue([result count] == 0);
+        
+        NSCountedSet* countedSet = [NSCountedSet setWithCapacity:5];
+        [countedSet addObject:@"dog"];
+        [countedSet addObject:@"cat"];
+        [countedSet addObject:@"dog"];
+        XCTAssertTrue([countedSet countForObject:@"dog"] == 2);
+        XCTAssertTrue([countedSet countForObject:@"cat"] == 1);
+        ================================================================================
+        NSString* firstString = @"first";
+        NSString* concatstring = [firstString stringByAppendingString:@"appending string"];              // appending string to other string
+        // concatstring = "firstappending string";
+        ================================================================================
+        NSString* fullPath = @"/home";
+        NSString* fullPathFileName = [fullPath stringByAppendingPathComponent:@"fileName.txt"];              // appending string to other string
+        //fullPathFileName -> /home/fileName.txt
+
+        ================================================================================
+        NSString* baseName = [imageFileName stringByDeletingPathExtension]; //myimage.png -> myimage         //delete extension
+        “/tmp/scratch.tiff” -> “/tmp/scratch”
+        “/tmp/”             -> “/tmp”
+        “scratch.bundle/”   -> “scratch”
+        “scratch..tiff”     -> “scratch.”
+        “.tiff”             -> “.tiff”
+        “/”                 -> “/”
+
+        ================================================================================
+        NSString fullPathFileThumbEncrypt = "/home/dog/image.txt";
+        NSString* thumbName                = [fullPathFileThumbEncrypt lastPathComponent];  //get last component of a path
+        //thumbName = "image.txt"
+
+        ================================================================================
+        NSString* path = "/home/dog";
+        NSArray* array = [path pathComponents];
+        array[0] = "/"
+        array[1] = "home"
+        array[2] = "dog"
+
+        NSString* path = "home/dog";
+        NSArray* array = [path pathComponents];
+        array[0] = "home"
+        array[1] = "dog"
+
+        ================================================================================
+        NSString* mystring = @"home_dog_cat";
+        NSArray* componentArray = [mystring componentsSeparateByString:@"_"];
+
+        ================================================================================
+        NSString* stringFormat = @"file_%u.txt";
+        int num = 10;
+        NSString* fileName = [NSString stringWithFormat:stringFormat, num];
+        NSString* str5     = [NSString stringWithFormat:@"%d", 100];
+        //fileName = @"file_10.txt";
+        ================================================================================
+        // show two dicimal places 
+        [NSString stringWithFormat:@"[%.02f][%.02f]", touchXY.x, touchXY.y]; 
+        ================================================================================
+        NSString* path = "/home/dog/file.txt";
+        NSString* extension = [path pathExtension];
+        //extension = "txt"
+
+        NSString* path = "/home/dog/file..txt";
+        //extension = "txt"
+
+        NSString* path = "/home/dog/file/";
+        //extension = ""
+
+        ================================================================================
+        UITabBarController reload problem
+        - (void)viewWillAppear:(BOOL)animated                                                            // The method will be callen when tabbar is switched
+        Use [[self tableView] reloadData]; to reload data
+
+        ================================================================================
+        // object hash value
+        NSString* str5    = [NSString stringWithFormat:@"%d", 100];
+        NSLog(@"str5.hash = [%lu]", [str5 hash]);
+
+        ================================================================================
+        NSString* strInt = @"123";                                                                       // Convert NSString to int
+        int intValue     = [strInt intValue];
+
+        ================================================================================
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];                           // Convert NSString to NSNumber
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber* myNumber = [numberFormatter numberFromString:@"123"];
+        [numberFormatter release];
+
+        ================================================================================
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
+        [array addObject:[NSNumber numberWithInt:4]];
+        [array addObject:[NSNumber numberWithInt:5]];
+        
+        int x = [[array objectAtIndex:0] integerValue];
+        int y = [[array objectAtIndex:1] integerValue];
+        --------------------------------------------------------------------------------
+        [array removeObjectAtIndex:index];
+        --------------------------------------------------------------------------------
+        [array removeAllObjects];
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
+        [array addObject:@"dog"]; 
+        [array addObject:@"cat"]; 
+        String str0 = [array objectAtIndex:0]; 
+        String str1 = [array objectAtIndex:1]; 
+        ================================================================================
+        [self.searchBar becomeFirstResponder];
+        [self.searchBar resignFirstResponder];
+        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
+        NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
+
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:10];
+        NSMutableArray* arr1 = [[NSMutableArray alloc] initWithCapacity:2];
+        NSMutableArray* arr2 = [[NSMutableArray alloc] initWithCapacity:2];
+
+        [arr1 addObject:@"dog"];
+        [arr1 addObject:@"cat"];
+
+        [arr2 addObject:@"cat"];
+        [arr2 addObject:@"dog"];
+
+        [array addObject:arr1];
+        [array addObject:arr2];
+        [array containsObject:arr1]
+
+        --------------------------------------------------------------------------------
+        [arr3 addObject:[MyLib NumInt:1]];
+        [arr3 addObject:[MyLib NumInt:2]];
+        
+        [arr4 addObject:[MyLib NumInt:2]];
+        [arr4 addObject:[MyLib NumInt:1]];
+        [array2 addObject:arr3];
+        [array2 addObject:arr4];
+
+        [array2 removeObject:arr3];
+        [array2 removeObject:arr4];
+        ================================================================================
+        NSNumber* nsnumber = [NSNumber numberWithInteger:123];                                           // Convert NSNumber to NSString
+        NSString* numString = [nsnumber stringValue];
+
+        NSString* nstring = [NSString stringWithFormat:@"%d", (int)nsinteger];
+
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Add image as main screen in UIApplication
+        imageView.image=[UIImage imageNamed:@"image.png"];
+        [self.window addSubview:imageView];
+
+        ================================================================================
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Draw circle on top of image/UIImageView
+        imageView.image=[UIImage imageNamed:@"image.png"];
+        CAShapeLayer* circleLayer = [CAShapeLayer layer];
+        CGFloat leftX = 100.0f;
+        CGFloat leftY = 100.0f;
+        CGFloat Width = 200.0f;
+        CGFloat Height = 200.0f;
+        UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(leftX, leftY, Width, Height)];
+        [circleLayer setPath:[path CGPath]];
+        CGFloat component[4];
+        component[0] = 100.0;
+        component[1] = 1.0;
+        component[2] = 2.0;
+        component[3] = 2.0;
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        [circleLayer setStrokeColor:CGColorCreate(colorSpace, component)];
+        [circleLayer setLineWidth:1.0f];
+        [circleLayer setFillColor:[[UIColor blueColor] CGColor]];
+        [[imageView layer] addSublayer:circleLayer];
+        ================================================================================
+        UIBarButtonItem title font size
+        --------------------------------------------------------------------------------
+        UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" 
+                style:UIBarButtonItemStyleBordered target:self action:@selector(deleteImageButton:)];
+        UIFont* font = [UIFont boldSystemFontOfSize:18.0f];
+        NSDictionary* attribute = @{NSFontAttributeName: font};
+        [deleteItem setTitleTextAttributes:attribute forState:UIControlStateNormal];
+
+        ================================================================================
+        - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+            NSLog(@"%s", __PRETTY_FUNCTION__);
+            UITouch* touch = [touches anyObject];
+            if(touch != nil){
+                _initXY = [touch locationInView:touch.view];
+                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", _initXY.x, _initXY.y];
+                [_myLabel setText:mytext];
+            }
+        }
+        - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+            UITouch* touch = [touches anyObject];
+            if(touch != nil){
+                CGPoint currXY = [touch locationInView:touch.view];
+                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", currXY.x, currXY.y];
+                _center.x = _center.x + (currXY.x - _initXY.x); 
+                _center.y = _center.y + (currXY.y - _initXY.y); 
+
+                UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(_center.x-50, _center.y-50, 100, 100)];
+                [_circleLayer setPath:[path CGPath]];
+                [_circleLayer setFillColor:[[UIColor brownColor] CGColor]];
+                [_myLabel setText:mytext];
+                _initXY = currXY;
+            }
+        }
+        - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+            NSLog(@"%s", __PRETTY_FUNCTION__);
+            UITouch* touch = [touches anyObject];
+            if(touch != nil){
+                CGPoint touchXY = [touch locationInView:touch.view];
+                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", touchXY.x, touchXY.y];
+                [_myLabel setText:mytext];
+            }
+        }
+        ================================================================================
+        // draw rectangle
+        -(CAShapeLayer*)drawRectangle:(CGPoint) location semiWidth:(CGFloat) semiWidth semiHeight:(CGFloat)semiHeight{
+            CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+            UIBezierPath* path = [UIBezierPath bezierPath];
+            
+            // start point
+            [path moveToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
+            
+            // draw lines
+            [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y - semiHeight)];
+            [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y + semiHeight)];
+            [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y + semiHeight)];
+            [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
+            //[path closePath];
+            
+            shapeLayer.path = [path CGPath];
+            
+            shapeLayer.strokeColor = [[UIColor yellowColor] CGColor];
+            shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+            shapeLayer.lineWidth = 1.0;
+            return shapeLayer;
+        }
+        ================================================================================
+        Redirect output to file
+        --------------------------------------------------------------------------------
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *logPath = [documentsDirectory stringByAppendingPathComponent:@"xoutput.log"];             //append file to path
+        //NSString *logPath = @"/Users/cat/try/xoutput.log
+        NSLog(@"redirecting STDERR: %@", logPath);
+        freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+
+        ================================================================================
+        OpenES/OpenGL is like a state machine
+        OpenGL/OpenES has three primitives: point, line and triangle
+        Each point is formed by one vertex
+        Each line is formed by two vertices
+        Each triangle is formed by three vertices
+        Vertex Shader/Fragment Shader
+        Vertex Shader and Fragment Shader is like a little program, it run inside the GPU
+        Frame Buffer, Render Buffer, Depth Buffer, Stencil Buffer
+
+        ================================================================================
+        self.screenSize = [UIScreen mainScreen].bounds.size; // screen size
+
+        ================================================================================
+        format string formatting
+        --------------------------------------------------------------------------------
+        // one decimal for float
+        NSString* strFormat = [NSString stringWithFormat:@"[%.01f][%.01f]", xcolor.blue, xcolor.alpha];
+        --------------------------------------------------------------------------------
+        %@ Objective-C object, printed string returned by descriptionWithLocale
+        %% '%' character.
+        %d, %D Signed 32-bit integer (int).
+        %u, %U Unsigned 32-bit integer (unsigned int).
+        %x Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and a–f.
+        %X Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and A–F.
+        %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
+        %f 64-bit float (double).
+        %e 64-bit float (double), e exponent.
+        %E 64-bit float (double), E exponent.
+        %g 64-bit float (double), %e if exponent < – 4 or >= to the precision, %f o.w.
+        %G 64-bit float (double), %E if exponent < – 4 or >= to the precision, %f o.w.
+        %c 8-bit unsigned character
+        %C 16-bit Unicode character
+        %s Null-terminated array of 8-bit unsigned characters.
+        %S Null-terminated array of 16-bit Unicode characters.
+        %p Void pointer (void *), printed in hex with the digits 0–9 and a–f, with a leading 0x.
+        %a 64-bit float, leading 0x and one hex before decimal pt using p as exp.
+        %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
+        %F 64-bit float, printed in decimal notation.
+
+        ================================================================================
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+
+        ================================================================================
+        // draw circle[location and radius]
+        - (CAShapeLayer*)drawCircle:(CGPoint)location radius:(CGFloat)radius {
+        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path addArcWithCenter:location
+                        radius:radius
+                    startAngle:0.0
+                      endAngle:M_PI * 2.0
+                     clockwise:YES];
+
+        shapeLayer.path = [path CGPath];
+        shapeLayer.strokeColor = [[UIColor redColor] CGColor];
+        shapeLayer.fillColor = nil;
+        shapeLayer.lineWidth = 5.0;
+        return shapeLayer;
+        }
+
+        ================================================================================
+        // draw oval[location and semiMajor and semiMinor]
+        -(CAShapeLayer*)drawOval:(CGPoint) location semimajor:(CGFloat)semimajor semiminor:(CGFloat) semiminor{
+        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+
+        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(location.x-semimajor, location.y-semiminor, 2*semimajor, 2*semiminor)];
+
+        shapeLayer.path = [path CGPath];
+
+        shapeLayer.strokeColor = [[UIColor greenColor] CGColor];
+        shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+        shapeLayer.lineWidth = 1.0;
+        return shapeLayer;
+        }
+        // draw rectangle[location semiWith and semiHeight]
+        -(CAShapeLayer*)drawRectangle:(CGPoint) location semiWidth:(CGFloat) semiWidth semiHeight:(CGFloat)semiHeight{
+        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+        UIBezierPath* path = [UIBezierPath bezierPath];
+
+        // start point
+        [path moveToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
+
+        // draw lines
+        [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y - semiHeight)];
+        [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y + semiHeight)];
+        [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y + semiHeight)];
+        [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
+        //[path closePath];
+
+        shapeLayer.path = [path CGPath];
+
+        shapeLayer.strokeColor = [[UIColor yellowColor] CGColor];
+        shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+        shapeLayer.lineWidth = 1.0;
+        return shapeLayer;
+        }
+        ================================================================================
+        // *.h
+        UIImageView* _imageView;
+        @property (nonatomic, retain) UIImageView* imageView;
+
+        // *.m
+        @synthesize imageView = _imageView;
+
+        self.imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
+        self.imageView.image=[UIImage imageNamed:@"myimage.jpg"];
+        [self.window addSubview:self.imageView];
+
+        ================================================================================
+        // create simple text label
+        UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 300, 300)];
+        [myLabel setTextColor:[UIColor redColor]];
+        [myLabel setBackgroundColor:[UIColor clearColor]];
+        [myLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 20.0f]];
+        [myLabel setText:@"Supper Simple Application"];
+        [self.window addSubview:myLabel];
+
+        ================================================================================
+            // new line on UILabel text
+        UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 30, 300, 300)];
+        myLabel.numberOfLines = 0;						// new line
+        [myLabel setTextColor:[UIColor yellowColor]];
+        [myLabel setBackgroundColor:[UIColor clearColor]];
+        [myLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 12.0f]];
+        [myLabel setText:@"Remove old label and add new label \\nwith removeFromSuperView"];
+        [self.view addSubview:myLabel];
+
+        ================================================================================
+        CGRect frame;
+        frame = CGRectMake(100, 100, 100, 50);
+
+        ================================================================================
+        SubClass* sub = [[SubClass alloc]init];
+        TestClass* tt = [[TestClass alloc]init];
+
+        if([tt isKindOfClass:[SubClass class]]){
+            NSLog(@"tt is SubClass"); 
+        }
+
+        if([sub isKindOfClass:[TestClass class]]){
+            NSLog(@"sub is TestClass"); 
+        }
+        </xcode snippet>
+
+        <java code>
+        // print all substring
+        public static List<String> allSubString(String str) {
+            List<String> list = new ArrayList<String>(); 
+            int len = str.length();
+            for(int i=0; i<len; i++){
+                for(int j=i; j<len; j++){
+                    String substr = str.substring(i, j+1);
+                    list.add(substr);
+                }
+            }
+            return list;
+        }
+        </java code>
+
+        <visual_studio shortcut key>
+            ALT Shift Enter maximize code window
+            CTRL-Tab        show tab files
+            CTRL -          navigate backward
+            CTRL Shift -    navigate forward
+            CTRL g          goto line number
+            Shift F12       find all references
+            CTRL-Delete     delete word to right of cursor
+            CTRL-BackSpace  delete word to left of cursor
+            CTRL W          highlight word
+            CTRL M + O      collapse all
+            CTRL M + L      expand all
+            CTRL M + M      expand/collapse the current region
+            CTRL K + K      toggle bookmark
+            CTRL K + N      next bookmark
+            CTRL K + P      previous bookmark
+            CTRL E          Recent files
+            Shift CTRL + }  Select block code curly bracket
+            CTRL + }        Jump to { or }
+        </visua_studio>
+
+        <book math>
+            http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
+            http://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
+            http://swtch.com/~rsc/regexp/regexp1.html
+            http://glyphicons.com
+            http://www.math.sjsu.edu/~alperin/pt.pdf
+            http://theory.caltech.edu/~chan/Ph129b/sol3.pdf
+            http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
+            http://www.mathpuzzle.com/
+        </book>
+
+        </java antlr>
+            java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
+        <java antlr>
+
+        <csharp c#>
+            ================================================================================
+            list skip: listskip
+            --------------------------------------------------------------------------------
+            var list = new[] { "dog", "cow", "cat" };
+            System.Console.WriteLine(string.Join(",", list));
+            var list1 = list.Skip(1);
+            System.Console.WriteLine(string.Join(",", list1));
+            //"cow", "cat"
+            System.Console.ReadLine();
+
+            ================================================================================
+            dictionary uses for loop
+            --------------------------------------------------------------------------------
+            for (int index = 0; index < dictionary.Count; index++) {
+              var item = dictionary.ElementAt(index);
+              var itemKey = item.Key;
+              var itemValue = item.Value;
+            }
+        </csharp>
+
+        <python>
+            mode	description
+            r	read in text mode
+            w	write in text mode, overwrite old file if exists
+            a	append in text mode
+            r+	read and write
+            w+	read and write, overwrite old file/create file
+            a+	read and append
+            rb	read in binary mode
+            wb	write in binary mode, overwrite old file if exists
+            ab	append in binary mode
+            rb+	read and write in binary mode
+            wb+	write and read in binary mode, overwrite old file if exists
+            ab+	append and read in binary mode
+
+            python -m pdb script.py              // debug python
+            str = str.strip(' \r\n\t')           // trim whitespace
+            str = str.ltrip(' \r\n\t')           // trim the left side of str
+            str = str.rtrip(' \r\n\t')           // trim the right side of str
+            is_number(mystring)                  // convert string to number/integer
+            arglist = sys.argv;                  // argument list
+            arglist[0]                           // first argument which is the script name
+            len(mystring)                        // length of string
+            len(list)                            // number of element inside the list
+            mylist = []                          // create list
+            handler = open(fileName, "r+")       // open file for read
+            int(str)                             // convert string to integer
+            list.pop(0)                          // Delete first element from list
+            list.append("str")                   // Append str to list
+            basename = ntpath.basename(path)     // Basename of path
+            os.path.basename("/dog/dog/dog.txt") // import os;
+            pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt"
+            os.path.join("/home", "cat")         // /home/cat
+            os.path.join("/home/", "cat")        // /home/cat
+            str(num)                             // String to integer
+            os.getcwd()
+            arr1 = arr[:];                       // clone/copy list
+            -----------------------------------
+            line = "some stuff"
+            regex = re.compile(r'(file\W*=\W*)(\S+)\W*(title\W*=\W*)"(.*)"')
+                match = regex.search(line)
+                if match:
+                    print "(0)=", match.group(0)
+                    print "(1)=", match.group(1)
+                    print "(2)=", match.group(2)
+                    print "(3)=", match.group(3)
+                    print "(4)=", match.group(4)
+            -----------------------------------
+            subprocess.call(["pygmentize", "-f", "html", "-o", htmlFile, tmpFileName])
+            -----------------------------------
+            list = []
+            list[0] = 'cat'
+            list[1] = 'cat'
+            list.append('dog')
+            list.pop()
+            list.pop(1)
+            -----------------------------------
+            dict = {}
+            dict = {'k1':'value1', 'k2':'value2'}
+            dict['k1']
+            -----------------------------------
+            string.strip()                      // trim leading and trailing whitespace
 
 
 
-            <tr ><th colspan="2">Command line tips</th></tr>
-            <tr ><td class="box">cat /tmp/x.x | awk -F ':' '{print $1}'&nbsp;</td><td class="box">print the first field with delimiter : from x.x  [man awk]</td></tr>
+        </python>
+
+        <latex>
+            // greek letter
+            \langle \vec{v_1} \vec{v_2} \rangle            // inner product
+            \overline{\langle \vec{v_1} \vec{v_2} \rangle} // conjugate inner product
+            \iff                                           // if and only if
+            \Rightarrow                                    // imply
+            \vec{v_3^\ast}                                 // conjugation
+
+            \alpha        \theta                  \tau       \\
+            \beta         \vartheta    \pi          \upsilon \\
+            \gamma        \gamma       \varpi       \phi     \\
+            \delta        \kappa       \rho         \varphi  \\
+            \epsilon      \lambda      \varrho      \chi     \\
+            \varepsilon   \mu          \sigma       \psi     \\
+            \zeta         \nu          \varsigma    \omega   \\
+            \eta          \xi                                \\
+                                                             \\
+            \Gamma        \Lambda      \Sigma       \Psi     \\
+            \Delta        \Upsilon     \Omega                \\
+            \Theta        \Pi          \Phi
+
+        </latex>
+
+        <octopress>
+            link code from local dir
+
+            1. edit source/_posts/xxx.markdown
+            2. add absoluate path to code
+            3. rake generate
+            4. copy octopress/* to /var/www/octopress
+            5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
+            6. Fixed github gist
+            7. Installed Kramdown for latex
+
+            rake 'new_post[title]'
+
+            put image file in  zsurface/public/images
+            {% img  center /images/torus.png 400 400 %}
+        </octopress>
+
+        <java snippet>
+        ====================================================================================
+            int array[][] = new int[][]{
+            { 1, 2, 3, 4, 5 },
+            { 1, 2, 3, 4, 5 },
+            { 1, 2, 3, 4, 5 },
+            { 1, 2, 3, 4, 5 }
+            };
+        ====================================================================================
+        </java snippet>
+
+        <c# snippet>
+
+        </c# snippet>
+            ====================================================================================
+            Control Validating event
+            --------------------------------------------------------------------------------
+            TextBox textbox = new TextBox()
+            textbox.Validating += ValidationRule                    // Register event handler
+
+            private void ValidationRule(object sender, EventArg e)
+            { //define your validation rules }
+            --------------------------------------------------------------------------------
+
+        --------------------------------------------------------------------------------
+        <gpg_encryption>
+        tar -czf myencrypt.tar.gz myencrypt
+        tar -xzf myencrypt.tar.gz
+        gpg -c myencrypt.tar.gz
+        gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpg
+        </gpg_encryption>
+        ================================================================================
+        Algebraic Curve in Projective Plane
+        Point on Projective Plane
+        (X, Y, Z) ~ (aX, aY, aZ) a != zero
+        Embed Affine plane to projective plane
+        Add infinite line (x:y:0)
+        Embed (x:y)->(1:x:z)
+        Embed (x:y)->(x:1:z)
+        Embed (x:y)->(x:y:1)
+
+        F(X, Y, Z) = 0
+        X = aX', Y = aY', Z = aZ'
+        F(aX', aY', aZ') = a^nF(X', Y', Z') = 0
+        If F(X', Y', Z') => a^nF(X', Y', Z') = 0
+
+        Any affine curve C can be extended to projective plane curve by following process
+        F(X, Y) = 0
+        Z^nF(X/Z, Y/Z) = 0, Let Z != 0
+        e.g. X^2 + y  + 3 = 0
+             (X/Z)^2 + Y/Z + 3 = 0
+            =>X^2 + ZY + 3Z^2 = 0
+              Add (X:Y:0) as infinite line
+
+        ================================================================================
+        ([1, 2, 3, 0, 5]U{Infinite}, max, +, 0, 1)
+        max is associative
+        + is associative
+        0 is the identify of +
+        since a = a + 0
+
+        Infinite is annihilator for max
+        Infinite = max(Infinite, a)
+
+        m = max(1, 2)
+        2 = max(2, 0)
+        2 = max(0, 2)
+            max(max(a, b), c) = max(a, max(b, c))
+            3 = 3 + 0
+            3 = 0 + 3
+
+        ================================================================================
+        new word of the data
+        snap [ ] say something quickly and irritably to someone, snapped at her  
+        snapshot, snapchat
+        snapper [ ] a marine fish that is typically reddish and is valued as food
+
+        ================================================================================
+        install haskell web framework snap
+        cabal upgrade
+        cabal install snap
+        --------------------------------------------------------------------------------
+        change haskell verion
+        ghc -v
+        there are two major pieces: GHC and Haskell Platform
+        They are installed respectively in:
+        /Library/Frameworks/GHC.framework
+        /Library/Haskell
+        Executables are symlinked in /usr/bin/ and should be avaiable in any shell
+
+        How to uninstall different Haskell GCH versions:
+        /Library/Haskell/bin/uninstall-hs
+        e.g ./uninstall-hs thru --remove 7.8.3 [option --remove is remove files]
+        --------------------------------------------------------------------------------
+        cabal update            Install the latest version of each package
+        cabal sandbox init      To prevent version incompatibility with earlier installed packages
+        cabal install foo
+        cabal install foo-1.0   Specific version of a package
+        --------------------------------------------------------------------------------
+        Google just release a new compression [algo called Brotli], [which] the company hope 
+        will [reduce(speed up)] the web browsing by [shrinking] images, web fonts, other other
+        content
+        --------------------------------------------------------------------------------
+        install homebrew in Mac
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        use homebrew to install Haskell
+        brew install ghc
+
+        // install cabal from brew
+        brew install cabal-install
+
+        // use cabal install packages
+        cabal install cabal-install
+        I spend many hours on the Haskell framework, and still can't resolve the package dependency hell
+        --------------------------------------------------------------------------------
+        Run simulator in command line
+        // display all the simulators device
+        instruments -w help
+        --------------------------------------------------------------------------------
+        // xcode shortcut key
+        Shift ALT Command Left/Right  fold all code/unfolded all code
+        CTRL 5 search files name(.h *.m)
+        CTRL 6 type search show all current methods
+        CTRL WindowKey left/right  navigate backward/backward
+        CTRL 1 show recent items
+        CTRL C delete current line
+        ALT Left/Right  move word by word
+        Command ALT .(dot) change focus
+        Command ALT Left/Right code fold/unfolded
+        Command ALT 0 close utilities window
+
+        Command left/right move cursor to begin/end of line(no highligh)
+        Command , show setting(xcode)
+        Command 3 global search
+        Command w close window (not just xcode)
+        Command [] shift hightlight code left/right
+        Command double click jump to definition
+        Command D mark line
+        Command L goto line
+        Command E, Command F use selection to find
+        Command Shift Y close debug window
+        Command Shift 2 Open Organizer
+        Command E + Command F search word under cursor
+        Command Shift f  global find
+        Command Shift Left/Right  selection whole line
+        Command Shift right/left highlight line
+        Command CTRL UP/Down .h and .m file
+        Command CTRL J jump to definition
+        Command CTRL Left jump back
+        Command CTRL F full/maximize screen mode
+        Command CTRL Y debug/continue 
+        Command `  window fit screen
+
+        // visual_studio shortcut key>
+        ALT Shift Enter maximize code window
+        CTRL-Tab        show tab files
+        CTRL -          navigate backward
+        CTRL Shift -    navigate forward  
+        CTRL g          goto line number
+        Shift F12       find all references
+        CTRL-Delete     delete word to right of cursor 
+        CTRL-BackSpace  delete word to left of cursor 
+        CTRL W          highlight word
+        CTRL M + O      collapse all
+        CTRL M + L      expand all
+        CTRL M + M      expand/collapse the current region
+        CTRL K + K      toggle bookmark 
+        CTRL K + N      next bookmark 
+        CTRL K + P      previous bookmark 
+        CTRL E          Recent files
+        Shift CTRL + }  Select block code curly bracket
+        CTRL + }        Jump to { or }
+
+        // python>
+        mode	description
+        r	read in text mode
+        w	write in text mode, overwrite old file if exists
+        a	append in text mode
+        r+	read and write
+        w+	read and write, overwrite old file/create file
+        a+	read and append
+        rb	read in binary mode
+        wb	write in binary mode, overwrite old file if exists
+        ab	append in binary mode
+        rb+	read and write in binary mode
+        wb+	write and read in binary mode, overwrite old file if exists
+        ab+	append and read in binary mode
+
+        python -m pdb script.py          // debug python
+        str = str.strip(' \r\n\t')       // trim whitespace
+        str = str.ltrip(' \r\n\t')       // trim the left side of str
+        str = str.rtrip(' \r\n\t')       // trim the right side of str
+        is_number(mystring)              // convert string to number/integer
+        arglist = sys.argv;              // argument list
+        arglist[0]                       // first argument which is the script name
+        len(mystring)                    // length of string
+        len(list)                        // number of element inside the list
+        mylist = []                      // create list
+        handler = open(fileName, "r+")   // open file for read
+        int(str)                         // convert string to integer
+        list.pop(0)                      // Delete first element from list
+        list.append("str")               // Append str to list
+        basename = ntpath.basename(path) // Basename of path
+        os.path.basename("/dog/dog/dog.txt") //import os;
+        pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt" 
+        str(num)                         // String to integer
+        os.getcwd()                      
+
+        // intellij shortcut key
+        Shift Tab       // move block of code(code selection) to left
+        Tab/Shift+Tab   // indent/unintented selected line
+        Alt Right/Left  // cycle through tabs
+        Alt Shift F7    // goto usage
+        Alt Shit f      // global search
+        Alt g           // find name
+        Alt UP/Down     // move to previous/next method
+        Ctrl F12        // show all current methods
+        Ctrl W          // select code block. e.g {..}
+        Ctrl-Shift F12  // max/unmaxed window
+        Ctrl UP/Down    // movine window up/down
+        Ctrl [/]        // Move to code block star/end
+        Ctrl Shift #    // book mark line
+        Ctrl #          // goto book mark #
+        Ctrl Alt B      // goto implementation
+        Ctrl E          // go back to implementation
+        Ctrl Alt F7     // shows usages
+        Ctrl w          // select whole word
+        Ctrl Left/Right // move cursor previous/next
+        Ctrl Shift R    // find and replace
+        Ctrl Shift j    // join line
 
 
 
-            <tr ><th colspan="2">Vim Tips</th></tr>
-            <tr ><td class="box">CTRL-E CTRL-Y</td><td class="box">Scroll up/down window [:help CTRL-E/CTRL-Y]</td></tr>
-            <tr ><td class="box">:mksession  sess.vim&nbsp;</td><td class="box">Store vim session [:help mksession]</td></tr>
-            <tr ><td class="box">vim -S sess.vim&nbsp;</td><td class="box">Restore vim session</td></tr>
-            <tr ><td class="box">:help pattern and /\\w &nbsp;</td><td class="box">Search the meaning of \w in Vim</td></tr>
-            <tr ><td class="box">cab  me :g/[-+]\s*(\w\+\s*\*\?)\s*\w\+/z#.1 &nbsp;</td><td class="box">abbreviate [iab insert mode, cab command mode, !ab both] </td></tr>
-            <tr ><td class="box">syn match MyLiteral /'\w\+'/ <br>
-                    hi  MyLiteral ctermfg=Red guifg=Blue ctermbg=Red guibg=Blue 
-                    </td><td class="box">Define your own highlight color group, put two lines in .vimrc/_vimrc file [:help :match :hi]</td></tr>
-            <tr ><td class="box">q/ &nbsp;</td><td class="box">Edit command line buffer </td></tr>
-            <tr ><td class="box">zf &nbsp;</td><td class="box">Create fold in visual mode [:help :zf]</td></tr>
-            <tr ><td class="box">zd &nbsp;</td><td class="box">Delete fold under cursor[:help :zd]</td></tr>
-            <tr ><td class="box">viw &nbsp;</td><td class="box">Visual mode, select the current word [:help text-ojbect]</td></tr>
-            <tr ><td class="box">vis &nbsp;</td><td class="box">Visual mode, select the current sentence [:help text-object]</td></tr>
-            <tr ><td class="box">a[ , a]&nbsp;</td><td class="box">Visual mode, select [] block including [ and ] select block [:help text-object]</td></tr>
-            <tr ><td class="box">i[ , i]&nbsp;</td><td class="box">Visual mode, select [] block excluding [ and ] inner block  [:help text-object]</td></tr>
-            <tr ><td class="box">a{ , a}&nbsp;</td><td class="box">Visual mode, select {} block including { and } {} block  [:help text-object]</td></tr>
-            <tr ><td class="box">i{ , i}&nbsp;</td><td class="box">Visual mode, select {} block excluding { and } inner block  [:help text-object]</td></tr>
-            <tr ><td class="box">a( , a)&nbsp;</td><td class="box">Visual mode, select () block including ( and ) () block  [:help text-object]</td></tr>
-            <tr ><td class="box">i( , i)&nbsp;</td><td class="box">Visual mode, select () block excluding ( and ) inner block  [:help text-object]</td></tr>
-            <tr ><td class="box">String "123" &nbsp;</td><td class="box">vim script variables[:help variables]</td></tr>
-            <tr ><td class="box">:saveas! newfile &nbsp;</td><td class="box">Rename file in the current buffer [:help :saveas]</td></tr>
-            <tr ><td class="box">:%s/\d\+/\=submatch(0) + 1/gc newfile &nbsp;</td><td class="box">Add one to each integer [:help submatch]</td></tr> 
-            <tr ><td class="box">:%s/String/\=tolower(submatch(0))/gc &nbsp;</td><td class="box">:s/pat/\=expr/  expr is interpreted as expression[:help sub-replace-expression]</td></tr>
-            <tr ><td class="box">:%s/String/\=tolower(submatch(0)) | %s/pattern/\=toupper(submatch(0))/gc &nbsp;</td><td class="box">Execute more than one commands [:help :\]</td></tr>
-            <tr ><td class="box">/pattern\c/ &nbsp;</td><td class="box">Search pattern ignorecase [:h /] /ignore</td></tr>
-            <tr ><td class="box">/{\(\_s.*\)\{0,4}} &nbsp;</td><td class="box">Search multiple lines e.g. {xxx\r xxx\r xxx} [:h \_s]</td></tr>
 
-            <tr ><td class="box">:set guifont &nbsp;</td><td class="box">Check what font Vim is using currently [:help guifont]</td></tr> 
-            <tr ><td class="box">:set guifont=Courier_New:h12:cANSI &nbsp;</td><td class="box">Set different font in Vim [:help guifont]</td></tr> 
-            <tr ><td class="box">:syn match MyKeyWord /MyName/ <br> :highlight MyKeyWord guifg=Green &nbsp;</td><td class="box">Highlight defined keyword in Vim[:help syn-match]</td></tr> 
-            <tr >
-                <td class="box"><font color="red">\s</font> whitespace character: Space and Tab    */\s* &nbsp;</td>
-                <td class="box">Check what font Vim is using currently [:help guifont]</td>
-            </tr> 
-            <tr ><td class="box"><font color="red">CTRL-a [ </font></td><td class="box">Copy mode</td></tr> 
-            <tr ><td class="box"><font color="red">CTRL-a ] </font></td><td class="box">Writ the content of paste buffer to stdin</td></tr> 
-            <tr ><td class="box"><font color="blue">git fetch <br> git checkout origin/master filepath </font></td><td class="box">git overwrite single file</td></tr> 
-            <tr ><td class="box"><font color="blue">Align = </font></td><td class="box">Install DrChip Alignment tool for Vim(Vim Align.vba :% :q)</td></tr> 
-
-            <tr ><td class="box"><font color="red">pbpaste </font></td><td class="box">Command-C copy and paste to clipboard. Provide copying and pasteing to the clipboard from command line. [man phpaste] </td></tr> 
-            <tr ><td class="box"><font color="red">ls -la | pbcopy </font></td><td class="box">pipe to pasteboard [man pbcopy]</td></tr> 
-
-            <tr ><th colspan="2">Window Tips</th></tr>
-            <tr ><td class="box">Close current active window &nbsp;</td><td class="box">Alt-F4</td></tr>
-            <tr ><td class="box">Mininum all windows &nbsp;</td><td class="box">Winkey-d</td></tr>
-
-            <tr ><th colspan="2">iOS Dev Tips</th></tr>
-            <tr ><td class="box">
-                    if you get linking error, the most scenarious problems are linking libraries errors<br>
-                    e.g. when you use some new API in your code, the API need dynamic libraries to run<br>
-            </td><td class="box">Linking error</td></tr>
-            <tr ><td class="box">First Add the dynamic libraries to your framework &nbsp;</td><td class="box">Add Lib to framework</td></tr>
-            <tr ><td class="box">
-                    (1) Select a target that you want to build a library<br>
-                    (2) Click on Build Phases<br>
-                    (3) Click on (+) sign<br>
-                    (4) Select a library or framwwork from the list and click Add<br>
-            </td><td class="box">Add Lib to framework</td></tr>
-            </table>
-    </body>
-</html>
+</pre>
