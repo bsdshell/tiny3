@@ -1,1042 +1,153 @@
-<pre>
-        *GPG encrypt directory*
-        tar -czf myencrypt.tar.gz myencrypttar directory
-        tar -xzf myencrypt.tar.gz tar directory
-        gpg -c myencrypt.tar.gz                        encrypt your tar file
-        gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpgencrypt your tar file
-
-        *Git Stuff*
-        git branch myfeature_branchcreate                   // git feature branch
-        git branch -d delete_branchdelete                   // [git delete] feature branch
-        git branch -D delete_branchdelete                   // unmerged feature branch
-
-        git checkout master 
-        git merge --no-ff feature_branch // [git merge]merge feature branch to master
-
-        git rm -r --cached myfileremove                     // tracked file in .gitignore
-        git rm -r --cached myfileremove                     // file from your index
-        git refloghow                                       // all the reference log
-        git reset --hard 828c8c0b1995                       // revert to previous commit
-
-        *Regular Expression [:help pattern]*
-        * zero or more
-        + one or more
-        ? zero or one
-        *? zero or more non-greedy
-        +? one or more non-greedy
-
-        //vim command
-        =i{     // indent inner block[inside the bracket]
-        =a{     // indent a block [include the bracket] 
-        =2a{    // indent two blocks[ this block and cointaining block ]
-        >i{     // increase indent for inner block
-        <i{     // decrease indent for inner block
-        =%      // indent the block with cursor on { or }
-
-        grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* 
-        grep --include="*.java" "\"[a-zA-Z]\+\""  ./
-        vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
-        :bufdo %s/pattern/replacement #vim replace all buffers
-        vim $(grep -l --include="*.java" pattern .)
-        :bufdo %s/pattern/replacement #replace all buffers
-        /pattern\c #ignorecase
-        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
-        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
-
-        history -d  xxx #remove history
-        add to vimrc file #vim change tabs to space
-        set tabstop=4
-        set shiftwidth=4
-        set expandtab
-        set showcmd
-        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
-
-        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
-        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
-        vim $(grep -l --include="*.java" pattern .)
-        :bufdo %s/pattern/replacement #replace all buffers
-        /pattern\c #ignorecase
-
-        vim $(grep -l --include="*.java" pattern .)        // vim open all files from grep
-        vim $(find ./ -name \*.java -print)                // open all java file from find
-
-        :bufdo %s/pattern/replacement/ge | update          // vim replace all buffers
-        :zf                // Create fold under cursor
-        :zd                // Delete fold under cursor
-        :5gt               // goto tab 5, [in insert mode]
-        :tabmove 4         // move the current tab to position 4 [help :tabmove]
-        :tabc 11           // close tab 11
-
-        :set modeline      // display file name in each tabs page
-        :set ls=2
-
-        :set modeline      // display full file name in statusline [:help :statusline]
-        :set statusline=%F
-
-        y$                                             // copy character from cursor to the end of line     [:help yank]
-        vaw                                            // highlight word under cursor including white space [:help text-object]
-        viw                                            // hightlight word under cursor excluding white space[:help text-object]
-        awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file>
-        kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
-
-        vim $(grep -l --include="*.java" pattern .)                                                     // vim open all files from grep
-        vim $(find ./ -name \*.java -print)                                                             // open all java file from find
-
-        :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers
-        :zf                                                                                             // Create fold under cursor
-        :zd                                                                                             // Delete fold under cursor
-        5gt                                                                                             // goto tab 5, [in insert mode]
-        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
-        :tabc 11                                                                                        // close tab 11
-
-        :set modeline                                                                                   // display file name in each tabs page
-        :set ls=2
-
-        :set modeline                                                                                   // display full file name in statusline [:help :statusline]
-        :set statusline=%F
-
-        y$                                                                                              // copy character from cursor to the end of line     [:help yank]
-        vaw                                                                                             // highlight word under cursor including white space [:help text-object]
-        viw                                                                                             // hightlight word under cursor excluding white space[:help text-object]
-        awk '{for(i=0; i<NF; i++) print $1}' inputfile                                                  // print the first column from file>
-
-        sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt and direct to norm.txt
-
-        sed -i -e 's/oldstring/newstring/g' *                                                           // grep all the file *.php search oldstring and replace newstring
-        find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
-        :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
-        '< and >'                                                                                       // first cursor position/last cursor position in registers in visual mode/selection
-        
-        :echo getline(".")                 // get current line string
-        :echo match("mystring", "st")      // return 2
-        :echo line(".")                    // line number of cursor
-        :echo line("'t")                   // line number of mark t
-        :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
-        :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
-        :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
-        :help debug-mode                   // debug vim script
-
-        
-        :echo getline(".")                                                                              // get current line string
-        :echo match("mystring", "st")                                                                   // return 2
-        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
-        \%V                                                                                             // visual selection block [:help \%V]
-        :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
-        :g/^$/d                             //delete empty line 
-        :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
-        :q: or q/                          // vim command history
-
-        :hi Search guifg=Brown guibg=Gray
-        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
-
-        :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
-        :sort! n                           //reverse sorting
-
-        :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
-        :highlight MyKeyWord guifg=Green 
-        :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
-        :set ma                             // set file modifiable on  [:h modifiable]
-
-        ctrl-]                              //class definition 
-        ctrl-t                              //back to previous window
-        :s/pattern/\=@a.submatch(0).@b/gc   // substitute with two registers
-
-        :redir @a // redirect ex command to register
-        :ls
-        :redir END
-
-        [-./[:alnum:]_~]\+      // filename regex
-
-        vim function
-        let list = readfile(filename)       // read file line by line
-        ================================================================================
-        NSLog(@"CHAR_MIN:   %c",   CHAR_MIN);
-        NSLog(@"CHAR_MAX:   %c",   CHAR_MAX);
-        NSLog(@"SHRT_MIN:   %hi",  SHRT_MIN);    // signed short int
-        NSLog(@"SHRT_MAX:   %hi",  SHRT_MAX);
-        NSLog(@"INT_MIN:    %i",   INT_MIN);
-        NSLog(@"INT_MAX:    %i",   INT_MAX);
-        NSLog(@"LONG_MIN:   %li",  LONG_MIN);    // signed long int
-        NSLog(@"LONG_MAX:   %li",  LONG_MAX);
-        NSLog(@"ULONG_MIN not defined, it's always zero: %lu", 0);
-        NSLog(@"ULONG_MAX:  %lu",  ULONG_MAX);   // unsigned long int
-        NSLog(@"LLONG_MIN:  %lli", LLONG_MIN);   // signed long long int
-        NSLog(@"LLONG_MAX:  %lli", LLONG_MAX);
-        NSLog(@"ULLONG_MIN not defined, it's always zero: %llu", 0);
-        NSLog(@"ULLONG_MAX: %llu", ULLONG_MAX);  // unsigned long long int
-        ================================================================================
-        UIBezierPath* path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:0];
-        [_shapeLayer setFrame:rect];
-        _shapeLayer.path = [path CGPath];
-        _shapeLayer.strokeColor = [[UIColor greenColor]CGColorRef];
-        _shapeLayer.fillColor = [[UIColor greenColor]CGColorRef];
-        _shapeLayer.lineWidth = 2;
-        [_shapeLayer setShadowPath:[path CGPath]];
-        //_shapeLayer.shouldRasterize = YES;
-        //[_shapeLayer setRasterizationScale:[UIScreen mainScreen].scale];
-        //[_shapeLayer setShadowOpacity:0.6];
-
-        //    for(CALayer* layer in myView.layer.sublayers){
-        //        [layer removeFromSuperlayer];
-        //    }
-        [myView.layer addSublayer:_shapeLayer];
-        ================================================================================
-        NSMutableDictionary* dict = [[NSMutableDictionary alloc]init];
-        [dict setObject:@"obj1" forKey:@"k1"];
-        [dict setObject:@"obj2" forKey:@"k2"];
-
-        NSString* key = @"k1";
-        NSString* strValue = [Dictionary objectForKey:key];
-        NSMutableSet* set = [[NSMutableSet alloc]init];
-        NSString* elem1 = @"str1";
-        NSString* elem2 = @"str2";
-        
-        [set addObject:elem1];
-        [set addObject:elem2];
-        [set removeObject:elem1];
-        XCTAssert([set count] == 1);
-
-        NSMutableSet* set1 = [NSMutableSet setWithObjects:@"obj1", @"obj2", @"obj3", nil];
-        XCTAssert([set1 count] == 3);
-        
-        NSMutableSet* set2 = [NSMutableSet setWithCapacity:2];
-        [set2 addObject:@"obj1"];
-        [set2 addObject:@"obj2"];
-        
-        // Predicate in NSMutableSet
-        NSMutableSet* set3 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
-        NSPredicate* startWithG = [NSPredicate predicateWithBlock:
-                                   ^BOOL(id evaluatedObject, NSDictionary* bindings){
-                                       if([evaluatedObject hasPrefix:@"G"]){
-                                           return YES;
-                                       }else{
-                                           return NO;
-                                       }
-                                   }];
-        [set3 filterUsingPredicate:startWithG];
-        XCTAssertTrue([set3 count] == 2);
-        
-        NSMutableSet* set4 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
-        NSArray* array = [set4 allObjects];
-        for(NSString* str in array){
-            if([str hasPrefix:@"G"]){
-                NSLog(str);
-                [set4 removeObject:str];
-            }
-        }
-        
-        NSMutableSet* set11 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
-        NSMutableSet* set12 = [NSMutableSet setWithObjects:@"Facebook", @"Apple", @"MS", nil];
-        NSMutableSet* result = [NSMutableSet setWithCapacity:10];
-        
-        [result unionSet:set11];
-        [result unionSet:set12];
-        
-        XCTAssertTrue([result count] == 6);
-        
-        [result intersectSet:set11];
-        XCTAssertTrue([result count] == 3);
-        
-        [result minusSet:set11];
-        XCTAssertTrue([result count] == 0);
-        
-        NSCountedSet* countedSet = [NSCountedSet setWithCapacity:5];
-        [countedSet addObject:@"dog"];
-        [countedSet addObject:@"cat"];
-        [countedSet addObject:@"dog"];
-        XCTAssertTrue([countedSet countForObject:@"dog"] == 2);
-        XCTAssertTrue([countedSet countForObject:@"cat"] == 1);
-        ================================================================================
-        NSString* firstString = @"first";
-        NSString* concatstring = [firstString stringByAppendingString:@"appending string"];              // appending string to other string
-        // concatstring = "firstappending string";
-        ================================================================================
-        NSString* fullPath = @"/home";
-        NSString* fullPathFileName = [fullPath stringByAppendingPathComponent:@"fileName.txt"];              // appending string to other string
-        //fullPathFileName -> /home/fileName.txt
-
-        ================================================================================
-        NSString* baseName = [imageFileName stringByDeletingPathExtension]; //myimage.png -> myimage         //delete extension
-        "/tmp/scratch.tiff" -> "/tmp/scratch"
-        "/tmp/"             -> "/tmp"
-        "scratch.bundle/"   -> "scratch"
-        "scratch..tiff"     -> "scratch."
-        ".tiff"             -> ".tiff"
-        "/"                 -> "/"
-
-        ================================================================================
-        NSString fullPathFileThumbEncrypt = "/home/dog/image.txt";
-        NSString* thumbName                = [fullPathFileThumbEncrypt lastPathComponent];  //get last component of a path
-        //thumbName = "image.txt"
-
-        ================================================================================
-        NSString* path = "/home/dog";
-        NSArray* array = [path pathComponents];
-        array[0] = "/"
-        array[1] = "home"
-        array[2] = "dog"
-
-        NSString* path = "home/dog";
-        NSArray* array = [path pathComponents];
-        array[0] = "home"
-        array[1] = "dog"
-
-        ================================================================================
-        NSString* mystring = @"home_dog_cat";
-        NSArray* componentArray = [mystring componentsSeparateByString:@"_"];
-
-        ================================================================================
-        NSString* stringFormat = @"file_%u.txt";
-        int num = 10;
-        NSString* fileName = [NSString stringWithFormat:stringFormat, num];
-        NSString* str5     = [NSString stringWithFormat:@"%d", 100];
-        //fileName = @"file_10.txt";
-        ================================================================================
-        // show two dicimal places 
-        [NSString stringWithFormat:@"[%.02f][%.02f]", touchXY.x, touchXY.y]; 
-        ================================================================================
-        NSString* path = "/home/dog/file.txt";
-        NSString* extension = [path pathExtension];
-        //extension = "txt"
-
-        NSString* path = "/home/dog/file..txt";
-        //extension = "txt"
-
-        NSString* path = "/home/dog/file/";
-        //extension = ""
-
-        ================================================================================
-        UITabBarController reload problem
-        - (void)viewWillAppear:(BOOL)animated                                                            // The method will be callen when tabbar is switched
-        Use [[self tableView] reloadData]; to reload data
-
-        ================================================================================
-        // object hash value
-        NSString* str5    = [NSString stringWithFormat:@"%d", 100];
-        NSLog(@"str5.hash = [%lu]", [str5 hash]);
-
-        ================================================================================
-        NSString* strInt = @"123";                                                                       // Convert NSString to int
-        int intValue     = [strInt intValue];
-
-        ================================================================================
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];                           // Convert NSString to NSNumber
-        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber* myNumber = [numberFormatter numberFromString:@"123"];
-        [numberFormatter release];
-
-        ================================================================================
-        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
-        [array addObject:[NSNumber numberWithInt:4]];
-        [array addObject:[NSNumber numberWithInt:5]];
-        
-        int x = [[array objectAtIndex:0] integerValue];
-        int y = [[array objectAtIndex:1] integerValue];
-        --------------------------------------------------------------------------------
-        [array removeObjectAtIndex:index];
-        --------------------------------------------------------------------------------
-        [array removeAllObjects];
-        --------------------------------------------------------------------------------
-        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
-        [array addObject:@"dog"]; 
-        [array addObject:@"cat"]; 
-        String str0 = [array objectAtIndex:0]; 
-        String str1 = [array objectAtIndex:1]; 
-        ================================================================================
-        [self.searchBar becomeFirstResponder];
-        [self.searchBar resignFirstResponder];
-        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
-        NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
-
-        --------------------------------------------------------------------------------
-        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:10];
-        NSMutableArray* arr1 = [[NSMutableArray alloc] initWithCapacity:2];
-        NSMutableArray* arr2 = [[NSMutableArray alloc] initWithCapacity:2];
-
-        [arr1 addObject:@"dog"];
-        [arr1 addObject:@"cat"];
-
-        [arr2 addObject:@"cat"];
-        [arr2 addObject:@"dog"];
-
-        [array addObject:arr1];
-        [array addObject:arr2];
-        [array containsObject:arr1]
-
-        --------------------------------------------------------------------------------
-        [arr3 addObject:[MyLib NumInt:1]];
-        [arr3 addObject:[MyLib NumInt:2]];
-        
-        [arr4 addObject:[MyLib NumInt:2]];
-        [arr4 addObject:[MyLib NumInt:1]];
-        [array2 addObject:arr3];
-        [array2 addObject:arr4];
-
-        [array2 removeObject:arr3];
-        [array2 removeObject:arr4];
-        ================================================================================
-        NSNumber* nsnumber = [NSNumber numberWithInteger:123];                                           // Convert NSNumber to NSString
-        NSString* numString = [nsnumber stringValue];
-
-        NSString* nstring = [NSString stringWithFormat:@"%d", (int)nsinteger];
-
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Add image as main screen in UIApplication
-        imageView.image=[UIImage imageNamed:@"image.png"];
-        [self.window addSubview:imageView];
-
-        ================================================================================
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Draw circle on top of image/UIImageView
-        imageView.image=[UIImage imageNamed:@"image.png"];
-        CAShapeLayer* circleLayer = [CAShapeLayer layer];
-        CGFloat leftX = 100.0f;
-        CGFloat leftY = 100.0f;
-        CGFloat Width = 200.0f;
-        CGFloat Height = 200.0f;
-        UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(leftX, leftY, Width, Height)];
-        [circleLayer setPath:[path CGPath]];
-        CGFloat component[4];
-        component[0] = 100.0;
-        component[1] = 1.0;
-        component[2] = 2.0;
-        component[3] = 2.0;
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        [circleLayer setStrokeColor:CGColorCreate(colorSpace, component)];
-        [circleLayer setLineWidth:1.0f];
-        [circleLayer setFillColor:[[UIColor blueColor] CGColor]];
-        [[imageView layer] addSublayer:circleLayer];
-        ================================================================================
-        UIBarButtonItem title font size
-        --------------------------------------------------------------------------------
-        UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" 
-                style:UIBarButtonItemStyleBordered target:self action:@selector(deleteImageButton:)];
-        UIFont* font = [UIFont boldSystemFontOfSize:18.0f];
-        NSDictionary* attribute = @{NSFontAttributeName: font};
-        [deleteItem setTitleTextAttributes:attribute forState:UIControlStateNormal];
-
-        ================================================================================
-        - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-            NSLog(@"%s", __PRETTY_FUNCTION__);
-            UITouch* touch = [touches anyObject];
-            if(touch != nil){
-                _initXY = [touch locationInView:touch.view];
-                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", _initXY.x, _initXY.y];
-                [_myLabel setText:mytext];
-            }
-        }
-        - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-            UITouch* touch = [touches anyObject];
-            if(touch != nil){
-                CGPoint currXY = [touch locationInView:touch.view];
-                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", currXY.x, currXY.y];
-                _center.x = _center.x + (currXY.x - _initXY.x); 
-                _center.y = _center.y + (currXY.y - _initXY.y); 
-
-                UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(_center.x-50, _center.y-50, 100, 100)];
-                [_circleLayer setPath:[path CGPath]];
-                [_circleLayer setFillColor:[[UIColor brownColor] CGColor]];
-                [_myLabel setText:mytext];
-                _initXY = currXY;
-            }
-        }
-        - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-            NSLog(@"%s", __PRETTY_FUNCTION__);
-            UITouch* touch = [touches anyObject];
-            if(touch != nil){
-                CGPoint touchXY = [touch locationInView:touch.view];
-                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", touchXY.x, touchXY.y];
-                [_myLabel setText:mytext];
-            }
-        }
-        ================================================================================
-        // draw rectangle
-        -(CAShapeLayer*)drawRectangle:(CGPoint) location semiWidth:(CGFloat) semiWidth semiHeight:(CGFloat)semiHeight{
-            CAShapeLayer* shapeLayer = [CAShapeLayer layer];
-            UIBezierPath* path = [UIBezierPath bezierPath];
-            
-            // start point
-            [path moveToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
-            
-            // draw lines
-            [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y - semiHeight)];
-            [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y + semiHeight)];
-            [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y + semiHeight)];
-            [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
-            //[path closePath];
-            
-            shapeLayer.path = [path CGPath];
-            
-            shapeLayer.strokeColor = [[UIColor yellowColor] CGColor];
-            shapeLayer.fillColor = [[UIColor blackColor] CGColor];
-            shapeLayer.lineWidth = 1.0;
-            return shapeLayer;
-        }
-        ================================================================================
-        Redirect output to file
-        --------------------------------------------------------------------------------
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *logPath = [documentsDirectory stringByAppendingPathComponent:@"xoutput.log"];             //append file to path
-        //NSString *logPath = @"/Users/cat/try/xoutput.log
-        NSLog(@"redirecting STDERR: %@", logPath);
-        freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
-
-        ================================================================================
-        OpenES/OpenGL is like a state machine
-        OpenGL/OpenES has three primitives: point, line and triangle
-        Each point is formed by one vertex
-        Each line is formed by two vertices
-        Each triangle is formed by three vertices
-        Vertex Shader/Fragment Shader
-        Vertex Shader and Fragment Shader is like a little program, it run inside the GPU
-        Frame Buffer, Render Buffer, Depth Buffer, Stencil Buffer
-
-        ================================================================================
-        self.screenSize = [UIScreen mainScreen].bounds.size; // screen size
-
-        ================================================================================
-        format string formatting
-        --------------------------------------------------------------------------------
-        // one decimal for float
-        NSString* strFormat = [NSString stringWithFormat:@"[%.01f][%.01f]", xcolor.blue, xcolor.alpha];
-        --------------------------------------------------------------------------------
-        %@ Objective-C object, printed string returned by descriptionWithLocale
-        %% '%' character.
-        %d, %D Signed 32-bit integer (int).
-        %u, %U Unsigned 32-bit integer (unsigned int).
-        %x Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and a–f.
-        %X Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and A–F.
-        %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
-        %f 64-bit float (double).
-        %e 64-bit float (double), e exponent.
-        %E 64-bit float (double), E exponent.
-        %g 64-bit float (double), %e if exponent < – 4 or >= to the precision, %f o.w.
-        %G 64-bit float (double), %E if exponent < – 4 or >= to the precision, %f o.w.
-        %c 8-bit unsigned character
-        %C 16-bit Unicode character
-        %s Null-terminated array of 8-bit unsigned characters.
-        %S Null-terminated array of 16-bit Unicode characters.
-        %p Void pointer (void *), printed in hex with the digits 0–9 and a–f, with a leading 0x.
-        %a 64-bit float, leading 0x and one hex before decimal pt using p as exp.
-        %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
-        %F 64-bit float, printed in decimal notation.
-
-        ================================================================================
-        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
-
-        ================================================================================
-        // draw circle[location and radius]
-        - (CAShapeLayer*)drawCircle:(CGPoint)location radius:(CGFloat)radius {
-        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
-
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path addArcWithCenter:location
-                        radius:radius
-                    startAngle:0.0
-                      endAngle:M_PI * 2.0
-                     clockwise:YES];
-
-        shapeLayer.path = [path CGPath];
-        shapeLayer.strokeColor = [[UIColor redColor] CGColor];
-        shapeLayer.fillColor = nil;
-        shapeLayer.lineWidth = 5.0;
-        return shapeLayer;
-        }
-
-        ================================================================================
-        // draw oval[location and semiMajor and semiMinor]
-        -(CAShapeLayer*)drawOval:(CGPoint) location semimajor:(CGFloat)semimajor semiminor:(CGFloat) semiminor{
-        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
-
-        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(location.x-semimajor, location.y-semiminor, 2*semimajor, 2*semiminor)];
-
-        shapeLayer.path = [path CGPath];
-
-        shapeLayer.strokeColor = [[UIColor greenColor] CGColor];
-        shapeLayer.fillColor = [[UIColor blackColor] CGColor];
-        shapeLayer.lineWidth = 1.0;
-        return shapeLayer;
-        }
-        // draw rectangle[location semiWith and semiHeight]
-        -(CAShapeLayer*)drawRectangle:(CGPoint) location semiWidth:(CGFloat) semiWidth semiHeight:(CGFloat)semiHeight{
-        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
-        UIBezierPath* path = [UIBezierPath bezierPath];
-
-        // start point
-        [path moveToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
-
-        // draw lines
-        [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y - semiHeight)];
-        [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y + semiHeight)];
-        [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y + semiHeight)];
-        [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
-        //[path closePath];
-
-        shapeLayer.path = [path CGPath];
-
-        shapeLayer.strokeColor = [[UIColor yellowColor] CGColor];
-        shapeLayer.fillColor = [[UIColor blackColor] CGColor];
-        shapeLayer.lineWidth = 1.0;
-        return shapeLayer;
-        }
-        ================================================================================
-        // *.h
-        UIImageView* _imageView;
-        @property (nonatomic, retain) UIImageView* imageView;
-
-        // *.m
-        @synthesize imageView = _imageView;
-
-        self.imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
-        self.imageView.image=[UIImage imageNamed:@"myimage.jpg"];
-        [self.window addSubview:self.imageView];
-
-        ================================================================================
-        // create simple text label
-        UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 300, 300)];
-        [myLabel setTextColor:[UIColor redColor]];
-        [myLabel setBackgroundColor:[UIColor clearColor]];
-        [myLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 20.0f]];
-        [myLabel setText:@"Supper Simple Application"];
-        [self.window addSubview:myLabel];
-
-        ================================================================================
-            // new line on UILabel text
-        UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 30, 300, 300)];
-        myLabel.numberOfLines = 0;						// new line
-        [myLabel setTextColor:[UIColor yellowColor]];
-        [myLabel setBackgroundColor:[UIColor clearColor]];
-        [myLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 12.0f]];
-        [myLabel setText:@"Remove old label and add new label \\nwith removeFromSuperView"];
-        [self.view addSubview:myLabel];
-
-        ================================================================================
-        CGRect frame;
-        frame = CGRectMake(100, 100, 100, 50);
-
-        ================================================================================
-        SubClass* sub = [[SubClass alloc]init];
-        TestClass* tt = [[TestClass alloc]init];
-
-        if([tt isKindOfClass:[SubClass class]]){
-            NSLog(@"tt is SubClass"); 
-        }
-
-        if([sub isKindOfClass:[TestClass class]]){
-            NSLog(@"sub is TestClass"); 
-        }
-        </xcode snippet>
-
-        <java code>
-        // print all substring
-        public static List<String> allSubString(String str) {
-            List<String> list = new ArrayList<String>(); 
-            int len = str.length();
-            for(int i=0; i<len; i++){
-                for(int j=i; j<len; j++){
-                    String substr = str.substring(i, j+1);
-                    list.add(substr);
-                }
-            }
-            return list;
-        }
-        </java code>
-
-        <visual_studio shortcut key>
-            ALT Shift Enter maximize code window
-            CTRL-Tab        show tab files
-            CTRL -          navigate backward
-            CTRL Shift -    navigate forward
-            CTRL g          goto line number
-            Shift F12       find all references
-            CTRL-Delete     delete word to right of cursor
-            CTRL-BackSpace  delete word to left of cursor
-            CTRL W          highlight word
-            CTRL M + O      collapse all
-            CTRL M + L      expand all
-            CTRL M + M      expand/collapse the current region
-            CTRL K + K      toggle bookmark
-            CTRL K + N      next bookmark
-            CTRL K + P      previous bookmark
-            CTRL E          Recent files
-            Shift CTRL + }  Select block code curly bracket
-            CTRL + }        Jump to { or }
-        </visua_studio>
-
-        <book math>
-            http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
-            http://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
-            http://swtch.com/~rsc/regexp/regexp1.html
-            http://glyphicons.com
-            http://www.math.sjsu.edu/~alperin/pt.pdf
-            http://theory.caltech.edu/~chan/Ph129b/sol3.pdf
-            http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
-            http://www.mathpuzzle.com/
-        </book>
-
-        </java antlr>
-            java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
-        <java antlr>
-
-        <csharp c#>
-            ================================================================================
-            list skip: listskip
-            --------------------------------------------------------------------------------
-            var list = new[] { "dog", "cow", "cat" };
-            System.Console.WriteLine(string.Join(",", list));
-            var list1 = list.Skip(1);
-            System.Console.WriteLine(string.Join(",", list1));
-            //"cow", "cat"
-            System.Console.ReadLine();
-
-            ================================================================================
-            dictionary uses for loop
-            --------------------------------------------------------------------------------
-            for (int index = 0; index < dictionary.Count; index++) {
-              var item = dictionary.ElementAt(index);
-              var itemKey = item.Key;
-              var itemValue = item.Value;
-            }
-        </csharp>
-
-        <python>
-            mode	description
-            r	read in text mode
-            w	write in text mode, overwrite old file if exists
-            a	append in text mode
-            r+	read and write
-            w+	read and write, overwrite old file/create file
-            a+	read and append
-            rb	read in binary mode
-            wb	write in binary mode, overwrite old file if exists
-            ab	append in binary mode
-            rb+	read and write in binary mode
-            wb+	write and read in binary mode, overwrite old file if exists
-            ab+	append and read in binary mode
-
-            python -m pdb script.py              // debug python
-            str = str.strip(' \r\n\t')           // trim whitespace
-            str = str.ltrip(' \r\n\t')           // trim the left side of str
-            str = str.rtrip(' \r\n\t')           // trim the right side of str
-            is_number(mystring)                  // convert string to number/integer
-            arglist = sys.argv;                  // argument list
-            arglist[0]                           // first argument which is the script name
-            len(mystring)                        // length of string
-            len(list)                            // number of element inside the list
-            mylist = []                          // create list
-            handler = open(fileName, "r+")       // open file for read
-            int(str)                             // convert string to integer
-            list.pop(0)                          // Delete first element from list
-            list.append("str")                   // Append str to list
-            basename = ntpath.basename(path)     // Basename of path
-            os.path.basename("/dog/dog/dog.txt") // import os;
-            pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt"
-            os.path.join("/home", "cat")         // /home/cat
-            os.path.join("/home/", "cat")        // /home/cat
-            str(num)                             // String to integer
-            os.getcwd()
-            arr1 = arr[:];                       // clone/copy list
-            -----------------------------------
-            line = "some stuff"
-            regex = re.compile(r'(file\W*=\W*)(\S+)\W*(title\W*=\W*)"(.*)"')
-                match = regex.search(line)
-                if match:
-                    print "(0)=", match.group(0)
-                    print "(1)=", match.group(1)
-                    print "(2)=", match.group(2)
-                    print "(3)=", match.group(3)
-                    print "(4)=", match.group(4)
-            -----------------------------------
-            subprocess.call(["pygmentize", "-f", "html", "-o", htmlFile, tmpFileName])
-            -----------------------------------
-            list = []
-            list[0] = 'cat'
-            list[1] = 'cat'
-            list.append('dog')
-            list.pop()
-            list.pop(1)
-            -----------------------------------
-            dict = {}
-            dict = {'k1':'value1', 'k2':'value2'}
-            dict['k1']
-            -----------------------------------
-            string.strip()                      // trim leading and trailing whitespace
-
-
-
-        </python>
-
-        <latex>
-            // greek letter
-            \langle \vec{v_1} \vec{v_2} \rangle            // inner product
-            \overline{\langle \vec{v_1} \vec{v_2} \rangle} // conjugate inner product
-            \iff                                           // if and only if
-            \Rightarrow                                    // imply
-            \vec{v_3^\ast}                                 // conjugation
-
-            \alpha        \theta                  \tau       \\
-            \beta         \vartheta    \pi          \upsilon \\
-            \gamma        \gamma       \varpi       \phi     \\
-            \delta        \kappa       \rho         \varphi  \\
-            \epsilon      \lambda      \varrho      \chi     \\
-            \varepsilon   \mu          \sigma       \psi     \\
-            \zeta         \nu          \varsigma    \omega   \\
-            \eta          \xi                                \\
-                                                             \\
-            \Gamma        \Lambda      \Sigma       \Psi     \\
-            \Delta        \Upsilon     \Omega                \\
-            \Theta        \Pi          \Phi
-
-        </latex>
-
-        <octopress>
-            link code from local dir
-
-            1. edit source/_posts/xxx.markdown
-            2. add absoluate path to code
-            3. rake generate
-            4. copy octopress/* to /var/www/octopress
-            5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
-            6. Fixed github gist
-            7. Installed Kramdown for latex
-
-            rake 'new_post[title]'
-
-            put image file in  zsurface/public/images
-            {% img  center /images/torus.png 400 400 %}
-        </octopress>
-
-        <java snippet>
-        ====================================================================================
-            int array[][] = new int[][]{
-            { 1, 2, 3, 4, 5 },
-            { 1, 2, 3, 4, 5 },
-            { 1, 2, 3, 4, 5 },
-            { 1, 2, 3, 4, 5 }
-            };
-        ====================================================================================
-        </java snippet>
-
-        <c# snippet>
-
-        </c# snippet>
-            ====================================================================================
-            Control Validating event
-            --------------------------------------------------------------------------------
-            TextBox textbox = new TextBox()
-            textbox.Validating += ValidationRule                    // Register event handler
-
-            private void ValidationRule(object sender, EventArg e)
-            { //define your validation rules }
-            --------------------------------------------------------------------------------
-
-        --------------------------------------------------------------------------------
-        <gpg_encryption>
-        tar -czf myencrypt.tar.gz myencrypt
-        tar -xzf myencrypt.tar.gz
-        gpg -c myencrypt.tar.gz
-        gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpg
-        </gpg_encryption>
-        ================================================================================
-        Algebraic Curve in Projective Plane
-        Point on Projective Plane
-        (X, Y, Z) ~ (aX, aY, aZ) a != zero
-        Embed Affine plane to projective plane
-        Add infinite line (x:y:0)
-        Embed (x:y)->(1:x:z)
-        Embed (x:y)->(x:1:z)
-        Embed (x:y)->(x:y:1)
-
-        F(X, Y, Z) = 0
-        X = aX', Y = aY', Z = aZ'
-        F(aX', aY', aZ') = a^nF(X', Y', Z') = 0
-        If F(X', Y', Z') => a^nF(X', Y', Z') = 0
-
-        Any affine curve C can be extended to projective plane curve by following process
-        F(X, Y) = 0
-        Z^nF(X/Z, Y/Z) = 0, Let Z != 0
-        e.g. X^2 + y  + 3 = 0
-             (X/Z)^2 + Y/Z + 3 = 0
-            =>X^2 + ZY + 3Z^2 = 0
-              Add (X:Y:0) as infinite line
-
-        ================================================================================
-        ([1, 2, 3, 0, 5]U{Infinite}, max, +, 0, 1)
-        max is associative
-        + is associative
-        0 is the identify of +
-        since a = a + 0
-
-        Infinite is annihilator for max
-        Infinite = max(Infinite, a)
-
-        m = max(1, 2)
-        2 = max(2, 0)
-        2 = max(0, 2)
-            max(max(a, b), c) = max(a, max(b, c))
-            3 = 3 + 0
-            3 = 0 + 3
-
-        ================================================================================
-        new word of the data
-        snap [ ] say something quickly and irritably to someone, snapped at her  
-        snapshot, snapchat
-        snapper [ ] a marine fish that is typically reddish and is valued as food
-
-        ================================================================================
-        install haskell web framework snap
-        cabal upgrade
-        cabal install snap
-        --------------------------------------------------------------------------------
-        change haskell verion
-        ghc -v
-        there are two major pieces: GHC and Haskell Platform
-        They are installed respectively in:
-        /Library/Frameworks/GHC.framework
-        /Library/Haskell
-        Executables are symlinked in /usr/bin/ and should be avaiable in any shell
-
-        How to uninstall different Haskell GCH versions:
-        /Library/Haskell/bin/uninstall-hs
-        e.g ./uninstall-hs thru --remove 7.8.3 [option --remove is remove files]
-        --------------------------------------------------------------------------------
-        cabal update            Install the latest version of each package
-        cabal sandbox init      To prevent version incompatibility with earlier installed packages
-        cabal install foo
-        cabal install foo-1.0   Specific version of a package
-        --------------------------------------------------------------------------------
-        Google just release a new compression [algo called Brotli], [which] the company hope 
-        will [reduce(speed up)] the web browsing by [shrinking] images, web fonts, other other
-        content
-        --------------------------------------------------------------------------------
-        install homebrew in Mac
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        use homebrew to install Haskell
-        brew install ghc
-
-        // install cabal from brew
-        brew install cabal-install
-
-        // use cabal install packages
-        cabal install cabal-install
-        I spend many hours on the Haskell framework, and still can't resolve the package dependency hell
-        --------------------------------------------------------------------------------
-        Run simulator in command line
-        // display all the simulators device
-        instruments -w help
-        --------------------------------------------------------------------------------
-        // xcode shortcut key
-        Shift ALT Command Left/Right  fold all code/unfolded all code
-        CTRL 5 search files name(.h *.m)
-        CTRL 6 type search show all current methods
-        CTRL WindowKey left/right  navigate backward/backward
-        CTRL 1 show recent items
-        CTRL C delete current line
-        ALT Left/Right  move word by word
-        Command ALT .(dot) change focus
-        Command ALT Left/Right code fold/unfolded
-        Command ALT 0 close utilities window
-
-        Command left/right move cursor to begin/end of line(no highligh)
-        Command , show setting(xcode)
-        Command 3 global search
-        Command w close window (not just xcode)
-        Command [] shift hightlight code left/right
-        Command double click jump to definition
-        Command D mark line
-        Command L goto line
-        Command E, Command F use selection to find
-        Command Shift Y close debug window
-        Command Shift 2 Open Organizer
-        Command E + Command F search word under cursor
-        Command Shift f  global find
-        Command Shift Left/Right  selection whole line
-        Command Shift right/left highlight line
-        Command CTRL UP/Down .h and .m file
-        Command CTRL J jump to definition
-        Command CTRL Left jump back
-        Command CTRL F full/maximize screen mode
-        Command CTRL Y debug/continue 
-        Command `  window fit screen
-
-        // visual_studio shortcut key>
-        ALT Shift Enter maximize code window
-        CTRL-Tab        show tab files
-        CTRL -          navigate backward
-        CTRL Shift -    navigate forward  
-        CTRL g          goto line number
-        Shift F12       find all references
-        CTRL-Delete     delete word to right of cursor 
-        CTRL-BackSpace  delete word to left of cursor 
-        CTRL W          highlight word
-        CTRL M + O      collapse all
-        CTRL M + L      expand all
-        CTRL M + M      expand/collapse the current region
-        CTRL K + K      toggle bookmark 
-        CTRL K + N      next bookmark 
-        CTRL K + P      previous bookmark 
-        CTRL E          Recent files
-        Shift CTRL + }  Select block code curly bracket
-        CTRL + }        Jump to { or }
-
-        // python>
-        mode	description
-        r	read in text mode
-        w	write in text mode, overwrite old file if exists
-        a	append in text mode
-        r+	read and write
-        w+	read and write, overwrite old file/create file
-        a+	read and append
-        rb	read in binary mode
-        wb	write in binary mode, overwrite old file if exists
-        ab	append in binary mode
-        rb+	read and write in binary mode
-        wb+	write and read in binary mode, overwrite old file if exists
-        ab+	append and read in binary mode
-
-        python -m pdb script.py          // debug python
-        str = str.strip(' \r\n\t')       // trim whitespace
-        str = str.ltrip(' \r\n\t')       // trim the left side of str
-        str = str.rtrip(' \r\n\t')       // trim the right side of str
-        is_number(mystring)              // convert string to number/integer
-        arglist = sys.argv;              // argument list
-        arglist[0]                       // first argument which is the script name
-        len(mystring)                    // length of string
-        len(list)                        // number of element inside the list
-        mylist = []                      // create list
-        handler = open(fileName, "r+")   // open file for read
-        int(str)                         // convert string to integer
-        list.pop(0)                      // Delete first element from list
-        list.append("str")               // Append str to list
-        basename = ntpath.basename(path) // Basename of path
-        os.path.basename("/dog/dog/dog.txt") //import os;
-        pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt" 
-        str(num)                         // String to integer
-        os.getcwd()                      
-
-        // intellij shortcut key
-        Shift Tab       // move block of code(code selection) to left
-        Tab/Shift+Tab   // indent/unintented selected line
-        Alt Right/Left  // cycle through tabs
-        Alt Shift F7    // goto usage
-        Alt Shit f      // global search
-        Alt g           // find name
-        Alt UP/Down     // move to previous/next method
-        Ctrl F12        // show all current methods
-        Ctrl W          // select code block. e.g {..}
-        Ctrl-Shift F12  // max/unmaxed window
-        Ctrl UP/Down    // movine window up/down
-        Ctrl [/]        // Move to code block star/end
-        Ctrl Shift #    // book mark line
-        Ctrl #          // goto book mark #
-        Ctrl Alt B      // goto implementation
-        Ctrl E          // go back to implementation
-        Ctrl Alt F7     // shows usages
-        Ctrl w          // select whole word
-        Ctrl Left/Right // move cursor previous/next
-        Ctrl Shift R    // find and replace
-        Ctrl Shift j    // join line
-
-
-
+<html><head><link rel="stylesheet" type="text/css" href="mycss/style.css"/></head><body class="htmlbg"><span class="tit">    [Haskell zip and zipWith]</span><br><span class="keyword">    :zip::[a]-&gt;[b]-&gt;[(a,b)]</span><br>
+<pre>        zip <span class="bracket">[</span>1..3<span class="bracket">]</span> <span class="bracket">[</span>1..3<span class="bracket">]</span>  = <span class="bracket">[</span><span class="bracket">(</span>1,1<span class="bracket">)</span><span class="bracket">(</span>2,2<span class="bracket">)</span><span class="bracket">(</span>3,3<span class="bracket">)</span><span class="bracket">]</span> 
+</pre>
+<span class="tit">    [Haskell zipWith]</span><br>
+<pre>        zip<span class="bracket">(</span>\x y->x+y<span class="bracket">)</span><span class="bracket">[</span>1, 2<span class="bracket">]</span> <span class="bracket">[</span>3, 4<span class="bracket">]</span>
+        -- output <span class="bracket">[</span>4, 6<span class="bracket">]</span>
+</pre>
+<span class="tit">    [Haskell zipWith]</span><br>
+<pre>        zipWith <span class="bracket">[</span>1, 2<span class="bracket">]</span> <span class="bracket">[</span>3, 4<span class="bracket">]</span>
+        -- output <span class="bracket">[</span><span class="bracket">(</span>1, 3<span class="bracket">)</span>, <span class="bracket">(</span>2, 4<span class="bracket">)</span><span class="bracket">]</span>
+</pre>
+<span class="tit">    [Haskell zipWith]</span><br><span class="keyword">    :zipWith::(a-&gt;b-&gt;c)-&gt;[a]-&gt;[b]-&gt;[c]</span><br>
+<pre>        let list1 = <span class="bracket">[</span>1..4<span class="bracket">]</span> 
+        let list2 = <span class="bracket">[</span>10..20<span class="bracket">]</span> 
+        zipWith <span class="bracket">(</span>\x y -> x+y<span class="bracket">)</span> list1 list2 
+</pre>
+<span class="tit">    [hackell cool stuff]</span><br><span class="keyword">    :myfile::String-&gt;String</span><br><span class="tit">    [Haskell uncurry and mapM_]</span><br><span class="keyword">    :zipWith::(a-&gt;b-&gt;c)-&gt;[a]-&gt;[b]-&gt;[c]</span><br>
+<pre>        let list1 = <span class="bracket">[</span>"/file1.txt", "/fil2.txt"<span class="bracket">]</span>
+        let list2 = <span class="bracket">[</span>"/tmp/name1.txt", "/tmp/name2.txt"<span class="bracket">]</span>
+        mapM_ <span class="bracket">(</span>uncurry copyFile<span class="bracket">)</span> $ zip list1 list2 
+</pre>
+<span class="tit">    [Haskell curry]</span><br><span class="keyword">    :curry::(a,b)-&gt;c-&gt;a-&gt;b-&gt;c</span><br>    convert uncurried function to curried function 
+<pre>        let c = \<span class="bracket">(</span>x, y<span class="bracket">)</span>-> x + y
+        curry c 1 2   -- output 3 
+</pre>
+<span class="tit">    [Haskell uncurry]</span><br><span class="keyword">    :uncurry::a-&gt;b-&gt;c-&gt;(a,b)-&gt;c</span><br>    convert curried function to uncurried function
+<pre>        mapM_<span class="bracket">(</span>uncurry copyFile<span class="bracket">)</span> $ zip list1 list2 
+        let un = \x y -> x*y
+        uncurry un <span class="bracket">(</span>2, 3<span class="bracket">)</span>   -- output 6
+</pre>
+<span class="tit">    [Haskell subRegex]</span><br><span class="keyword">    :subRegex::Regex-&gt;input-&gt;replacement-&gt;output</span><br>
+<pre>        subRegex<span class="bracket">(</span>mkRegex "/dog/"<span class="bracket">)</span> "the dog" "cat\0"
+        -- output "that catdog"
+</pre>
+<span class="tit">    [Haskell merge two lists]</span><br>
+<pre>        <span class="bracket">mergeList::</span><span class="bracket">[</span>String<span class="bracket">]</span>-><span class="bracket">[</span>String<span class="bracket">]</span>-><span class="bracket">[</span>String<span class="bracket">]</span>
+        mergeList <span class="bracket">[</span><span class="bracket">]</span> <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
+        mergeList  l  <span class="bracket">[</span><span class="bracket">]</span> = l 
+        mergeList <span class="bracket">[</span><span class="bracket">]</span>  r = r 
+        mergeList <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span> = x:y:mergeList xs ys
+</pre>
+<span class="tit">    [Haskell merge two sorted lists]</span><br>
+<pre>        <span class="bracket">mergeSortList::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>
+        mergeSortList <span class="bracket">[</span><span class="bracket">]</span> r          = r
+        mergeSortList l <span class="bracket">[</span><span class="bracket">]</span>          = l
+        mergeSortList <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span> = if x < y then x:<span class="bracket">(</span>mergeSortList xs <span class="bracket">(</span>y:ys<span class="bracket">)</span><span class="bracket">)</span> else y:<span class="bracket">(</span>mergeSortList <span class="bracket">(</span>x:xs<span class="bracket">)</span> ys<span class="bracket">)</span>
+</pre>
+<span class="tit">    [Haskell merge two lists with Maybe]</span><br>
+<pre>        <span class="bracket">mergeList2::</span><span class="bracket">[</span>a<span class="bracket">]</span>-><span class="bracket">[</span>a<span class="bracket">]</span>->Maybe <span class="bracket">[</span>a<span class="bracket">]</span>
+        mergeList2 <span class="bracket">[</span><span class="bracket">]</span> <span class="bracket">[</span><span class="bracket">]</span> = Just <span class="bracket">[</span><span class="bracket">]</span> 
+        mergeList2 <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span> = 
+                    case mergeList2 xs ys of
+                    Just merged -> Just <span class="bracket">(</span>x:y:merged<span class="bracket">)</span>
+                    Nothing  -> Nothing
+        mergeList2 _ _  = Nothing
+</pre>
+<span class="tit">    [Haskell Quick Sort]</span><br>
+<pre>        <span class="bracket">quickSort::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>
+        quickSort <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
+        quickSort <span class="bracket">[</span>x<span class="bracket">]</span> = <span class="bracket">[</span>x<span class="bracket">]</span>
+        quickSort l = quickSort<span class="bracket">(</span>left<span class="bracket">)</span> ++ p:<span class="bracket">[</span><span class="bracket">]</span> ++ quickSort right 
+                            where
+                                left =  <span class="bracket">[</span>x | x <- init l, x < p<span class="bracket">]</span>
+                                right = <span class="bracket">[</span>x | x <- init l, x >= p<span class="bracket">]</span>
+                                p = last l 
+</pre>
+<span class="tit">    [Haskell Merge Sort]</span><br>
+<pre>        <span class="bracket">mergeSort::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>
+        mergeSort <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
+        mergeSort <span class="bracket">[</span>x<span class="bracket">]</span> = <span class="bracket">[</span>x<span class="bracket">]</span>
+        mergeSort l = merge<span class="bracket">(</span>mergeSort left<span class="bracket">)</span> <span class="bracket">(</span>mergeSort right<span class="bracket">)</span> 
+                        where
+                            half = <span class="bracket">(</span>length l<span class="bracket">)</span> `div` 2
+                            left = take half l
+                            right = drop half l  
+
+                            <span class="bracket">merge::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>
+                            merge <span class="bracket">[</span><span class="bracket">]</span> r = r
+                            merge l <span class="bracket">[</span><span class="bracket">]</span> = l
+                            merge <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span>  = if x < y
+                                                    then 
+                                                       x:merge xs <span class="bracket">(</span>y:ys<span class="bracket">)</span> 
+                                                    else
+                                                       y:merge <span class="bracket">(</span>x:xs<span class="bracket">)</span> ys 
+</pre>
+<span class="tit">    [Haskell split]</span><br>
+<pre>        <span class="bracket">split::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">(</span><span class="bracket">[</span>Int<span class="bracket">]</span>, <span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">)</span>
+        split <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">(</span><span class="bracket">[</span><span class="bracket">]</span>, <span class="bracket">[</span><span class="bracket">]</span><span class="bracket">)</span> 
+        split <span class="bracket">[</span>x<span class="bracket">]</span> = <span class="bracket">(</span><span class="bracket">[</span>x<span class="bracket">]</span>, <span class="bracket">[</span><span class="bracket">]</span><span class="bracket">)</span>
+        split <span class="bracket">(</span>x:y:rest<span class="bracket">)</span> = <span class="bracket">(</span>x:xs, y:xy<span class="bracket">)</span>   
+                        where
+                            <span class="bracket">(</span>xs, xy<span class="bracket">)</span> = split rest
+        -- split <span class="bracket">[</span>1,2,3<span class="bracket">]</span>  = <span class="bracket">(</span><span class="bracket">[</span>1,3<span class="bracket">]</span>, <span class="bracket">[</span>2<span class="bracket">]</span><span class="bracket">)</span>
+        -- split <span class="bracket">[</span>1,2,3,4<span class="bracket">]</span>  = <span class="bracket">(</span><span class="bracket">[</span>1,3<span class="bracket">]</span>, <span class="bracket">[</span>2,4<span class="bracket">]</span><span class="bracket">)</span>
+</pre>
+<span class="tit">    [Haskell check array]</span><br>
+<pre>        check sum<span class="bracket">(</span>x_0, x_1,...,x_k<span class="bracket">)</span> == sum<span class="bracket">(</span>x_k+1,...,x_n<span class="bracket">)</span>
+
+        <span class="bracket">checkSum::</span><span class="bracket">[</span>Int<span class="bracket">]</span>->Int->Bool
+        checkSum <span class="bracket">[</span><span class="bracket">]</span>  _ = True
+        checkSum <span class="bracket">[</span>x<span class="bracket">]</span> _ = x    =  = 0
+        checkSum l inx | sum<span class="bracket">(</span>take inx l<span class="bracket">)</span> == sum<span class="bracket">(</span>drop inx l<span class="bracket">)</span> = True
+                       | inx <= length l = checkSum l <span class="bracket">(</span>inx+1<span class="bracket">)</span>
+                       | otherwise       = False
 
 </pre>
+<span class="tit">    [Haskell check array 2]</span><br>
+<pre>        -- check sum<span class="bracket">(</span>x_0, x_1,...,x_k<span class="bracket">)</span> == sum<span class="bracket">(</span>x_k+1,...,x_n<span class="bracket">)</span>
+
+        -- import Data.List<span class="bracket">(</span>inits, tails<span class="bracket">)</span>
+        <span class="bracket">checkSum2::</span><span class="bracket">[</span>Int<span class="bracket">]</span>->Bool
+        checkSum2 xs | len > 0 = True 
+                    | otherwise = False
+                    where
+                        len = length $ filter<span class="bracket">(</span>\x-> sum <span class="bracket">(</span>fst x<span class="bracket">)</span> == sum <span class="bracket">(</span>snd x<span class="bracket">)</span><span class="bracket">)</span> $ splits xs
+                        <span class="bracket">splits::</span><span class="bracket">[</span>a<span class="bracket">]</span> -> <span class="bracket">[</span><span class="bracket">(</span><span class="bracket">[</span>a<span class="bracket">]</span>, <span class="bracket">[</span>a<span class="bracket">]</span><span class="bracket">)</span><span class="bracket">]</span>
+                        splits xs = zip <span class="bracket">(</span>inits xs<span class="bracket">)</span> <span class="bracket">(</span>tails xs<span class="bracket">)</span> 
+
+</pre>
+<span class="tit">    [Haskell check array 3]</span><br>
+<pre>        -- check sum<span class="bracket">(</span>x_0, x_1,...,x_k<span class="bracket">)</span> == sum<span class="bracket">(</span>x_k+1,...,x_n<span class="bracket">)</span>
+
+        <span class="bracket">checkSum4::</span><span class="bracket">[</span>Int<span class="bracket">]</span> -> Bool
+        checkSum4 a = go a 0 <span class="bracket">(</span>sum a<span class="bracket">)</span>
+           where go <span class="bracket">[</span><span class="bracket">]</span> left right = left==right
+                 go <span class="bracket">(</span>x:xs<span class="bracket">)</span> left right | left==right = True
+                                      | otherwise = go xs <span class="bracket">(</span>left+x<span class="bracket">)</span> <span class="bracket">(</span>right-x<span class="bracket">)</span>
+</pre>
+ <div class="cen"><img src=image/manhattan.png width="60%" height="60%"></div> <span class="tit">    [Haskell Matrix Multiplication]</span><br>
+<pre>        m1 = <span class="bracket">[</span><span class="bracket">[</span>1, 2<span class="bracket">]</span>, 
+              <span class="bracket">[</span>3, 4<span class="bracket">]</span>
+             <span class="bracket">]</span>
+        m2 = <span class="bracket">[</span><span class="bracket">[</span>5, 7<span class="bracket">]</span>, 
+              <span class="bracket">[</span>8, 9<span class="bracket">]</span>
+             <span class="bracket">]</span>
+
+        <span class="bracket">mmult::</span><span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> -> <span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> -> <span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> 
+        mmult a b = <span class="bracket">[</span> <span class="bracket">[</span> sum $ zipWith <span class="bracket">(</span>*<span class="bracket">)</span> ar bc | bc <- <span class="bracket">(</span>transpose b<span class="bracket">)</span> <span class="bracket">]</span> | ar <- a <span class="bracket">]</span>
+</pre>
+ <span class="tit">    [vim command]</span><br><span class="keyword">    :/\(if\)\ze\(then\)         </span><span class="comment">// if follows then "[if]then"</span><br><span class="keyword">    :/\(if\)\zs\(then\)         </span><span class="comment">// then starts with if "if[then]" </span><br><span class="tit">    [Vim Script get background color]</span><br>
+<pre>         :echo synIDattr<span class="bracket">(</span>synIDtrans<span class="bracket">(</span>hlID<span class="bracket">(</span>"Normal"<span class="bracket">)</span><span class="bracket">)</span>, "bg"<span class="bracket">)</span> <span class="bracket">[</span>:h hlID<span class="bracket">]</span>       
+</pre>
+<span class="tit">    [Linux command]</span><br>    git branch shows on command prompt
+<pre>        parse_<span class="bracket">git</span>_branch<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">{</span>
+            <span class="bracket">git</span> branch 2> /dev/null | sed -e 's/* \<span class="bracket">(</span>.*\<span class="bracket">)</span>/ \<span class="bracket">(</span>\1<span class="bracket">)</span>/'
+        <span class="bracket">}</span>
+        export PS1="\u$<span class="bracket">(</span>parse_<span class="bracket">git</span>_branch<span class="bracket">)</span>\w$"
+        \u - Username
+        \w - Full path
+        \h - Host name
+</pre>
+     <div class="cen"><img src=image/manhattan.png width="60%" height="60%"></div>
+</body></html>
