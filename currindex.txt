@@ -1,0 +1,1054 @@
+
+    `[
+        zip [1..3] [1..3]  = [(1,1)(2,2)(3,3)] 
+    `]
+
+    [Haskell zip]
+    `[
+        zip (\x y->x+y) [1, 2] [3, 4]
+        -- output [4, 6]
+    `]
+    {{ src=image/zip.png w=50% h=50% }}
+
+    [Haskell zipWith]
+    :zipWith::(a->b->c)->[a]->[b]->[c]
+    `[
+        let list1 = [1..4] 
+        let list2 = [10..20] 
+        zipWith (\x y -> x+y) list1 list2 
+    `]
+    {{ src=image/zipwith.png w=50% h=50% }}
+
+    [Haskell splitRegex]
+    `[
+        splitRegex(mkRegex " ") "what is your dog"
+        -- ["what", "is", "your", "dog"]
+    `]
+    {{ src=image/splitregex.png w=50% h=50% }}
+
+    [Haskell subRegex]
+    :subRegex::Regex->input->replacement->output
+    `[
+        subRegex(mkRegex "/dog/") "the dog" "cat\0"
+        -- output "that catdog"
+    `]
+
+    [Haskell uncurry and mapM_]
+    :zipWith::(a->b->c)->[a]->[b]->[c]
+    `[
+        let list1 = ["/file1.txt", "/fil2.txt"]
+        let list2 = ["/tmp/name1.txt", "/tmp/name2.txt"]
+        mapM_ (uncurry copyFile) $ zip list1 list2 
+    `]
+    
+
+    [Haskell curry]
+    :curry::(a,b)->c->a->b->c
+    convert uncurried function to curried function 
+    `[
+        let c = \(x, y)-> x + y
+        curry c 1 2   -- output 3 
+    `]
+
+    [Haskell uncurry]
+    :uncurry::a->b->c->(a,b)->c
+    convert curried function to uncurried function
+    `[
+        mapM_(uncurry copyFile) $ zip list1 list2 
+        let un = \x y -> x*y
+        uncurry un (2, 3)   -- output 6
+    `]
+
+    [Haskell merge two lists]
+    `[
+        mergeList::[String]->[String]->[String]
+        mergeList [] [] = []
+        mergeList  l  [] = l 
+        mergeList []  r = r 
+        mergeList (x:xs) (y:ys) = x:y:mergeList xs ys
+    `]
+
+    [Haskell merge two sorted lists]
+    `[
+        mergeSortList::[Int]->[Int]->[Int]
+        mergeSortList [] r          = r
+        mergeSortList l []          = l
+        mergeSortList (x:xs) (y:ys) = if x < y then x:(mergeSortList xs (y:ys)) else y:(mergeSortList (x:xs) ys)
+    `]
+
+    [Haskell merge two lists with Maybe]
+    `[
+        mergeList2::[a]->[a]->Maybe [a]
+        mergeList2 [] [] = Just [] 
+        mergeList2 (x:xs) (y:ys) = 
+                    case mergeList2 xs ys of
+                    Just merged -> Just (x:y:merged)
+                    Nothing  -> Nothing
+        mergeList2 _ _  = Nothing
+    `]
+
+    [Haskell Quick Sort]
+    `[
+        quickSort::[Int]->[Int]
+        quickSort [] = []
+        quickSort [x] = [x]
+        quickSort l = quickSort(left) ++ p:[] ++ quickSort right 
+                            where
+                                left =  [x | x <- init l, x < p]
+                                right = [x | x <- init l, x >= p]
+                                p = last l 
+    `]
+
+    [Haskell Merge Sort]
+    `[
+        mergeSort::[Int]->[Int]
+        mergeSort [] = []
+        mergeSort [x] = [x]
+        mergeSort l = merge(mergeSort left) (mergeSort right) 
+                        where
+                            half = (length l) `div` 2
+                            left = take half l
+                            right = drop half l  
+
+                            merge::[Int]->[Int]->[Int]
+                            merge [] r = r
+                            merge l [] = l
+                            merge (x:xs) (y:ys)  = if x < y
+                                                    then 
+                                                       x:merge xs (y:ys) 
+                                                    else
+                                                       y:merge (x:xs) ys 
+    `]
+
+
+    [Haskell split]
+    `[
+        split::[Int]->([Int], [Int])
+        split [] = ([], []) 
+        split [x] = ([x], [])
+        split (x:y:rest) = (x:xs, y:xy)   
+                        where
+                            (xs, xy) = split rest
+        -- split [1,2,3]  = ([1,3], [2])
+        -- split [1,2,3,4]  = ([1,3], [2,4])
+    `]
+    [Haskell check array]
+    `[
+        check sum(x_0, x_1,...,x_k) == sum(x_k+1,...,x_n)
+
+        checkSum::[Int]->Int->Bool
+        checkSum []  _ = True
+        checkSum [x] _ = x    =  = 0
+        checkSum l inx | sum(take inx l) == sum(drop inx l) = True
+                       | inx <= length l = checkSum l (inx+1)
+                       | otherwise       = False
+
+    `]
+
+    [Haskell check array 2]
+    `[
+        -- check sum(x_0, x_1,...,x_k) == sum(x_k+1,...,x_n)
+
+        -- import Data.List(inits, tails)
+        checkSum2::[Int]->Bool
+        checkSum2 xs | len > 0 = True 
+                    | otherwise = False
+                    where
+                        len = length $ filter(\x-> sum (fst x) == sum (snd x)) $ splits xs
+                        splits::[a] -> [([a], [a])]
+                        splits xs = zip (inits xs) (tails xs) 
+
+    `]
+
+    [Haskell check array 3]
+    `[
+        -- check sum(x_0, x_1,...,x_k) == sum(x_k+1,...,x_n)
+
+        checkSum4::[Int] -> Bool
+        checkSum4 a = go a 0 (sum a)
+           where go [] left right = left==right
+                 go (x:xs) left right | left==right = True
+                                      | otherwise = go xs (left+x) (right-x)
+    `]
+
+    [Haskell Matrix Multiplication]
+    `[
+        m1 = [[1, 2], 
+              [3, 4]
+             ]
+        m2 = [[5, 7], 
+              [8, 9]
+             ]
+
+        mmult::[[Int]] -> [[Int]] -> [[Int]] 
+        mmult a b = [ [ sum $ zipWith (*) ar bc | bc <- (transpose b) ] | ar <- a ]
+    `]
+    
+    {{ src=image/manhattan.png w=50% h=50% }}
+
+    [Spiral Array]
+    `[
+        public static void spiralArray(int[][] array, int k){
+        if(array != null){
+            int hlen= array.length;
+            int wlen= array[0].length;
+            
+            // both size are even
+            if(k < hlen/2 && k < wlen/2){
+
+                // one or two side are odd
+                if(hlen - 2*k == 1){
+                    for(int i=k; i<wlen-k; i++){
+                        System.out.println(array[k][i]);
+                    }
+                }else if(wlen - 2*k ==1){
+                    for(int i=k; i<hlen-k; i++){
+                        System.out.println(array[i][k]);
+                    }
+                }else{
+                    for(int w=k; w<wlen-1-k; w++){
+                        System.out.println(array[k][w]);
+                    }
+                    for(int h=k; h<hlen-1-k; h++){
+                        System.out.println(array[h][wlen-1-k]);
+                    }
+                    for(int w=k; w<wlen-1-k; w++){
+                        System.out.println(array[hlen-1-k][wlen-1-w]);
+                    }
+                    for(int h=k; h<hlen-1-k; h++){
+                        System.out.println(array[hlen-1-h][k]);
+                    }
+                    spiralArray(array, k+1);
+                }
+            }
+        }
+      }
+    `]
+    {{ src=image/spiral.png w=50% h=50% }}
+    {{ src=image/spiral2.png w=50% h=50% }}
+    {{ src=image/onion.png w=50% h=50% }}
+
+    [Is Binary Search Tree Algorithm]
+    {{ src=image/isBST.png w=50% h=50% }}
+    `[
+        public static boolean isBST(Node r)
+        {
+            if(r != null)
+            {
+                if(!isBST(r.left))
+                    return false;
+                if(prev != null && prev.data >= r.data)
+                    return false;
+                prev = r;
+                if(!isBST(r.right))
+                    return false;
+            }
+            return true;
+        }
+
+        [9 p=null
+          [7 p=null
+            [4 p=null
+              []
+              (4, null)
+              p = r
+              [ p]
+            ]
+            (7, null)
+            p = r = 7
+            [8 p=7
+              []
+              (8, p=7)
+              p = r = 8
+              [ p=8]
+            ]
+          ]
+          (9, p=null)
+          p = r = 9
+          [12 p=9
+            [11 p=9
+              []
+              (11, p=9)
+              p = r = 11
+              [ p=11]
+            ]
+            (12, p=9)
+            p = r = 12
+            [13 p=12
+              []
+              (13, p=12)
+              p = r = 13
+              [ p=13]
+            ]
+          ]
+        ]
+    `]
+
+    [Java Algorithm]
+    Given a binary tree, find all the nodes that k distance from the root
+    `[
+        public static void kdistance(Node r, int k){
+            if(r != null){
+                if(k == 0)
+                    System.out.println(r.data);
+                else{
+                    kdistance(r.left, k-1);
+                    kdistance(r.right, k-1);
+                }
+            }
+        }
+    `]
+    {{ src=image/kdistance.png w=50% h=50% }}
+
+    [Increasing Continuous Array]
+    {{ src=image/continuousarray.png w=50% h=50% }}
+
+    [Maximum Continuous Sum]
+    {{ src=image/maxcontinuoussum.png w=50% h=50% }}
+
+    [Continuous Blocks]
+    {{ src=image/continuousblock.png w=50% h=50% }}
+
+    [Java Quick Sort]
+    `[
+        public static void quickSort(int[] arr, int lo, int hi){
+            if(lo < hi){
+                int p = partition(arr, lo, hi);
+                quickSort(arr, lo, p-1);
+                quickSort(arr, p+1, hi);
+            }
+        }
+        public static int partition(int[] arr, int lo, int hi){
+            int len = hi - lo + 1;
+            int top = lo;
+            if(lo < hi){
+                int pivot = arr[hi];
+                for(int i=lo; i<len; i++){
+                    if(arr[i] < pivot){  
+                        swap(arr, top, i);
+                        top++;
+                    } 
+                }
+                swap(arr, top, hi);
+            }
+            return top;
+        }
+        public static void swap(int[] arr, int i, int j){
+            int tmp  = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+    `]
+    {{ src=image/partition1.png w=50% h=50% }}
+
+    [Java Kth Median Algorithm]
+    `[
+        //Find the kth median element in a unsorted array
+        //Return index for the kth smaller element
+        //Otherwise return -1 if k is invalid  
+        public static int modifiedQuickSort(int[] array, int lo, int hi, int k)
+        {
+            if(k <= hi - lo + 1) 
+            {
+                if(hi == lo && k == 1)
+                    return lo;
+                else{
+                    int pindex = partition(array, lo, hi);
+                    int leftLen = pindex - lo;
+                    int rightLen = hi - pindex;
+                    if(pindex + 1 > k) 
+                        return modifiedQuickSort(array, lo, pindex-1, k);
+                    else if(pindex + 1 < k)
+                        return modifiedQuickSort(array, pindex+1, hi, k - (leftLen+1));
+                    else 
+                        return pindex;
+                }
+            }
+            return -1;
+        }
+
+        //use modified quicksort algorithm to find the kth median element
+        //partition an array to two parts: left_array < pivot < right_array
+        public static int partition(int[] array, int lo, int hi)
+        {
+            int top = lo;
+            if(array != null)
+            {
+                int pivot = array[hi];
+                for(int i=lo; i<=hi; i++)
+                {
+                    if(array[i] < pivot)
+                    {
+                        swap(array, i, top);
+                        top++;
+                    }
+                }
+                swap(array, top, hi); 
+            }
+            return top;
+        } 
+    `]
+    {{ src=image/kthmedian.png w=50% h=50% }}
+
+    [Java Data Structrue]
+    `[
+        int[] array     = {1, 2, 3};
+        int[][]  array2 = {{1, 2, 3},
+                           {4, 5, 6}};
+        // ArrayList
+        ArrayList<String> alist = new ArrayList<String>(); 
+        alist.add("dog");
+        alist.add("cat");
+
+        // ArrayList 2D
+        ArrayList<ArrayList<String>> list2d = new ArrayList<ArrayList<String>>();
+        list2d.add(alist);
+
+        // List
+        List<String> list = new ArrayList<String>();
+        list.add("eloberate");
+        list.add("continue");
+        list.add("continuous");
+
+        // Vector
+        Vector<String> vector = new Vector<String>();
+        vector.add("jobs");
+        vector.add("career");
+        vector.add("motivation");
+        vector.add("ambition");
+
+        // LinkedList
+        LinkedList<Integer> linkedList = new LinkedList<Integer>();
+        linkedList.add(1);
+        linkedList.add(2);
+
+        // Queue
+        Queue<Integer> queue = new LinkedList<Integer>();
+        queue.add(1);
+        queue.add(2);
+        queue.remove();
+        if(queue.peek() == 2)
+            System.out.println("top element is :" + 2);  
+
+        // LinkedBlockingDeque
+        // blocking, use lock in the implementation
+        Deque<String> blockingDeque = new LinkedBlockingDeque<String>();
+        blockingDeque.addFirst("first");
+        blockingDeque.addLast("last");
+
+        // ConcurrentLinkedDeque
+        // non-blocking
+        Deque<String> concurrentDeque = new ConcurrentLinkedDeque<String>();
+        concurrentDeque.addFirst("first");
+        concurrentDeque.addLast("last");
+
+        // HashMap
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("cat", 1);
+        map.put("dog", 2);
+
+        String key = "cat";
+        Integer value = map.get(key);
+        if(value != null){
+            value = map.get(key);
+            System.out.println("key=" + key + " value=" + value); 
+        }
+
+        if(map.containsKey(key))
+            System.out.println("map contains key=" + key); 
+
+        // List as Value in HashMap
+        Map<String, List<String>> mapList = new HashMap<String, List<String>>();
+        mapList.put("1", Arrays.asList("dog", "cat", "cow"));
+        mapList.put("2", Arrays.asList("C++", "Java", "Haskell"));
+        mapList.put("3", Arrays.asList("Scala", "Python", "Ruby"));
+
+        for(Map.Entry<String, List<String>> entry: mapList.entrySet()){
+            String myKey = entry.getKey();
+            List<String> myList = entry.getValue();
+            for(String elem: myList){
+                System.out.println("myKey=" + myKey + " list=" + elem); 
+            }
+        }
+
+        if(mapList.containsKey("key")){
+            System.out.println("contains key");
+        }
+
+        List<String> list = mapList.get("key");
+        int size = mapList.size();
+        if(mapList.containsValue("1")){
+            System.out.println("contains value");
+        }
+
+        List<String> mylist =  mapList.values();
+        for(String str:mylist){
+            System.out.println("str=" + str);
+        }
+
+
+        // HashSet
+        Set<Integer> set = new HashSet<Integer>(Arrays.asList(1, 2));
+        Integer item = 1;
+        if(set.contains(item))
+            System.out.println("set contains element:" + 1);
+
+
+        for(Integer n : set){
+            System.out.println("n=:" + n);
+        }
+
+        set.remove(item);
+        int size = set.size();
+        System.out.println("size =" + set.size()); 
+
+        // iterate set
+        for(Integer elem: set){
+            System.out.println("for elem:=" + elem); 
+        }
+
+        // set to array
+        Integer[] array = (Integer[]) set.toArray(new Integer[set.size()]);
+        for(Integer n: array){
+            System.out.println("n=:" + n);
+        }
+
+        Iterator<Integer> iterator = set.iterator();
+        while(iterator.hasNext()){
+            System.out.println("Iterator elem:=" + iterator.next()); 
+        }
+
+        List<String> list1 = new ArrayList<String>();
+        List<String> list2 = new LinkedList<String>();
+        List<String> list3 = new Stack<String>();
+        List<String> list4 = new Vector<String>();
+        Queue<String> queue = new ArrayList<String>();
+        Queue<String> queue2 = new PriorityQueue<String>();
+    `]
+
+    [Xcode]
+    `[
+        NSUserDefaults only can use NSArray, NSDictionary, NSString, NSData, NSDate, NSNumber(intValue/floatValue/boolValue)
+        NSUserDefaults returns immutable object event though mutable object is used
+        For custom object, NSCoding protocol has to be implemented in order to use in NSUserDefaults
+    `]
+
+    [Xcode NSMutableArray]
+    `[
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
+        [array addObject:[NSNumber numberWithInt:4]];
+        [array addObject:[NSNumber numberWithInt:5]];
+
+        int x = [[array objectAtIndex:0] integerValue];
+        int y = [[array objectAtIndex:1] integerValue];
+        --------------------------------------------------------------------------------
+        [array removeObjectAtIndex:index];
+        --------------------------------------------------------------------------------
+        [array removeAllObjects];
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
+        [array addObject:@"dog"]; 
+        [array addObject:@"cat"]; 
+        String str0 = [array objectAtIndex:0]; 
+        String str1 = [array objectAtIndex:1]; 
+        ================================================================================
+        [self.searchBar becomeFirstResponder];
+        [self.searchBar resignFirstResponder];
+        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
+        NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:10];
+        NSMutableArray* arr1 = [[NSMutableArray alloc] initWithCapacity:2];
+        NSMutableArray* arr2 = [[NSMutableArray alloc] initWithCapacity:2];
+
+        [arr1 addObject:@"dog"];
+        [arr1 addObject:@"cat"];
+
+        [arr2 addObject:@"cat"];
+        [arr2 addObject:@"dog"];
+
+        [array addObject:arr1];
+        [array addObject:arr2];
+        [array containsObject:arr1]
+        --------------------------------------------------------------------------------
+        [arr3 addObject:[MyLib NumInt:1]];
+        [arr3 addObject:[MyLib NumInt:2]];
+
+        [arr4 addObject:[MyLib NumInt:2]];
+        [arr4 addObject:[MyLib NumInt:1]];
+        [array2 addObject:arr3];
+        [array2 addObject:arr4];
+
+        [array2 removeObject:arr3];
+        [array2 removeObject:arr4];
+        --------------------------------------------------------------------------------
+        NSMutableArray* arrayNum = [[NSMutableArray alloc]initWithObjects:[MyLib NumInt:1], [MyLib NumInt:2], nil];
+        NSMutableArray* arrayStr = [[NSMutableArray alloc]initWithObjects:@"1", @"2", nil];
+        --------------------------------------------------------------------------------
+        NSArray* nsarray        = [[NSArray alloc] initWithObjects:@"str1", @"str2", nil];
+        NSMutableArray* muarray = [[NSMutableArray alloc]initWithArray:nsarray];
+        NSArray* nsarray1       = [[NSArray alloc]initWithArray:nsarray];
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc]initWithCapacity:2]; // searchkey: NSMutableArray to NSArray 
+        [array addObject:@"dog"];
+        [array addObject:@"cat"];
+
+        // NSMutableArray to array
+        NSArray* nsarray = [array mutableCopy];
+        for(NSString* str in nsarray){
+            NSLog(@"str=[%@]", str);
+        }
+        --------------------------------------------------------------------------------
+        NSUserDefaults* defaultUser = [NSUserDefaults standardUserDefaults];
+        NSMutableArray* array = [NSMutableArray arrayWithCapacity:2];
+        [array addObject:@"1"];
+        [array addObject:@"2"];
+        [array addObject:@"3"];
+
+        [defaultUser setObject:array forKey:@"key"];
+        NSMutableArray* myarray = [defaultUser objectForKey:@"key"];
+
+        for(NSMutableArray* arr in myarray){
+            NSLog(@"arr=[%@]", arr);
+        }
+        --------------------------------------------------------------------------------
+    `]
+
+    [Xcode NSMutableDictionary]
+    `[
+        NSMutableDictionary* d1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"bg1.png",          @"bg",
+                                                                        @"color_zero",      @"color_zero",
+                                                                        @"color_non_zero",  @"color_non_zero",
+                                                                        @"color_merge",     @"color_merge",
+                                                                        @"color_stroke",    @"color_stroke",
+                                                                        nil];
+
+        NSMutableDictionary* d2 = [[NSDictionary alloc]initWithObjectsAndKeys:@"bg1.png",          @"bg",
+                                                                        @"color_zero",      @"color_zero",
+                                                                        @"color_non_zero",  @"color_non_zero",
+                                                                        @"color_merge",     @"color_merge",
+                                                                        @"color_stroke",    @"color_stroke",
+                                                                        nil];
+
+        NSMutableDictionary* dict = [[NSDictionary alloc]initWithObjectsAndKeys:d1, @"k1",
+                                                                         d2, @"k2",
+                                                                        nil];
+        
+        NSMutableDictionary* dd1  = [dict objectForKey:@"k1"];
+    `]
+
+    [Xcode build from commcand line]
+    `[
+          xcodebuild test -scheme SimpleApp -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=7.1'
+    `]
+    [Xcode Format String]
+    `[
+            format string formatting
+            --------------------------------------------------------------------------------
+            // one decimal for float
+            NSString* strFormat = [NSString stringWithFormat:@"[%.01f][%.01f]", xcolor.blue, xcolor.alpha];
+            --------------------------------------------------------------------------------
+            %@ Objective-C object, printed string returned by descriptionWithLocale
+            %% '%' character.
+            %d, %D Signed 32-bit integer (int).
+            %u, %U Unsigned 32-bit integer (unsigned int).
+            %x Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and a–f.
+            %X Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and A–F.
+            %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
+            %f 64-bit float (double).
+            %e 64-bit float (double), e exponent.
+            %E 64-bit float (double), E exponent.
+            %g 64-bit float (double), %e if exponent < – 4 or >= to the precision, %f o.w.
+            %G 64-bit float (double), %E if exponent < – 4 or >= to the precision, %f o.w.
+            %c 8-bit unsigned character
+            %C 16-bit Unicode character
+            %s Null-terminated array of 8-bit unsigned characters.
+            %S Null-terminated array of 16-bit Unicode characters.
+            %p Void pointer (void *), printed in hex with the digits 0–9 and a–f, with a leading 0x.
+            %a 64-bit float, leading 0x and one hex before decimal pt using p as exp.
+            %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
+            %F 64-bit float, printed in decimal notation.
+            %d bool stype
+    `]
+
+    [Remove CAShaperLayer from parent Layer CALayer]
+    `[
+        CAShapeLayer* circleLayer = [CAShapeLayer layer];
+        circleLayer.name = @"circle";
+        CGFloat leftX = 100.0f;
+        CGFloat leftY = 100.0f;
+        CGFloat Width = 50.0f;
+        CGFloat Height = 50.0f;
+        UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(leftX, leftY, Width, Height)];
+        [circleLayer setPath:[path CGPath]];
+        
+        CGFloat component[4];
+        component[0] = 100.0;
+        component[1] = 1.0;
+        component[2] = 2.0;
+        component[3] = 2.0;
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        [circleLayer setStrokeColor:CGColorCreate(colorSpace, component)];
+        [circleLayer setLineWidth:1.0f];
+        [circleLayer setFillColor:[[UIColor brownColor] CGColor]];
+
+        for(CAShapeLayer* layer in [self.window.layer.sublayers copy]){
+            if([[layer name] isEqualToString:@"circle"]){
+                [layer removeFromSuperlayer];
+            }
+        }
+    `]
+
+
+    [Vim Regex ObjectiveC]
+    :replace [array objectAtIndex:index] with array[index] in ObjectiveC
+    `[
+        %s/\[\(\w\+\)\s\+objectAtIndex:\([^]]\+\)\]/\1\[\2\]/gc
+    `]
+
+    [Vim Copy text from vim to clipboard] [:h clipboard]
+    `[
+        "* is special Register that stores selection
+        "*y Copy text from vim to clipboard
+        "*p Paste text from clipboard to vim 
+    `]
+
+    :CTRL-O     //Jump Older cursor position in jump list [:h jumps]
+    :CTRL-I     //Jump newer cursor position in jump list backward
+
+    :vimgrep /MyString/ /home/mycode/**/*.m   // Search MyString pattern recursively[**/*.m] two arsterisks 
+    :copen      // Open your quickfix 
+    :gf         // open the file under the currsor
+
+    :find will search the directories/files in path option [:h :find]
+    :vim $(find ./ -name \*.java -print)                // open all java file from find
+    :set path? //will show current path option [:h path]
+    :set path +=/home/mycode //You can add different directories to path option in Vim
+    
+    " reset to default
+    :set path& [:h set]
+
+    :set complete=k/home/myfile/*,k~/home/dir
+    " auto completion search your own file
+    " [:h complete]
+    " k{dict} scan the file {dict}. Servan flags can be given
+
+    In Vim Script, there are many options to handle file names, paths   
+    :h cmdline
+
+    :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
+    :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers
+    :zf                // Create fold under cursor
+    :zd                // Delete fold under cursor
+    :5gt               // goto tab 5, [in insert mode]
+    :tabmove 4         // move the current tab to position 4 [help :tabmove]
+    :tabc 11           // close tab 11
+
+    :set modeline      // display file name in each tabs page
+    :set ls=2
+
+    :set modeline      // display full file name in statusline [:help :statusline]
+    :set statusline=%F
+
+    :echo getline(".")                 // get current line string
+    :echo match("mystring", "st")      // return 2
+    :echo line(".")                    // line number of cursor
+    :echo line("'t")                   // line number of mark t
+    :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
+    :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
+    :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
+    :help debug-mode                   // debug vim script
+    
+    :echo getline(".")                                                                              // get current line string
+    :echo match("mystring", "st")                                                                   // return 2
+    :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
+    :\%V                                                                                             // visual selection block [:help \%V]
+    :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
+    :'< and >'                                                                  // first cursor position/last cursor position in registers in visual mode/selection
+
+    :g/^$/d                             //delete empty line 
+    :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
+    :q: or q/                          // vim command history
+
+    :hi Search guifg=Brown guibg=Gray
+    :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+
+    :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
+    :sort! n                           //reverse sorting
+
+    :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
+    :highlight MyKeyWord guifg=Green 
+    :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+    :set ma                             // set file modifiable on  [:h modifiable]
+    :ctrl-]                              //class definition 
+    :ctrl-t                              //back to previous window
+    :s/pattern/\=@a.submatch(0).@b/gc   // substitute with two registers
+
+    :redir @a // redirect ex command to register
+    :ls
+    :redir END
+
+    :redir @* | ls | redir END  // redirect all the name of file to reg @* in buffer
+    
+    :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+    :/pattern\c #ignorecase
+    :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+    :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+
+    :/\(if\)\ze\(then\)         // if follows then "[if]then"
+    :/\(if\)\zs\(then\)         // then starts with if "if[then]" 
+
+    :g*         / search without word boundry
+    [Vim Script get background color]
+    `[
+         :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]       
+    `]
+
+     :set hidden   // hidden an unsaved file, ow, file has to be saved with !
+
+
+    [Grep command]
+    :vim $(grep -l --include="*.java" pattern .)
+    :grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* 
+    :grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+    :vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+
+    :his s                      // list commands history
+    :his /                      // list search history
+
+    :CTRL-E                     // scroll window up 
+    :CTRL-Y                     // scroll window down
+
+     // display without Enter
+     exec '!ls ' 
+     :sleep 2
+     redraw
+
+     :diw // delete/yank/visual [i]nner word
+     :daw // delete/yank/visual [a] word
+     :dib // delete/yank/visual [i]nner '(' ')' block
+     :daB // ddelete/yank/visual [a] '(' ')' block
+     :diB // ddelete/yank/visual [i]nner '{' '}' block
+     :daB // ddelete/yank [a] '{' '}' block
+
+     :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
+     :syntax clear MyColorGroup     // remove highlight
+
+
+
+
+    [Vim Script]
+    Compile Java code inside Vim [:h expand]
+    `[
+        " Fix the missing -cp option in java
+        " Assume java file is in current buffer
+        function! CompileJava()
+            let path = expand("%")
+            exec ":!javac " . path <CR> 
+            let jclassName = expand("%:p:t:r")
+            let className = expand("%:p:t:r")
+            let cwd = getcwd()
+            let full = ":!java -cp " . cwd . ":. " . jclassName
+            exec  full 
+        endfunction 
+
+        :expand("%")    
+        "file.txt
+
+        :expand("%:p")  
+        "/home/file.txt 
+
+        :expand("%:p:t") 
+        "file.txt
+
+        :expand("%:p:r") 
+        "/home/file
+
+        :expand("%:p:t:r") 
+        "file 
+
+        :fnamemodify('/dog/f.txt', ':h') " /dog
+
+        " get current file dir
+        :getcwd()
+        "/home
+
+        " read file
+        :readfile(fname)
+
+        " check whether a file with the name exists 
+        :filereadable(fname)
+
+        " write file
+        :writefile(fname, "a") 
+        :writefile(fname, "b") "b" binary mode
+
+        [:h Dictionary]
+        " dictionary
+        let dict={'key': 'value'}
+
+        " replace value 
+        dict.key = 'dog'
+
+        " Iterate through Dictionary
+        for [key, value] in items(dict)
+          echo key . ':' . value 
+        endfor
+
+        " remove key
+        let value = remove(dict, 'key')
+        echo value  " dog
+
+        [:h List]
+        " list as value
+        let list = ['a', 'b']
+        add(dict.key, 'abc')
+        echo dict.key   " ['a', 'b', 'abc']
+
+
+        " list, string, length, len
+        let list = []
+        let list = ["cat", "dog"]
+        let len = len(list)
+        let fname = split(expand("%:p"), "/")
+        let length = length("this is cool") 
+
+        " remove list item
+        :unlet list[3] " remove fourth item
+        :unlet list[3:] " remove foruth to last
+
+        " remove dictionary item
+        :unlet dict['two'] 
+        :unlet dict.two
+
+        " This is especially useful to clean up global variables 
+        :unlet global_var
+
+        " sort a list
+        let list = ['b', 'a']
+        sort(list)
+
+        " sort a list in-place, a list remain unmodified
+        let copylist = sort(copy(list))
+
+        " Iterate buffer list
+        let bufcount = bufr("$")
+        let curr = 1 
+        while curr <= bufcount 
+            let currbufname = bufname(curr)
+            if buflisted(currbufname) && strlen(currbufname) > 0
+                echo currbufname
+            endif
+            let curr = curr + 1
+        endwhile
+
+
+        " Iterate through List
+        for item in mylist
+          echo item
+        endfor 
+
+        " for loop
+        let index = 0
+        while index < len(mylist)
+          echo mylist[index]
+          let index = index + 1
+        endwhile
+
+        " list of open windows
+        :echo range(1, winnr('$'))
+
+        " To determine how many split-windows are open
+        winnr('$')
+
+        " How many in the current page
+        tabpagewinnr(tabpagenr(), '$')
+        
+        http://vim.1045645.n5.nabble.com/how-to-get-list-of-open-windows-td1164662.html
+        " List all split window by tab page 
+        while t <= tabpagenr('$') 
+                echo 'tab' t . ':' 
+                let bufs = tabpagebuflist(t) 
+                let w = 0 
+                while w < tabpagewinnr(t, '$') 
+                        echo "\t" . bufname(bufs[w]) 
+                        let w += 1 
+                endwhile 
+                let t += 1 
+        endwhile 
+        unlet t w bufs 
+
+        " split window on the right hand side
+        :set splitright 
+
+        " statusline format
+        %-0{minwid}.{maxwid}{item}
+        The - forces the item to be left aligned
+        The 0 forces numeric value to be left padded with zeros
+
+        " statusline evaludate function
+        statusline+=%10{expand('%:p:h')}
+
+    `]
+
+    [Git command]
+    :git branch myfeature_branchcreate                   // git feature branch
+    :git branch -d delete_branchdelete                   // [git delete] feature branch
+    :git branch -D delete_branchdelete                   // unmerged feature branch
+
+    :git checkout master 
+    :git merge --no-ff feature_branch // [git merge]merge feature branch to master
+
+    :git rm -r --cached myfileremove                     // tracked file in .gitignore
+    :git rm -r --cached myfileremove                     // file from your index
+    :git refloghow                                       // all the reference log
+    :git reset --hard 828c8c0b1995                       // revert to previous commit
+
+    [Linux command]
+    :y$                                             // copy character from cursor to the end of line     [:help yank]
+    :vaw                                            // highlight word under cursor including white space [:help text-object]
+    :viw                                            // hightlight word under cursor excluding white space[:help text-object]
+    :awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file>
+    :awk -F ":" '{for(i=0; i<NF; i++) print $1}'
+    :kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
+
+    :history -d  xxx #remove history
+    :add to vimrc file #vim change tabs to space
+    :set tabstop=4
+    :set shiftwidth=4
+    :set expandtab
+    :set showcmd
+    :sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt
+    :sed -i -e 's/oldstring/newstring/g' *                                                           
+    :find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+    
+    [git branch shows on command prompt]
+    `[
+        parse_git_branch(){
+            git branch 2> /dev/null | sed -e 's/* \(.*\)/ \(\1)/'
+        }
+        export PS1="\u$(parse_git_branch)\w$"
+        \u - Username
+        \w - Full path
+        \h - Host name
+    `]
+
+    [Shell Script]
+    If else statement, Compare string, Compare integer
+    `[
+        if [ $# -gt 0 ]; then 
+            echo "arg $1"
+            if [ $1 = "w" ]; then
+                echo "do sth" 
+            elif [ $1 = "t" ]; then 
+                echo "do other th" 
+            fi 
+        else
+            echo "Usage"
+        fi
+    `]
+    [iOS Game Development]
+    {{ src=image/gameOption.png w=50% h=50% }}
+    {{ src=image/gridgrid.png w=50% h=50% }}
+     
+

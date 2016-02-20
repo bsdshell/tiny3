@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg version="1.2" baseProfile="tiny" width="457.2mm" height="127mm" viewBox="0 0 45720 12700" preserveAspectRatio="xMidYMid" fill-rule="evenodd" stroke-width="28.222" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" xmlns:ooo="http://xml.openoffice.org/svg/export" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+ <defs class="ClipPathGroup">
+  <clipPath id="presentation_clip_path" clipPathUnits="userSpaceOnUse">
+   <rect x="0" y="0" width="45720" height="12700"/>
+  </clipPath>
+ </defs>
+ <defs class="TextShapeIndex"/>
+ <defs class="EmbeddedBulletChars">
+  <g id="bullet-char-template(57356)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M 580,1141 L 1163,571 580,0 -4,571 580,1141 Z"/>
+  </g>
+  <g id="bullet-char-template(57354)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M 8,1128 L 1137,1128 1137,0 8,0 8,1128 Z"/>
+  </g>
+  <g id="bullet-char-template(10146)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M 174,0 L 602,739 174,1481 1456,739 174,0 Z M 1358,739 L 309,1346 659,739 1358,739 Z"/>
+  </g>
+  <g id="bullet-char-template(10132)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M 2015,739 L 1276,0 717,0 1260,543 174,543 174,936 1260,936 717,1481 1274,1481 2015,739 Z"/>
+  </g>
+  <g id="bullet-char-template(10007)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M 0,-2 C -7,14 -16,27 -25,37 L 356,567 C 262,823 215,952 215,954 215,979 228,992 255,992 264,992 276,990 289,987 310,991 331,999 354,1012 L 381,999 492,748 772,1049 836,1024 860,1049 C 881,1039 901,1025 922,1006 886,937 835,863 770,784 769,783 710,716 594,584 L 774,223 C 774,196 753,168 711,139 L 727,119 C 717,90 699,76 672,76 641,76 570,178 457,381 L 164,-76 C 142,-110 111,-127 72,-127 30,-127 9,-110 8,-76 1,-67 -2,-52 -2,-32 -2,-23 -1,-13 0,-2 Z"/>
+  </g>
+  <g id="bullet-char-template(10004)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M 285,-33 C 182,-33 111,30 74,156 52,228 41,333 41,471 41,549 55,616 82,672 116,743 169,778 240,778 293,778 328,747 346,684 L 369,508 C 377,444 397,411 428,410 L 1163,1116 C 1174,1127 1196,1133 1229,1133 1271,1133 1292,1118 1292,1087 L 1292,965 C 1292,929 1282,901 1262,881 L 442,47 C 390,-6 338,-33 285,-33 Z"/>
+  </g>
+  <g id="bullet-char-template(9679)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M 813,0 C 632,0 489,54 383,161 276,268 223,411 223,592 223,773 276,916 383,1023 489,1130 632,1184 813,1184 992,1184 1136,1130 1245,1023 1353,916 1407,772 1407,592 1407,412 1353,268 1245,161 1136,54 992,0 813,0 Z"/>
+  </g>
+  <g id="bullet-char-template(8226)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M 346,457 C 273,457 209,483 155,535 101,586 74,649 74,723 74,796 101,859 155,911 209,963 273,989 346,989 419,989 480,963 531,910 582,859 608,796 608,723 608,648 583,586 532,535 482,483 420,457 346,457 Z"/>
+  </g>
+  <g id="bullet-char-template(8211)" transform="scale(0.00048828125,-0.00048828125)">
+   <path d="M -4,459 L 1135,459 1135,606 -4,606 -4,459 Z"/>
+  </g>
+ </defs>
+ <defs class="TextEmbeddedBitmaps"/>
+ <g>
+  <g id="id2" class="Master_Slide">
+   <g id="bg-id2" class="Background"/>
+   <g id="bo-id2" class="BackgroundObjects"/>
+  </g>
+ </g>
+ <g class="SlideGroup">
+  <g>
+   <g id="id1" class="Slide" clip-path="url(#presentation_clip_path)">
+    <g class="Page">
+     <g class="com.sun.star.drawing.TableShape">
+      <g>
+       <path fill="rgb(153,51,102)" stroke="none" d="M 23690,1567 L 26959,1567 26959,3185 23690,3185 23690,1567 Z"/>
+       <path fill="rgb(153,51,102)" stroke="none" d="M 26959,1567 L 30228,1567 30228,3185 26959,3185 26959,1567 Z"/>
+       <path fill="rgb(153,102,0)" stroke="none" d="M 30228,1567 L 33497,1567 33497,3185 30228,3185 30228,1567 Z"/>
+       <path fill="rgb(153,102,0)" stroke="none" d="M 33497,1567 L 36766,1567 36766,3185 33497,3185 33497,1567 Z"/>
+       <path fill="rgb(153,102,0)" stroke="none" d="M 36766,1567 L 40035,1567 40035,3185 36766,3185 36766,1567 Z"/>
+       <path fill="rgb(153,102,0)" stroke="none" d="M 40035,1567 L 43310,1567 43310,3185 40035,3185 40035,1567 Z"/>
+       <path fill="rgb(153,51,102)" stroke="none" d="M 23690,3185 L 26959,3185 26959,4803 23690,4803 23690,3185 Z"/>
+       <path fill="rgb(153,51,102)" stroke="none" d="M 26959,3185 L 30228,3185 30228,4803 26959,4803 26959,3185 Z"/>
+       <path fill="rgb(153,102,0)" stroke="none" d="M 30228,3185 L 33497,3185 33497,4803 30228,4803 30228,3185 Z"/>
+       <path fill="rgb(153,102,0)" stroke="none" d="M 33497,3185 L 36766,3185 36766,4803 33497,4803 33497,3185 Z"/>
+       <path fill="rgb(153,102,0)" stroke="none" d="M 36766,3185 L 40035,3185 40035,4803 36766,4803 36766,3185 Z"/>
+       <path fill="rgb(153,102,0)" stroke="none" d="M 40035,3185 L 43310,3185 43310,4803 40035,4803 40035,3185 Z"/>
+       <path fill="rgb(0,204,255)" stroke="none" d="M 23690,4803 L 26959,4803 26959,6421 23690,6421 23690,4803 Z"/>
+       <path fill="rgb(0,204,255)" stroke="none" d="M 26959,4803 L 30228,4803 30228,6421 26959,6421 26959,4803 Z"/>
+       <g>
+        <defs>
+         <pattern id="pattern1" x="30228" y="4803" width="3270" height="1619" patternUnits="userSpaceOnUse">
+          <g transform="translate(-30228,-4803)">
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30274" y1="4803" x2="30274" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30343" y1="4803" x2="30343" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30412" y1="4803" x2="30412" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30481" y1="4803" x2="30481" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30550" y1="4803" x2="30550" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30619" y1="4803" x2="30619" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30688" y1="4803" x2="30688" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30757" y1="4803" x2="30757" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30826" y1="4803" x2="30826" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30895" y1="4803" x2="30895" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30964" y1="4803" x2="30964" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31033" y1="4803" x2="31033" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31102" y1="4803" x2="31102" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31171" y1="4803" x2="31171" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31240" y1="4803" x2="31240" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31309" y1="4803" x2="31309" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31378" y1="4803" x2="31378" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31447" y1="4803" x2="31447" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31516" y1="4803" x2="31516" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31585" y1="4803" x2="31585" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31654" y1="4803" x2="31654" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31723" y1="4803" x2="31723" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31792" y1="4803" x2="31792" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31861" y1="4803" x2="31861" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31930" y1="4803" x2="31930" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="31999" y1="4803" x2="31999" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32068" y1="4803" x2="32068" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32137" y1="4803" x2="32137" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32206" y1="4803" x2="32206" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32275" y1="4803" x2="32275" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32344" y1="4803" x2="32344" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32413" y1="4803" x2="32413" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32482" y1="4803" x2="32482" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32551" y1="4803" x2="32551" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32620" y1="4803" x2="32620" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32689" y1="4803" x2="32689" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32758" y1="4803" x2="32758" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32827" y1="4803" x2="32827" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32896" y1="4803" x2="32896" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="32965" y1="4803" x2="32965" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="33034" y1="4803" x2="33034" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="33103" y1="4803" x2="33103" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="33172" y1="4803" x2="33172" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="33241" y1="4803" x2="33241" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="33310" y1="4803" x2="33310" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="33379" y1="4803" x2="33379" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="33448" y1="4803" x2="33448" y2="6421"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="4849" x2="33497" y2="4849"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="4918" x2="33497" y2="4918"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="4987" x2="33497" y2="4987"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5056" x2="33497" y2="5056"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5125" x2="33497" y2="5125"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5194" x2="33497" y2="5194"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5263" x2="33497" y2="5263"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5332" x2="33497" y2="5332"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5401" x2="33497" y2="5401"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5470" x2="33497" y2="5470"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5539" x2="33497" y2="5539"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5608" x2="33497" y2="5608"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5677" x2="33497" y2="5677"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5746" x2="33497" y2="5746"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5815" x2="33497" y2="5815"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5884" x2="33497" y2="5884"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="5953" x2="33497" y2="5953"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="6022" x2="33497" y2="6022"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="6091" x2="33497" y2="6091"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="6160" x2="33497" y2="6160"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="6229" x2="33497" y2="6229"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="6298" x2="33497" y2="6298"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="30228" y1="6367" x2="33497" y2="6367"/>
+          </g>
+         </pattern>
+        </defs>
+        <path style="fill:url(#pattern1)" d="M 30228,4803 L 33497,4803 33497,6421 30228,6421 30228,4803 Z"/>
+       </g>
+       <path fill="rgb(0,0,0)" stroke="none" d="M 33497,4803 L 36766,4803 36766,6421 33497,6421 33497,4803 Z"/>
+       <path fill="rgb(0,0,0)" stroke="none" d="M 36766,4803 L 40035,4803 40035,6421 36766,6421 36766,4803 Z"/>
+       <path fill="rgb(0,0,0)" stroke="none" d="M 40035,4803 L 43310,4803 43310,6421 40035,6421 40035,4803 Z"/>
+       <path fill="rgb(0,204,255)" stroke="none" d="M 23690,6421 L 26959,6421 26959,8039 23690,8039 23690,6421 Z"/>
+       <path fill="rgb(0,204,255)" stroke="none" d="M 26959,6421 L 30228,6421 30228,8039 26959,8039 26959,6421 Z"/>
+       <path fill="rgb(0,0,0)" stroke="none" d="M 30228,6421 L 33497,6421 33497,8039 30228,8039 30228,6421 Z"/>
+       <path fill="rgb(204,204,204)" stroke="none" d="M 33497,6421 L 36766,6421 36766,8039 33497,8039 33497,6421 Z"/>
+       <path fill="rgb(204,204,204)" stroke="none" d="M 36766,6421 L 40035,6421 40035,8039 36766,8039 36766,6421 Z"/>
+       <path fill="rgb(204,204,204)" stroke="none" d="M 40035,6421 L 43310,6421 43310,8039 40035,8039 40035,6421 Z"/>
+       <path fill="rgb(0,204,255)" stroke="none" d="M 23690,8039 L 26959,8039 26959,9657 23690,9657 23690,8039 Z"/>
+       <path fill="rgb(0,204,255)" stroke="none" d="M 26959,8039 L 30228,8039 30228,9657 26959,9657 26959,8039 Z"/>
+       <path fill="rgb(0,0,0)" stroke="none" d="M 30228,8039 L 33497,8039 33497,9657 30228,9657 30228,8039 Z"/>
+       <path fill="rgb(230,230,230)" stroke="none" d="M 33497,8039 L 36766,8039 36766,9657 33497,9657 33497,8039 Z"/>
+       <path fill="rgb(230,230,230)" stroke="none" d="M 36766,8039 L 40035,8039 40035,9657 36766,9657 36766,8039 Z"/>
+       <path fill="rgb(230,230,230)" stroke="none" d="M 40035,8039 L 43310,8039 43310,9657 40035,9657 40035,8039 Z"/>
+       <path fill="rgb(0,204,255)" stroke="none" d="M 23690,9657 L 26959,9657 26959,11277 23690,11277 23690,9657 Z"/>
+       <path fill="rgb(0,204,255)" stroke="none" d="M 26959,9657 L 30228,9657 30228,11277 26959,11277 26959,9657 Z"/>
+       <path fill="rgb(0,0,0)" stroke="none" d="M 30228,9657 L 33497,9657 33497,11277 30228,11277 30228,9657 Z"/>
+       <path fill="rgb(204,204,204)" stroke="none" d="M 33497,9657 L 36766,9657 36766,11277 33497,11277 33497,9657 Z"/>
+       <path fill="rgb(204,204,204)" stroke="none" d="M 36766,9657 L 40035,9657 40035,11277 36766,11277 36766,9657 Z"/>
+       <path fill="rgb(204,204,204)" stroke="none" d="M 40035,9657 L 43310,9657 43310,11277 40035,11277 40035,9657 Z"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,1567 L 23690,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,1567 L 26959,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,1567 L 26959,1567"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,1567 L 26959,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,1567 L 30228,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,1567 L 30228,1567"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,1567 L 30228,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,1567 L 33497,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,1567 L 33497,1567"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,1567 L 33497,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,1567 L 36766,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,1567 L 36766,1567"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,1567 L 36766,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,1567 L 40035,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,1567 L 40035,1567"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,1567 L 40035,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 43310,1567 L 43310,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,1567 L 43310,1567"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,3185 L 23690,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,3185 L 26959,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,3185 L 26959,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,3185 L 26959,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,3185 L 30228,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,3185 L 30228,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,3185 L 30228,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,3185 L 33497,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,3185 L 33497,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,3185 L 33497,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,3185 L 36766,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,3185 L 36766,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,3185 L 36766,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,3185 L 40035,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,3185 L 40035,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,3185 L 40035,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 43310,3185 L 43310,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,3185 L 43310,3185"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,4803 L 23690,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,4803 L 26959,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,4803 L 26959,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,4803 L 26959,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,4803 L 30228,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,4803 L 30228,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,4803 L 30228,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,4803 L 33497,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,4803 L 33497,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,4803 L 33497,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,4803 L 36766,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,4803 L 36766,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,4803 L 36766,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,4803 L 40035,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,4803 L 40035,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,4803 L 40035,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 43310,4803 L 43310,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,4803 L 43310,4803"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,6421 L 23690,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,6421 L 26959,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,6421 L 26959,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,6421 L 26959,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,6421 L 30228,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,6421 L 30228,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,6421 L 30228,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,6421 L 33497,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,6421 L 33497,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,6421 L 33497,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,6421 L 36766,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,6421 L 36766,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,6421 L 36766,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,6421 L 40035,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,6421 L 40035,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,6421 L 40035,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 43310,6421 L 43310,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,6421 L 43310,6421"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,8039 L 23690,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,8039 L 26959,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,8039 L 26959,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,8039 L 26959,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,8039 L 30228,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,8039 L 30228,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,8039 L 30228,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,8039 L 33497,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,8039 L 33497,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,8039 L 33497,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,8039 L 36766,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,8039 L 36766,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,8039 L 36766,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,8039 L 40035,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,8039 L 40035,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,8039 L 40035,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 43310,8039 L 43310,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,8039 L 43310,8039"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,9657 L 23690,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,11277 L 26959,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,9657 L 26959,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 23690,9657 L 26959,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,9657 L 26959,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,11277 L 30228,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,9657 L 30228,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 26959,9657 L 30228,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,9657 L 30228,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,11277 L 33497,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,9657 L 33497,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 30228,9657 L 33497,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,9657 L 33497,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,11277 L 36766,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,9657 L 36766,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 33497,9657 L 36766,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,9657 L 36766,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,11277 L 40035,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,9657 L 40035,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 36766,9657 L 40035,9657"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,9657 L 40035,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,11277 L 43310,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 43310,9657 L 43310,11277"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 40035,9657 L 43310,9657"/>
+      </g>
+     </g>
+     <g class="com.sun.star.drawing.TableShape">
+      <g>
+       <path fill="rgb(179,179,179)" stroke="none" d="M 2231,1595 L 5284,1595 5284,3110 2231,3110 2231,1595 Z"/>
+       <path fill="rgb(179,179,179)" stroke="none" d="M 5284,1595 L 8337,1595 8337,3110 5284,3110 5284,1595 Z"/>
+       <path fill="rgb(0,0,0)" stroke="none" d="M 8337,1595 L 11390,1595 11390,3110 8337,3110 8337,1595 Z"/>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 11390,1595 L 14443,1595 14443,3110 11390,3110 11390,1595 Z"/>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 14443,1595 L 17496,1595 17496,3110 14443,3110 14443,1595 Z"/>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 17496,1595 L 20558,1595 20558,3110 17496,3110 17496,1595 Z"/>
+       <path fill="rgb(204,204,204)" stroke="none" d="M 2231,3110 L 5284,3110 5284,4625 2231,4625 2231,3110 Z"/>
+       <path fill="rgb(204,204,204)" stroke="none" d="M 5284,3110 L 8337,3110 8337,4625 5284,4625 5284,3110 Z"/>
+       <path fill="rgb(0,0,0)" stroke="none" d="M 8337,3110 L 11390,3110 11390,4625 8337,4625 8337,3110 Z"/>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 11390,3110 L 14443,3110 14443,4625 11390,4625 11390,3110 Z"/>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 14443,3110 L 17496,3110 17496,4625 14443,4625 14443,3110 Z"/>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 17496,3110 L 20558,3110 20558,4625 17496,4625 17496,3110 Z"/>
+       <path fill="rgb(28,28,28)" stroke="none" d="M 2231,4625 L 5284,4625 5284,6140 2231,6140 2231,4625 Z"/>
+       <path fill="rgb(28,28,28)" stroke="none" d="M 5284,4625 L 8337,4625 8337,6140 5284,6140 5284,4625 Z"/>
+       <g>
+        <defs>
+         <pattern id="pattern2" x="8337" y="4625" width="3054" height="1516" patternUnits="userSpaceOnUse">
+          <g transform="translate(-8337,-4625)">
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8383" y1="4625" x2="8383" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8452" y1="4625" x2="8452" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8521" y1="4625" x2="8521" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8590" y1="4625" x2="8590" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8659" y1="4625" x2="8659" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8728" y1="4625" x2="8728" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8797" y1="4625" x2="8797" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8866" y1="4625" x2="8866" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8935" y1="4625" x2="8935" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9004" y1="4625" x2="9004" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9073" y1="4625" x2="9073" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9142" y1="4625" x2="9142" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9211" y1="4625" x2="9211" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9280" y1="4625" x2="9280" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9349" y1="4625" x2="9349" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9418" y1="4625" x2="9418" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9487" y1="4625" x2="9487" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9556" y1="4625" x2="9556" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9625" y1="4625" x2="9625" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9694" y1="4625" x2="9694" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9763" y1="4625" x2="9763" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9832" y1="4625" x2="9832" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9901" y1="4625" x2="9901" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="9970" y1="4625" x2="9970" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10039" y1="4625" x2="10039" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10108" y1="4625" x2="10108" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10177" y1="4625" x2="10177" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10246" y1="4625" x2="10246" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10315" y1="4625" x2="10315" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10384" y1="4625" x2="10384" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10453" y1="4625" x2="10453" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10522" y1="4625" x2="10522" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10591" y1="4625" x2="10591" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10660" y1="4625" x2="10660" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10729" y1="4625" x2="10729" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10798" y1="4625" x2="10798" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10867" y1="4625" x2="10867" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="10936" y1="4625" x2="10936" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="11005" y1="4625" x2="11005" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="11074" y1="4625" x2="11074" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="11143" y1="4625" x2="11143" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="11212" y1="4625" x2="11212" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="11281" y1="4625" x2="11281" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="11350" y1="4625" x2="11350" y2="6140"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="4671" x2="11390" y2="4671"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="4740" x2="11390" y2="4740"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="4809" x2="11390" y2="4809"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="4878" x2="11390" y2="4878"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="4947" x2="11390" y2="4947"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5016" x2="11390" y2="5016"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5085" x2="11390" y2="5085"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5154" x2="11390" y2="5154"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5223" x2="11390" y2="5223"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5292" x2="11390" y2="5292"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5361" x2="11390" y2="5361"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5430" x2="11390" y2="5430"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5499" x2="11390" y2="5499"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5568" x2="11390" y2="5568"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5637" x2="11390" y2="5637"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5706" x2="11390" y2="5706"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5775" x2="11390" y2="5775"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5844" x2="11390" y2="5844"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5913" x2="11390" y2="5913"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="5982" x2="11390" y2="5982"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="6051" x2="11390" y2="6051"/>
+           <line fill="rgb(128,0,0)" stroke="rgb(128,0,0)" x1="8337" y1="6120" x2="11390" y2="6120"/>
+          </g>
+         </pattern>
+        </defs>
+        <path style="fill:url(#pattern2)" d="M 8337,4625 L 11390,4625 11390,6140 8337,6140 8337,4625 Z"/>
+       </g>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 11390,4625 L 14443,4625 14443,6140 11390,6140 11390,4625 Z"/>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 14443,4625 L 17496,4625 17496,6140 14443,6140 14443,4625 Z"/>
+       <path fill="rgb(153,153,255)" stroke="none" d="M 17496,4625 L 20558,4625 20558,6140 17496,6140 17496,4625 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 2231,6140 L 5284,6140 5284,7655 2231,7655 2231,6140 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 5284,6140 L 8337,6140 8337,7655 5284,7655 5284,6140 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 8337,6140 L 11390,6140 11390,7655 8337,7655 8337,6140 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 11390,6140 L 14443,6140 14443,7655 11390,7655 11390,6140 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 14443,6140 L 17496,6140 17496,7655 14443,7655 14443,6140 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 17496,6140 L 20558,6140 20558,7655 17496,7655 17496,6140 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 2231,7655 L 5284,7655 5284,9170 2231,9170 2231,7655 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 5284,7655 L 8337,7655 8337,9170 5284,9170 5284,7655 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 8337,7655 L 11390,7655 11390,9170 8337,9170 8337,7655 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 11390,7655 L 14443,7655 14443,9170 11390,9170 11390,7655 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 14443,7655 L 17496,7655 17496,9170 14443,9170 14443,7655 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 17496,7655 L 20558,7655 20558,9170 17496,9170 17496,7655 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 2231,9170 L 5284,9170 5284,10687 2231,10687 2231,9170 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 5284,9170 L 8337,9170 8337,10687 5284,10687 5284,9170 Z"/>
+       <path fill="rgb(255,0,204)" stroke="none" d="M 8337,9170 L 11390,9170 11390,10687 8337,10687 8337,9170 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 11390,9170 L 14443,9170 14443,10687 11390,10687 11390,9170 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 14443,9170 L 17496,9170 17496,10687 14443,10687 14443,9170 Z"/>
+       <path fill="rgb(255,51,0)" stroke="none" d="M 17496,9170 L 20558,9170 20558,10687 17496,10687 17496,9170 Z"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,1595 L 2231,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,1595 L 5284,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,1595 L 5284,1595"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,1595 L 5284,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,1595 L 8337,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,1595 L 8337,1595"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,1595 L 8337,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,1595 L 11390,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,1595 L 11390,1595"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,1595 L 11390,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,1595 L 14443,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,1595 L 14443,1595"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,1595 L 14443,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,1595 L 17496,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,1595 L 17496,1595"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,1595 L 17496,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 20558,1595 L 20558,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,1595 L 20558,1595"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,3110 L 2231,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,3110 L 5284,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,3110 L 5284,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,3110 L 5284,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,3110 L 8337,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,3110 L 8337,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,3110 L 8337,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,3110 L 11390,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,3110 L 11390,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,3110 L 11390,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,3110 L 14443,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,3110 L 14443,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,3110 L 14443,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,3110 L 17496,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,3110 L 17496,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,3110 L 17496,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 20558,3110 L 20558,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,3110 L 20558,3110"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,4625 L 2231,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,4625 L 5284,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,4625 L 5284,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,4625 L 5284,6140"/>
+       <path fill="none" stroke="rgb(153,0,0)" d="M 8337,4625 L 8337,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,4625 L 8337,4625"/>
+       <path fill="none" stroke="rgb(153,0,0)" d="M 8337,4625 L 8337,6140"/>
+       <path fill="none" stroke="rgb(153,0,0)" d="M 11390,4625 L 11390,6140"/>
+       <path fill="none" stroke="rgb(153,0,0)" d="M 8337,4625 L 11390,4625"/>
+       <path fill="none" stroke="rgb(153,0,0)" d="M 11390,4625 L 11390,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,4625 L 14443,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,4625 L 14443,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,4625 L 14443,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,4625 L 17496,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,4625 L 17496,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,4625 L 17496,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 20558,4625 L 20558,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,4625 L 20558,4625"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,6140 L 2231,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,6140 L 5284,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,6140 L 5284,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,6140 L 5284,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,6140 L 8337,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,6140 L 8337,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,6140 L 8337,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,6140 L 11390,7655"/>
+       <path fill="none" stroke="rgb(153,0,0)" d="M 8337,6140 L 11390,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,6140 L 11390,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,6140 L 14443,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,6140 L 14443,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,6140 L 14443,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,6140 L 17496,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,6140 L 17496,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,6140 L 17496,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 20558,6140 L 20558,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,6140 L 20558,6140"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,7655 L 2231,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,7655 L 5284,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,7655 L 5284,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,7655 L 5284,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,7655 L 8337,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,7655 L 8337,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,7655 L 8337,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,7655 L 11390,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,7655 L 11390,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,7655 L 11390,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,7655 L 14443,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,7655 L 14443,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,7655 L 14443,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,7655 L 17496,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,7655 L 17496,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,7655 L 17496,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 20558,7655 L 20558,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,7655 L 20558,7655"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,9170 L 2231,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,10687 L 5284,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,9170 L 5284,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 2231,9170 L 5284,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,9170 L 5284,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,10687 L 8337,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,9170 L 8337,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 5284,9170 L 8337,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,9170 L 8337,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,10687 L 11390,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,9170 L 11390,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 8337,9170 L 11390,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,9170 L 11390,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,10687 L 14443,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,9170 L 14443,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 11390,9170 L 14443,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,9170 L 14443,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,10687 L 17496,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,9170 L 17496,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 14443,9170 L 17496,9170"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,9170 L 17496,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,10687 L 20558,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 20558,9170 L 20558,10687"/>
+       <path fill="none" stroke="rgb(255,255,255)" d="M 17496,9170 L 20558,9170"/>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

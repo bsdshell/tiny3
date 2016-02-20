@@ -1,0 +1,396 @@
+    [vim command]
+    :grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* 
+    :grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+    :vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+    :bufdo %s/pattern/replacement #vim replace all buffers
+    :vim $(grep -l --include="*.java" pattern .)
+    :bufdo %s/pattern/replacement #replace all buffers
+    :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+    :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+
+    :history -d  xxx #remove history
+    :add to vimrc file #vim change tabs to space
+    :set tabstop=4
+    :set shiftwidth=4
+    :set expandtab
+    :set showcmd
+    :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+
+    :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+    :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+    :vim $(grep -l --include="*.java" pattern .)
+    :bufdo %s/pattern/replacement #replace all buffers
+
+    :vim $(grep -l --include="*.java" pattern .)        // vim open all files from grep
+    :vim $(find ./ -name \*.java -print)                // open all java file from find
+    :find ./ ! -regex "*.hs|*.txt"
+
+    :bufdo %s/pattern/replacement/ge | update          // vim replace all buffers
+    :zf                // Create fold under cursor
+    :zd                // Delete fold under cursor
+    :5gt               // goto tab 5, [in insert mode]
+    :tabmove 4         // move the current tab to position 4 [help :tabmove]
+    :tabc 11           // close tab 11
+
+    :set modeline      // display file name in each tabs page
+    :set ls=2
+
+    :set modeline      // display full file name in statusline [:help :statusline]
+    :set statusline=%F
+
+    :y$                                             // copy character from cursor to the end of line  [:help yank]
+    :vaw                                            // highlight word under [:help text-object]
+    :viw                                            // hightlight word under cursor excluding white space[:help text-object]
+    :awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file
+    :kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
+
+    :vim $(grep -l --include="*.java" pattern .)                                                     // vim open all files from grep
+
+    :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers
+    :zf                                                                                             // Create fold under cursor
+    :zd                                                                                             // Delete fold under cursor
+    :5gt                                                                                             // goto tab 5, [in insert mode]
+    :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+    :tabc 11                                                                                        // close tab 11
+
+    :set modeline                                                                                   // display file name in each tabs page
+    :set ls=2
+
+    :set modeline                                                                                   // display full file name in statusline [:help :statusline]
+    :set statusline=%F
+
+    :sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt and direct to norm.txt
+
+    :sed -i -e 's/oldstring/newstring/g' *                                                           // grep all the file *.php search oldstring and replace newstring
+    :find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+    :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
+    :'< and >'                                                                                       // first cursor position/last cursor position in registers in visual mode/selection
+    
+    :echo match("mystring", "st")      // return 2
+    :line(".")                    // line number of cursor
+    :getline(".")                 // get current line #
+    :line("'t")                   // line number of mark t
+    :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
+    :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
+    :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
+    :help debug-mode                   // debug vim script
+    :echo match("mystring", "st")                                                                   // return 2
+    :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
+    :\%V                                                                                             // visual selection block [:help \%V]
+    :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
+    :g/^$/d                             //delete empty line 
+    :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
+    :q: or q/                          // vim command history
+
+    :hi Search guifg=Brown guibg=Gray
+    :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+
+    :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
+    :sort! n                           //reverse sorting
+
+    :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
+    :highlight MyKeyWord guifg=Green 
+    :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+    :set ma                             // set file modifiable on  [:h modifiable]
+
+    :ctrl-]                              //class definition 
+    :ctrl-t                              //back to previous window
+    :echo @%     // def/file.txt
+    :echo expand('%:t')  // file name file.txt
+    :echo expand('%:p')  // full path /abc/def/file.txt
+    :echo expand('%:P:h') // directory only  /abc/def
+    :echo expand('%:p:h:t') // /abc/def->def  [:h expand]
+    :echo fnamemodify('/dog/cat/file.x', ':r') [:h fnamemodify]
+    :findfile    // find file
+    :finddir     // find directory
+    :findwritable    // check file is writable
+    :findreadable    // check file is readable
+    :exp(2)          // e^2
+    :.,$s/^\s*\(\(not\).\)*/\0 end/gc   // line does't contains not, replace with end 
+
+    [git config vimdiff]
+    `[
+        git config merge.tool vimdiff
+        git config merge.conflictstyle diff3
+        git config mergetool.prompt false
+    `]
+    [vim functions]
+    :expand("%:t") [:h expand]
+
+    [Haskell zip and zipWith]
+    :zip::[a]->[b]->[(a,b)]
+    `[   
+        zip [1..3] [1..3]  = [(1,1)(2,2)(3,3)] 
+    `]  
+
+    [Haskell zipWith]
+    :zipWith::(a->b->c)->[a]->[b]->[c]
+    `[
+        list1 = ["/file1.txt", "/fil2.txt"]
+        list2 = ["/tmp/name1.txt", "/tmp/name2.txt"]
+        mapM_ (uncurry copyFile) $ zip list1 list2 
+    `]
+    [Haskell curry]
+    :curry::(a,b)->c->a->b->c
+    `[
+    `]
+
+    [Haskell uncurry]
+    :uncurry::a->b->c->(a,b)->c
+    `[
+        mapM_(uncurry copyFile) $ zip list1 list2 
+    `]
+
+    [Table View Controller]
+    `[
+    - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+        return 1;
+    }
+
+    - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+        return 2;
+    }
+
+
+    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+        static NSString *CellIdentifier = @"Cell432";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewStylePlain reuseIdentifier:CellIdentifier];
+        }
+        if([indexPath section] == 0 && [indexPath row] == 0){
+            cell.textLabel.text = @"Section 0 Row 0";
+        }else if([indexPath section] == 0 && [indexPath row] == 1){
+            cell.textLabel.text = @"Section 1Row 1";
+        }
+        return cell;
+    }
+    `]
+    [How to read Haskell funtion prototype] 
+    `[
+        maybe::b->(a->b)->Maybe a -> b
+
+        f = odd
+        maybe False f (Just 1) -- True
+        maybe False f Nothing  -- False  (default value b)
+
+        fromMaybe::a->Maybe a -> a
+        -- fromMaybe take default value a if a is Nothing(Which a we are talking about) then return default a, 
+        -- otherwise return the value containsed in Maybe 
+
+        fromMaybe "default" (Just "good") -- "good"
+        fromMaybe "evil" Nothing          -- "evil"
+
+        maybeToList::Maybe a -> [a]
+        -- the function return a empty list when given Nothing or a singleton list when not given Nothing 
+        maybeToList (Just 3) -- [a]
+        maybeToList Nothing  -- []
+    `]
+    [Monad in Haskell]
+    This is one of the example from adit.io, it is one of best explanation for >>= 
+    `[
+        Positive x = if x > 0 else (Just "Positive") else Nothing
+    `]
+    [Get background color from Vim Script]
+    `[
+        let color = synIDattr(hlID('Normal'), 'bg#') "[:h synIDattr hlID]
+        if color = "-1" then Normal color group is not defined
+        if color = ""   then the ID of highligh group is not valid 
+
+        Try in Ex Mode
+    `]
+    [Haskell filter]
+    `[
+        filter(\x-> 1 < x && x < 5) [1..20]
+        filter(and.sequence[(1 < x), (x < 5)]) [1..20]
+    `]
+
+    :dog
+     `[    
+import System.IO
+import System.Environment
+import Text.Regex.Posix
+import Text.Regex
+import Data.List 
+import Data.List.Split 
+
+-- split into two lists: odd index list and even index list
+splitList::[String]->([String], [String])
+splitList [] = ([], [])
+splitList [x] = ([x], [])
+splitList (x:y:xs) = (x:xp, y:yp) where (xp, yp) = splitList xs
+
+unwrap::Maybe a -> a
+unwrap Nothing = error "this is nothing from unwrap" 
+unwrap (Just x) = x
+
+codelist = splitRegex(mkRegex "\\[|\\]") "what[code1][code2]"
+
+
+
+style::String->String->String->[String]->[String]
+style pat l r list = map(`op` rep) list 
+                        where op = subRegex $ mkRegex pat 
+                              rep = l ++ match ++ r
+                              match = "\\0"
+
+replace::String->String->[String]->[String]
+replace pat rep list = map (`op` rep) list
+                        where op = subRegex $ mkRegex pat
+
+htmlTab::String->String->[String]->[String]
+htmlTab _ _ [] = []
+htmlTab left right list = map(left ++) $ map (++ right) list
+
+html::String->String->[String]->String
+html open close list = open ++ (unlines list) ++ close
+
+codeHighLight::String->[String]->[String]
+codeHighLight pat list = map(`op` rep) list 
+                where rep = "<span class=\"bracket\">\\1</span>"
+                      op = subRegex $ mkRegex pat
+
+codeCapture::String->String
+codeCapture str = subRegex(mkRegex pat) str rep 
+                    where rep = "<cool>\\1</cool>" 
+                          pat = "(([^`]|`[^[]]*|\n*)*)"
+
+codeBlock::String->String->String->String
+codeBlock open close str = op str rep
+                        where op = subRegex (mkRegex pat)  
+                              rep = open ++ "\\1" ++ close
+                              pat = codeOpen ++ "(([^`]|`[^[]]*|\n*)*)" ++ codeClose --fix it
+                                  where 
+                                        codeOpen = "^[[:space:]]*`\\[[[:space:]]*$"
+                                        codeClose = "[[:space:]]*`\\][[:space:]]*$"
+
+mergeList::[String]->[String]->[String]
+mergeList [] [] = []
+mergeList  l  [] = l 
+mergeList []  r = r 
+mergeList (x:xs) (y:ys) = x:y:mergeList xs ys 
+
+mergeList2::[a]->[a]->Maybe [a]
+mergeList2 [] [] = Just [] 
+mergeList2 (x:xs) (y:ys) = 
+            case mergeList2 xs ys of
+            Just merged -> Just (x:y:merged)
+            Nothing  -> Nothing
+mergeList2 _ _  = Nothing
+
+--codeBlock::String->String->String->String
+--codeBlock open close str = op str rep
+--                        where op = subRegex (mkRegex pat)  
+--                              --rep = open ++ "\\1" ++ close
+--                              rep = open ++ newrep ++ close
+--                              --newrep = subRegex(mkRegex "(\\[)") mstr  "<span class=\"bracket\">\1</span>" 
+--                              --newrep = subRegex(mkRegex "(\\[)") ("aron\1aron2"++mstr) mstr 
+--                              newrep = subRegex(mkRegex "return")  mstr "aron\\1aron\\0aron\0aronaron" 
+--                              where mstr = "\\1"
+--                                    pat = codeOpen ++ "(([^`]|`[^[]]*|\n*)*)" ++ codeClose --fix it
+--                                        where 
+--                                              codeOpen = "^[[:space:]]*`\\[[[:space:]]*$"
+--                                              codeClose = "[[:space:]]*`\\][[:space:]]*$"
+
+lt                      =  "(<)"
+gt                      =  "(>)"
+
+html_lt                 =  "&lt;"
+html_gt                 =  "&gt;"
+
+htmlOpen                =  "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"mycss/style.css\"/></head><body class=\"htmlbg\">"
+htmlClose               =  "</body></html>"
+
+openSpan                =  "<span class=\"keyword\">"
+closeSpan               =  "</span>"
+
+-- //xxx, // xxx
+comment                 =  "//.*$"
+commentOpen             =  "<span class=\"comment\">"
+commentClose            =  "</span>"
+
+-- :xxx
+keyword                 =  "^[[:space:]]*(:[[:graph:]]+)[[:space:]]*"
+
+-- [ xxx ], [xxx]
+titleOpen               =  "<span class=\"tit\">"
+titleClose              =  "</span>"
+title                   =  "^[[:space:]]*\\[[a-zA-Z0-9 ]+\\]"
+
+-- { xxx }, {xxx}
+header                  =  "^[[:space:]]*{[a-zA-Z0-9 ]+}"                                                                       
+headerOpen              =  "<span class =\"header\">"
+headerClose             =  "</span>"
+preOpen                 =  "<pre>"
+preClose                =  "</pre>"
+
+-- 1. , 2.
+numName                 =  "^[[:space:]]*[0-9]+\\.[[:space:]]+"
+spanNumOpen             =  "<span class=\"num\">"
+spanNumCose             =  "</span>"
+
+html_tab                =  "^[[:space:]]*(<[^<>]+>[^<>]*<[[:space:]]*/[^<>]+>.*$)"
+
+--pattern                 = "(\\[|\\]|\\(|\\)|{|}|git|maybe |-&gt;)"
+pattern                 = "(git)"
+
+main = do
+    print("geneHtml input.txt out.txt")
+    [inFile, outFile] <- getArgs
+    handle <- openFile inFile ReadMode
+    contents <- hGetContents handle
+
+    let line      = lines contents
+
+    let r_title   = mkRegex title
+    let r_header  = mkRegex header
+    let r_comment = mkRegex comment
+
+    let list0     = replace lt html_lt line
+    let list1     = replace gt html_gt list0 
+    let list2     = style keyword openSpan closeSpan list1 
+    let list3     = style title titleOpen titleClose list2 
+    let list4     = style comment commentOpen commentClose list3
+    let list5     = style header headerOpen headerClose list4
+    let list6     = style numName spanNumOpen spanNumCose list5
+    let list7     = replace html_tab "\\0<br>" list6
+    let list8     = codeBlock preOpen preClose (unlines list7):[]
+    print $ codeCapture "`[ what is new `]" 
+    --print $ filter(\x-> (isInfixOf "`[" x) || (isInfixOf "`]" x) ) $ splitRegex(mkRegex " |\n") (unlines list6)
+    --let splitcode  = splitRegex(mkRegex "[[:space:]]+`\\[[[:space:]]+|[[:space:]]+`\\][[:space:]]+") (unlines list7)
+    ---let splitcode  = splitRegex(mkRegex "([[:blank:]\n]+`\\[[[:blank:]]*\n)|([[:blank:]\n]+`\\][[:blank:]]*\n)") (unlines list7)
+    let splitcode  = splitRegex(mkRegex "([[:blank:]]+`\\[[[:blank:]]*\n)|([[:blank:]]+`\\][[:blank:]]*\n)") (unlines list7)
+
+    let oddList    = fst $ splitList splitcode
+    let evenList   = snd $ splitList splitcode
+    print evenList
+
+    --let pat        = "(\\[|\\]|\\(|\\)|{|})"
+    let styleCode         = codeHighLight pattern evenList 
+    let finalStyleCode     = map(preOpen ++) $ map(++ preClose) styleCode 
+    print finalStyleCode
+    
+    print "----------------------------------------"
+    print styleCode 
+    print "----------------------------------------"
+    print finalStyleCode
+    print "----------------------------------------"
+    print $ length oddList
+    print $ length styleCode  
+
+    let mergeAllList = mergeList oddList finalStyleCode 
+    print "[================================================="
+    print mergeAllList 
+    print "]================================================="
+    writeFile outFile $ html htmlOpen htmlClose mergeAllList 
+
+    --putStr contents
+    hClose handle
+
+        a`[c
+        a`]c
+        a`]
+        a`[
+        `[k
+        `]k
+    `]  

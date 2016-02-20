@@ -1,71 +1,71 @@
-<html><head><link rel="stylesheet" type="text/css" href="mycss/style.css"/></head><body class="htmlbg"><span class="tit">    [Haskell zip and zipWith]</span><br><span class="keyword">    :zip::[a]-&gt;[b]-&gt;[(a,b)]</span><br>
+<html><head><link rel="stylesheet" type="text/css" href="mycss/style.css"/></head><body class="htmlbg"><br>
 <pre>        zip <span class="bracket">[</span>1..3<span class="bracket">]</span> <span class="bracket">[</span>1..3<span class="bracket">]</span>  = <span class="bracket">[</span><span class="bracket">(</span>1,1<span class="bracket">)</span><span class="bracket">(</span>2,2<span class="bracket">)</span><span class="bracket">(</span>3,3<span class="bracket">)</span><span class="bracket">]</span> 
 </pre>
-<span class="tit">    [Haskell zipWith]</span><br>
-<pre>        zip<span class="bracket">(</span>\x y->x+y<span class="bracket">)</span><span class="bracket">[</span>1, 2<span class="bracket">]</span> <span class="bracket">[</span>3, 4<span class="bracket">]</span>
+<br><span class="tit">    [Haskell zip]</span><br>
+<pre>        zip <span class="bracket">(</span>\x y<span class="bracket">-&gt;</span>x+y<span class="bracket">)</span> <span class="bracket">[</span>1, 2<span class="bracket">]</span> <span class="bracket">[</span>3, 4<span class="bracket">]</span>
         -- output <span class="bracket">[</span>4, 6<span class="bracket">]</span>
 </pre>
-<span class="tit">    [Haskell zipWith]</span><br>
-<pre>        zipWith <span class="bracket">[</span>1, 2<span class="bracket">]</span> <span class="bracket">[</span>3, 4<span class="bracket">]</span>
-        -- output <span class="bracket">[</span><span class="bracket">(</span>1, 3<span class="bracket">)</span>, <span class="bracket">(</span>2, 4<span class="bracket">)</span><span class="bracket">]</span>
-</pre>
-<span class="tit">    [Haskell zipWith]</span><br><span class="keyword">    :zipWith::(a-&gt;b-&gt;c)-&gt;[a]-&gt;[b]-&gt;[c]</span><br>
+ <div class="cen"><img src=image/zip.png width="50%" height="50%"></div> <br><span class="tit">    [Haskell zipWith]</span><br><span class="keyword">    :zipWith::(a-&gt;b-&gt;c)-&gt;[a]-&gt;[b]-&gt;[c]</span><br>
 <pre>        let list1 = <span class="bracket">[</span>1..4<span class="bracket">]</span> 
         let list2 = <span class="bracket">[</span>10..20<span class="bracket">]</span> 
-        zipWith <span class="bracket">(</span>\x y -> x+y<span class="bracket">)</span> list1 list2 
+        zipWith <span class="bracket">(</span>\x y <span class="bracket">-&gt;</span> x+y<span class="bracket">)</span> list1 list2 
 </pre>
-<span class="tit">    [hackell cool stuff]</span><br><span class="keyword">    :myfile::String-&gt;String</span><br><span class="tit">    [Haskell uncurry and mapM_]</span><br><span class="keyword">    :zipWith::(a-&gt;b-&gt;c)-&gt;[a]-&gt;[b]-&gt;[c]</span><br>
+ <div class="cen"><img src=image/zipwith.png width="50%" height="50%"></div> <br><span class="tit">    [Haskell splitRegex]</span><br>
+<pre>        splitRegex<span class="bracket">(</span>mkRegex " "<span class="bracket">)</span> "what is your dog"
+        -- <span class="bracket">[</span>"what", "is", "your", "dog"<span class="bracket">]</span>
+</pre>
+ <div class="cen"><img src=image/splitregex.png width="50%" height="50%"></div> <br><span class="tit">    [Haskell subRegex]</span><br><span class="keyword">    :subRegex::Regex-&gt;input-&gt;replacement-&gt;output</span><br>
+<pre>        subRegex<span class="bracket">(</span>mkRegex "/dog/"<span class="bracket">)</span> "the dog" "cat\0"
+        -- output "that catdog"
+</pre>
+<br><span class="tit">    [Haskell uncurry and mapM_]</span><br><span class="keyword">    :zipWith::(a-&gt;b-&gt;c)-&gt;[a]-&gt;[b]-&gt;[c]</span><br>
 <pre>        let list1 = <span class="bracket">[</span>"/file1.txt", "/fil2.txt"<span class="bracket">]</span>
         let list2 = <span class="bracket">[</span>"/tmp/name1.txt", "/tmp/name2.txt"<span class="bracket">]</span>
         mapM_ <span class="bracket">(</span>uncurry copyFile<span class="bracket">)</span> $ zip list1 list2 
 </pre>
-<span class="tit">    [Haskell curry]</span><br><span class="keyword">    :curry::(a,b)-&gt;c-&gt;a-&gt;b-&gt;c</span><br>    convert uncurried function to curried function 
-<pre>        let c = \<span class="bracket">(</span>x, y<span class="bracket">)</span>-> x + y
+    <br><span class="tit">    [Haskell curry]</span><br><span class="keyword">    :curry::(a,b)-&gt;c-&gt;a-&gt;b-&gt;c</span><br>    convert uncurried function to curried function 
+<pre>        let c = \<span class="bracket">(</span>x, y<span class="bracket">)</span><span class="bracket">-&gt;</span> x + y
         curry c 1 2   -- output 3 
 </pre>
-<span class="tit">    [Haskell uncurry]</span><br><span class="keyword">    :uncurry::a-&gt;b-&gt;c-&gt;(a,b)-&gt;c</span><br>    convert curried function to uncurried function
+<br><span class="tit">    [Haskell uncurry]</span><br><span class="keyword">    :uncurry::a-&gt;b-&gt;c-&gt;(a,b)-&gt;c</span><br>    convert curried function to uncurried function
 <pre>        mapM_<span class="bracket">(</span>uncurry copyFile<span class="bracket">)</span> $ zip list1 list2 
-        let un = \x y -> x*y
+        let un = \x y <span class="bracket">-&gt;</span> x*y
         uncurry un <span class="bracket">(</span>2, 3<span class="bracket">)</span>   -- output 6
 </pre>
-<span class="tit">    [Haskell subRegex]</span><br><span class="keyword">    :subRegex::Regex-&gt;input-&gt;replacement-&gt;output</span><br>
-<pre>        subRegex<span class="bracket">(</span>mkRegex "/dog/"<span class="bracket">)</span> "the dog" "cat\0"
-        -- output "that catdog"
-</pre>
-<span class="tit">    [Haskell merge two lists]</span><br>
-<pre>        <span class="bracket">mergeList::</span><span class="bracket">[</span>String<span class="bracket">]</span>-><span class="bracket">[</span>String<span class="bracket">]</span>-><span class="bracket">[</span>String<span class="bracket">]</span>
+<br><span class="tit">    [Haskell merge two lists]</span><br>
+<pre>        <span class="bracket">mergeList::</span><span class="bracket">[</span>String<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>String<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>String<span class="bracket">]</span>
         mergeList <span class="bracket">[</span><span class="bracket">]</span> <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
         mergeList  l  <span class="bracket">[</span><span class="bracket">]</span> = l 
         mergeList <span class="bracket">[</span><span class="bracket">]</span>  r = r 
         mergeList <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span> = x:y:mergeList xs ys
 </pre>
-<span class="tit">    [Haskell merge two sorted lists]</span><br>
-<pre>        <span class="bracket">mergeSortList::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>
+<br><span class="tit">    [Haskell merge two sorted lists]</span><br>
+<pre>        <span class="bracket">mergeSortList::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span>
         mergeSortList <span class="bracket">[</span><span class="bracket">]</span> r          = r
         mergeSortList l <span class="bracket">[</span><span class="bracket">]</span>          = l
-        mergeSortList <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span> = if x < y then x:<span class="bracket">(</span>mergeSortList xs <span class="bracket">(</span>y:ys<span class="bracket">)</span><span class="bracket">)</span> else y:<span class="bracket">(</span>mergeSortList <span class="bracket">(</span>x:xs<span class="bracket">)</span> ys<span class="bracket">)</span>
+        mergeSortList <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span> = if x &lt; y then x:<span class="bracket">(</span>mergeSortList xs <span class="bracket">(</span>y:ys<span class="bracket">)</span><span class="bracket">)</span> else y:<span class="bracket">(</span>mergeSortList <span class="bracket">(</span>x:xs<span class="bracket">)</span> ys<span class="bracket">)</span>
 </pre>
-<span class="tit">    [Haskell merge two lists with Maybe]</span><br>
-<pre>        <span class="bracket">mergeList2::</span><span class="bracket">[</span>a<span class="bracket">]</span>-><span class="bracket">[</span>a<span class="bracket">]</span>->Maybe <span class="bracket">[</span>a<span class="bracket">]</span>
+<br><span class="tit">    [Haskell merge two lists with Maybe]</span><br>
+<pre>        <span class="bracket">mergeList2::</span><span class="bracket">[</span>a<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>a<span class="bracket">]</span><span class="bracket">-&gt;</span>Maybe <span class="bracket">[</span>a<span class="bracket">]</span>
         mergeList2 <span class="bracket">[</span><span class="bracket">]</span> <span class="bracket">[</span><span class="bracket">]</span> = Just <span class="bracket">[</span><span class="bracket">]</span> 
         mergeList2 <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span> = 
                     case mergeList2 xs ys of
-                    Just merged -> Just <span class="bracket">(</span>x:y:merged<span class="bracket">)</span>
-                    Nothing  -> Nothing
+                    Just merged <span class="bracket">-&gt;</span> Just <span class="bracket">(</span>x:y:merged<span class="bracket">)</span>
+                    Nothing  <span class="bracket">-&gt;</span> Nothing
         mergeList2 _ _  = Nothing
 </pre>
-<span class="tit">    [Haskell Quick Sort]</span><br>
-<pre>        <span class="bracket">quickSort::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>
+<br><span class="tit">    [Haskell Quick Sort]</span><br>
+<pre>        <span class="bracket">quickSort::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span>
         quickSort <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
         quickSort <span class="bracket">[</span>x<span class="bracket">]</span> = <span class="bracket">[</span>x<span class="bracket">]</span>
         quickSort l = quickSort<span class="bracket">(</span>left<span class="bracket">)</span> ++ p:<span class="bracket">[</span><span class="bracket">]</span> ++ quickSort right 
                             where
-                                left =  <span class="bracket">[</span>x | x <- init l, x < p<span class="bracket">]</span>
-                                right = <span class="bracket">[</span>x | x <- init l, x >= p<span class="bracket">]</span>
+                                left =  <span class="bracket">[</span>x | x &lt;- init l, x &lt; p<span class="bracket">]</span>
+                                right = <span class="bracket">[</span>x | x &lt;- init l, x &gt;= p<span class="bracket">]</span>
                                 p = last l 
 </pre>
-<span class="tit">    [Haskell Merge Sort]</span><br>
-<pre>        <span class="bracket">mergeSort::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>
+<br><span class="tit">    [Haskell Merge Sort]</span><br>
+<pre>        <span class="bracket">mergeSort::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span>
         mergeSort <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
         mergeSort <span class="bracket">[</span>x<span class="bracket">]</span> = <span class="bracket">[</span>x<span class="bracket">]</span>
         mergeSort l = merge<span class="bracket">(</span>mergeSort left<span class="bracket">)</span> <span class="bracket">(</span>mergeSort right<span class="bracket">)</span> 
@@ -74,17 +74,17 @@
                             left = take half l
                             right = drop half l  
 
-                            <span class="bracket">merge::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">[</span>Int<span class="bracket">]</span>
+                            <span class="bracket">merge::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span>
                             merge <span class="bracket">[</span><span class="bracket">]</span> r = r
                             merge l <span class="bracket">[</span><span class="bracket">]</span> = l
-                            merge <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span>  = if x < y
+                            merge <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span>  = if x &lt; y
                                                     then 
                                                        x:merge xs <span class="bracket">(</span>y:ys<span class="bracket">)</span> 
                                                     else
                                                        y:merge <span class="bracket">(</span>x:xs<span class="bracket">)</span> ys 
 </pre>
-<span class="tit">    [Haskell split]</span><br>
-<pre>        <span class="bracket">split::</span><span class="bracket">[</span>Int<span class="bracket">]</span>-><span class="bracket">(</span><span class="bracket">[</span>Int<span class="bracket">]</span>, <span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">)</span>
+<br><br><span class="tit">    [Haskell split]</span><br>
+<pre>        <span class="bracket">split::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">(</span><span class="bracket">[</span>Int<span class="bracket">]</span>, <span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">)</span>
         split <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">(</span><span class="bracket">[</span><span class="bracket">]</span>, <span class="bracket">[</span><span class="bracket">]</span><span class="bracket">)</span> 
         split <span class="bracket">[</span>x<span class="bracket">]</span> = <span class="bracket">(</span><span class="bracket">[</span>x<span class="bracket">]</span>, <span class="bracket">[</span><span class="bracket">]</span><span class="bracket">)</span>
         split <span class="bracket">(</span>x:y:rest<span class="bracket">)</span> = <span class="bracket">(</span>x:xs, y:xy<span class="bracket">)</span>   
@@ -96,37 +96,37 @@
 <span class="tit">    [Haskell check array]</span><br>
 <pre>        check sum<span class="bracket">(</span>x_0, x_1,...,x_k<span class="bracket">)</span> == sum<span class="bracket">(</span>x_k+1,...,x_n<span class="bracket">)</span>
 
-        <span class="bracket">checkSum::</span><span class="bracket">[</span>Int<span class="bracket">]</span>->Int->Bool
+        <span class="bracket">checkSum::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span>Int<span class="bracket">-&gt;</span>Bool
         checkSum <span class="bracket">[</span><span class="bracket">]</span>  _ = True
         checkSum <span class="bracket">[</span>x<span class="bracket">]</span> _ = x    =  = 0
         checkSum l inx | sum<span class="bracket">(</span>take inx l<span class="bracket">)</span> == sum<span class="bracket">(</span>drop inx l<span class="bracket">)</span> = True
-                       | inx <= length l = checkSum l <span class="bracket">(</span>inx+1<span class="bracket">)</span>
+                       | inx &lt;= length l = checkSum l <span class="bracket">(</span>inx+1<span class="bracket">)</span>
                        | otherwise       = False
 
 </pre>
-<span class="tit">    [Haskell check array 2]</span><br>
+<br><span class="tit">    [Haskell check array 2]</span><br>
 <pre>        -- check sum<span class="bracket">(</span>x_0, x_1,...,x_k<span class="bracket">)</span> == sum<span class="bracket">(</span>x_k+1,...,x_n<span class="bracket">)</span>
 
         -- import Data.List<span class="bracket">(</span>inits, tails<span class="bracket">)</span>
-        <span class="bracket">checkSum2::</span><span class="bracket">[</span>Int<span class="bracket">]</span>->Bool
-        checkSum2 xs | len > 0 = True 
+        <span class="bracket">checkSum2::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span>Bool
+        checkSum2 xs | len &gt; 0 = True 
                     | otherwise = False
                     where
-                        len = length $ filter<span class="bracket">(</span>\x-> sum <span class="bracket">(</span>fst x<span class="bracket">)</span> == sum <span class="bracket">(</span>snd x<span class="bracket">)</span><span class="bracket">)</span> $ splits xs
-                        <span class="bracket">splits::</span><span class="bracket">[</span>a<span class="bracket">]</span> -> <span class="bracket">[</span><span class="bracket">(</span><span class="bracket">[</span>a<span class="bracket">]</span>, <span class="bracket">[</span>a<span class="bracket">]</span><span class="bracket">)</span><span class="bracket">]</span>
+                        len = length $ filter<span class="bracket">(</span>\x<span class="bracket">-&gt;</span> sum <span class="bracket">(</span>fst x<span class="bracket">)</span> == sum <span class="bracket">(</span>snd x<span class="bracket">)</span><span class="bracket">)</span> $ splits xs
+                        <span class="bracket">splits::</span><span class="bracket">[</span>a<span class="bracket">]</span> <span class="bracket">-&gt;</span> <span class="bracket">[</span><span class="bracket">(</span><span class="bracket">[</span>a<span class="bracket">]</span>, <span class="bracket">[</span>a<span class="bracket">]</span><span class="bracket">)</span><span class="bracket">]</span>
                         splits xs = zip <span class="bracket">(</span>inits xs<span class="bracket">)</span> <span class="bracket">(</span>tails xs<span class="bracket">)</span> 
 
 </pre>
-<span class="tit">    [Haskell check array 3]</span><br>
+<br><span class="tit">    [Haskell check array 3]</span><br>
 <pre>        -- check sum<span class="bracket">(</span>x_0, x_1,...,x_k<span class="bracket">)</span> == sum<span class="bracket">(</span>x_k+1,...,x_n<span class="bracket">)</span>
 
-        <span class="bracket">checkSum4::</span><span class="bracket">[</span>Int<span class="bracket">]</span> -> Bool
+        <span class="bracket">checkSum4::</span><span class="bracket">[</span>Int<span class="bracket">]</span> <span class="bracket">-&gt;</span> Bool
         checkSum4 a = go a 0 <span class="bracket">(</span>sum a<span class="bracket">)</span>
            where go <span class="bracket">[</span><span class="bracket">]</span> left right = left==right
                  go <span class="bracket">(</span>x:xs<span class="bracket">)</span> left right | left==right = True
                                       | otherwise = go xs <span class="bracket">(</span>left+x<span class="bracket">)</span> <span class="bracket">(</span>right-x<span class="bracket">)</span>
 </pre>
- <div class="cen"><img src=image/manhattan.png width="60%" height="60%"></div> <span class="tit">    [Haskell Matrix Multiplication]</span><br>
+<br><span class="tit">    [Haskell Matrix Multiplication]</span><br>
 <pre>        m1 = <span class="bracket">[</span><span class="bracket">[</span>1, 2<span class="bracket">]</span>, 
               <span class="bracket">[</span>3, 4<span class="bracket">]</span>
              <span class="bracket">]</span>
@@ -134,20 +134,664 @@
               <span class="bracket">[</span>8, 9<span class="bracket">]</span>
              <span class="bracket">]</span>
 
-        <span class="bracket">mmult::</span><span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> -> <span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> -> <span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> 
-        mmult a b = <span class="bracket">[</span> <span class="bracket">[</span> sum $ zipWith <span class="bracket">(</span>*<span class="bracket">)</span> ar bc | bc <- <span class="bracket">(</span>transpose b<span class="bracket">)</span> <span class="bracket">]</span> | ar <- a <span class="bracket">]</span>
+        <span class="bracket">mmult::</span><span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> <span class="bracket">-&gt;</span> <span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> <span class="bracket">-&gt;</span> <span class="bracket">[</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">]</span> 
+        mmult a b = <span class="bracket">[</span> <span class="bracket">[</span> sum $ zipWith <span class="bracket">(</span>*<span class="bracket">)</span> ar bc | bc &lt;- <span class="bracket">(</span>transpose b<span class="bracket">)</span> <span class="bracket">]</span> | ar &lt;- a <span class="bracket">]</span>
 </pre>
- <span class="tit">    [vim command]</span><br><span class="keyword">    :/\(if\)\ze\(then\)         </span><span class="comment">// if follows then "[if]then"</span><br><span class="keyword">    :/\(if\)\zs\(then\)         </span><span class="comment">// then starts with if "if[then]" </span><br><span class="tit">    [Vim Script get background color]</span><br>
+     <div class="cen"><img src=image/manhattan.png width="50%" height="50%"></div> <br><span class="tit">    [Spiral Array]</span><br>
+<pre>        public static void spiralArray<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span><span class="bracket">[</span><span class="bracket">]</span> array, int k<span class="bracket">)</span><span class="bracket">{</span>
+        if<span class="bracket">(</span>array != null<span class="bracket">)</span><span class="bracket">{</span>
+            int hlen= array.length;
+            int wlen= array<span class="bracket">[</span>0<span class="bracket">]</span>.length;
+            
+            // both size are even
+            if<span class="bracket">(</span>k &lt; hlen/2 && k &lt; wlen/2<span class="bracket">)</span><span class="bracket">{</span>
+
+                // one or two side are odd
+                if<span class="bracket">(</span>hlen - 2*k == 1<span class="bracket">)</span><span class="bracket">{</span>
+                    for<span class="bracket">(</span>int i=k; i&lt;wlen-k; i++<span class="bracket">)</span><span class="bracket">{</span>
+                        System.out.println<span class="bracket">(</span>array<span class="bracket">[</span>k<span class="bracket">]</span><span class="bracket">[</span>i<span class="bracket">]</span><span class="bracket">)</span>;
+                    <span class="bracket">}</span>
+                <span class="bracket">}</span>else if<span class="bracket">(</span>wlen - 2*k ==1<span class="bracket">)</span><span class="bracket">{</span>
+                    for<span class="bracket">(</span>int i=k; i&lt;hlen-k; i++<span class="bracket">)</span><span class="bracket">{</span>
+                        System.out.println<span class="bracket">(</span>array<span class="bracket">[</span>i<span class="bracket">]</span><span class="bracket">[</span>k<span class="bracket">]</span><span class="bracket">)</span>;
+                    <span class="bracket">}</span>
+                <span class="bracket">}</span>else<span class="bracket">{</span>
+                    for<span class="bracket">(</span>int w=k; w&lt;wlen-1-k; w++<span class="bracket">)</span><span class="bracket">{</span>
+                        System.out.println<span class="bracket">(</span>array<span class="bracket">[</span>k<span class="bracket">]</span><span class="bracket">[</span>w<span class="bracket">]</span><span class="bracket">)</span>;
+                    <span class="bracket">}</span>
+                    for<span class="bracket">(</span>int h=k; h&lt;hlen-1-k; h++<span class="bracket">)</span><span class="bracket">{</span>
+                        System.out.println<span class="bracket">(</span>array<span class="bracket">[</span>h<span class="bracket">]</span><span class="bracket">[</span>wlen-1-k<span class="bracket">]</span><span class="bracket">)</span>;
+                    <span class="bracket">}</span>
+                    for<span class="bracket">(</span>int w=k; w&lt;wlen-1-k; w++<span class="bracket">)</span><span class="bracket">{</span>
+                        System.out.println<span class="bracket">(</span>array<span class="bracket">[</span>hlen-1-k<span class="bracket">]</span><span class="bracket">[</span>wlen-1-w<span class="bracket">]</span><span class="bracket">)</span>;
+                    <span class="bracket">}</span>
+                    for<span class="bracket">(</span>int h=k; h&lt;hlen-1-k; h++<span class="bracket">)</span><span class="bracket">{</span>
+                        System.out.println<span class="bracket">(</span>array<span class="bracket">[</span>hlen-1-h<span class="bracket">]</span><span class="bracket">[</span>k<span class="bracket">]</span><span class="bracket">)</span>;
+                    <span class="bracket">}</span>
+                    spiralArray<span class="bracket">(</span>array, k+1<span class="bracket">)</span>;
+                <span class="bracket">}</span>
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+      <span class="bracket">}</span>
+</pre>
+ <div class="cen"><img src=image/spiral.png width="50%" height="50%"></div>  <div class="cen"><img src=image/spiral2.png width="50%" height="50%"></div>  <div class="cen"><img src=image/onion.png width="50%" height="50%"></div> <br><span class="tit">    [Is Binary Search Tree Algorithm]</span><br> <div class="cen"><img src=image/isBST.png width="50%" height="50%"></div> 
+<pre>        public static boolean isBST<span class="bracket">(</span>Node r<span class="bracket">)</span>
+        <span class="bracket">{</span>
+            if<span class="bracket">(</span>r != null<span class="bracket">)</span>
+            <span class="bracket">{</span>
+                if<span class="bracket">(</span>!isBST<span class="bracket">(</span>r.left<span class="bracket">)</span><span class="bracket">)</span>
+                    return false;
+                if<span class="bracket">(</span>prev != null && prev.data &gt;= r.data<span class="bracket">)</span>
+                    return false;
+                prev = r;
+                if<span class="bracket">(</span>!isBST<span class="bracket">(</span>r.right<span class="bracket">)</span><span class="bracket">)</span>
+                    return false;
+            <span class="bracket">}</span>
+            return true;
+        <span class="bracket">}</span>
+
+        <span class="bracket">[</span>9 p=null
+          <span class="bracket">[</span>7 p=null
+            <span class="bracket">[</span>4 p=null
+              <span class="bracket">[</span><span class="bracket">]</span>
+              <span class="bracket">(</span>4, null<span class="bracket">)</span>
+              p = r
+              <span class="bracket">[</span> p<span class="bracket">]</span>
+            <span class="bracket">]</span>
+            <span class="bracket">(</span>7, null<span class="bracket">)</span>
+            p = r = 7
+            <span class="bracket">[</span>8 p=7
+              <span class="bracket">[</span><span class="bracket">]</span>
+              <span class="bracket">(</span>8, p=7<span class="bracket">)</span>
+              p = r = 8
+              <span class="bracket">[</span> p=8<span class="bracket">]</span>
+            <span class="bracket">]</span>
+          <span class="bracket">]</span>
+          <span class="bracket">(</span>9, p=null<span class="bracket">)</span>
+          p = r = 9
+          <span class="bracket">[</span>12 p=9
+            <span class="bracket">[</span>11 p=9
+              <span class="bracket">[</span><span class="bracket">]</span>
+              <span class="bracket">(</span>11, p=9<span class="bracket">)</span>
+              p = r = 11
+              <span class="bracket">[</span> p=11<span class="bracket">]</span>
+            <span class="bracket">]</span>
+            <span class="bracket">(</span>12, p=9<span class="bracket">)</span>
+            p = r = 12
+            <span class="bracket">[</span>13 p=12
+              <span class="bracket">[</span><span class="bracket">]</span>
+              <span class="bracket">(</span>13, p=12<span class="bracket">)</span>
+              p = r = 13
+              <span class="bracket">[</span> p=13<span class="bracket">]</span>
+            <span class="bracket">]</span>
+          <span class="bracket">]</span>
+        <span class="bracket">]</span>
+</pre>
+<br><span class="tit">    [Java Algorithm]</span><br>    Given a binary tree, find all the nodes that k distance from the root
+<pre>        public static void kdistance<span class="bracket">(</span>Node r, int k<span class="bracket">)</span><span class="bracket">{</span>
+            if<span class="bracket">(</span>r != null<span class="bracket">)</span><span class="bracket">{</span>
+                if<span class="bracket">(</span>k == 0<span class="bracket">)</span>
+                    System.out.println<span class="bracket">(</span>r.data<span class="bracket">)</span>;
+                else<span class="bracket">{</span>
+                    kdistance<span class="bracket">(</span>r.left, k-1<span class="bracket">)</span>;
+                    kdistance<span class="bracket">(</span>r.right, k-1<span class="bracket">)</span>;
+                <span class="bracket">}</span>
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+</pre>
+ <div class="cen"><img src=image/kdistance.png width="50%" height="50%"></div> <br><span class="tit">    [Increasing Continuous Array]</span><br> <div class="cen"><img src=image/continuousarray.png width="50%" height="50%"></div> <br><span class="tit">    [Maximum Continuous Sum]</span><br> <div class="cen"><img src=image/maxcontinuoussum.png width="50%" height="50%"></div> <br><span class="tit">    [Continuous Blocks]</span><br> <div class="cen"><img src=image/continuousblock.png width="50%" height="50%"></div> <br><span class="tit">    [Java Quick Sort]</span><br>
+<pre>        public static void quickSort<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> arr, int lo, int hi<span class="bracket">)</span><span class="bracket">{</span>
+            if<span class="bracket">(</span>lo &lt; hi<span class="bracket">)</span><span class="bracket">{</span>
+                int p = partition<span class="bracket">(</span>arr, lo, hi<span class="bracket">)</span>;
+                quickSort<span class="bracket">(</span>arr, lo, p-1<span class="bracket">)</span>;
+                quickSort<span class="bracket">(</span>arr, p+1, hi<span class="bracket">)</span>;
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+        public static int partition<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> arr, int lo, int hi<span class="bracket">)</span><span class="bracket">{</span>
+            int len = hi - lo + 1;
+            int top = lo;
+            if<span class="bracket">(</span>lo &lt; hi<span class="bracket">)</span><span class="bracket">{</span>
+                int pivot = arr<span class="bracket">[</span>hi<span class="bracket">]</span>;
+                for<span class="bracket">(</span>int i=lo; i&lt;len; i++<span class="bracket">)</span><span class="bracket">{</span>
+                    if<span class="bracket">(</span>arr<span class="bracket">[</span>i<span class="bracket">]</span> &lt; pivot<span class="bracket">)</span><span class="bracket">{</span>  
+                        swap<span class="bracket">(</span>arr, top, i<span class="bracket">)</span>;
+                        top++;
+                    <span class="bracket">}</span> 
+                <span class="bracket">}</span>
+                swap<span class="bracket">(</span>arr, top, hi<span class="bracket">)</span>;
+            <span class="bracket">}</span>
+            return top;
+        <span class="bracket">}</span>
+        public static void swap<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> arr, int i, int j<span class="bracket">)</span><span class="bracket">{</span>
+            int tmp  = arr<span class="bracket">[</span>i<span class="bracket">]</span>;
+            arr<span class="bracket">[</span>i<span class="bracket">]</span> = arr<span class="bracket">[</span>j<span class="bracket">]</span>;
+            arr<span class="bracket">[</span>j<span class="bracket">]</span> = tmp;
+        <span class="bracket">}</span>
+</pre>
+ <div class="cen"><img src=image/partition1.png width="50%" height="50%"></div> <br><span class="tit">    [Java Kth Median Algorithm]</span><br>
+<pre>        //Find the kth median element in a unsorted array
+        //Return index for the kth smaller element
+        //Otherwise return -1 if k is invalid  
+        public static int modifiedQuickSort<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> array, int lo, int hi, int k<span class="bracket">)</span>
+        <span class="bracket">{</span>
+            if<span class="bracket">(</span>k &lt;= hi - lo + 1<span class="bracket">)</span> 
+            <span class="bracket">{</span>
+                if<span class="bracket">(</span>hi == lo && k == 1<span class="bracket">)</span>
+                    return lo;
+                else<span class="bracket">{</span>
+                    int pindex = partition<span class="bracket">(</span>array, lo, hi<span class="bracket">)</span>;
+                    int leftLen = pindex - lo;
+                    int rightLen = hi - pindex;
+                    if<span class="bracket">(</span>pindex + 1 &gt; k<span class="bracket">)</span> 
+                        return modifiedQuickSort<span class="bracket">(</span>array, lo, pindex-1, k<span class="bracket">)</span>;
+                    else if<span class="bracket">(</span>pindex + 1 &lt; k<span class="bracket">)</span>
+                        return modifiedQuickSort<span class="bracket">(</span>array, pindex+1, hi, k - <span class="bracket">(</span>leftLen+1<span class="bracket">)</span><span class="bracket">)</span>;
+                    else 
+                        return pindex;
+                <span class="bracket">}</span>
+            <span class="bracket">}</span>
+            return -1;
+        <span class="bracket">}</span>
+
+        //use modified quicksort algorithm to find the kth median element
+        //partition an array to two parts: left_array &lt; pivot &lt; right_array
+        public static int partition<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> array, int lo, int hi<span class="bracket">)</span>
+        <span class="bracket">{</span>
+            int top = lo;
+            if<span class="bracket">(</span>array != null<span class="bracket">)</span>
+            <span class="bracket">{</span>
+                int pivot = array<span class="bracket">[</span>hi<span class="bracket">]</span>;
+                for<span class="bracket">(</span>int i=lo; i&lt;=hi; i++<span class="bracket">)</span>
+                <span class="bracket">{</span>
+                    if<span class="bracket">(</span>array<span class="bracket">[</span>i<span class="bracket">]</span> &lt; pivot<span class="bracket">)</span>
+                    <span class="bracket">{</span>
+                        swap<span class="bracket">(</span>array, i, top<span class="bracket">)</span>;
+                        top++;
+                    <span class="bracket">}</span>
+                <span class="bracket">}</span>
+                swap<span class="bracket">(</span>array, top, hi<span class="bracket">)</span>; 
+            <span class="bracket">}</span>
+            return top;
+        <span class="bracket">}</span> 
+</pre>
+ <div class="cen"><img src=image/kthmedian.png width="50%" height="50%"></div> <br><span class="tit">    [Java Data Structrue]</span><br>
+<pre>        int<span class="bracket">[</span><span class="bracket">]</span> array     = <span class="bracket">{</span>1, 2, 3<span class="bracket">}</span>;
+        int<span class="bracket">[</span><span class="bracket">]</span><span class="bracket">[</span><span class="bracket">]</span>  array2 = <span class="bracket">{</span><span class="bracket">{</span>1, 2, 3<span class="bracket">}</span>,
+                           <span class="bracket">{</span>4, 5, 6<span class="bracket">}</span><span class="bracket">}</span>;
+        // ArrayList
+        ArrayList&lt;String&gt; alist = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>; 
+        alist.add<span class="bracket">(</span>"dog"<span class="bracket">)</span>;
+        alist.add<span class="bracket">(</span>"cat"<span class="bracket">)</span>;
+
+        // ArrayList 2D
+        ArrayList&lt;ArrayList&lt;String&gt;&gt; list2d = new ArrayList&lt;ArrayList&lt;String&gt;&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        list2d.add<span class="bracket">(</span>alist<span class="bracket">)</span>;
+
+        // List
+        List&lt;String&gt; list = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        list.add<span class="bracket">(</span>"eloberate"<span class="bracket">)</span>;
+        list.add<span class="bracket">(</span>"continue"<span class="bracket">)</span>;
+        list.add<span class="bracket">(</span>"continuous"<span class="bracket">)</span>;
+
+        // Vector
+        Vector&lt;String&gt; vector = new Vector&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        vector.add<span class="bracket">(</span>"jobs"<span class="bracket">)</span>;
+        vector.add<span class="bracket">(</span>"career"<span class="bracket">)</span>;
+        vector.add<span class="bracket">(</span>"motivation"<span class="bracket">)</span>;
+        vector.add<span class="bracket">(</span>"ambition"<span class="bracket">)</span>;
+
+        // LinkedList
+        LinkedList&lt;Integer&gt; linkedList = new LinkedList&lt;Integer&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        linkedList.add<span class="bracket">(</span>1<span class="bracket">)</span>;
+        linkedList.add<span class="bracket">(</span>2<span class="bracket">)</span>;
+
+        // Queue
+        Queue&lt;Integer&gt; queue = new LinkedList&lt;Integer&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        queue.add<span class="bracket">(</span>1<span class="bracket">)</span>;
+        queue.add<span class="bracket">(</span>2<span class="bracket">)</span>;
+        queue.remove<span class="bracket">(</span><span class="bracket">)</span>;
+        if<span class="bracket">(</span>queue.peek<span class="bracket">(</span><span class="bracket">)</span> == 2<span class="bracket">)</span>
+            System.out.println<span class="bracket">(</span>"top element is :" + 2<span class="bracket">)</span>;  
+
+        // LinkedBlockingDeque
+        // blocking, use lock in the implementation
+        Deque&lt;String&gt; blockingDeque = new LinkedBlockingDeque&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        blockingDeque.addFirst<span class="bracket">(</span>"first"<span class="bracket">)</span>;
+        blockingDeque.addLast<span class="bracket">(</span>"last"<span class="bracket">)</span>;
+
+        // ConcurrentLinkedDeque
+        // non-blocking
+        Deque&lt;String&gt; concurrentDeque = new ConcurrentLinkedDeque&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        concurrentDeque.addFirst<span class="bracket">(</span>"first"<span class="bracket">)</span>;
+        concurrentDeque.addLast<span class="bracket">(</span>"last"<span class="bracket">)</span>;
+
+        // HashMap
+        Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        map.put<span class="bracket">(</span>"cat", 1<span class="bracket">)</span>;
+        map.put<span class="bracket">(</span>"dog", 2<span class="bracket">)</span>;
+
+        String key = "cat";
+        Integer value = map.get<span class="bracket">(</span>key<span class="bracket">)</span>;
+        if<span class="bracket">(</span>value != null<span class="bracket">)</span><span class="bracket">{</span>
+            value = map.get<span class="bracket">(</span>key<span class="bracket">)</span>;
+            System.out.println<span class="bracket">(</span>"key=" + key + " value=" + value<span class="bracket">)</span>; 
+        <span class="bracket">}</span>
+
+        if<span class="bracket">(</span>map.containsKey<span class="bracket">(</span>key<span class="bracket">)</span><span class="bracket">)</span>
+            System.out.println<span class="bracket">(</span>"map contains key=" + key<span class="bracket">)</span>; 
+
+        // List as Value in HashMap
+        Map&lt;String, List&lt;String&gt;&gt; mapList = new HashMap&lt;String, List&lt;String&gt;&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        mapList.put<span class="bracket">(</span>"1", Arrays.asList<span class="bracket">(</span>"dog", "cat", "cow"<span class="bracket">)</span><span class="bracket">)</span>;
+        mapList.put<span class="bracket">(</span>"2", Arrays.asList<span class="bracket">(</span>"C++", "Java", "Haskell"<span class="bracket">)</span><span class="bracket">)</span>;
+        mapList.put<span class="bracket">(</span>"3", Arrays.asList<span class="bracket">(</span>"Scala", "Python", "Ruby"<span class="bracket">)</span><span class="bracket">)</span>;
+
+        for<span class="bracket">(</span>Map.Entry&lt;String, List&lt;String&gt;&gt; entry: mapList.entrySet<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span><span class="bracket">{</span>
+            String myKey = entry.getKey<span class="bracket">(</span><span class="bracket">)</span>;
+            List&lt;String&gt; myList = entry.getValue<span class="bracket">(</span><span class="bracket">)</span>;
+            for<span class="bracket">(</span>String elem: myList<span class="bracket">)</span><span class="bracket">{</span>
+                System.out.println<span class="bracket">(</span>"myKey=" + myKey + " list=" + elem<span class="bracket">)</span>; 
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+
+        if<span class="bracket">(</span>mapList.containsKey<span class="bracket">(</span>"key"<span class="bracket">)</span><span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>"contains key"<span class="bracket">)</span>;
+        <span class="bracket">}</span>
+
+        List&lt;String&gt; list = mapList.get<span class="bracket">(</span>"key"<span class="bracket">)</span>;
+        int size = mapList.size<span class="bracket">(</span><span class="bracket">)</span>;
+        if<span class="bracket">(</span>mapList.containsValue<span class="bracket">(</span>"1"<span class="bracket">)</span><span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>"contains value"<span class="bracket">)</span>;
+        <span class="bracket">}</span>
+
+        List&lt;String&gt; mylist =  mapList.values<span class="bracket">(</span><span class="bracket">)</span>;
+        for<span class="bracket">(</span>String str:mylist<span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>"str=" + str<span class="bracket">)</span>;
+        <span class="bracket">}</span>
+
+
+        // HashSet
+        Set&lt;Integer&gt; set = new HashSet&lt;Integer&gt;<span class="bracket">(</span>Arrays.asList<span class="bracket">(</span>1, 2<span class="bracket">)</span><span class="bracket">)</span>;
+        Integer item = 1;
+        if<span class="bracket">(</span>set.contains<span class="bracket">(</span>item<span class="bracket">)</span><span class="bracket">)</span>
+            System.out.println<span class="bracket">(</span>"set contains element:" + 1<span class="bracket">)</span>;
+
+
+        for<span class="bracket">(</span>Integer n : set<span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>"n=:" + n<span class="bracket">)</span>;
+        <span class="bracket">}</span>
+
+        set.remove<span class="bracket">(</span>item<span class="bracket">)</span>;
+        int size = set.size<span class="bracket">(</span><span class="bracket">)</span>;
+        System.out.println<span class="bracket">(</span>"size =" + set.size<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span>; 
+
+        // iterate set
+        for<span class="bracket">(</span>Integer elem: set<span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>"for elem:=" + elem<span class="bracket">)</span>; 
+        <span class="bracket">}</span>
+
+        // set to array
+        Integer<span class="bracket">[</span><span class="bracket">]</span> array = <span class="bracket">(</span>Integer<span class="bracket">[</span><span class="bracket">]</span><span class="bracket">)</span> set.toArray<span class="bracket">(</span>new Integer<span class="bracket">[</span>set.size<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">]</span><span class="bracket">)</span>;
+        for<span class="bracket">(</span>Integer n: array<span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>"n=:" + n<span class="bracket">)</span>;
+        <span class="bracket">}</span>
+
+        Iterator&lt;Integer&gt; iterator = set.iterator<span class="bracket">(</span><span class="bracket">)</span>;
+        while<span class="bracket">(</span>iterator.hasNext<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>"Iterator elem:=" + iterator.next<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span>; 
+        <span class="bracket">}</span>
+
+        List&lt;String&gt; list1 = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        List&lt;String&gt; list2 = new LinkedList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        List&lt;String&gt; list3 = new Stack&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        List&lt;String&gt; list4 = new Vector&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        Queue&lt;String&gt; queue = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        Queue&lt;String&gt; queue2 = new PriorityQueue&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+</pre>
+<br><span class="tit">    [Xcode]</span><br>
+<pre>        NSUserDefaults only can use NSArray, NSDictionary, NSString, NSData, NSDate, NSNumber<span class="bracket">(</span>intValue/floatValue/boolValue<span class="bracket">)</span>
+        NSUserDefaults returns immutable object event though mutable object is used
+        For custom object, NSCoding protocol has to be implemented in order to use in NSUserDefaults
+</pre>
+<br><span class="tit">    [Xcode NSMutableArray]</span><br>
+<pre>        NSMutableArray* array = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span> initWithCapacity:2<span class="bracket">]</span>;                              // convert int to NSNumber and NSNumber to int
+        <span class="bracket">[</span>array addObject:<span class="bracket">[</span>NSNumber numberWithInt:4<span class="bracket">]</span><span class="bracket">]</span>;
+        <span class="bracket">[</span>array addObject:<span class="bracket">[</span>NSNumber numberWithInt:5<span class="bracket">]</span><span class="bracket">]</span>;
+
+        int x = <span class="bracket">[</span><span class="bracket">[</span>array objectAtIndex:0<span class="bracket">]</span> integerValue<span class="bracket">]</span>;
+        int y = <span class="bracket">[</span><span class="bracket">[</span>array objectAtIndex:1<span class="bracket">]</span> integerValue<span class="bracket">]</span>;
+        --------------------------------------------------------------------------------
+        <span class="bracket">[</span>array removeObjectAtIndex:index<span class="bracket">]</span>;
+        --------------------------------------------------------------------------------
+        <span class="bracket">[</span>array removeAllObjects<span class="bracket">]</span>;
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span> initWithCapacity:2<span class="bracket">]</span>;                              // convert int to NSNumber and NSNumber to int
+        <span class="bracket">[</span>array addObject:@"dog"<span class="bracket">]</span>; 
+        <span class="bracket">[</span>array addObject:@"cat"<span class="bracket">]</span>; 
+        String str0 = <span class="bracket">[</span>array objectAtIndex:0<span class="bracket">]</span>; 
+        String str1 = <span class="bracket">[</span>array objectAtIndex:1<span class="bracket">]</span>; 
+        ================================================================================
+        <span class="bracket">[</span>self.searchBar becomeFirstResponder<span class="bracket">]</span>;
+        <span class="bracket">[</span>self.searchBar resignFirstResponder<span class="bracket">]</span>;
+        NSMutableArray* mutableArray = <span class="bracket">[</span>NSMutableArray arrayWithArray:oldMutableArray<span class="bracket">]</span>;                  // copy mutable array
+        NSUInteger* myNSUInteger   = <span class="bracket">[</span>myNSNumber integerValue<span class="bracket">]</span>;                                          // Convert NSNumber to NSUInteger
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span> initWithCapacity:10<span class="bracket">]</span>;
+        NSMutableArray* arr1 = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span> initWithCapacity:2<span class="bracket">]</span>;
+        NSMutableArray* arr2 = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span> initWithCapacity:2<span class="bracket">]</span>;
+
+        <span class="bracket">[</span>arr1 addObject:@"dog"<span class="bracket">]</span>;
+        <span class="bracket">[</span>arr1 addObject:@"cat"<span class="bracket">]</span>;
+
+        <span class="bracket">[</span>arr2 addObject:@"cat"<span class="bracket">]</span>;
+        <span class="bracket">[</span>arr2 addObject:@"dog"<span class="bracket">]</span>;
+
+        <span class="bracket">[</span>array addObject:arr1<span class="bracket">]</span>;
+        <span class="bracket">[</span>array addObject:arr2<span class="bracket">]</span>;
+        <span class="bracket">[</span>array containsObject:arr1<span class="bracket">]</span>
+        --------------------------------------------------------------------------------
+        <span class="bracket">[</span>arr3 addObject:<span class="bracket">[</span>MyLib NumInt:1<span class="bracket">]</span><span class="bracket">]</span>;
+        <span class="bracket">[</span>arr3 addObject:<span class="bracket">[</span>MyLib NumInt:2<span class="bracket">]</span><span class="bracket">]</span>;
+
+        <span class="bracket">[</span>arr4 addObject:<span class="bracket">[</span>MyLib NumInt:2<span class="bracket">]</span><span class="bracket">]</span>;
+        <span class="bracket">[</span>arr4 addObject:<span class="bracket">[</span>MyLib NumInt:1<span class="bracket">]</span><span class="bracket">]</span>;
+        <span class="bracket">[</span>array2 addObject:arr3<span class="bracket">]</span>;
+        <span class="bracket">[</span>array2 addObject:arr4<span class="bracket">]</span>;
+
+        <span class="bracket">[</span>array2 removeObject:arr3<span class="bracket">]</span>;
+        <span class="bracket">[</span>array2 removeObject:arr4<span class="bracket">]</span>;
+        --------------------------------------------------------------------------------
+        NSMutableArray* arrayNum = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span>initWithObjects:<span class="bracket">[</span>MyLib NumInt:1<span class="bracket">]</span>, <span class="bracket">[</span>MyLib NumInt:2<span class="bracket">]</span>, nil<span class="bracket">]</span>;
+        NSMutableArray* arrayStr = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span>initWithObjects:@"1", @"2", nil<span class="bracket">]</span>;
+        --------------------------------------------------------------------------------
+        NSArray* nsarray        = <span class="bracket">[</span><span class="bracket">[</span>NSArray alloc<span class="bracket">]</span> initWithObjects:@"str1", @"str2", nil<span class="bracket">]</span>;
+        NSMutableArray* muarray = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span>initWithArray:nsarray<span class="bracket">]</span>;
+        NSArray* nsarray1       = <span class="bracket">[</span><span class="bracket">[</span>NSArray alloc<span class="bracket">]</span>initWithArray:nsarray<span class="bracket">]</span>;
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span>initWithCapacity:2<span class="bracket">]</span>; // searchkey: NSMutableArray to NSArray 
+        <span class="bracket">[</span>array addObject:@"dog"<span class="bracket">]</span>;
+        <span class="bracket">[</span>array addObject:@"cat"<span class="bracket">]</span>;
+
+        // NSMutableArray to array
+        NSArray* nsarray = <span class="bracket">[</span>array mutableCopy<span class="bracket">]</span>;
+        for<span class="bracket">(</span>NSString* str in nsarray<span class="bracket">)</span><span class="bracket">{</span>
+            NSLog<span class="bracket">(</span>@"str=<span class="bracket">[</span>%@<span class="bracket">]</span>", str<span class="bracket">)</span>;
+        <span class="bracket">}</span>
+        --------------------------------------------------------------------------------
+        NSUserDefaults* defaultUser = <span class="bracket">[</span>NSUserDefaults standardUserDefaults<span class="bracket">]</span>;
+        NSMutableArray* array = <span class="bracket">[</span>NSMutableArray arrayWithCapacity:2<span class="bracket">]</span>;
+        <span class="bracket">[</span>array addObject:@"1"<span class="bracket">]</span>;
+        <span class="bracket">[</span>array addObject:@"2"<span class="bracket">]</span>;
+        <span class="bracket">[</span>array addObject:@"3"<span class="bracket">]</span>;
+
+        <span class="bracket">[</span>defaultUser setObject:array forKey:@"key"<span class="bracket">]</span>;
+        NSMutableArray* myarray = <span class="bracket">[</span>defaultUser objectForKey:@"key"<span class="bracket">]</span>;
+
+        for<span class="bracket">(</span>NSMutableArray* arr in myarray<span class="bracket">)</span><span class="bracket">{</span>
+            NSLog<span class="bracket">(</span>@"arr=<span class="bracket">[</span>%@<span class="bracket">]</span>", arr<span class="bracket">)</span>;
+        <span class="bracket">}</span>
+        --------------------------------------------------------------------------------
+</pre>
+<br><span class="tit">    [Xcode NSMutableDictionary]</span><br>
+<pre>        NSMutableDictionary* d1 = <span class="bracket">[</span><span class="bracket">[</span>NSMutableDictionary alloc<span class="bracket">]</span>initWithObjectsAndKeys:@"bg1.png",          @"bg",
+                                                                        @"color_zero",      @"color_zero",
+                                                                        @"color_non_zero",  @"color_non_zero",
+                                                                        @"color_merge",     @"color_merge",
+                                                                        @"color_stroke",    @"color_stroke",
+                                                                        nil<span class="bracket">]</span>;
+
+        NSMutableDictionary* d2 = <span class="bracket">[</span><span class="bracket">[</span>NSDictionary alloc<span class="bracket">]</span>initWithObjectsAndKeys:@"bg1.png",          @"bg",
+                                                                        @"color_zero",      @"color_zero",
+                                                                        @"color_non_zero",  @"color_non_zero",
+                                                                        @"color_merge",     @"color_merge",
+                                                                        @"color_stroke",    @"color_stroke",
+                                                                        nil<span class="bracket">]</span>;
+
+        NSMutableDictionary* dict = <span class="bracket">[</span><span class="bracket">[</span>NSDictionary alloc<span class="bracket">]</span>initWithObjectsAndKeys:d1, @"k1",
+                                                                         d2, @"k2",
+                                                                        nil<span class="bracket">]</span>;
+        
+        NSMutableDictionary* dd1  = <span class="bracket">[</span>dict objectForKey:@"k1"<span class="bracket">]</span>;
+</pre>
+<br><span class="tit">    [Xcode build from commcand line]</span><br>
+<pre>          xcodebuild test -scheme SimpleApp -destination 'platform=iOS Simulator,name=iPhone Retina <span class="bracket">(</span>4-inch 64-bit<span class="bracket">)</span>,OS=7.1'
+</pre>
+<span class="tit">    [Xcode Format String]</span><br>
+<pre>            format string formatting
+            --------------------------------------------------------------------------------
+            // one decimal for float
+            NSString* strFormat = <span class="bracket">[</span>NSString stringWithFormat:@"<span class="bracket">[</span>%.01f<span class="bracket">]</span><span class="bracket">[</span>%.01f<span class="bracket">]</span>", xcolor.blue, xcolor.alpha<span class="bracket">]</span>;
+            --------------------------------------------------------------------------------
+            %@ Objective-C object, printed string returned by descriptionWithLocale
+            %% '%' character.
+            %d, %D Signed 32-bit integer <span class="bracket">(</span>int<span class="bracket">)</span>.
+            %u, %U Unsigned 32-bit integer <span class="bracket">(</span>unsigned int<span class="bracket">)</span>.
+            %x Unsigned 32-bit integer <span class="bracket">(</span>unsigned int<span class="bracket">)</span>, printed in hex using 0–9 and a–f.
+            %X Unsigned 32-bit integer <span class="bracket">(</span>unsigned int<span class="bracket">)</span>, printed in hex using 0–9 and A–F.
+            %o, %O Unsigned 32-bit integer <span class="bracket">(</span>unsigned int<span class="bracket">)</span>, printed in octal.
+            %f 64-bit float <span class="bracket">(</span>double<span class="bracket">)</span>.
+            %e 64-bit float <span class="bracket">(</span>double<span class="bracket">)</span>, e exponent.
+            %E 64-bit float <span class="bracket">(</span>double<span class="bracket">)</span>, E exponent.
+            %g 64-bit float <span class="bracket">(</span>double<span class="bracket">)</span>, %e if exponent &lt; – 4 or &gt;= to the precision, %f o.w.
+            %G 64-bit float <span class="bracket">(</span>double<span class="bracket">)</span>, %E if exponent &lt; – 4 or &gt;= to the precision, %f o.w.
+            %c 8-bit unsigned character
+            %C 16-bit Unicode character
+            %s Null-terminated array of 8-bit unsigned characters.
+            %S Null-terminated array of 16-bit Unicode characters.
+            %p Void pointer <span class="bracket">(</span>void *<span class="bracket">)</span>, printed in hex with the di<span class="bracket">git</span>s 0–9 and a–f, with a leading 0x.
+            %a 64-bit float, leading 0x and one hex before decimal pt using p as exp.
+            %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
+            %F 64-bit float, printed in decimal notation.
+            %d bool stype
+</pre>
+<br><span class="tit">    [Remove CAShaperLayer from parent Layer CALayer]</span><br>
+<pre>        CAShapeLayer* circleLayer = <span class="bracket">[</span>CAShapeLayer layer<span class="bracket">]</span>;
+        circleLayer.name = @"circle";
+        CGFloat leftX = 100.0f;
+        CGFloat leftY = 100.0f;
+        CGFloat Width = 50.0f;
+        CGFloat Height = 50.0f;
+        UIBezierPath* path = <span class="bracket">[</span>UIBezierPath bezierPathWithOvalInRect:CGRectMake<span class="bracket">(</span>leftX, leftY, Width, Height<span class="bracket">)</span><span class="bracket">]</span>;
+        <span class="bracket">[</span>circleLayer setPath:<span class="bracket">[</span>path CGPath<span class="bracket">]</span><span class="bracket">]</span>;
+        
+        CGFloat component<span class="bracket">[</span>4<span class="bracket">]</span>;
+        component<span class="bracket">[</span>0<span class="bracket">]</span> = 100.0;
+        component<span class="bracket">[</span>1<span class="bracket">]</span> = 1.0;
+        component<span class="bracket">[</span>2<span class="bracket">]</span> = 2.0;
+        component<span class="bracket">[</span>3<span class="bracket">]</span> = 2.0;
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB<span class="bracket">(</span><span class="bracket">)</span>;
+        <span class="bracket">[</span>circleLayer setStrokeColor:CGColorCreate<span class="bracket">(</span>colorSpace, component<span class="bracket">)</span><span class="bracket">]</span>;
+        <span class="bracket">[</span>circleLayer setLineWidth:1.0f<span class="bracket">]</span>;
+        <span class="bracket">[</span>circleLayer setFillColor:<span class="bracket">[</span><span class="bracket">[</span>UIColor brownColor<span class="bracket">]</span> CGColor<span class="bracket">]</span><span class="bracket">]</span>;
+
+        for<span class="bracket">(</span>CAShapeLayer* layer in <span class="bracket">[</span>self.window.layer.sublayers copy<span class="bracket">]</span><span class="bracket">)</span><span class="bracket">{</span>
+            if<span class="bracket">(</span><span class="bracket">[</span><span class="bracket">[</span>layer name<span class="bracket">]</span> isEqualToString:@"circle"<span class="bracket">]</span><span class="bracket">)</span><span class="bracket">{</span>
+                <span class="bracket">[</span>layer removeFromSuperlayer<span class="bracket">]</span>;
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+</pre>
+<br><br><span class="tit">    [Vim Regex ObjectiveC]</span><br><span class="keyword">    :replace </span>[array objectAtIndex:index] with array[index] in ObjectiveC<br>
+<pre>        %s/\<span class="bracket">[</span>\<span class="bracket">(</span>\w\+\<span class="bracket">)</span>\s\+objectAtIndex:\<span class="bracket">(</span><span class="bracket">[</span>^<span class="bracket">]</span><span class="bracket">]</span>\+\<span class="bracket">)</span>\<span class="bracket">]</span>/\1\<span class="bracket">[</span>\2\<span class="bracket">]</span>/gc
+</pre>
+<br><span class="tit">    [Vim Copy text from vim to clipboard]</span> [:h clipboard]<br>
+<pre>        "* is special Register that stores selection
+        "*y Copy text from vim to clipboard
+        "*p Paste text from clipboard to vim 
+</pre>
+<br><span class="keyword">    :CTRL-O     </span><span class="comment">//Jump Older cursor position in jump list [:h jumps]</span><br><span class="keyword">    :CTRL-I     </span><span class="comment">//Jump newer cursor position in jump list backward</span><br><br><span class="keyword">    :vimgrep </span>/MyString/ /home/mycode/**/*.m   <span class="comment">// Search MyString pattern recursively[**/*.m] two arsterisks </span><br><span class="keyword">    :copen      </span><span class="comment">// Open your quickfix </span><br><span class="keyword">    :gf         </span><span class="comment">// open the file under the currsor</span><br><br><span class="keyword">    :find </span>will search the directories/files in path option [:h :find]<br><span class="keyword">    :vim </span>$(find ./ -name \*.java -print)                <span class="comment">// open all java file from find</span><br><span class="keyword">    :set </span>path? <span class="comment">//will show current path option [:h path]</span><br><span class="keyword">    :set </span>path +=/home/mycode <span class="comment">//You can add different directories to path option in Vim</span><br>        " reset to default<span class="keyword">    :set </span>path& [:h set]<br><br><span class="keyword">    :set </span>complete=k/home/myfile/*,k~/home/dir<br>    " auto completion search your own file    " [:h complete]    " k{dict} scan the file {dict}. Servan flags can be given<br>    In Vim Script, there are many options to handle file names, paths   <span class="keyword">    :h </span>cmdline<br><br><span class="keyword">    :bufdo </span>e!                                                                                       <span class="comment">// Save reload all buffers :syntax on  to enable syntax highlight</span><br><span class="keyword">    :bufdo </span>%s/pattern/replacement/ge | update                                                       <span class="comment">// vim replace all buffers</span><br><span class="keyword">    :zf                </span><span class="comment">// Create fold under cursor</span><br><span class="keyword">    :zd                </span><span class="comment">// Delete fold under cursor</span><br><span class="keyword">    :5gt               </span><span class="comment">// goto tab 5, [in insert mode]</span><br><span class="keyword">    :tabmove </span>4         <span class="comment">// move the current tab to position 4 [help :tabmove]</span><br><span class="keyword">    :tabc </span>11           <span class="comment">// close tab 11</span><br><br><span class="keyword">    :set </span>modeline      <span class="comment">// display file name in each tabs page</span><br><span class="keyword">    :set </span>ls=2<br><br><span class="keyword">    :set </span>modeline      <span class="comment">// display full file name in statusline [:help :statusline]</span><br><span class="keyword">    :set </span>statusline=%F<br><br><span class="keyword">    :echo </span>getline(".")                 <span class="comment">// get current line string</span><br><span class="keyword">    :echo </span>match("mystring", "st")      <span class="comment">// return 2</span><br><span class="keyword">    :echo </span>line(".")                    <span class="comment">// line number of cursor</span><br><span class="keyword">    :echo </span>line("'t")                   <span class="comment">// line number of mark t</span><br><span class="keyword">    :echo </span>getpos(".")                  <span class="comment">// [bufferNumber, col, lnum, off] [:help getpos]</span><br><span class="keyword">    :echo </span>setpos(".", {list})          <span class="comment">// [bufferNumber, col, lnum, off]</span><br><span class="keyword">    :echo </span>[col, lnum] = searchpos("=") <span class="comment">// return = position in current line and move the cursor to =</span><br><span class="keyword">    :help </span>debug-mode                   <span class="comment">// debug vim script</span><br>    <span class="keyword">    :echo </span>getline(".")                                                                              <span class="comment">// get current line string</span><br><span class="keyword">    :echo </span>match("mystring", "st")                                                                   <span class="comment">// return 2</span><br><span class="keyword">    :Align </span>\*\zs\s\+ =                                                                              <span class="comment">// *'  ' and '=' separator</span><br><span class="keyword">    :\%V                                                                                             </span><span class="comment">// visual selection block [:help \%V]</span><br><span class="keyword">    :'&lt;,&gt;'sort </span>/\ze\%V/                                                                             <span class="comment">// sort all selected lines in visual mode</span><br><span class="keyword">    :'&lt; </span>and &gt;'                                                                  <span class="comment">// first cursor position/last cursor position in registers in visual mode/selection</span><br><br><span class="keyword">    :g/^$/d                             </span><span class="comment">//delete empty line </span><br><span class="keyword">    :let </span>@a=substitue(@a, 'pattern', 'sub', 'g')                                                    <span class="comment">// substitute 'pattern' with 'sub' in register @a </span><br><span class="keyword">    :q: </span>or q/                          <span class="comment">// vim command history</span><br><br><span class="keyword">    :hi </span>Search guifg=Brown guibg=Gray<br><span class="keyword">    :hi </span>Search cterm=Brown ctermbg=Gray                                                             <span class="comment">// change search backgroun/foreground [:h hl-Search]</span><br><br><span class="keyword">    :sort </span>n                            <span class="comment">//sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]</span><br><span class="keyword">    :sort! </span>n                           <span class="comment">//reverse sorting</span><br><br><span class="keyword">    :syn </span>match MyKeyWord /MyName/               <span class="comment">//Highlight defined keyword [:help syn-match]</span><br><span class="keyword">    :highlight </span>MyKeyWord guifg=Green <br><span class="keyword">    :'&lt;,'&gt;s/^\s*\zs\w/#\0/gc        </span><span class="comment">//comment all selected lines in python</span><br><span class="keyword">    :set </span>ma                             <span class="comment">// set file modifiable on  [:h modifiable]</span><br><span class="keyword">    :ctrl-]                              </span><span class="comment">//class definition </span><br><span class="keyword">    :ctrl-t                              </span><span class="comment">//back to previous window</span><br><span class="keyword">    :s/pattern/\=@a.submatch(0).@b/gc   </span><span class="comment">// substitute with two registers</span><br><br><span class="keyword">    :redir </span>@a <span class="comment">// redirect ex command to register</span><br><span class="keyword">    :ls</span><br><span class="keyword">    :redir </span>END<br><br><span class="keyword">    :redir </span>@* | ls | redir END  <span class="comment">// redirect all the name of file to reg @* in buffer</span><br>    <span class="keyword">    :tabmove </span>4                                                                                      <span class="comment">// move the current tab to position 4 [help :tabmove]</span><br><span class="keyword">    :/pattern\c </span>#ignorecase<br><span class="keyword">    :hi </span>clear SpellBad # Reset SpellBad bad spell highlight to default<br><span class="keyword">    :g/-\s*(\w\+)\w+/z#.1                                                                           </span><span class="comment">// print all xcode methods with line number #</span><br><br><span class="keyword">    :/\(if\)\ze\(then\)         </span><span class="comment">// if follows then "[if]then"</span><br><span class="keyword">    :/\(if\)\zs\(then\)         </span><span class="comment">// then starts with if "if[then]" </span><br><br><span class="keyword">    :g*         </span>/ search without word boundry<br><span class="tit">    [Vim Script get background color]</span><br>
 <pre>         :echo synIDattr<span class="bracket">(</span>synIDtrans<span class="bracket">(</span>hlID<span class="bracket">(</span>"Normal"<span class="bracket">)</span><span class="bracket">)</span>, "bg"<span class="bracket">)</span> <span class="bracket">[</span>:h hlID<span class="bracket">]</span>       
 </pre>
-<span class="tit">    [Linux command]</span><br>    git branch shows on command prompt
+<br><span class="keyword">     :set </span>hidden   <span class="comment">// hidden an unsaved file, ow, file has to be saved with !</span><br><br><br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)<br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./<br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><br><span class="keyword">    :his </span>s                      <span class="comment">// list commands history</span><br><span class="keyword">    :his </span>/                      <span class="comment">// list search history</span><br><br><span class="keyword">    :CTRL-E                     </span><span class="comment">// scroll window up </span><br><span class="keyword">    :CTRL-Y                     </span><span class="comment">// scroll window down</span><br><br>     <span class="comment">// display without Enter</span><br>     exec '!ls ' <span class="keyword">     :sleep </span>2<br>     redraw<br><span class="keyword">     :diw </span><span class="comment">// delete/yank/visual [i]nner word</span><br><span class="keyword">     :daw </span><span class="comment">// delete/yank/visual [a] word</span><br><span class="keyword">     :dib </span><span class="comment">// delete/yank/visual [i]nner '(' ')' block</span><br><span class="keyword">     :daB </span><span class="comment">// ddelete/yank/visual [a] '(' ')' block</span><br><span class="keyword">     :diB </span><span class="comment">// ddelete/yank/visual [i]nner '{' '}' block</span><br><span class="keyword">     :daB </span><span class="comment">// ddelete/yank [a] '{' '}' block</span><br><br><span class="keyword">     :syntax </span>region MyColorGroup start=/\%2l/ end=/\%10l/<br><span class="keyword">     :syntax </span>clear MyColorGroup     <span class="comment">// remove highlight</span><br><br><br><br><br><span class="tit">    [Vim Script]</span><br>    Compile Java code inside Vim [:h expand]
+<pre>        " Fix the missing -cp option in java
+        " Assume java file is in current buffer
+        function! CompileJava<span class="bracket">(</span><span class="bracket">)</span>
+            let path = expand<span class="bracket">(</span>"%"<span class="bracket">)</span>
+            exec ":!javac " . path &lt;CR&gt; 
+            let jclassName = expand<span class="bracket">(</span>"%:p:t:r"<span class="bracket">)</span>
+            let className = expand<span class="bracket">(</span>"%:p:t:r"<span class="bracket">)</span>
+            let cwd = getcwd<span class="bracket">(</span><span class="bracket">)</span>
+            let full = ":!java -cp " . cwd . ":. " . jclassName
+            exec  full 
+        endfunction 
+
+        :expand<span class="bracket">(</span>"%"<span class="bracket">)</span>    
+        "file.txt
+
+        :expand<span class="bracket">(</span>"%:p"<span class="bracket">)</span>  
+        "/home/file.txt 
+
+        :expand<span class="bracket">(</span>"%:p:t"<span class="bracket">)</span> 
+        "file.txt
+
+        :expand<span class="bracket">(</span>"%:p:r"<span class="bracket">)</span> 
+        "/home/file
+
+        :expand<span class="bracket">(</span>"%:p:t:r"<span class="bracket">)</span> 
+        "file 
+
+        :fnamemodify<span class="bracket">(</span>'/dog/f.txt', ':h'<span class="bracket">)</span> " /dog
+
+        " get current file dir
+        :getcwd<span class="bracket">(</span><span class="bracket">)</span>
+        "/home
+
+        " read file
+        :readfile<span class="bracket">(</span>fname<span class="bracket">)</span>
+
+        " check whether a file with the name exists 
+        :filereadable<span class="bracket">(</span>fname<span class="bracket">)</span>
+
+        " write file
+        :writefile<span class="bracket">(</span>fname, "a"<span class="bracket">)</span> 
+        :writefile<span class="bracket">(</span>fname, "b"<span class="bracket">)</span> "b" binary mode
+
+        <span class="bracket">[</span>:h Dictionary<span class="bracket">]</span>
+        " dictionary
+        let dict=<span class="bracket">{</span>'key': 'value'<span class="bracket">}</span>
+
+        " replace value 
+        dict.key = 'dog'
+
+        " Iterate through Dictionary
+        for <span class="bracket">[</span>key, value<span class="bracket">]</span> in items<span class="bracket">(</span>dict<span class="bracket">)</span>
+          echo key . ':' . value 
+        endfor
+
+        " remove key
+        let value = remove<span class="bracket">(</span>dict, 'key'<span class="bracket">)</span>
+        echo value  " dog
+
+        <span class="bracket">[</span>:h List<span class="bracket">]</span>
+        " list as value
+        let list = <span class="bracket">[</span>'a', 'b'<span class="bracket">]</span>
+        add<span class="bracket">(</span>dict.key, 'abc'<span class="bracket">)</span>
+        echo dict.key   " <span class="bracket">[</span>'a', 'b', 'abc'<span class="bracket">]</span>
+
+
+        " list, string, length, len
+        let list = <span class="bracket">[</span><span class="bracket">]</span>
+        let list = <span class="bracket">[</span>"cat", "dog"<span class="bracket">]</span>
+        let len = len<span class="bracket">(</span>list<span class="bracket">)</span>
+        let fname = split<span class="bracket">(</span>expand<span class="bracket">(</span>"%:p"<span class="bracket">)</span>, "/"<span class="bracket">)</span>
+        let length = length<span class="bracket">(</span>"this is cool"<span class="bracket">)</span> 
+
+        " remove list item
+        :unlet list<span class="bracket">[</span>3<span class="bracket">]</span> " remove fourth item
+        :unlet list<span class="bracket">[</span>3:<span class="bracket">]</span> " remove foruth to last
+
+        " remove dictionary item
+        :unlet dict<span class="bracket">[</span>'two'<span class="bracket">]</span> 
+        :unlet dict.two
+
+        " This is especially useful to clean up global variables 
+        :unlet global_var
+
+        " sort a list
+        let list = <span class="bracket">[</span>'b', 'a'<span class="bracket">]</span>
+        sort<span class="bracket">(</span>list<span class="bracket">)</span>
+
+        " sort a list in-place, a list remain unmodified
+        let copylist = sort<span class="bracket">(</span>copy<span class="bracket">(</span>list<span class="bracket">)</span><span class="bracket">)</span>
+
+        " Iterate buffer list
+        let bufcount = bufr<span class="bracket">(</span>"$"<span class="bracket">)</span>
+        let curr = 1 
+        while curr &lt;= bufcount 
+            let currbufname = bufname<span class="bracket">(</span>curr<span class="bracket">)</span>
+            if buflisted<span class="bracket">(</span>currbufname<span class="bracket">)</span> && strlen<span class="bracket">(</span>currbufname<span class="bracket">)</span> &gt; 0
+                echo currbufname
+            endif
+            let curr = curr + 1
+        endwhile
+
+
+        " Iterate through List
+        for item in mylist
+          echo item
+        endfor 
+
+        " for loop
+        let index = 0
+        while index &lt; len<span class="bracket">(</span>mylist<span class="bracket">)</span>
+          echo mylist<span class="bracket">[</span>index<span class="bracket">]</span>
+          let index = index + 1
+        endwhile
+
+        " list of open windows
+        :echo range<span class="bracket">(</span>1, winnr<span class="bracket">(</span>'$'<span class="bracket">)</span><span class="bracket">)</span>
+
+        " To determine how many split-windows are open
+        winnr<span class="bracket">(</span>'$'<span class="bracket">)</span>
+
+        " How many in the current page
+        tabpagewinnr<span class="bracket">(</span>tabpagenr<span class="bracket">(</span><span class="bracket">)</span>, '$'<span class="bracket">)</span>
+        
+        http://vim.1045645.n5.nabble.com/how-to-get-list-of-open-windows-td1164662.html
+        " List all split window by tab page 
+        while t &lt;= tabpagenr<span class="bracket">(</span>'$'<span class="bracket">)</span> 
+                echo 'tab' t . ':' 
+                let bufs = tabpagebuflist<span class="bracket">(</span>t<span class="bracket">)</span> 
+                let w = 0 
+                while w &lt; tabpagewinnr<span class="bracket">(</span>t, '$'<span class="bracket">)</span> 
+                        echo "\t" . bufname<span class="bracket">(</span>bufs<span class="bracket">[</span>w<span class="bracket">]</span><span class="bracket">)</span> 
+                        let w += 1 
+                endwhile 
+                let t += 1 
+        endwhile 
+        unlet t w bufs 
+
+        " split window on the right hand side
+        :set splitright 
+
+        " statusline format
+        %-0<span class="bracket">{</span>minwid<span class="bracket">}</span>.<span class="bracket">{</span>maxwid<span class="bracket">}</span><span class="bracket">{</span>item<span class="bracket">}</span>
+        The - forces the item to be left aligned
+        The 0 forces numeric value to be left padded with zeros
+
+        " statusline evaludate function
+        statusline+=%10<span class="bracket">{</span>expand<span class="bracket">(</span>'%:p:h'<span class="bracket">)</span><span class="bracket">}</span>
+
+</pre>
+<br><span class="tit">    [Git command]</span><br><span class="keyword">    :git </span>branch myfeature_branchcreate                   <span class="comment">// git feature branch</span><br><span class="keyword">    :git </span>branch -d delete_branchdelete                   <span class="comment">// [git delete] feature branch</span><br><span class="keyword">    :git </span>branch -D delete_branchdelete                   <span class="comment">// unmerged feature branch</span><br><br><span class="keyword">    :git </span>checkout master <br><span class="keyword">    :git </span>merge --no-ff feature_branch <span class="comment">// [git merge]merge feature branch to master</span><br><br><span class="keyword">    :git </span>rm -r --cached myfileremove                     <span class="comment">// tracked file in .gitignore</span><br><span class="keyword">    :git </span>rm -r --cached myfileremove                     <span class="comment">// file from your index</span><br><span class="keyword">    :git </span>refloghow                                       <span class="comment">// all the reference log</span><br><span class="keyword">    :git </span>reset --hard 828c8c0b1995                       <span class="comment">// revert to previous commit</span><br><br><span class="tit">    [Linux command]</span><br><span class="keyword">    :y$                                             </span><span class="comment">// copy character from cursor to the end of line     [:help yank]</span><br><span class="keyword">    :vaw                                            </span><span class="comment">// highlight word under cursor including white space [:help text-object]</span><br><span class="keyword">    :viw                                            </span><span class="comment">// hightlight word under cursor excluding white space[:help text-object]</span><br><span class="keyword">    :awk </span>'{for(i=0; i&lt;NF; i++) print $1}' inputfile <span class="comment">// print the first column from file&gt;</span><br><span class="keyword">    :awk </span>-F ":" '{for(i=0; i&lt;NF; i++) print $1}'<br><span class="keyword">    :kill </span>-9 $(ps aux | awk '/Safari/ {print $2}')  <span class="comment">// kill Safari brower</span><br><br><span class="keyword">    :history </span>-d  xxx #remove history<br><span class="keyword">    :add </span>to vimrc file #vim change tabs to space<br><span class="keyword">    :set </span>tabstop=4<br><span class="keyword">    :set </span>shiftwidth=4<br><span class="keyword">    :set </span>expandtab<br><span class="keyword">    :set </span>showcmd<br><span class="keyword">    :sed </span>'s/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  &gt; /tmp/norm.txt <span class="comment">// Match Name=xxx  and ContentFolder=xxx two columns from c.txt</span><br><span class="keyword">    :sed </span>-i -e 's/oldstring/newstring/g' *                                                           <br><span class="keyword">    :find </span>. -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'<br>    <span class="tit">    [git branch shows on command prompt]</span><br>
 <pre>        parse_<span class="bracket">git</span>_branch<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">{</span>
-            <span class="bracket">git</span> branch 2> /dev/null | sed -e 's/* \<span class="bracket">(</span>.*\<span class="bracket">)</span>/ \<span class="bracket">(</span>\1<span class="bracket">)</span>/'
+            <span class="bracket">git</span> branch 2&gt; /dev/null | sed -e 's/* \<span class="bracket">(</span>.*\<span class="bracket">)</span>/ \<span class="bracket">(</span>\1<span class="bracket">)</span>/'
         <span class="bracket">}</span>
         export PS1="\u$<span class="bracket">(</span>parse_<span class="bracket">git</span>_branch<span class="bracket">)</span>\w$"
         \u - Username
         \w - Full path
         \h - Host name
 </pre>
-     <div class="cen"><img src=image/manhattan.png width="60%" height="60%"></div>
+<br><span class="tit">    [Shell Script]</span><br>    If else statement, Compare string, Compare integer
+<pre>        if <span class="bracket">[</span> $# -gt 0 <span class="bracket">]</span>; then 
+            echo "arg $1"
+            if <span class="bracket">[</span> $1 = "w" <span class="bracket">]</span>; then
+                echo "do sth" 
+            elif <span class="bracket">[</span> $1 = "t" <span class="bracket">]</span>; then 
+                echo "do other th" 
+            fi 
+        else
+            echo "Usage"
+        fi
+</pre>
+<span class="tit">    [iOS Game Development]</span><br> <div class="cen"><img src=image/gameOption.png width="50%" height="50%"></div>  <div class="cen"><img src=image/gridgrid.png width="50%" height="50%"></div>      <br>
 </body></html>

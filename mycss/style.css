@@ -10,6 +10,7 @@ pre
     margin-bottom:2px;
     margin-left:2px;
     margin-right:2px;
+    font-size:15px;
     display:block;
 }
 
@@ -51,7 +52,7 @@ pre
 .comment{
     float:right;
     width:60%;
-    color: #EEEFF3;
+    color: #807260;
 }
 
 .htmlbg{
