@@ -314,7 +314,7 @@
             return top;
         <span class="bracket">}</span> 
 </pre>
- <div class="cen"><img src=image/kthmedian.png width="50%" height="50%"></div> <br><span class="tit">    [Java Data Structrue]</span><br>
+ <div class="cen"><img src=image/newkthmedian.png width="50%" height="50%"></div> <br><span class="tit">    [Java Data Structrue]</span><br>
 <pre>        int<span class="bracket">[</span><span class="bracket">]</span> array     = <span class="bracket">{</span>1, 2, 3<span class="bracket">}</span>;
         int<span class="bracket">[</span><span class="bracket">]</span><span class="bracket">[</span><span class="bracket">]</span>  array2 = <span class="bracket">{</span><span class="bracket">{</span>1, 2, 3<span class="bracket">}</span>,
                            <span class="bracket">{</span>4, 5, 6<span class="bracket">}</span><span class="bracket">}</span>;
@@ -332,6 +332,9 @@
         list.add<span class="bracket">(</span>"eloberate"<span class="bracket">)</span>;
         list.add<span class="bracket">(</span>"continue"<span class="bracket">)</span>;
         list.add<span class="bracket">(</span>"continuous"<span class="bracket">)</span>;
+
+        // Initialize list
+        List&lt;String&gt; list = new ArrayList&lt;String&gt;<span class="bracket">(</span>Arrays.asList<span class="bracket">(</span>"dog", "cat", "cow"<span class="bracket">)</span><span class="bracket">)</span>;
 
         // Vector
         Vector&lt;String&gt; vector = new Vector&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
@@ -447,6 +450,75 @@
         List&lt;String&gt; list4 = new Vector&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
         Queue&lt;String&gt; queue = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
         Queue&lt;String&gt; queue2 = new PriorityQueue&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+</pre>
+<span class="tit">    [Java Comparable]</span><br>
+<pre>        class Contact implements Comparable&lt;Contact&gt; <span class="bracket">{</span>
+            String name;
+            String addr;
+            int    age;
+            public Contact<span class="bracket">(</span>String name, String addr, int age<span class="bracket">)</span> <span class="bracket">{</span>
+                this.name = name;
+                this.addr = addr;
+                this.age = age;
+            <span class="bracket">}</span>
+
+            //Minimum heap
+            public int compareTo<span class="bracket">(</span>Contact c<span class="bracket">)</span> <span class="bracket">{</span>
+                return this.age - c.age;
+                //Maximum heap
+                //return -<span class="bracket">(</span>this.age - c.age<span class="bracket">)</span>;
+            <span class="bracket">}</span>
+
+            public String toString<span class="bracket">(</span><span class="bracket">)</span> <span class="bracket">{</span>
+                return "<span class="bracket">[</span>"+name+"<span class="bracket">]</span><span class="bracket">[</span>"+addr+"<span class="bracket">]</span><span class="bracket">[</span>"+age+"<span class="bracket">]</span>";
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+
+        public class PriorityQueueHeap <span class="bracket">{</span>
+            public static void main<span class="bracket">(</span>String<span class="bracket">[</span><span class="bracket">]</span> args<span class="bracket">)</span> <span class="bracket">{</span>
+                test1<span class="bracket">(</span><span class="bracket">)</span>;
+            <span class="bracket">}</span>
+            public static void test1<span class="bracket">(</span><span class="bracket">)</span> <span class="bracket">{</span>
+                System.out.println<span class="bracket">(</span>"Minimum/Maximum Heap PriorityQueue"<span class="bracket">)</span>;
+                PriorityQueue&lt;Contact&gt; miniHeap = new PriorityQueue&lt;Contact&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+                miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"David", "U.S", 3<span class="bracket">)</span><span class="bracket">)</span>;
+                miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"John", "U.S", 4<span class="bracket">)</span><span class="bracket">)</span>;
+                miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"Johnny", "U.S", 4<span class="bracket">)</span><span class="bracket">)</span>;
+                miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"Nathan", "U.S", 1<span class="bracket">)</span><span class="bracket">)</span>;
+                miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"Micheal", "U.S", 6<span class="bracket">)</span><span class="bracket">)</span>;
+
+                while<span class="bracket">(</span>!miniHeap.isEmpty<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span> <span class="bracket">{</span>
+                    System.out.println<span class="bracket">(</span>miniHeap.remove<span class="bracket">(</span><span class="bracket">)</span>.toString<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span>;
+                <span class="bracket">}</span>
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+</pre>
+<span class="tit">    [Java LocalDateTime]</span><br>
+<pre>        LocalDateTime time = LocalDateTime.parse<span class="bracket">(</span>"2007-12-03T10:15:30", DateTimeFormatter.ISO_LOCAL_DATE_TIME<span class="bracket">)</span>;
+        int year = time.getDayOfYear<span class="bracket">(</span><span class="bracket">)</span>;
+        Month month = time.getMonth<span class="bracket">(</span><span class="bracket">)</span>;
+        int  day = time.getDayOfMonth<span class="bracket">(</span><span class="bracket">)</span>;
+        int hour = time.getHour<span class="bracket">(</span><span class="bracket">)</span>;
+        int minute = time.getMinute<span class="bracket">(</span><span class="bracket">)</span>;
+        int second = time.getSecond<span class="bracket">(</span><span class="bracket">)</span>;
+        System.out.println<span class="bracket">(</span>"year=" + year + " month=" + month.name<span class="bracket">(</span><span class="bracket">)</span> + 
+                           " day=" + day + "   hour=" + hour + " minute=" + minute + " second=" + second<span class="bracket">)</span>;
+        System.out.println<span class="bracket">(</span>""<span class="bracket">)</span>;
+
+        // create different datetime format
+        DateTimeFormatter format = DateTimeFormatter.ofPattern<span class="bracket">(</span>"dd/MM/yyyy-HH:mm:ss"<span class="bracket">)</span>;
+        LocalDateTime time1 = LocalDateTime.parse<span class="bracket">(</span>"30/09/1970-18:34:13", format<span class="bracket">)</span>;
+        LocalDateTime time2 = LocalDateTime.parse<span class="bracket">(</span>"30/09/2008-18:33:34", format<span class="bracket">)</span>;
+        LocalDateTime time3 = LocalDateTime.parse<span class="bracket">(</span>"30/09/1960-18:33:35", format<span class="bracket">)</span>;
+
+        // use Collection to sort datetime without implementation of Compare or Comparable
+        List&lt;LocalDateTime&gt; list = new ArrayList&lt;LocalDateTime&gt;<span class="bracket">(</span>Arrays.asList<span class="bracket">(</span>time1, time2, time3<span class="bracket">)</span><span class="bracket">)</span>;
+        Collections.sort<span class="bracket">(</span>list<span class="bracket">)</span>;
+        for<span class="bracket">(</span>LocalDateTime t : list<span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>"year=" + t.getYear<span class="bracket">(</span><span class="bracket">)</span> + " month=" + t.getMonth<span class="bracket">(</span><span class="bracket">)</span> +
+                    "  day=" + t.getDayOfMonth<span class="bracket">(</span><span class="bracket">)</span> + " hour=" + t.getHour<span class="bracket">(</span><span class="bracket">)</span> +
+                    " minute=" + t.getMinute<span class="bracket">(</span><span class="bracket">)</span> + "  second=" + t.getSecond<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span>;
+        <span class="bracket">}</span>
 </pre>
 <br><span class="tit">    [Xcode]</span><br>
 <pre>        NSUserDefaults only can use NSArray, NSDictionary, NSString, NSData, NSDate, NSNumber<span class="bracket">(</span>intValue/floatValue/boolValue<span class="bracket">)</span>

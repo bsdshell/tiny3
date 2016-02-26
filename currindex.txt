@@ -388,7 +388,7 @@
             return top;
         } 
     `]
-    {{ src=image/kthmedian.png w=50% h=50% }}
+    {{ src=image/newkthmedian.png w=50% h=50% }}
 
     [Java Data Structrue]
     `[
@@ -409,6 +409,9 @@
         list.add("eloberate");
         list.add("continue");
         list.add("continuous");
+
+        // Initialize list
+        List<String> list = new ArrayList<String>(Arrays.asList("dog", "cat", "cow"));
 
         // Vector
         Vector<String> vector = new Vector<String>();
@@ -524,6 +527,77 @@
         List<String> list4 = new Vector<String>();
         Queue<String> queue = new ArrayList<String>();
         Queue<String> queue2 = new PriorityQueue<String>();
+    `]
+    [Java Comparable]
+    `[
+        class Contact implements Comparable<Contact> {
+            String name;
+            String addr;
+            int    age;
+            public Contact(String name, String addr, int age) {
+                this.name = name;
+                this.addr = addr;
+                this.age = age;
+            }
+
+            //Minimum heap
+            public int compareTo(Contact c) {
+                return this.age - c.age;
+                //Maximum heap
+                //return -(this.age - c.age);
+            }
+
+            public String toString() {
+                return "["+name+"]["+addr+"]["+age+"]";
+            }
+        }
+
+        public class PriorityQueueHeap {
+            public static void main(String[] args) {
+                test1();
+            }
+            public static void test1() {
+                System.out.println("Minimum/Maximum Heap PriorityQueue");
+                PriorityQueue<Contact> miniHeap = new PriorityQueue<Contact>();
+                miniHeap.add(new Contact("David", "U.S", 3));
+                miniHeap.add(new Contact("John", "U.S", 4));
+                miniHeap.add(new Contact("Johnny", "U.S", 4));
+                miniHeap.add(new Contact("Nathan", "U.S", 1));
+                miniHeap.add(new Contact("Micheal", "U.S", 6));
+
+                while(!miniHeap.isEmpty()) {
+                    System.out.println(miniHeap.remove().toString());
+                }
+            }
+        }
+    `]
+    [Java LocalDateTime]
+    `[
+        LocalDateTime time = LocalDateTime.parse("2007-12-03T10:15:30", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        int year = time.getDayOfYear();
+        Month month = time.getMonth();
+        int  day = time.getDayOfMonth();
+        int hour = time.getHour();
+        int minute = time.getMinute();
+        int second = time.getSecond();
+        System.out.println("year=" + year + " month=" + month.name() + 
+                           " day=" + day + "   hour=" + hour + " minute=" + minute + " second=" + second);
+        System.out.println("");
+
+        // create different datetime format
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm:ss");
+        LocalDateTime time1 = LocalDateTime.parse("30/09/1970-18:34:13", format);
+        LocalDateTime time2 = LocalDateTime.parse("30/09/2008-18:33:34", format);
+        LocalDateTime time3 = LocalDateTime.parse("30/09/1960-18:33:35", format);
+
+        // use Collection to sort datetime without implementation of Compare or Comparable
+        List<LocalDateTime> list = new ArrayList<LocalDateTime>(Arrays.asList(time1, time2, time3));
+        Collections.sort(list);
+        for(LocalDateTime t : list){
+            System.out.println("year=" + t.getYear() + " month=" + t.getMonth() +
+                    "  day=" + t.getDayOfMonth() + " hour=" + t.getHour() +
+                    " minute=" + t.getMinute() + "  second=" + t.getSecond());
+        }
     `]
 
     [Xcode]
