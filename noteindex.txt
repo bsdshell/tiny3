@@ -1,11 +1,12 @@
 
+    [Haskell zip]
     `[
         zip [1..3] [1..3]  = [(1,1)(2,2)(3,3)] 
     `]
 
-    [Haskell zip]
+    [Haskell zipWith]
     `[
-        zip (\x y->x+y) [1, 2] [3, 4]
+        zipWith(\x y->x+y) [1, 2] [3, 4]
         -- output [4, 6]
     `]
     {{ src=image/zip.png w=50% h=50% }}
@@ -18,13 +19,6 @@
         zipWith (\x y -> x+y) list1 list2 
     `]
     {{ src=image/zipwith.png w=50% h=50% }}
-
-    [Haskell splitRegex]
-    `[
-        splitRegex(mkRegex " ") "what is your dog"
-        -- ["what", "is", "your", "dog"]
-    `]
-    {{ src=image/splitregex.png w=50% h=50% }}
 
     [Haskell subRegex]
     :subRegex::Regex->input->replacement->output
@@ -1124,5 +1118,842 @@
     [iOS Game Development]
     {{ src=image/gameOption.png w=50% h=50% }}
     {{ src=image/gridgrid.png w=50% h=50% }}
+
+
+    [Command tricks]
+    `[
+            rename file names with php script  // /Users/cat/myfile/github/php/rename.php
+            Change default location of Mac OSX screenshots, Open your Terminal and type:
+                    defaults write com.apple.screencapture location ~/myScreenShots
+            And type:
+            killall SystemUIServer
+
+            Rename file name of default screenshots in Mac OSX, Open your Terminal and type:
+                defaults write com.apple.screencapture name "myName"
+            And type:
+                killall SystemUIServer
+
+            Print method name in Xcode/iOS:
+            NSLog(@"%s", __PRETTY_FUNCTION__);
+
+            Compile Vim with Python support so that you can use clang_complete plugin for Clang family languages such as C/C++/ObjectiveC
+            I clone vim from github and compile it, but I have hard time to compile it.
+            One simple solution is to use macport, here is the command  
+            sudo port install vim +python27
+             
+            To find the clang on your Mac
+            xcrun -find clang
+
+            your output:
+            /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+
+            locate libclang.dylib
+                /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib
+
+            you need to set the path in your .vimrc file:
+            let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+
+            grep -l pattern *   [print file name only]
+
+            port selfupdate[macport usage]
+            port install povray[install povray]
+
+            log all terminal screen[Mac OS X, Linux]
+            script screen.log
+    `]
+
+    [Chrome ShortCut key]
+    `[
+        Command+Option+B	// Chrome Opens the bookmark manager.
+        Command+Y           // Chrome Opens history page
+    `]
+
+    [Xcode convert point in different coordinates]
+    `[
+        convert point
+    `]
+    {{ src=image/convertpoint.png w=50% h=50% }}
+
+    [Xcode touches]
+    `[
+        // searchkey: disable/enable touch events
+        [[UIApplication sharedApplication]beginIgnoringInteractionEvents]; 
+        [[UIApplication sharedApplication]endIgnoringInteractionEvents]; 
+
+        // searchkey: convert point to diff layer 
+        CGPoint newPoint = [_gView.layer convertPoint:touchXY toLayer:_gridLayer];  
+
+        - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+            NSLog(@"%s", __PRETTY_FUNCTION__);
+            UITouch* touch = [touches anyObject];
+            if(touch != nil){
+                _initXY = [touch locationInView:touch.view];
+                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", _initXY.x, _initXY.y];
+                [_myLabel setText:mytext];
+            }
+        }
+        - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+            UITouch* touch = [touches anyObject];
+            if(touch != nil){
+                CGPoint currXY = [touch locationInView:touch.view];
+                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", currXY.x, currXY.y];
+                _center.x = _center.x + (currXY.x - _initXY.x); 
+                _center.y = _center.y + (currXY.y - _initXY.y); 
+
+                UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(_center.x-50, _center.y-50, 100, 100)];
+                [_circleLayer setPath:[path CGPath]];
+                [_circleLayer setFillColor:[[UIColor brownColor] CGColor]];
+                [_myLabel setText:mytext];
+                _initXY = currXY;
+            }
+        }
+        - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+            NSLog(@"%s", __PRETTY_FUNCTION__);
+            UITouch* touch = [touches anyObject];
+            if(touch != nil){
+                CGPoint touchXY = [touch locationInView:touch.view];
+                NSString* mytext = [NSString stringWithFormat:@"[%.01f][%.01f]", touchXY.x, touchXY.y];
+                [_myLabel setText:mytext];
+            }
+        }
+
+    `]
+
+    [Xcode UIButton button]
+    `[ 
+        UIButton* mybut = [UIButton buttonWithType:UIButtonTypeSystem];
+        CGRect frame = CGRectMake(100, 450, 140, 50);
+        mybut.frame = frame;
+        [mybut addTarget:self action:@selector(clickMe:) forControlEvents:UIControlEventTouchUpInside];
+        [mybut setTitle:@"Rotate" forState:(UIControlState) UIControlStateNormal];
+        [mybut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [mybut.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
+        mybut.backgroundColor = [UIColor brownColor];
+        [self.window addSubview:mybut];
+
+        -(void)clickMe:(id)sender{
+            NSLog(@"Click me");
+        }
+
+        // UILabel
+        // searchkey: create simple text label
+        -(void)createLabel{
+            CGSize size       = [UIScreen mainScreen].bounds.size;
+            NSInteger bwidth  = 300;
+            NSInteger bheight = 40;
+            CGPoint upLeft = CGPointMake(size.width/2 - bwidth/2, 10);
+            _labelTimer = [[UILabel alloc] initWithFrame:CGRectMake(upLeft.x, upLeft.y, bwidth, bheight)];
+            [_labelTimer setTextColor:[UIColor redColor]];
+            [_labelTimer setBackgroundColor:[UIColor clearColor]];
+            [_labelTimer setFont:[UIFont fontWithName: @"Trebuchet MS" size: 20.0f]];
+            [_labelTimer setText:@"This is my Label"];
+            [self.window addSubview:_labelTimer];
+        }
+
+        // animation
+        // searchkey: create CABasicAnimation animation  
+        //[layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+        -(CABasicAnimation*)createAnimation{
+            CGFloat duration = 3.0;
+            CGFloat repeat = 1.0;
+            CABasicAnimation* rotationAnimation;
+            rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+            rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0];
+            rotationAnimation.duration = duration;
+            rotationAnimation.cumulative = YES;
+            rotationAnimation.repeatCount = repeat;
+            return rotationAnimation;
+        }
+    `]
+
+    [Xcode Cartesian Coordinate System]
+    `[
+        // pass self.view.layer 
+        -(void)CartesianCoordinate:(CALayer*)layer{
+            CGSize size          = [UIScreen mainScreen].bounds.size;
+            
+            CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+            UIBezierPath* path = [UIBezierPath bezierPath];
+            
+            // Vertical line
+            [path moveToPoint:CGPointMake(size.width/2, 0)];
+            [path addLineToPoint:CGPointMake(size.width/2, size.height)];
+            
+            // Horizontal line
+            [path moveToPoint:CGPointMake(0, size.height/2)];
+            [path addLineToPoint:CGPointMake(size.width, size.height/2)];
+            
+            shapeLayer.path = [path CGPath];
+            shapeLayer.strokeColor = [[UIColor blackColor] CGColor];
+            shapeLayer.fillColor = [[UIColor brownColor] CGColor];
+            shapeLayer.lineWidth = 1.0f;
+            [layer addSublayer:shapeLayer];
+        }
+    `]
+
+    [Xcode draw rectangle]
+    `[
+        // CAShapeLayer* _rectLayer;
+        -(void)myDrawRectangle{
+            CGFloat width = 100.0;
+            CGFloat height = 100.0;
+            CGSize size          = [UIScreen mainScreen].bounds.size;
+            CGFloat offset = 50.0;
+            CGPoint centerPoint = CGPointMake(size.width/2 - width/2, size.height/2 - height/2 + offset);
+
+            UIBezierPath* path = [UIBezierPath bezierPathWithRect:CGRectMake(centerPoint.x, centerPoint.y, width, height)];
+            _rectLayer.lineWidth = 10.0f;
+            _rectLayer.strokeColor = [[UIColor darkGrayColor] CGColor];
+            [_rectLayer setFillColor:[[UIColor clearColor] CGColor]];
+            [_rectLayer setPath:[path CGPath]];
+            [self.window.layer addSublayer:_rectLayer];
+        }
+    `]
+    
+    [Xcode]
+    `[
+        NSUserDefaults only can use NSArray, NSDictionary, NSString, NSData, NSDate, NSNumber(intValue/floatValue/boolValue)
+        NSUserDefaults returns immutable object event though mutable object is used
+        For custom object, NSCoding protocol has to be implemented in order to use in NSUserDefaults
+    `]
+
+    [Xcode NSMutableArray]
+    `[
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
+        [array addObject:[NSNumber numberWithInt:4]];
+        [array addObject:[NSNumber numberWithInt:5]];
+
+        int x = [[array objectAtIndex:0] integerValue];
+        int y = [[array objectAtIndex:1] integerValue];
+        --------------------------------------------------------------------------------
+        [array removeObjectAtIndex:index];
+        --------------------------------------------------------------------------------
+        [array removeAllObjects];
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
+        [array addObject:@"dog"]; 
+        [array addObject:@"cat"]; 
+        String str0 = [array objectAtIndex:0]; 
+        String str1 = [array objectAtIndex:1]; 
+        ================================================================================
+        [self.searchBar becomeFirstResponder];
+        [self.searchBar resignFirstResponder];
+        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
+        NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:10];
+        NSMutableArray* arr1 = [[NSMutableArray alloc] initWithCapacity:2];
+        NSMutableArray* arr2 = [[NSMutableArray alloc] initWithCapacity:2];
+
+        [arr1 addObject:@"dog"];
+        [arr1 addObject:@"cat"];
+
+        [arr2 addObject:@"cat"];
+        [arr2 addObject:@"dog"];
+
+        [array addObject:arr1];
+        [array addObject:arr2];
+        [array containsObject:arr1]
+        --------------------------------------------------------------------------------
+        [arr3 addObject:[MyLib NumInt:1]];
+        [arr3 addObject:[MyLib NumInt:2]];
+
+        [arr4 addObject:[MyLib NumInt:2]];
+        [arr4 addObject:[MyLib NumInt:1]];
+        [array2 addObject:arr3];
+        [array2 addObject:arr4];
+
+        [array2 removeObject:arr3];
+        [array2 removeObject:arr4];
+        --------------------------------------------------------------------------------
+        NSMutableArray* arrayNum = [[NSMutableArray alloc]initWithObjects:[MyLib NumInt:1], [MyLib NumInt:2], nil];
+        NSMutableArray* arrayStr = [[NSMutableArray alloc]initWithObjects:@"1", @"2", nil];
+        --------------------------------------------------------------------------------
+        NSArray* nsarray        = [[NSArray alloc] initWithObjects:@"str1", @"str2", nil];
+        NSMutableArray* muarray = [[NSMutableArray alloc]initWithArray:nsarray];
+        NSArray* nsarray1       = [[NSArray alloc]initWithArray:nsarray];
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc]initWithCapacity:2]; // searchkey: NSMutableArray to NSArray 
+        [array addObject:@"dog"];
+        [array addObject:@"cat"];
+
+        // NSMutableArray to array
+        NSArray* nsarray = [array mutableCopy];
+        for(NSString* str in nsarray){
+            NSLog(@"str=[%@]", str);
+        }
+        --------------------------------------------------------------------------------
+        NSUserDefaults* defaultUser = [NSUserDefaults standardUserDefaults];
+        NSMutableArray* array = [NSMutableArray arrayWithCapacity:2];
+        [array insertObject:@(4) atIndex:0]
+        [array addObject:@(1)];
+        [array addObject:@(2)];
+        [array addObject:@(3)];
+
+        [defaultUser setObject:array forKey:@"key"];
+        NSMutableArray* myarray = [defaultUser objectForKey:@"key"];
+
+        for(NSMutableArray* arr in myarray){
+            NSLog(@"arr=[%@]", arr);
+        }
+        --------------------------------------------------------------------------------
+        --------------------------------------------------------------------------------
+    `]
+
+    [Xcode NSMutableDictionary]
+    `[
+        NSMutableDictionary* d1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"bg1.png",          @"bg",
+                                                                        @"color_zero",      @"color_zero",
+                                                                        @"color_non_zero",  @"color_non_zero",
+                                                                        @"color_merge",     @"color_merge",
+                                                                        @"color_stroke",    @"color_stroke",
+                                                                        nil];
+
+        NSMutableDictionary* d2 = [[NSDictionary alloc]initWithObjectsAndKeys:@"bg1.png",          @"bg",
+                                                                        @"color_zero",      @"color_zero",
+                                                                        @"color_non_zero",  @"color_non_zero",
+                                                                        @"color_merge",     @"color_merge",
+                                                                        @"color_stroke",    @"color_stroke",
+                                                                        nil];
+
+        NSMutableDictionary* dict = [[NSDictionary alloc]initWithObjectsAndKeys:
+                                                                         d1, @"k1",
+                                                                         d2, @"k2",
+                                                                        nil];
+        
+        NSMutableDictionary* dd1  = [dict objectForKey:@"k1"];
+    `]
+
+    [Xcode build from commcand line test cases build test cases]
+    `[
+          xcodebuild test -project CoreApp.xcodeproj -scheme CoreAppTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'
+    `]
+    {{ src=image/testcasecmd.png w=70% h=70% }}
+
+    [Xcode NSValue valueWithCGPoint]
+    `[
+            NSLog(@"point   =[%@]", [NSValue valueWithCGPoint:anchorPoint]);
+            NSLog(@"position=[%@]", [NSValue valueWithCATransform3D:transform]);
+            NSLog(@"Size=[%@]", [NSValue valueWithCGSize:size]);
+    `]
+
+
+     [Xcode print format NSValue, print CGPoint, CATransform3D]
+    `[
+        -(void)printCATransform3D:(CATransform3D)transform{
+            NSLog(@"-------------------------------------------------------------------------------");
+            NSLog(@"[%f] [%f] [%f] [%f]", transform.m11, transform.m12, transform.m13, transform.m14);
+            NSLog(@"[%f] [%f] [%f] [%f]", transform.m21, transform.m22, transform.m23, transform.m24);
+            NSLog(@"[%f] [%f] [%f] [%f]", transform.m31, transform.m32, transform.m33, transform.m34);
+            NSLog(@"[%f] [%f] [%f] [%f]", transform.m41, transform.m42, transform.m43, transform.m44);
+            NSLog(@"-------------------------------------------------------------------------------");
+        }
+
+        CGPoint anchorPoint = self.window.layer.anchorPoint;
+        CGPoint position = self.window.layer.position;
+        NSLog(@"anchor_x=[%f] anchor_y=[%f]  position_x=[%f], position_y=[%f]", anchorPoint.x, anchorPoint.y, position.x, position.y);
+        NSLog(@"point   =[%@]", [NSValue valueWithCGPoint:anchorPoint]);
+        NSLog(@"position=[%@]", [NSValue valueWithCGPoint:position]);
+        
+        CGRect rect = CGRectMake(10, 20, 40, 40);
+        NSLog(@"Rect=[%@]", [NSValue valueWithCGRect:rect]);
+        CGSize size = CGSizeMake(10.1, 20.2); NSLog(@"Size=[%@]", [NSValue valueWithCGSize:size]);
+
+        -(void)printLayerInfo:(CALayer*)layer text:(NSString*)text{  
+            CGPoint anchorPoint = layer.anchorPoint;                
+            CGPoint position = layer.position;                     
+            CGRect frame = layer.frame;                            
+            CGRect bounds = layer.bounds;                           
+            NSLog(@"--------------------[begin %@]------------------------------", text);    
+            NSLog(@"anchor  [%@]", [NSValue valueWithCGPoint:anchorPoint]);                  
+            NSLog(@"position[%@]", [NSValue valueWithCGPoint:position]);                    
+            NSLog(@"frame   [%@]", [NSValue valueWithCGRect:frame]);                        
+            NSLog(@"bounds  [%@]", [NSValue valueWithCGRect:bounds]);                      
+            NSLog(@"--------------------[end   %@]------------------------------", text);   
+        }             
+    `]
+    
+    [Xcode Format String]
+    `[
+            format string formatting
+            --------------------------------------------------------------------------------
+            // one decimal for float
+            NSString* strFormat = [NSString stringWithFormat:@"[%.01f][%.01f]", xcolor.blue, xcolor.alpha];
+            --------------------------------------------------------------------------------
+            %@ Objective-C object, printed string returned by descriptionWithLocale
+            %% '%' character.
+            %d, %D Signed 32-bit integer (int).
+            %u, %U Unsigned 32-bit integer (unsigned int).
+            %x Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and a–f.
+            %X Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and A–F.
+            %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
+            %f 64-bit float (double).
+            %e 64-bit float (double), e exponent.
+            %E 64-bit float (double), E exponent.
+            %g 64-bit float (double), %e if exponent < – 4 or >= to the precision, %f o.w.
+            %G 64-bit float (double), %E if exponent < – 4 or >= to the precision, %f o.w.
+            %c 8-bit unsigned character
+            %C 16-bit Unicode character
+            %s Null-terminated array of 8-bit unsigned characters.
+            %S Null-terminated array of 16-bit Unicode characters.
+            %p Void pointer (void *), printed in hex with the digits 0–9 and a–f, with a leading 0x.
+            %a 64-bit float, leading 0x and one hex before decimal pt using p as exp.
+            %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
+            %F 64-bit float, printed in decimal notation.
+            %d bool stype
+            %.21Lg 20 precision
+    `]
+
+    [Swift]
+    `[
+        // concatenate string
+        let str1 = "hello"
+        let str2 = "world"
+        let str3 = str1 + "," + str2
+        let str4 = "\(str1),\(str2)"
+
+        // create array 
+        var array = [Int]()
+        print("size=\( array.count )")
+        array.append(3)
+        array.append(4)
+        print("size=\( array.count )")
+        array = [] 
+        print("size=\( array.count )")
+
+        // Iterating over an array
+        var myarray = [Double](count:3, repeatedValue:1)
+        for item in myarray{
+            print("item=\(item)")
+        }
+
+        var f = myarray[0];
+        print("f=\(f)")
+
+        // class
+        class Counter {
+            var count = 0
+            func incrementBy(amount: Int) {
+                count += amount
+            }
+        }
+        let counter = Counter()
+        counter.incrementBy(5)
+    `]
+
+
+    [Remove CAShaperLayer from parent Layer CALayer]
+    `[
+        CAShapeLayer* circleLayer = [CAShapeLayer layer];
+        circleLayer.name = @"circle";
+        CGFloat leftX = 100.0f;
+        CGFloat leftY = 100.0f;
+        CGFloat Width = 50.0f;
+        CGFloat Height = 50.0f;
+        UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(leftX, leftY, Width, Height)];
+        [circleLayer setPath:[path CGPath]];
+        
+        CGFloat component[4];
+        component[0] = 100.0;
+        component[1] = 1.0;
+        component[2] = 2.0;
+        component[3] = 2.0;
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        [circleLayer setStrokeColor:CGColorCreate(colorSpace, component)];
+        [circleLayer setLineWidth:1.0f];
+        [circleLayer setFillColor:[[UIColor brownColor] CGColor]];
+
+        for(CAShapeLayer* layer in [self.window.layer.sublayers copy]){
+            if([[layer name] isEqualToString:@"circle"]){
+                [layer removeFromSuperlayer];
+            }
+        }
+    `]
+
+    [Vim tip]
+    `[
+        :echo v:this_session            // show current vim session file
+
+        // All in insert mode
+        CTRL-D		command-line completion
+        CTRL-N		command-line completion
+        CTRL-P		command-line completion
+        CTRL-A		command-line completion
+        CTRL-L		command-line completion
+
+        CTRL-W      delete world before the cursor // insert mode
+        CTRL-U      delete remove all characters between the cursor and the beginning of the line
+
+        s/\%V\_^/\/\//gc  [:h \_^]   // \_^ can be used anywhere in the pattern comment all selected lines, selection match visual mode
+        %s/\[\(\w\+\)\s\+objectAtIndex:\([^]]\+\)\]/\1\[\2\]/gc // replace [array objectAtIndex:index] with array[index] in ObjectiveC
+
+        //Copy text from vim to clipboard [:h clipboard]
+        "* is special Register that stores selection
+        "*y Copy text from vim to clipboard
+        "*p Paste text from clipboard to vim 
+
+        3dd // delete below 3 line from the current line
+        
+        :let x = 0 | g/$/s//\='[' . x . ']'/ | let x = x + 1  // append [x] to the end of line
+
+        :CTRL-O     //Jump Older cursor position in jump list [:h jumps]
+        :CTRL-I     //Jump newer cursor position in jump list backward
+
+        :vimgrep /MyString/ /home/mycode/**/*.m   // Search MyString pattern recursively[**/*.m] two arsterisks 
+        :copen      // Open your quickfix 
+        :gf         // open the file under the currsor
+
+        :find will search the directories/files in path option [:h :find]
+        :vim $(find ./ -name \*.java -print)                // open all java file from find
+        :set path? //will show current path option [:h path]
+        :set path +=/home/mycode //You can add different directories to path option in Vim
+        
+        " reset to default
+        :set path& [:h set]
+
+        :set complete=k/home/myfile/*,k~/home/dir
+        " auto completion search your own file
+        " [:h complete]
+        " k{dict} scan the file {dict}. Servan flags can be given
+
+        In Vim Script, there are many options to handle file names, paths   
+        :h cmdline
+
+        :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
+        :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers
+        :zf                // Create fold under cursor
+        :zd                // Delete fold under cursor
+        :5gt               // goto tab 5, [in insert mode]
+        :tabmove 4         // move the current tab to position 4 [help :tabmove]
+        :tabc 11           // close tab 11
+
+        :set modeline      // display file name in each tabs page
+        :set ls=2
+
+        :set modeline      // display full file name in statusline [:help :statusline]
+        :set statusline=%F
+
+        :echo getline(".")                 // get current line string
+        :echo match("mystring", "st")      // return 2
+        :echo line(".")                    // line number of cursor
+        :echo line("'t")                   // line number of mark t
+        :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
+        :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
+        :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
+        :help debug-mode                   // debug vim script
+        
+        :echo getline(".")                                                                              // get current line string
+        :echo match("mystring", "st")                                                                   // return 2
+        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
+        :\%V                                                                                             // visual selection block [:help \%V]
+        :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
+        :'< and >'                                                                  // first cursor position/last cursor position in registers in visual mode/selection
+
+        :g/^$/d                             //delete empty line 
+        :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
+        :q: or q/                          // vim command history
+
+        :hi Search guifg=Brown guibg=Gray
+        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+
+        :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
+        :sort! n                           //reverse sorting
+
+        :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
+        :highlight MyKeyWord guifg=Green 
+        :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+        :set ma                             // set file modifiable on  [:h modifiable]
+        :ctrl-]                              //class definition 
+        :ctrl-t                              //back to previous window
+        :s/pattern/\=@a.submatch(0).@b/gc   // substitute with two registers
+
+        :redir @a // redirect ex command to register
+        :ls
+        :redir END
+
+        :redir @* | ls | redir END  // redirect all the name of file to reg @* in buffer
+        
+        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        :/pattern\c #ignorecase
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+
+        :/\(if\)\ze\(then\)         // if follows then "[if]then"
+        :/\(if\)\zs\(then\)         // then starts with if "if[then]" 
+
+        :g*         / search without word boundry
+
+        :let i=1 | g/dog/s//\='cat' . i/ | let i=i+1    // g/pattern/[cmd] [h :g] [h sub-replace-expression] searchkey: increase
+        :for i in range(1,10) | if i % 2 == 0 | put = i | endif | endfor  // put even numbers from cursor position vertically
+
+        :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]      // get background color  
+        :set hidden   // hidden an unsaved file, ow, file has to be saved with !
+    `]
+
+    [Grep command]
+    :vim $(grep -l --include="*.java" pattern .)
+    :grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* 
+    :grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+    :vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+
+    :his s                      // list commands history
+    :his /                      // list search history
+
+    :CTRL-E                     // scroll window up 
+    :CTRL-Y                     // scroll window down
+
+     
+     :sleep 2
+     redraw
+
+     {{ src=image/vim_operator.png w=50% h=50% }}
+     :diw // delete/yank/visual [i]nner word    block
+     :daw // delete/yank/visual [a] word        block
+     :dib // delete/yank/visual [i]nner '(' ')' block
+     :daB // ddelete/yank/visual [a] '(' ')' block
+     :diB // ddelete/yank/visual [i]nner '{' '}' block
+     :daB // ddelete/yank [a] '{' '}' block
+     
+     :viw // select [i]nner word    block
+     :vaw // select [a] word        block
+     :vib // select [i]nner '(' ')' block
+     :vaB // select [a] '(' ')' block
+     :viB // select [i]nner '{' '}' block
+     :vaB // select [a] '{' '}' block
+
+     :V   // select line  linewise
+
+
+     :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
+     :syntax clear MyColorGroup     // remove highlight
+
+     :Compile Java code inside Vim [:h expand]
+
+
+    [Vim script]
+    `[
+        :h *print*()  // find all funciton, find all the function contais print
+
+        :printf("%4d: E%d %.30s", lnum, errno, msg)  // vim formator
+        exec "normal \<C-W>h" [:h normal]  // move cursor to left window
+        // display without Enter
+        exec '!ls ' 
+
+        " Fix the missing -cp option in java
+        " Assume java file is in current buffer
+        function! CompileJava()
+            let path = expand("%")
+            exec ":!javac " . path <CR> 
+            let jclassName = expand("%:p:t:r")
+            let className = expand("%:p:t:r")
+            let cwd = getcwd()
+            let full = ":!java -cp " . cwd . ":. " . jclassName
+            exec  full 
+        endfunction 
+
+        :expand("%")    
+        "file.txt
+
+        :expand("%:p")  
+        "/home/file.txt 
+
+        :expand("%:p:t") 
+        "file.txt
+
+        :expand("%:p:r") 
+        "/home/file
+
+        :expand("%:p:t:r") 
+        "file 
+
+        :fnamemodify('/dog/f.txt', ':h') " /dog
+
+        " get current file dir
+        :getcwd()
+        "/home
+
+        " read file
+        :readfile(fname)
+
+        " check whether a file with the name exists 
+        :filereadable(fname)
+
+        " write file
+        :writefile(fname, "a") 
+        :writefile(fname, "b") "b" binary mode
+
+        [:h Dictionary]
+        " dictionary
+        let dict={'key': 'value'}
+
+        " replace value 
+        dict.key = 'dog'
+
+        " Iterate through Dictionary
+        for [key, value] in items(dict)
+          echo key . ':' . value 
+        endfor
+
+        " remove key
+        let value = remove(dict, 'key')
+        echo value  " dog
+
+        [:h List]
+        " list as value
+        let list = ['a', 'b']
+        add(dict.key, 'abc')
+        echo dict.key   " ['a', 'b', 'abc']
+
+
+        " list, string, length, len
+        let list = []
+        let list = ["cat", "dog"]
+        let len = len(list)
+        let fname = split(expand("%:p"), "/")
+        let length = length("this is cool") 
+
+        " remove list item
+        :unlet list[3] " remove fourth item
+        :unlet list[3:] " remove foruth to last
+
+        " remove dictionary item
+        :unlet dict['two'] 
+        :unlet dict.two
+
+        " This is especially useful to clean up global variables 
+        :unlet global_var
+
+        " sort a list
+        let list = ['b', 'a']
+        sort(list)
+
+        " sort a list in-place, a list remain unmodified
+        let copylist = sort(copy(list))
+
+        " Iterate buffer list
+        let bufcount = bufr("$")
+        let curr = 1 
+        while curr <= bufcount 
+            let currbufname = bufname(curr)
+            if buflisted(currbufname) && strlen(currbufname) > 0
+                echo currbufname
+            endif
+            let curr = curr + 1
+        endwhile
+
+
+        " Iterate through List
+        for item in mylist
+          echo item
+        endfor 
+
+        " for loop
+        let index = 0
+        while index < len(mylist)
+          echo mylist[index]
+          let index = index + 1
+        endwhile
+
+        " list of open windows
+        :echo range(1, winnr('$'))
+
+        " To determine how many split-windows are open
+        winnr('$')
+
+        " How many in the current page
+        tabpagewinnr(tabpagenr(), '$')
+        
+        http://vim.1045645.n5.nabble.com/how-to-get-list-of-open-windows-td1164662.html
+        " List all split window by tab page 
+        while t <= tabpagenr('$') 
+                echo 'tab' t . ':' 
+                let bufs = tabpagebuflist(t) 
+                let w = 0 
+                while w < tabpagewinnr(t, '$') 
+                        echo "\t" . bufname(bufs[w]) 
+                        let w += 1 
+                endwhile 
+                let t += 1 
+        endwhile 
+        unlet t w bufs 
+
+        " split window on the right hand side
+        :set splitright 
+
+        " statusline format
+        %-0{minwid}.{maxwid}{item}
+        The - forces the item to be left aligned
+        The 0 forces numeric value to be left padded with zeros
+
+        " statusline evaludate function
+        statusline+=%10{expand('%:p:h')}
+
+    `]
+
+    [Git command]
+    :git branch myfeature_branchcreate                   // git feature branch
+    :git branch -d delete_branchdelete                   // [git delete] feature branch
+    :git branch -D delete_branchdelete                   // unmerged feature branch
+
+    :git checkout master 
+    :git merge --no-ff feature_branch // [git merge]merge feature branch to master
+    :git rm -r --cached myfile                           // remove file from your index
+    :git refloghow                                       // all the reference log
+    :git reset --hard 828c8c0b1995                       // revert to previous commit
+    :git diff --stat hash1  hash2                        // diff two commits from two hashes  
+
+    [Linux command]
+    :y$                                             // copy character from cursor to the end of line     [:help yank]
+    :vaw                                            // highlight word under cursor including white space [:help text-object]
+    :viw                                            // hightlight word under cursor excluding white space[:help text-object]
+    :awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file>
+    :awk -F ":" '{for(i=0; i<NF; i++) print $1}'
+    :kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
+
+    :history -d  xxx #remove history
+    :add to vimrc file #vim change tabs to space
+    :set tabstop=4
+    :set shiftwidth=4
+    :set expandtab
+    :set showcmd
+    :sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt
+    :sed -i -e 's/oldstring/newstring/g' *                                                           
+    :find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+    
+    [git branch shows on command prompt]
+    `[
+        parse_git_branch(){
+            git branch 2> /dev/null | sed -e 's/* \(.*\)/ \(\1)/'
+        }
+        export PS1="\u$(parse_git_branch)\w$"
+        \u - Username
+        \w - Full path
+        \h - Host name
+    `]
+
+    [Shell Script]
+    If else statement, Compare string, Compare integer
+    `[
+        if [ $# -gt 0 ]; then 
+            echo "arg $1"
+            if [ $1 = "w" ]; then
+                echo "do sth" 
+            elif [ $1 = "t" ]; then 
+                echo "do other th" 
+            fi 
+        else
+            echo "Usage"
+        fi
+    `]
+    [iOS Game Development]
+    {{ src=image/gameOption.png w=50% h=50% }}
+    {{ src=image/gridgrid.png w=50% h=50% }}
+    {{ src=image/gridgridstack.png w=50% h=50% }}
+    {{ src=image/calayer.png w=50% h=50% }}
+
+    [SpriteKit Development SKView SKScene SCNNode]
+    {{ src=image/spritekit.png w=50% h=50% }}
+    [SpriteKit how to create weapon with SKSPriteNode create physicsBody]
+    {{ src=image/sprite2.png w=70% h=70% }}
      
 
