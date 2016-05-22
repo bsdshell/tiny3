@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+
+<svg 
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     width="16.227777777777778cm"
+     height="7.055555555555555cm"
+     viewBox="0 0 1307 568"
+     >
+<title>
+
+</title>
+<g stroke-linejoin="miter" stroke-dashoffset="0.0000" stroke-dasharray="none" stroke-width="1.0000" stroke-miterlimit="10.000" stroke-linecap="square">
+<g id="misc">
+</g><!-- misc -->
+<g id="layer0">
+<clipPath id="clip1">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip1)">
+<g fill-opacity=".10196" fill-rule="evenodd" stroke="none" fill="#993300">
+  <path d="M 503.00 178.00 L 443.00 260.00 L 571.02 256.47 z"/>
+<title>Triangle poly1</title>
+<desc>Triangle poly1: Polygon A, B, C</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip1 -->
+<clipPath id="clip2">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip2)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#993300">
+  <path d="M 503.00 178.00 L 443.00 260.00"/>
+<title>Segment c</title>
+<desc>Segment c: Segment [A, B] of Triangle poly1</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip2 -->
+<clipPath id="clip3">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip3)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#993300">
+  <path d="M 443.00 260.00 L 571.02 256.47"/>
+<title>Segment a</title>
+<desc>Segment a: Segment [B, C] of Triangle poly1</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip3 -->
+<clipPath id="clip4">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip4)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#993300">
+  <path d="M 571.02 256.47 L 503.00 178.00"/>
+<title>Segment b</title>
+<desc>Segment b: Segment [C, A] of Triangle poly1</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip4 -->
+<clipPath id="clip5">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip5)">
+<g fill-opacity="1.0000" fill-rule="nonzero" stroke="none" fill="#0000ff">
+  <path d="M 508.00 178.00 C 508.00 180.76 505.76 183.00 503.00 183.00 C 500.24 183.00 498.00 180.76 498.00 178.00 C 498.00 175.24 500.24 173.00 503.00 173.00 C 505.76 173.00 508.00 175.24 508.00 178.00 z"/>
+<title>Point A</title>
+<desc>A = (6.28, 19.29)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip5 -->
+<clipPath id="clip6">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip6)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 508.00 178.00 C 508.00 180.76 505.76 183.00 503.00 183.00 C 500.24 183.00 498.00 180.76 498.00 178.00 C 498.00 175.24 500.24 173.00 503.00 173.00 C 505.76 173.00 508.00 175.24 508.00 178.00 z"/>
+<title>Point A</title>
+<desc>A = (6.28, 19.29)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip6 -->
+<clipPath id="clip7">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip7)">
+<g fill-opacity="1.0000" fill-rule="nonzero" stroke="none" fill="#0000ff">
+  <path d="M 448.00 260.00 C 448.00 262.76 445.76 265.00 443.00 265.00 C 440.24 265.00 438.00 262.76 438.00 260.00 C 438.00 257.24 440.24 255.00 443.00 255.00 C 445.76 255.00 448.00 257.24 448.00 260.00 z"/>
+<title>Point B</title>
+<desc>B = (2.99, 14.81)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip7 -->
+<clipPath id="clip8">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip8)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 448.00 260.00 C 448.00 262.76 445.76 265.00 443.00 265.00 C 440.24 265.00 438.00 262.76 438.00 260.00 C 438.00 257.24 440.24 255.00 443.00 255.00 C 445.76 255.00 448.00 257.24 448.00 260.00 z"/>
+<title>Point B</title>
+<desc>B = (2.99, 14.81)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip8 -->
+<clipPath id="clip9">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip9)">
+<g fill-opacity="1.0000" fill-rule="nonzero" stroke="none" fill="#0000ff">
+  <path d="M 576.02 256.47 C 576.02 259.23 573.78 261.47 571.02 261.47 C 568.26 261.47 566.02 259.23 566.02 256.47 C 566.02 253.71 568.26 251.47 571.02 251.47 C 573.78 251.47 576.02 253.71 576.02 256.47 z"/>
+<title>Point C</title>
+<desc>C = (10, 15)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip9 -->
+<clipPath id="clip10">
+  <path d="M 0.0000 0.0000 L 0.0000 568.00 L 1307.0 568.00 L 1307.0 0.0000 z"/>
+</clipPath>
+<g clip-path="url(#clip10)">
+<g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1.0000" stroke="#000000">
+  <path d="M 576.02 256.47 C 576.02 259.23 573.78 261.47 571.02 261.47 C 568.26 261.47 566.02 259.23 566.02 256.47 C 566.02 253.71 568.26 251.47 571.02 251.47 C 573.78 251.47 576.02 253.71 576.02 256.47 z"/>
+<title>Point C</title>
+<desc>C = (10, 15)</desc>
+
+</g> <!-- drawing style -->
+</g> <!-- clip10 -->
+</g><!-- layer0 -->
+</g> <!-- default stroke -->
+</svg> <!-- bounding box -->

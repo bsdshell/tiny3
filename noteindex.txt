@@ -1,7 +1,165 @@
 
+    [Shell crazy symbol ]
+    `[
+        for arg in $* 
+        do
+        echo "[\$*]=".$arg
+        done
+        #[$*]=.n1
+        #[$*]=.n2
+        #[$*]=.n3
+
+        for arg in "$*" 
+        do
+            echo "[\$*]=".$arg
+        done
+        #[$*]=.n1 n2 n3
+
+        for arg in $@ 
+        do
+            echo "[\$@]=".$arg
+        done
+        #[$@]=.n1
+        #[$@]=.n2
+        #[$@]=.n3
+
+        for arg in "$@"
+        do
+            echo "[\$@]=".$arg
+        done
+        #[$@]=.n1 n2
+        #[$@]=.n3
+    `] 
+    [xcode shortcut key, xcode key, xcode shortcut]
+    `[
+        // xcode shortcut key, xcode key, xcode shortcut
+        Shift ALT Command Left/Right  fold all code/unfolded all code
+        CTRL 5 search files name(.h *.m)
+        CTRL 6 type search show all current methods
+        CTRL WindowKey left/right  navigate backward/backward
+        CTRL 1 show recent items
+        CTRL C delete current line
+        ALT Left/Right  move word by word
+        Command ALT .(dot) change focus
+        Command ALT Left/Right code fold/unfolded
+        Command ALT 0 close utilities window
+
+        Command left/right move cursor to begin/end of line(no highligh)
+        Command , show setting(xcode)
+        Command 3 global search
+        Command w close window (not just xcode)
+        Command [] shift hightlight code left/right
+        Command double click jump to definition
+        Command D mark line
+        Command L goto line
+        Command E, Command F use selection to find
+        Command Shift Y close debug window
+        Command Shift 2 Open Organizer
+        Command E + Command F search word under cursor
+        Command Shift f  global find
+        Command Shift Left/Right  selection whole line
+        Command Shift right/left highlight line
+        Command CTRL UP/Down .h and .m file
+        Command CTRL J jump to definition
+        Command CTRL Left jump back
+        Command CTRL F full/maximize screen mode
+        Command CTRL Y debug/continue 
+        Command `  window fit screen
+    `] 
+
+    [iPhone iPad info ]
+    `[
+         --------------------------------------------------------------------
+         iPhone 4s
+         width=[320.000000]
+         height=[480.000000]
+         scale =[2.000000]
+         nativeWidth=[640.000000]
+         nativeHeight=[960.000000]
+         scale =[2.000000]
+         --------------------------------------------------------------------
+         iPhone 5 and up
+         width=[320.000000]
+         height=[568.000000]
+         scale =[2.000000]
+         nativeWidth=[640.000000]
+         nativeHeight=[1136.000000]
+         scale =[2.000000]
+         --------------------------------------------------------------------
+         iPad 2
+         Switch Back
+         width=[768.000000]
+         height=[1024.000000]
+         scale =[1.000000]
+         nativeWidth=[768.000000]
+         nativeHeight=[1024.000000]
+         scale =[1.000000]
+         iPad
+         --------------------------------
+         iPad Air
+         width=[768.000000]
+         height=[1024.000000]
+         scale =[2.000000]
+         nativeWidth=[1536.000000]
+         nativeHeight=[2048.000000]
+         scale =[2.000000]
+         --------------------------------
+         ipad Air 2
+         Switch Back
+         width=[768.000000]
+         height=[1024.000000]
+         scale =[2.000000]
+         nativeWidth=[1536.000000]
+         nativeHeight=[2048.000000]
+         scale =[2.000000]
+         --------------------------------
+         iPad Pro
+         width=[768.000000]
+         height=[1024.000000]
+         scale =[2.000000]
+         nativeWidth=[1536.000000]
+         nativeHeight=[2048.000000]
+         scale =[2.000000]
+         iPad Retina
+         --------------------------------
+         width=[768.000000]
+         height=[1024.000000]
+         scale =[2.000000]
+         nativeWidth=[1536.000000]
+         nativeHeight=[2048.000000]
+         scale =[2.000000]
+         --------------------------------
+    `] 
+    [Regular Expression ]
+    `[
+        :negative operator
+        :/if \(\(then\)\@!.\)*  // if not followed then
+        :%s/`[\zs\(`\]\)
+        :%s/{\(}\@!\_.\)*//gc   // substitue all content inside the { and } 
+    `] 
+
+    [GPG encrypt directory, tar file, encrypt file]
+    `[
+        *GPG encrypt directory*
+        tar -czf dir.tar.gz dir 
+        tar -xzf dir.tar.gz dir 
+        gpg -c dir.tar.gz  
+        gpg -c -o dir.tar.gz dir.tar.gz.gpg     //encrypt your tar file
+    `]
+
+    [Haskell strip whitespace]
+    `[
+        import qualified Data.Text as Text
+        let s = " ab " 
+        Text.strip $ Test.pack s
+    `] 
     [Haskell zip]
     `[
         zip [1..3] [1..3]  = [(1,1)(2,2)(3,3)] 
+    `]
+    [Haskell zipWith]
+    `[
+        zipWith(\x y ->[x, y])[1, 2][2, 3] = [[1,2] [2,3]]
     `]
 
     [Haskell zipWith]
@@ -276,6 +434,12 @@
             ]
           ]
         ]
+    `]
+
+    [Java compile jar file ]
+    `[
+        java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
+        javac -sourcepath /mylib/  -d .   HellowWorld.java          // Specify where to find source file and where to put class file
     `]
 
     [Java Algorithm]
@@ -622,7 +786,7 @@
         ================================================================================
         [self.searchBar becomeFirstResponder];
         [self.searchBar resignFirstResponder];
-        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
+        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array copy array
         NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
         --------------------------------------------------------------------------------
         NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:10];
@@ -680,10 +844,6 @@
             NSLog(@"arr=[%@]", arr);
         }
         --------------------------------------------------------------------------------
-    `]
-
-    [Xcode NSMutableDictionary]
-    `[
         NSMutableDictionary* d1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"bg1.png",          @"bg",
                                                                         @"color_zero",      @"color_zero",
                                                                         @"color_non_zero",  @"color_non_zero",
@@ -698,20 +858,165 @@
                                                                         @"color_stroke",    @"color_stroke",
                                                                         nil];
 
-        NSMutableDictionary* dict = [[NSDictionary alloc]initWithObjectsAndKeys:d1, @"k1",
+        NSMutableDictionary* dict = [[NSDictionary alloc]initWithObjectsAndKeys:
+                                                                         d1, @"k1",
                                                                          d2, @"k2",
                                                                         nil];
         
         NSMutableDictionary* dd1  = [dict objectForKey:@"k1"];
+        --------------------------------------------------------------------------------
+        NSMutableDictionary* dict = [[NSMutableDictionary alloc]init];
+        [dict setObject:@"obj1" forKey:@"k1"];
+        [dict setObject:@"obj2" forKey:@"k2"];
+        NSString* str = [dict objectForKey:@"k1"];
+        XCTAssertTrue([str isEqualToString:@"obj1"]);
+
+        // contain key 
+        NSString* str1 = [dict objectForKey:@"kk"];
+        XCTAssertTrue(str1 == nil);
+        --------------------------------------------------------------------------------
+        // sort dictionary
+        NSMutableDictionary* dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:
+                                                                            @"obj1",          @"1",
+                                                                            @"obj0",          @"0",
+                                                                            @"obj2",          @"2",
+                                                                            nil];
+        
+        NSArray* array = [dict keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2){
+            return [obj1 compare:obj2];
+        }];
+        
+        for(NSString* str in array){
+            NSLog(@"key=[%@] obj[%@]", str, dict[str]);
+        }
+        --------------------------------------------------------------------------------
+        // float/CGFloat as key in dictionary
+        CGFloat f0 = 0.33;
+        CGFloat f1 = 1.33;
+        CGFloat f2 = 4.4400;
+
+        NSMutableDictionary* dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:
+                                     @"obj0",          [NSNumber numberWithFloat:f0],
+                                     @"obj2",          [NSNumber numberWithFloat:f2],
+                                     @"obj1",          [NSNumber numberWithFloat:f1],
+                                     nil];
+        
+        NSArray* array = [dict keysSortedByValueUsingComparator:^NSComparisonResult(id obj1, id obj2){
+            return [obj1 compare:obj2];
+        }];
+        
+        for(NSString* str in array){
+            NSLog(@"key=[%@] obj[%@]", str, dict[str]);
+        }
+        --------------------------------------------------------------------------------
+        NSArray* array1 = @[@"dog", @"cat", @"cow"];
+        NSSet* set33 = [NSSet setWithObjects:@"dog", @"cat", nil];
+        NSSet* set44 = [NSSet setWithArray:array1];
+        
+        for(id item in set44){
+            NSLog(@"%@", item);
+        }
+        
+        
+        NSMutableSet* set = [[NSMutableSet alloc]init];
+        NSString* elem1 = @"str1";
+        NSString* elem2 = @"str2";
+        
+        [set addObject:elem1];
+        [set addObject:elem2];
+        [set removeObject:elem1];
+
+        NSMutableSet* set1 = [NSMutableSet setWithObjects:@"obj1", @"obj2", @"obj3", nil];
+        
+        NSMutableSet* set2 = [NSMutableSet setWithCapacity:2];
+        [set2 addObject:@"obj1"];
+        [set2 addObject:@"obj2"];
+        
+        // Predicate in NSMutableSet
+        NSMutableSet* set3 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
+        NSPredicate* startWithG = [NSPredicate predicateWithBlock:
+                                   ^BOOL(id evaluatedObject, NSDictionary* bindings){
+                                       if([evaluatedObject hasPrefix:@"G"]){
+                                           return YES;
+                                       }else{
+                                           return NO;
+                                       }
+                                   }];
+        [set3 filterUsingPredicate:startWithG];
+        
+        NSMutableSet* set4 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
+        NSArray* array = [set4 allObjects];
+        for(NSString* str in array){
+            if([str hasPrefix:@"G"]){
+                NSLog(str);
+                [set4 removeObject:str];
+            }
+        }
+
+        NSMutableSet* set11 = [NSMutableSet setWithObjects:@"Google", @"God", @"odd", nil];
+        NSMutableSet* set12 = [NSMutableSet setWithObjects:@"Facebook", @"Apple", @"MS", nil];
+        NSMutableSet* result = [NSMutableSet setWithCapacity:10];
+        
+        [result unionSet:set11];
+        [result unionSet:set12];
+        
+        
+        [result intersectSet:set11];
+        
+        [result minusSet:set11];
+        
+        NSCountedSet* countedSet = [NSCountedSet setWithCapacity:5];
+        [countedSet addObject:@"dog"];
+        [countedSet addObject:@"cat"];
+        [countedSet addObject:@"dog"];
+
+        // #NSNumber
+        -------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc]init];
+        [array addObject:[NSNumber numberWithChar:'c']];
+        char ch = [array[0] charValue];
+        XCTAssertTrue(ch == 'c');
+        
+        NSMutableArray* arr1 = [[NSMutableArray alloc]init];
+        [arr1 addObject:[NSNumber numberWithBool:false]];
+        BOOL isTrue = [arr1[0] boolValue];
+        XCTAssertTrue(isTrue == false);
+        
+        for(id ch in array){
+            NSLog(@"[%@] [%@]", ch, [NSString stringWithFormat:@"%c", 'a']);
+        }
+        + (NSNumber *)numberWithChar:(char)value;
+        + (NSNumber *)numberWithUnsignedChar:(unsigned char)value;
+        + (NSNumber *)numberWithShort:(short)value;
+        + (NSNumber *)numberWithUnsignedShort:(unsigned short)value;
+        + (NSNumber *)numberWithInt:(int)value;
+        + (NSNumber *)numberWithUnsignedInt:(unsigned int)value;
+        + (NSNumber *)numberWithLong:(long)value;
+        + (NSNumber *)numberWithUnsignedLong:(unsigned long)value;
+        + (NSNumber *)numberWithLongLong:(long long)value;
+        + (NSNumber *)numberWithUnsignedLongLong:(unsigned long long)value;
+        + (NSNumber *)numberWithFloat:(float)value;
+        + (NSNumber *)numberWithDouble:(double)value;
+        + (NSNumber *)numberWithBool:(BOOL)value;
+        + (NSNumber *)numberWithInteger:(NSInteger)value NS_AVAILABLE(10_5, 2_0);
+        + (NSNumber *)numberWithUnsignedInteger:(NSUInteger)value NS_AVAILABLE(10_5, 2_0);
+        -------------------------------------------------------------------------
+        // #Compare two NSNumber
+        - (NSComparisonResult)compare:(NSNumber *)otherNumber;
+        - (BOOL)isEqualToNumber:(NSNumber *)number;
     `]
 
-    [Xcode build from commcand line]
+    [Xcode tips]
     `[
-          xcodebuild test -scheme SimpleApp -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=7.1'
+          xcodebuild test -scheme SimpleApp -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=7.1'  // Xcode build from command line
+          /Users/cat/Library/Developer/Xcode/DerivedData  // Xcode delete cache
+          xcodebuild -scheme MyLib -destination 'platform=iphonesimulator,name=iPhone 6' -derivedDataPath build    // Xcode build from command line
+
+          AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     `]
     [Xcode Format String]
     `[
-            format string formatting
+            nformatting
             --------------------------------------------------------------------------------
             // one decimal for float
             NSString* strFormat = [NSString stringWithFormat:@"[%.01f][%.01f]", xcolor.blue, xcolor.alpha];
@@ -737,6 +1042,74 @@
             %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
             %F 64-bit float, printed in decimal notation.
             %d bool stype
+            --------------------------------------------------------------------------------
+            NSFileManager* fileManager = [[NSFileManager alloc]init];
+            NSString* path = @"/dog/cat";
+            NSString* name = @"file.txt";
+            --------------------------------------------------------------------------------
+            NSString* fullPath = [path stringByAppendingPathComponent:name];
+            --------------------------------------------------------------------------------
+            NSString* str1 = @"str1";
+            NSString* str2 = @"str2";
+            NSString* catStr = [str1 stringByAppendingString:str2];
+            --------------------------------------------------------------------------------
+            NSArray* docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString* documentDirectory = [docPath objectAtIndex:0];
+            NSLog(@"documentDirectory=%@", documentDirectory);
+            --------------------------------------------------------------------------------
+            NSArray* cashesDirArr = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+            NSString* cashesDir = [cashesDirArr objectAtIndex:0];
+            NSLog(@"cashesDir=%@", cashesDir);
+            --------------------------------------------------------------------------------
+            NSArray* downloadDirArr = NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES);
+            NSString* downloadDir = [downloadDirArr objectAtIndex:0];
+            NSLog(@"downloadDir=%@", downloadDir);
+            --------------------------------------------------------------------------------
+            NSString* deleteComponent = [@"/dog/cat/cow" stringByDeletingLastPathComponent];
+            NSLog(@"deleteComponent[%@]", deleteComponent);
+            --------------------------------------------------------------------------------
+            NSString* lastComponent = [@"/dog/cat/cow" lastPathComponent];
+            NSLog(@"lastComponent[%@]", lastComponent);
+            --------------------------------------------------------------------------------
+            NSString* noExtPath = [@"/dog/cat/cow.txt" stringByDeletingPathExtension];
+            NSLog(@"noExtPath[%@]", noExtPath);
+            --------------------------------------------------------------------------------
+            // create file from NSString
+            NSError* error;
+            NSString* strData = @"Convert String to NSData";
+            NSData* dataBuffer = [strData dataUsingEncoding:NSUTF8StringEncoding];
+            NSString* filePath = [documentDirectory stringByAppendingPathComponent:@"myfile.txt"];
+            --------------------------------------------------------------------------------
+            //[fileManager copyItemAtPath:screenShotImageFile toPath:fullPath error:&error];
+            [dataBuffer writeToFile:filePath atomically:YES];
+            NSLog(@"filePath[%@]", filePath);
+            --------------------------------------------------------------------------------
+            // copy file
+            NSString* newFilePath = [documentDirectory stringByAppendingPathComponent:@"newfile.txt"];
+            [fileManager copyItemAtPath:filePath toPath:newFilePath error:&error];
+            NSLog(@"newFilePath[%@]", filePath);
+            --------------------------------------------------------------------------------
+            // create empty file
+            NSString* emptyFilePath = [documentDirectory stringByAppendingPathComponent:@"emptyfile.txt"];
+            [fileManager createFileAtPath:emptyFilePath contents:nil attributes:nil];
+            NSLog(@"emptyFilePath[%@]", emptyFilePath);
+            --------------------------------------------------------------------------------
+            // write to file
+            NSString* myString = @"write to file";
+            NSString* myEmptyFile = [documentDirectory stringByAppendingPathComponent:@"myempty.txt"];
+            [fileManager createFileAtPath:emptyFilePath contents:nil attributes:nil];
+            [myString writeToFile:myEmptyFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            NSLog(@"myEmptyFile[%@]", myEmptyFile);
+            --------------------------------------------------------------------------------
+            // read NSString from file
+            NSString *contents = [NSString stringWithContentsOfFile:myEmptyFile];
+            NSLog(@"contents=[%@]", contents);
+            --------------------------------------------------------------------------------
+            // read NSData from file
+            NSData* dataContents = [NSData dataWithContentsOfFile:myEmptyFile];
+            NSString* myStr1 = [[NSString alloc] initWithData:dataContents encoding:NSUTF8StringEncoding];
+            NSLog(@"myStr1=[%@]", myStr1);
+            --------------------------------------------------------------------------------
     `]
 
     [Remove CAShaperLayer from parent Layer CALayer]
@@ -767,6 +1140,13 @@
         }
     `]
 
+    [Vim undolist]
+    `[
+        set undofile                " Save undo's after file closes
+        set undodir=$HOME/.vim/undo " where to save undo histories
+        set undolevels=1000         " How many undos
+        set undoreload=10000        " number of lines to save for undo
+    `] 
 
     [Vim Regex ObjectiveC]
     :replace [array objectAtIndex:index] with array[index] in ObjectiveC
@@ -780,6 +1160,11 @@
         "*y Copy text from vim to clipboard
         "*p Paste text from clipboard to vim 
     `]
+
+    // searchkey: vim completion, completefunc 
+    :<C-X><C-L> // line completion 
+    :<C-X><C-F> // file name completion 
+    :<C-X><C-U> // define your own completefunc function 
 
     :CTRL-O     //Jump Older cursor position in jump list [:h jumps]
     :CTRL-I     //Jump newer cursor position in jump list backward
@@ -855,24 +1240,18 @@
     :redir @a // redirect ex command to register
     :ls
     :redir END
-
     :redir @* | ls | redir END  // redirect all the name of file to reg @* in buffer
-    
     :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
     :/pattern\c #ignorecase
     :hi clear SpellBad # Reset SpellBad bad spell highlight to default
     :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
-
     :/\(if\)\ze\(then\)         // if follows then "[if]then"
     :/\(if\)\zs\(then\)         // then starts with if "if[then]" 
-
     :g*         / search without word boundry
-    [Vim Script get background color]
-    `[
-         :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]       
-    `]
-
-     :set hidden   // hidden an unsaved file, ow, file has to be saved with !
+    :bd *.html  <C-a>           // delete all buffer files with *.html name
+    :2,4bd                      // delete all buffers from 2 to 4 
+    :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]                                     // vim Script get background color
+    :set hidden   // hidden an unsaved file, ow, file has to be saved with !
 
 
     [Grep command]
@@ -880,6 +1259,9 @@
     :grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* 
     :grep --include="*.java" "\"[a-zA-Z]\+\""  ./
     :vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+    :grep -l pattern *   [print file name only]
+    :grep --include="*.[mh]"  --color -Hnris CATextLayer
+
 
     :his s                      // list commands history
     :his /                      // list search history
@@ -901,6 +1283,7 @@
 
      :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
      :syntax clear MyColorGroup     // remove highlight
+     :%!column -t       // format text  ref: https://sanctum.geek.nz/arabesque/advanced-vim-macros/
 
 
 
@@ -919,6 +1302,8 @@
             let full = ":!java -cp " . cwd . ":. " . jclassName
             exec  full 
         endfunction 
+
+        :str =~ "n"    //compare string, return 1 if str == "n" else return 0
 
         :expand("%")    
         "file.txt
@@ -1057,20 +1442,16 @@
         " statusline evaludate function
         statusline+=%10{expand('%:p:h')}
 
+        // vim variable
+        b:	  Local to the current buffer.
+        w:	  Local to the current window.
+        t:	  Local to the current tab page.
+        g:	  Global.
+        l:	  Local to a function.
+        s:	  Local to a :source ed Vim script.
+        a:	  Function argument (only inside a function).
+        v:	  Global, predefined by Vim.
     `]
-
-    [Git command]
-    :git branch myfeature_branchcreate                   // git feature branch
-    :git branch -d delete_branchdelete                   // [git delete] feature branch
-    :git branch -D delete_branchdelete                   // unmerged feature branch
-
-    :git checkout master 
-    :git merge --no-ff feature_branch // [git merge]merge feature branch to master
-
-    :git rm -r --cached myfileremove                     // tracked file in .gitignore
-    :git rm -r --cached myfileremove                     // file from your index
-    :git refloghow                                       // all the reference log
-    :git reset --hard 828c8c0b1995                       // revert to previous commit
 
     [Linux command]
     :y$                                             // copy character from cursor to the end of line     [:help yank]
@@ -1086,9 +1467,17 @@
     :set shiftwidth=4
     :set expandtab
     :set showcmd
+
     :sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt
-    :sed -i -e 's/oldstring/newstring/g' *                                                           
+    :sed -i -e 's/oldstring/newstring/g' *      // replace oldstring to newstring                                                        
     :find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+    :find . -name "*.txt" -type f  -print0 | xargs -0 echo  
+    :find . -name "*.m" -exec sed -i backup 's/old/new/g' {} +         // backup is extension for backup file, got unknown primary or operator error
+    :find . -name "*.m" -exec sed -i '' 's/SimpleApp/DeviceInfoApp/g' '{}' \;   // man find exec 
+    :sudo /usr/libexec/locate.updatedb      // update locate command, update database, update db
+
+
+
     
     [git branch shows on command prompt]
     `[
@@ -1101,7 +1490,7 @@
         \h - Host name
     `]
 
-    [Shell Script]
+    [shell script]
     If else statement, Compare string, Compare integer
     `[
         if [ $# -gt 0 ]; then 
@@ -1114,6 +1503,17 @@
         else
             echo "Usage"
         fi
+
+        timestamp=$(date "+%Y-%m-%d-%H-%M-%S")  # time stamp
+        echo $timestamp
+
+        # shell loop
+        for i in *; do echo $i; done     # shell loop
+        for i in {1..10}; do echo $i; done 
+
+        # change dir, spawn a new shell
+        cd newdir 
+        exec /bin/bash 
     `]
     [iOS Game Development]
     {{ src=image/gameOption.png w=50% h=50% }}
@@ -1153,7 +1553,6 @@
             you need to set the path in your .vimrc file:
             let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 
-            grep -l pattern *   [print file name only]
 
             port selfupdate[macport usage]
             port install povray[install povray]
@@ -1166,11 +1565,6 @@
     `[
         Command+Option+B	// Chrome Opens the bookmark manager.
         Command+Y           // Chrome Opens history page
-    `]
-
-    [Xcode convert point in different coordinates]
-    `[
-        convert point
     `]
     {{ src=image/convertpoint.png w=50% h=50% }}
 
@@ -1266,6 +1660,18 @@
         }
     `]
 
+    [Xcode load image ]
+    `[
+        CGRect originalFrame = CGRectMake(50, 10, 200, 200);
+        CGRect frame = CGRectMake(50, 250, 100, 100);
+        self.view.backgroundColor = [UIColor grayColor];
+
+        UIImageView* oriImageView = [[UIImageView alloc]initWithFrame:originalFrame];
+        UIImage* oriImage = [UIImage imageNamed:@"drawing.png"];
+        oriImageView.image = oriImage;
+        [self.view addSubview:oriImageView];
+    `]
+
     [Xcode Cartesian Coordinate System]
     `[
         // pass self.view.layer 
@@ -1293,8 +1699,10 @@
 
     [Xcode draw rectangle]
     `[
+        // xcode draw rectangle
         // CAShapeLayer* _rectLayer;
-        -(void)myDrawRectangle{
+        // _rectLayer = [CAShapeLayer layer];
+        -(void)drawRectangle{
             CGFloat width = 100.0;
             CGFloat height = 100.0;
             CGSize size          = [UIScreen mainScreen].bounds.size;
@@ -1307,6 +1715,7 @@
             [_rectLayer setFillColor:[[UIColor clearColor] CGColor]];
             [_rectLayer setPath:[path CGPath]];
             [self.window.layer addSublayer:_rectLayer];
+            //[self.view.layer addSublayer:_rectLayer];
         }
     `]
     
@@ -1400,30 +1809,6 @@
         --------------------------------------------------------------------------------
     `]
 
-    [Xcode NSMutableDictionary]
-    `[
-        NSMutableDictionary* d1 = [[NSMutableDictionary alloc]initWithObjectsAndKeys:@"bg1.png",          @"bg",
-                                                                        @"color_zero",      @"color_zero",
-                                                                        @"color_non_zero",  @"color_non_zero",
-                                                                        @"color_merge",     @"color_merge",
-                                                                        @"color_stroke",    @"color_stroke",
-                                                                        nil];
-
-        NSMutableDictionary* d2 = [[NSDictionary alloc]initWithObjectsAndKeys:@"bg1.png",          @"bg",
-                                                                        @"color_zero",      @"color_zero",
-                                                                        @"color_non_zero",  @"color_non_zero",
-                                                                        @"color_merge",     @"color_merge",
-                                                                        @"color_stroke",    @"color_stroke",
-                                                                        nil];
-
-        NSMutableDictionary* dict = [[NSDictionary alloc]initWithObjectsAndKeys:
-                                                                         d1, @"k1",
-                                                                         d2, @"k2",
-                                                                        nil];
-        
-        NSMutableDictionary* dd1  = [dict objectForKey:@"k1"];
-    `]
-
     [Xcode build from commcand line test cases build test cases]
     `[
           xcodebuild test -project CoreApp.xcodeproj -scheme CoreAppTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'
@@ -1432,14 +1817,45 @@
 
     [Xcode NSValue valueWithCGPoint]
     `[
+            #NSValue
             NSLog(@"point   =[%@]", [NSValue valueWithCGPoint:anchorPoint]);
             NSLog(@"position=[%@]", [NSValue valueWithCATransform3D:transform]);
             NSLog(@"Size=[%@]", [NSValue valueWithCGSize:size]);
+            
+            // CGPoint to NSValue and NSValue to CGPoint
+            NSValue* value = [NSValue valueWithCGPoint:anchorPoint]
+            CGPoint mypoint = [value CGPointValue];
     `]
 
+    [Xcode animation ]
+    `[
+        // Load images
+        NSArray *imageNames = @[@"win_1.png", @"win_2.png"];
+        NSMutableArray *images = [[NSMutableArray alloc] init];
+        for (int i = 0; i < imageNames.count; i++) {
+            [images addObject:[UIImage imageNamed:[imageNames objectAtIndex:i]]];
+        }
+
+        // Normal #Animation
+        UIImageView *animationImageView = [[UIImageView alloc] initWithFrame:CGRectMake(60, 95, 86, 193)];
+        animationImageView.animationImages = images;
+        animationImageView.animationDuration = 0.5;
+
+        [self.view addSubview:animationImageView];
+        [animationImageView startAnimating];
+        
+        // Slow motion animation
+        UIImageView *slowAnimationImageView = [[UIImageView alloc] initWithFrame:CGRectMake(160, 95, 86, 193)];
+        slowAnimationImageView.animationImages = images;
+        slowAnimationImageView.animationDuration = 5;
+        
+        [self.view addSubview:slowAnimationImageView];
+        [slowAnimationImageView startAnimating];
+    `]
 
      [Xcode print format NSValue, print CGPoint, CATransform3D]
     `[
+        NSString* str = [NSString stringWithFormat:@"%2ld:0%ld", minute, second];
         -(void)printCATransform3D:(CATransform3D)transform{
             NSLog(@"-------------------------------------------------------------------------------");
             NSLog(@"[%f] [%f] [%f] [%f]", transform.m11, transform.m12, transform.m13, transform.m14);
@@ -1476,6 +1892,7 @@
     [Xcode Format String]
     `[
             format string formatting
+            NSString* str = [NSString stringWithFormat:@"%2ld:0%ld", minute, second];
             --------------------------------------------------------------------------------
             // one decimal for float
             NSString* strFormat = [NSString stringWithFormat:@"[%.01f][%.01f]", xcolor.blue, xcolor.alpha];
@@ -1544,6 +1961,7 @@
 
     [Remove CAShaperLayer from parent Layer CALayer]
     `[
+        // xcode draw circle
         CAShapeLayer* circleLayer = [CAShapeLayer layer];
         circleLayer.name = @"circle";
         CGFloat leftX = 100.0f;
@@ -1563,6 +1981,7 @@
         [circleLayer setLineWidth:1.0f];
         [circleLayer setFillColor:[[UIColor brownColor] CGColor]];
 
+        // xcode remove layer, xcode delete layer, delete layer, remove layer
         for(CAShapeLayer* layer in [self.window.layer.sublayers copy]){
             if([[layer name] isEqualToString:@"circle"]){
                 [layer removeFromSuperlayer];
@@ -1570,17 +1989,91 @@
         }
     `]
 
+    [python snipplet]
+    `[
+                mode	description
+                r	read in text mode
+                w	write in text mode, overwrite old file if exists
+                a	append in text mode
+                r+	read and write
+                w+	read and write, overwrite old file/create file
+                a+	read and append
+                rb	read in binary mode
+                wb	write in binary mode, overwrite old file if exists
+                ab	append in binary mode
+                rb+	read and write in binary mode
+                wb+	write and read in binary mode, overwrite old file if exists
+                ab+	append and read in binary mode
+
+                python -m pdb script.py              // debug python
+                str = str.strip(' \r\n\t')           // trim whitespace
+                str = str.ltrip(' \r\n\t')           // trim the left side of str
+                str = str.rtrip(' \r\n\t')           // trim the right side of str
+                is_number(mystring)                  // convert string to number/integer
+                arglist = sys.argv;                  // argument list
+                arglist[0]                           // first argument which is the script name
+                len(mystring)                        // length of string
+                len(list)                            // number of element inside the list
+                mylist = []                          // create list
+                handler = open(fileName, "r+")       // open file for read
+                int(str)                             // convert string to integer
+                list.pop(0)                          // Delete first element from list
+                list.append("str")                   // Append str to list
+                basename = ntpath.basename(path)     // Basename of path
+                os.path.basename("/dog/dog/dog.txt") // import os;
+                pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt"
+                os.path.join("/home", "cat")         // /home/cat
+                os.path.join("/home/", "cat")        // /home/cat
+                str(num)                             // String to integer
+                os.getcwd()
+                arr1 = arr[:];                       // clone list duplicate list
+                "cool\n".rstrip()                    // remove newline delete newline
+                -----------------------------------
+                // python empty open file, python empty file
+                pathfile    = "/Users/cat/myfile/github/python/pather/path.txt"
+                pathWriter  = open(pathfile, "r+")
+                pathWriter.seek(0)
+                pathWriter.truncate()
+                -----------------------------------
+                line = "some stuff"
+                regex = re.compile(r'(file\W*=\W*)(\S+)\W*(title\W*=\W*)"(.*)"')
+                    match = regex.search(line)
+                    if match:
+                        print "(0)=", match.group(0)
+                        print "(1)=", match.group(1)
+                        print "(2)=", match.group(2)
+                        print "(3)=", match.group(3)
+                        print "(4)=", match.group(4)
+                -----------------------------------
+                subprocess.call(["pygmentize", "-f", "html", "-o", htmlFile, tmpFileName])
+                -----------------------------------
+                list = []
+                list[0] = 'cat'
+                list[1] = 'cat'
+                list.append('dog')
+                list.pop()
+                list.pop(1)
+                -----------------------------------
+                dict = {}
+                dict = {'k1':'value1', 'k2':'value2'}
+                dict['k1']
+                -----------------------------------
+                string.strip()                      // trim leading and trailing whitespace
+    `]
+
     [Vim tip]
     `[
-        :echo v:this_session            // show current vim session file
+        :zz                             // move the cursor to middle of screen
+        :zt                             // move the cursor to Top of screen
+        :zb                             // move the cursor to Botton screen
 
+        :echo v:this_session            // show current vim session file
         // All in insert mode
         CTRL-D		command-line completion
         CTRL-N		command-line completion
         CTRL-P		command-line completion
         CTRL-A		command-line completion
         CTRL-L		command-line completion
-
         CTRL-W      delete world before the cursor // insert mode
         CTRL-U      delete remove all characters between the cursor and the beginning of the line
 
@@ -1592,7 +2085,7 @@
         "*y Copy text from vim to clipboard
         "*p Paste text from clipboard to vim 
 
-        3dd // delete below 3 line from the current line
+        :3dd // delete below 3 line from the current line
         
         :let x = 0 | g/$/s//\='[' . x . ']'/ | let x = x + 1  // append [x] to the end of line
 
@@ -1688,6 +2181,10 @@
 
         :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]      // get background color  
         :set hidden   // hidden an unsaved file, ow, file has to be saved with !
+        :.,$s/some\(stuff\)/& . \1/gc       // copy all i think % = \0 here
+        :normal mode 
+        :%s/{\zs\(\_.}\@!\)*//gc            // negative operator block of code { hello world }
+        :\@!                                // negative operator, subtract operator, exclusive operator 
     `]
 
     [Grep command]
@@ -1701,13 +2198,12 @@
 
     :CTRL-E                     // scroll window up 
     :CTRL-Y                     // scroll window down
-
-     
      :sleep 2
      redraw
 
      {{ src=image/vim_operator.png w=50% h=50% }}
-     :diw // delete/yank/visual [i]nner word    block
+     :d$  // delete to the end of line  delete line
+     :diw // delete/yank/visual [i]nner word    block       delete word
      :daw // delete/yank/visual [a] word        block
      :dib // delete/yank/visual [i]nner '(' ')' block
      :daB // ddelete/yank/visual [a] '(' ')' block
@@ -1720,15 +2216,14 @@
      :vaB // select [a] '(' ')' block
      :viB // select [i]nner '{' '}' block
      :vaB // select [a] '{' '}' block
-
      :V   // select line  linewise
-
+     :vap // [:h textobjects] select block of lines, cursor move to next line very powerful
+     :vip // [:h operator]select block of lines, cursor on the last line very powerful
 
      :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
      :syntax clear MyColorGroup     // remove highlight
 
      :Compile Java code inside Vim [:h expand]
-
 
     [Vim script]
     `[
@@ -1798,12 +2293,14 @@
         let value = remove(dict, 'key')
         echo value  " dog
 
+        " get value
+        echo dict['k1']
+
         [:h List]
         " list as value
         let list = ['a', 'b']
         add(dict.key, 'abc')
         echo dict.key   " ['a', 'b', 'abc']
-
 
         " list, string, length, len
         let list = []
@@ -1840,7 +2337,6 @@
             endif
             let curr = curr + 1
         endwhile
-
 
         " Iterate through List
         for item in mylist
@@ -1887,41 +2383,20 @@
 
         " statusline evaludate function
         statusline+=%10{expand('%:p:h')}
-
+        :statusline=%F\ %l:%c       " full path, line column number
     `]
 
-    [Git command]
-    :git branch myfeature_branchcreate                   // git feature branch
-    :git branch -d delete_branchdelete                   // [git delete] feature branch
-    :git branch -D delete_branchdelete                   // unmerged feature branch
-
-    :git checkout master 
-    :git merge --no-ff feature_branch // [git merge]merge feature branch to master
-    :git rm -r --cached myfile                           // remove file from your index
-    :git refloghow                                       // all the reference log
-    :git reset --hard 828c8c0b1995                       // revert to previous commit
-    :git diff --stat hash1  hash2                        // diff two commits from two hashes  
-
-    [Linux command]
-    :y$                                             // copy character from cursor to the end of line     [:help yank]
-    :vaw                                            // highlight word under cursor including white space [:help text-object]
-    :viw                                            // hightlight word under cursor excluding white space[:help text-object]
-    :awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file>
-    :awk -F ":" '{for(i=0; i<NF; i++) print $1}'
-    :kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
-
-    :history -d  xxx #remove history
-    :add to vimrc file #vim change tabs to space
-    :set tabstop=4
-    :set shiftwidth=4
-    :set expandtab
-    :set showcmd
-    :sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt
-    :sed -i -e 's/oldstring/newstring/g' *                                                           
-    :find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
-    
-    [git branch shows on command prompt]
+    [Git command git branch show on command prompt]
     `[
+        :git branch myfeature_branchcreate                   // git feature branch
+        :git branch -d delete_branchdelete                   // [git delete] feature branch
+        :git branch -D delete_branchdelete                   // unmerged feature branch
+        :git checkout master 
+        :git merge --no-ff feature_branch // [git merge]merge feature branch to master
+        :git rm -r --cached myfile                           // remove file from your index
+        :git refloghow                                       // all the reference log
+        :git reset --hard 828c8c0b1995                       // revert to previous commit
+        :git diff --stat hash1  hash2                        // diff two commits from two hashes 
         parse_git_branch(){
             git branch 2> /dev/null | sed -e 's/* \(.*\)/ \(\1)/'
         }
