@@ -1,6 +1,23 @@
 pre
 {//
     background:rgba(90, 90, 90, 0.5);
+    background: rgb(255, 255, 255);
+    box-shadow: 1px 1px 1px 1px rgba(4, 4, 3, 0.5);
+    border-radius:1px;
+    color: rgb(0, 0, 0);
+    font-family:"Lucida Console", Courier, monospace;
+    margin-top:2px;
+    margin-bottom:2px;
+    margin-left:2px;
+    margin-right:2px;
+    font-size:15px;
+    display:block;
+}
+
+/*
+pre
+{//
+    background:rgba(90, 90, 90, 0.5);
     background: rgba(239, 239, 239, 0.95);
     box-shadow: 0px 0px 0px 0px #FFF;
     border-radius:1px;
@@ -13,6 +30,7 @@ pre
     font-size:15px;
     display:block;
 }
+*/
 
 .num{
     color: #33EECC;
@@ -23,8 +41,9 @@ pre
     color: #ff9900;
 }
 
+
 .tit{
-    color: rgb(19, 136, 224);
+    color: rgb(212, 83, 123);
     font-size:18px;
     text-shadow:2px 2px 3px #FFF;
 }
@@ -36,7 +55,7 @@ pre
 }
 
 .keyword{
-    color: #29AB0C;
+    color: rgb(107, 249, 39);
 }
 
 .header{
@@ -55,11 +74,22 @@ pre
     color: #807260;
 }
 
+/*
 .htmlbg{
     margin:0 auto;
     width:90%;
     color: rgb(0, 0, 0);
     background: rgba(255, 255, 255, 0.97);
+    font-family:"Lucida Console", Courier, monospace;
+}
+*/
+
+
+.htmlbg{
+    margin: 0 auto;
+    width: 90%;
+    color: rgb(224, 212, 212);
+    background: rgba(138, 142, 117, 0.97);
     font-family:"Lucida Console", Courier, monospace;
 }
 

@@ -1,10 +1,158 @@
+" vim: filetype=help foldmethod=marker foldmarker=<<<,>>> modifiable noreadonly
+You need the noreadonly and modifiable keywords in the vim modeline above.
+Help files are by default regarded as readonly and nomodifiable files by vim.
+
+
+    [Haskell import and module]
+    `[
+        import Data.List
+        import qualified Data.List as LL   // LL.
+
+        // check all the functions from module
+        [:browse Data.List]
+
+        // use hoogle and doc in Prelude
+        check function in which library, e.g.
+        :hoogle subsequences
+        
+        :doc subsequences  (show examples, nice!)
+
+        // list all Packages in Haskell
+        ghc-pkg list
+        
+        // load framework, load package 
+        ghci -package GLUT
+        ghci -framework GLUT -package GLUT
+
+    `] 
+
+    [ latex to png *latex_to_png* *latex2png* ]
+    `[
+        convert -density 600x600 tryg1.pdf -quality 90 -resize 1080x800 tryg1.png
+
+        // use it in documentclass  
+        \documentclass[border=4pt,convert={density=600,size=300x300,outext=.png}]{standalone}
+        pdflatex -shell-escape file.tex
+    `] 
+
+    [ *java_regex_example*  *j_regex* ]
+    `[
+        *j_regex_example*
+        Pattern r = Pattern.compile("captheorem", Pattern.CASE_INSENSITIVE);
+        Matcher mat = r.matcher("CAPTHEOREM");
+        if(mat.find()) {
+            Print.p("found=" + mat.group(0));
+        }
+    `]
+
+    [MySql show database, use table, *n_database* *n_db* ]
+    `[
+        mysql> show databases;
+        +--------------------+
+        | Database           |
+        +--------------------+
+        | testdb             |
+        +--------------------+
+
+        mysql> use testdb;
+        mysql> show tables;
+        +------------------+
+        | Tables_in_testdb |
+        +------------------+
+        | item             |
+        +------------------+
+        mysql> desc item;
+        +-----------------+--------------+------+-----+---------+----------------+
+        | Field           | Type         | Null | Key | Default | Extra          |
+        +-----------------+--------------+------+-----+---------+----------------+
+        | item_id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+        | name            | varchar(40)  | NO   |     | NULL    |                |
+        | phone           | varchar(40)  | NO   |     | NULL    |                |
+        | email           | varchar(100) | NO   |     | NULL    |                |
+        | description     | varchar(400) | NO   |     | NULL    |                |
+        | submission_date | date         | YES  |     | NULL    |                |
+        +-----------------+--------------+------+-----+---------+----------------+
+    `]
+
+    [Skim]
+    `[
+        // Skim automatically reload 
+        defaults write -app Skim SKAutoReloadFileUpdate -boolean true
+    `] 
+
+    [lldb debug, xcode debug]
+    `[
+        command source ~/.lldbinit                                       // debug, lldb, load init file from xcode console
+        command source /home/mycommand.txt                               // debug, lldb, load your commands file
+
+        command script import /Users/cat/myfile/github/lldb/mycommand.py // debug, lldb, load python script
+        {command script import} file
+
+        command alias pi print(int)                                      // debug, lldb, alias your command
+        command alias allv script print lldb.frame.get_all_variables()   // debug, lldb, alias you script
+        br list                                                          // debug, lldb, list all breakpoints
+        f                                                                // debug, lldb, select the current frame
+        up                                                               // debug, lldb, go up one frame
+        e NSString* $str = @"dog"                                        // debug, lldb, global var with $
+        c                                                                // debug, lldb, continua
+        n next                                                           // debug, lldb, step over
+        step                                                             // debug, lldb, step into
+        finish                                                           // debug, lldb, step out
+
+        breakpoint modify -c 'i > 50' l                                  // debug, lldb, conditional break add command
+        breakpoint command add 1                                         // debug, lldb, conditional break add command
+        bt
+        DONE
+
+        breakpoint set --func-regex fibona.*                             // debug, lldb, set breakpoint regex function name [h br set]
+        breakpoint set --name   "-[NSString stringWithFormat:]"          // debug, lldb, set br ObjectiveC method name [h br set]
+        breakpoint set --method main
+        breakpoint set -c 'i == 10'                                      // debug, lldb, conditional breakpoint  [h br set]
+        breakpoint set -i 10                                             // debug, lldb, ignore count, stop until the count [h br set]
+
+        watchpoint set variable global_var                               // debug, lldb, set watchpoint when global_var is written to
+        w s v  global_var                                                // debug, lldb, set watchpoint when global_var is written to
+        watchpoint set expression -- my_ptr                              // debug, lldb, set watchpoint when my_ptr is written to
+        w s e -- my_ptr                                                  // debug, lldb, set watchpoint when my_ptr is written to
+
+    `] 
+
+    [Emacs key Emac key]
+    `[
+        C-z     // exit Emacs        
+        C-u M-! shell_command
+        C-v M-v // page up, page down
+        C-a C-e // move cursor to begin and end of line
+        C-n C-p // move line down, line up
+        C-f M-f // move cursor character/word forward
+        C-b M-b // move cursor character/word backward
+        C-k M-k // kill all word to end of line or end of sentence
+        C-_     // undo
+        C-x C-f // find file
+        C-x C-s // save file 
+        C-x b   // switch buffer
+        C-x C-b // list buffer
+        C-x 1   // remove buffer list
+        C-x 2   // split two windows (horizonal)
+        C-x o   // move to other window
+        C-h     // help command
+        M-x package-list-packages  i // select package to install
+    `] 
+
+    [build cpp]
+    `[
+        all: 
+            clang++ -g -v -std=c++11 -stdlib=libc++ -o  MergeSortedList MergeSortedList.cpp Aron.cpp
+            clang++ -g -v -std=c++11 -stdlib=libc++ -o  DataStructure  DataStructure.cpp 
+            clang++ -g -v -std=c++11 -stdlib=libc++ -o   DecimalBinary DecimalBinary.cpp  Aron.cpp
+    `] 
 
     [Shell crazy symbol ]
     `[
         for arg in $* 
         do
         echo "[\$*]=".$arg
-        done
+        done 
         #[$*]=.n1
         #[$*]=.n2
         #[$*]=.n3
@@ -29,12 +177,35 @@
         done
         #[$@]=.n1 n2
         #[$@]=.n3
+
+
+        // profile bashrc share environment variables user and root, share variable
+        /etc/profile
     `] 
-    [xcode shortcut key, xcode key, xcode shortcut]
+
+    [IFS internal field separator ]
     `[
-        // xcode shortcut key, xcode key, xcode shortcut
+        # IFS = interal field separator
+        # IFS default = space and tab
+        mystr="triangle angel strange"
+        for word in $mystr; do
+            echo "word=[$word]"
+        done
+        echo "-------------------------"
+
+        IFS=' '
+        for word in $mystr; do
+            echo "word=[$word]"
+        done
+    `] 
+
+    [xcode debug, symbolic breakpoint]
+    {{ src=image/symbolic_break_point.png w=80% h=80% }}
+
+    [xcode shortcut key xcode key xcode, shortcut, xcode sc, xcode search]
+    `[
         Shift ALT Command Left/Right  fold all code/unfolded all code
-        CTRL 5 search files name(.h *.m)
+        CTRL 5 search files name(.h *.m)                                // xcode search
         CTRL 6 type search show all current methods
         CTRL WindowKey left/right  navigate backward/backward
         CTRL 1 show recent items
@@ -53,9 +224,10 @@
         Command D mark line
         Command L goto line
         Command E, Command F use selection to find
+        Command E + Command F search word under cursor
+        Command Shift O Quick Search file
         Command Shift Y close debug window
         Command Shift 2 Open Organizer
-        Command E + Command F search word under cursor
         Command Shift f  global find
         Command Shift Left/Right  selection whole line
         Command Shift right/left highlight line
@@ -66,6 +238,41 @@
         Command CTRL Y debug/continue 
         Command `  window fit screen
     `] 
+
+    [Intellij shortcut key]
+    `[
+        // intellij shortcut key
+        Ctrl Shift /    // comment block code
+        Shift Tab       // move block of code(code selection) to left
+        Tab/Shift+Tab   // indent/unintented selected line
+        Alt Right/Left  // cycle through tabs
+        Alt Shift F7    // goto usage
+        Alt Shit f      // global search
+        Alt g           // find name
+        Alt UP/Down     // move to previous/next method
+        Ctrl F12        // show all current methods
+        Ctrl W          // select code block. e.g {..}
+        Ctrl-Shift F12  // max/unmaxed window
+        Ctrl UP/Down    // movine window up/down
+        Ctrl [/]        // Move to code block star/end
+        Ctrl Shift #    // book mark line
+        Ctrl #          // goto book mark #
+        Ctrl Alt B      // goto implementation
+        Ctrl E          // go back to implementation
+        Ctrl Alt F7     // shows usages
+        Ctrl w          // select whole word
+        Ctrl Left/Right // move cursor previous/next
+        Ctrl Shift R    // find and replace
+        Ctrl Shift j    // join line
+    `] 
+
+    [ *maven* *mvn* ]
+    `[
+        mvn archetype:generate -DgroupId=MyApp -DartifactId=MyCompany -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+        cd MyCompany
+        mvn install
+        java -cp target/MyCompany-1.0-SNAPSHOT.jar MyApp.App
+    `]  
 
     [iPhone iPad info ]
     `[
@@ -132,22 +339,86 @@
     `] 
     [Regular Expression ]
     `[
-        :negative operator
+        :negative operator *not_operator* *negative_operator* *not_follow*
         :/if \(\(then\)\@!.\)*  // if not followed then
         :%s/`[\zs\(`\]\)
         :%s/{\(}\@!\_.\)*//gc   // substitue all content inside the { and } 
+        :%s/\dc\@!/\=submatch(0)-1/gc // substitue all digit with not following 'c'
     `] 
 
     [GPG encrypt directory, tar file, encrypt file]
     `[
-        *GPG encrypt directory*
-        tar -czf dir.tar.gz dir 
-        tar -xzf dir.tar.gz dir 
-        gpg -c dir.tar.gz  
-        gpg -c -o dir.tar.gz dir.tar.gz.gpg     //encrypt your tar file
-    `]
+        *GPG* *gpg* *gpg_key* *gen_key*
+        tar -czf dir.tar.gz dir             // tar file
+        tar -xzf dir.tar.gz dir             // untar file
+        gpg -c dir.tar.gz
+        gpg -c -o dir.tar.gz dir.tar.gz.gpg // encrypt your tar file
 
-    [Haskell strip whitespace]
+        gpg --gen-key                       // generate new key
+        gpg --list-keys                     // list key
+        gpg --delete-keys C3B95227          // delete key uid=C3B95227
+    `]
+     
+    [Haskell map HashMap]
+    `[
+        *h_hash* *h_hashmap* *h_map*
+        import qualified Data.Map as Map
+        phoneBook = Map.fromList [(1234, "Erik"), (5678, "Patrik")]
+        main = do
+            print phoneBook
+            print $ Map.lookup 1234 phoneBook
+            print $ (Map.empty :: Map.Map Int Int)
+            print $ Map.singleton 3 5
+            print $ Map.insert 1 "abc" Map.empty
+            print $ Map.null phoneBook
+            print $ Map.size phoneBook
+            print $ Map.toList phoneBook
+            print $ Map.keys phoneBook
+            print $ Map.elems phoneBook
+    `] 
+
+    [Haskell convert String to Float, Int, Integer ]
+    `[
+        read "3.14"::Float
+        read "123"::Int
+        read "123"::Integer
+        reads "123aa"::[(Int, String)] => [(123, "aa")]
+        reads "aa123"::[(Int, String)] => []
+        [ http://stackoverflow.com/questions/2468410/convert-string-to-integer-float-in-haskell ]
+    `] 
+    [Haskell List]
+    `[
+        take 1 [1, 2, 3]             -- [1]
+        drop 1 [1, 2, 3]             -- [2, 3]
+
+        init [1, 2, 3]               -- [1, 2]
+        last [1, 2, 3]               -- 3
+
+        head [1, 2, 3]               -- 1
+        tail [1, 2, 3]               -- [2, 3]
+
+        foldr (++) "" ["cat", "dog"] -- "catdog"
+
+        concat([[1], [2]]) = [1, 2]
+
+        foldr(++) [] [["dog"], ["cat"]]
+
+        subsequences [1, 2]          -- [[], [1], [2], [1, 2]]
+
+        takeWhile::(a->Bool)->[a]->[a]
+        takeWhile(<3) [1..10] -- [1, 2]
+
+        [ https://hackage.haskell.org/package/filepath-1.4.1.0/docs/System-FilePath-Posix.html ]
+        import System.FilePath
+        takeFileName  -- "file.ext"
+        takeDirectory -- "/directory"
+        takeExtension -- ".ext"
+        dropExtension -- "/directory/file"
+        takeBaseName  -- "file"
+    `] 
+    {{ src=image/headtail.png w=50% h=50% }}
+
+    [Haskell strip whitespace, trim whitespace]
     `[
         import qualified Data.Text as Text
         let s = " ab " 
@@ -193,7 +464,6 @@
         mapM_ (uncurry copyFile) $ zip list1 list2 
     `]
     
-
     [Haskell curry]
     :curry::(a,b)->c->a->b->c
     convert uncurried function to curried function 
@@ -211,11 +481,46 @@
         uncurry un (2, 3)   -- output 6
     `]
 
+    [Difference mapM and mapM_ in Haskell]
+    `[
+        let list = ["Banana", "Apple"]
+        mapM putStrLn list
+        -- Banana 
+        -- Apple
+        -- [(), ()]
+
+        mapM_ putStrLn list
+        -- Banana 
+        -- Apple
+    `]
+
+    [Haskell regex capture email address] 
+    `[
+        let listMail = map(\x -> x =~ "([[:alnum:]\\._]+@[[:alnum:]]+\\.[[:alnum:]]+)"::String) contents 
+    `]
+
+    [Haskell regex capture email address] 
+    `[
+        -- convert list to set and set to list
+        let set = Set.fromList mylist 
+        print set
+        let mylist = Set.toList set
+    `]
+     
+    [Haskell read file and write to file]
+    `[
+        readFileToList::FilePath->IO [String] 
+        readFileToList f = readFile f >>= \contents -> return (lines contents) 
+
+        writeToFile::FilePath->[String]->IO()
+        writeToFile f list = writeFile f $ unlines list 
+    `]
+
     [Haskell merge two lists]
     `[
         mergeList::[String]->[String]->[String]
         mergeList [] [] = []
-        mergeList  l  [] = l 
+        mergeList  l [] = l 
         mergeList []  r = r 
         mergeList (x:xs) (y:ys) = x:y:mergeList xs ys
     `]
@@ -249,7 +554,33 @@
                                 left =  [x | x <- init l, x < p]
                                 right = [x | x <- init l, x >= p]
                                 p = last l 
+        -- shorter version
+        qsort::[Int]->[Int]
+        qsort [] = []
+        qsort (x:xs) = qsort(left) ++ [x] ++ qsort(right)
+                            where (left, right) = (filter(<=x) xs, filter(>x) xs) 
+
+        -- even a shorter version
+        qsort::[Int]->[Int]
+        qsort [] = []
+        qsort (x:xs) = qsort[l| l <- xs, l < x] ++[x]++ qsort[r| r <- xs, r >= x]
     `]
+
+    [kth smallest element from an array]
+    `[
+        -- kth smallest element from an array
+        qsort'::[Int]->Int->Maybe Int
+        qsort' [x]  1   = Just x 
+        qsort'  x   k   | k <= 0 || k > length x = Nothing 
+        qsort' (x:xs) k | k < ln =  qsort' left k 
+                        | k > ln =  qsort' right (k - ln) 
+                        | otherwise = Just x
+                       where 
+                           left  = [l | l <- xs, l < x]
+                           right = [r | r <- xs, r > x]
+                           ln    = (length left) + 1
+
+    `] 
 
     [Haskell Merge Sort]
     `[
@@ -315,7 +646,6 @@
     [Haskell check array 3]
     `[
         -- check sum(x_0, x_1,...,x_k) == sum(x_k+1,...,x_n)
-
         checkSum4::[Int] -> Bool
         checkSum4 a = go a 0 (sum a)
            where go [] left right = left==right
@@ -397,49 +727,19 @@
             }
             return true;
         }
-
-        [9 p=null
-          [7 p=null
-            [4 p=null
-              []
-              (4, null)
-              p = r
-              [ p]
-            ]
-            (7, null)
-            p = r = 7
-            [8 p=7
-              []
-              (8, p=7)
-              p = r = 8
-              [ p=8]
-            ]
-          ]
-          (9, p=null)
-          p = r = 9
-          [12 p=9
-            [11 p=9
-              []
-              (11, p=9)
-              p = r = 11
-              [ p=11]
-            ]
-            (12, p=9)
-            p = r = 12
-            [13 p=12
-              []
-              (13, p=12)
-              p = r = 13
-              [ p=13]
-            ]
-          ]
-        ]
     `]
 
-    [Java compile jar file ]
+    [Java compile jar file class file]
     `[
         java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
-        javac -sourcepath /mylib/  -d .   HellowWorld.java          // Specify where to find source file and where to put class file
+        javac -sourcepath /mylib/  -d . HellowWorld.java           // Specify where to find source file and where to put class file
+        -d directory sets the destination where to put the class files. 
+           The directory must always exist, javac doesn't create the directory.
+           If -d is not specified, javac puts the class file in the same directory as the source file. 
+
+        jar cvf Aron.jar classfile/*.class                         // compile class files to jar file, create jar file
+        jar tf Aron.jar 
+        jar xf jar-file                                            // extract jar to java files 
     `]
 
     [Java Algorithm]
@@ -460,6 +760,7 @@
 
     [Increasing Continuous Array]
     {{ src=image/continuousarray.png w=50% h=50% }}
+    {{ src=image/conlist.png w=50% h=50% }}
 
     [Maximum Continuous Sum]
     {{ src=image/maxcontinuoussum.png w=50% h=50% }}
@@ -473,23 +774,23 @@
             if(lo < hi){
                 int p = partition(arr, lo, hi);
                 quickSort(arr, lo, p-1);
-                quickSort(arr, p+1, hi);
+                quickSort(arr, p + 1, hi);
             }
         }
         public static int partition(int[] arr, int lo, int hi){
             int len = hi - lo + 1;
-            int top = lo;
+            int big = lo;
             if(lo < hi){
                 int pivot = arr[hi];
                 for(int i=lo; i<len; i++){
                     if(arr[i] < pivot){  
-                        swap(arr, top, i);
-                        top++;
+                        swap(arr, big, i);
+                        if(big < hi)
+                            big++;
                     } 
                 }
-                swap(arr, top, hi);
             }
-            return top;
+            return big;
         }
         public static void swap(int[] arr, int i, int j){
             int tmp  = arr[i];
@@ -501,9 +802,9 @@
 
     [Java Kth Median Algorithm]
     `[
-        //Find the kth median element in a unsorted array
-        //Return index for the kth smaller element
-        //Otherwise return -1 if k is invalid  
+        // Find the kth median element in a unsorted array
+        // Return index for the kth smaller element
+        // Otherwise return -1 if k is invalid  
         public static int modifiedQuickSort(int[] array, int lo, int hi, int k)
         {
             if(k <= hi - lo + 1) 
@@ -525,8 +826,8 @@
             return -1;
         }
 
-        //use modified quicksort algorithm to find the kth median element
-        //partition an array to two parts: left_array < pivot < right_array
+        // use modified quicksort algorithm to find the kth median element
+        // partition an array to two parts: left_array < pivot < right_array
         public static int partition(int[] array, int lo, int hi)
         {
             int top = lo;
@@ -538,28 +839,28 @@
                     if(array[i] < pivot)
                     {
                         swap(array, i, top);
-                        top++;
+                        if(i < hi)
+                            top++;
                     }
                 }
-                swap(array, top, hi); 
             }
             return top;
         } 
     `]
     {{ src=image/newkthmedian.png w=50% h=50% }}
 
-    [Java Data Structrue]
+    [Java Data Structrue, javalist, jlist, java list *java_data_structure* ]
     `[
         int[] array     = {1, 2, 3};
         int[][]  array2 = {{1, 2, 3},
                            {4, 5, 6}};
-        // ArrayList
-        ArrayList<String> alist = new ArrayList<String>(); 
+        *ArrayList*
+        List<String> alist = new ArrayList<String>(); 
         alist.add("dog");
         alist.add("cat");
 
-        // ArrayList 2D
-        ArrayList<ArrayList<String>> list2d = new ArrayList<ArrayList<String>>();
+        *ArrayList_2D*
+        List<ArrayList<String>> list2d = new ArrayList<ArrayList<String>>();
         list2d.add(alist);
 
         // List
@@ -568,8 +869,7 @@
         list.add("continue");
         list.add("continuous");
 
-        // Initialize list
-        List<String> list = new ArrayList<String>(Arrays.asList("dog", "cat", "cow"));
+        List<Integer> list = new ArrayList<Integer>(); 
 
         // Vector
         Vector<String> vector = new Vector<String>();
@@ -603,7 +903,7 @@
         concurrentDeque.addFirst("first");
         concurrentDeque.addLast("last");
 
-        // HashMap
+        // HashMap, java map, jmap, jhash
         Map<String, Integer> map = new HashMap<String, Integer>();
         map.put("cat", 1);
         map.put("dog", 2);
@@ -648,7 +948,7 @@
         }
 
 
-        // HashSet
+        // HashSet java hashset java, java set, javaset
         Set<Integer> set = new HashSet<Integer>(Arrays.asList(1, 2));
         Integer item = 1;
         if(set.contains(item))
@@ -679,14 +979,102 @@
             System.out.println("Iterator elem:=" + iterator.next()); 
         }
 
-        List<String> list1 = new ArrayList<String>();
-        List<String> list2 = new LinkedList<String>();
-        List<String> list3 = new Stack<String>();
-        List<String> list4 = new Vector<String>();
+        List<String> list = new ArrayList<String>();
+        List<String> list = new LinkedList<String>();
+        List<String> list = new Stack<String>();
+        List<String> list = new Vector<String>();
         Queue<String> queue = new ArrayList<String>();
-        Queue<String> queue2 = new PriorityQueue<String>();
+        Queue<String> queue = new PriorityQueue<String>();
+        Queue<Integer> queue = new ArrayList<Integer>();
+        Queue<Integer> queue = new PriorityQueue<Integer>();
+
+        // java tokenize
+        // import java.util.StringTokenizer;
+        String delims = ":";
+        String input = "Continuity:Continua:Continuous:Continuation:";
+        StringTokenizer st = new StringTokenizer(input, delims);
+        while(st.hasMoreElements()){
+            System.out.println(st.nextElement());
+        }
+
+        // java split
+        String delims = ":";
+        String input = "what:cool:PaloAlto:Continuity:Continua:Continuous:Continuation:";
+        String[] array = input.split(delims);
+        for(String str : array){
+            System.out.println(str);
+        }
+
     `]
-    [Java Comparable]
+
+    [Java write file, java write file, j write file, jwf *j_write_file* ]
+    `[
+        import java.io.*;
+        import java.lang.String;
+        import java.util.*;
+        class writeFile 
+        {
+            public static void main(String args[]) {
+                writeToFile();
+            }
+            public static void writeToFile(){
+                try {
+                    // searchkey: write to file, write file, write to text file, open file to write
+                    FileWriter fstream = new FileWriter("out.txt");
+                    BufferedWriter out = new BufferedWriter(fstream);
+                    out.write("hello java");
+                    out.close();
+                }
+                catch(Exception e) {
+                }
+            }
+        }
+
+        import java.io.*;
+        String file1 = "file1.txt";
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(file1))){
+            bw.write("dog\n");
+            bw.write("God");
+        }catch(IOException e){
+        }
+    `] 
+
+    [Read file, java read file, java open file, j open file, jof *j_readfile* *j_read_file* ]
+    `[
+        import java.io.*;
+        class FileRead {
+            public static void main(String args[]) {
+                try {
+                    FileInputStream fstream = new FileInputStream("textfile.txt");
+                    // Get the object of DataInputStream
+                    DataInputStream in = new DataInputStream(fstream);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                    String strLine;
+                    //Read File Line By Line
+                    while ((strLine = br.readLine()) != null){
+                        // Print the content on the console
+                        System.out.println (strLine);
+                    }
+                        //Close the input stream
+                        in.close();
+                    }catch (Exception e) {  
+                        //Catch exception if any
+                        System.err.println("Error: " + e.getMessage());
+                    }
+            }
+        }
+
+        import java.io.*;
+        String file = "file.txt";
+        try(BufferedReader br = new BufferedReader(new FileReader(file))){
+            for(String line; (line = br.readLine()) != null;){
+                System.out.println("[" + line + "]");
+            }
+        }catch(IOException io){
+        }
+    `] 
+
+    [Java Comparable, jcompare, jcomparable, java compare, java comparatable *j_compare* ]
     `[
         class Contact implements Comparable<Contact> {
             String name;
@@ -698,11 +1086,11 @@
                 this.age = age;
             }
 
-            //Minimum heap
+            // Minimum heap
             public int compareTo(Contact c) {
                 return this.age - c.age;
-                //Maximum heap
-                //return -(this.age - c.age);
+                // Maximum heap
+                // return -(this.age - c.age);
             }
 
             public String toString() {
@@ -719,8 +1107,6 @@
                 PriorityQueue<Contact> miniHeap = new PriorityQueue<Contact>();
                 miniHeap.add(new Contact("David", "U.S", 3));
                 miniHeap.add(new Contact("John", "U.S", 4));
-                miniHeap.add(new Contact("Johnny", "U.S", 4));
-                miniHeap.add(new Contact("Nathan", "U.S", 1));
                 miniHeap.add(new Contact("Micheal", "U.S", 6));
 
                 while(!miniHeap.isEmpty()) {
@@ -729,8 +1115,12 @@
             }
         }
     `]
-    [Java LocalDateTime]
+
+    [Java LocalDateTime, java datetime, javatime, jtime, sort time, sorttime, compare time, comparetime, java localtime *j_date_time* ]
     `[
+
+        import java.time.LocalDateTime;
+
         LocalDateTime time = LocalDateTime.parse("2007-12-03T10:15:30", DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         int year = time.getDayOfYear();
         Month month = time.getMonth();
@@ -758,14 +1148,41 @@
         }
     `]
 
-    [Xcode]
+    [NSTimer, nstimer, timer, xcode timer, xtimer *x_timer* ]
+    `[
+        NSTimer* _tickTimer;
+        @property(nonatomic, retain)NSTimer* tickTimer;
+        -(void)countineCountDownTimer{
+            self.tickTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                                   target:self 
+                                                                 selector:@selector(onTick:) 
+                                                                 userInfo:nil 
+                                                                  repeats:YES];
+        }
+        -(void)stopCountDownTimer{
+            if (self.tickTimer != nil){
+                [self.tickTimer invalidate];
+                self.tickTimer = nil;
+            }
+        }
+        // long _countDown;
+        -(void)onTick:(NSTimer*)timer {
+            if(_countDown > 0){
+                _countDown--;
+                if(_countDown == 0){
+                }
+            }
+        }
+    `] 
+
+    [Xcode NSUserDefaults, xcode default user, xdefault, userdefault, defaultuser]
     `[
         NSUserDefaults only can use NSArray, NSDictionary, NSString, NSData, NSDate, NSNumber(intValue/floatValue/boolValue)
         NSUserDefaults returns immutable object event though mutable object is used
         For custom object, NSCoding protocol has to be implemented in order to use in NSUserDefaults
     `]
 
-    [Xcode NSMutableArray]
+    [Xcode NSMutableArray, xarray, xnsarray, xnsmutablearray]
     `[
         NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
         [array addObject:[NSNumber numberWithInt:4]];
@@ -961,6 +1378,7 @@
         [result unionSet:set12];
         
         
+        
         [result intersectSet:set11];
         
         [result minusSet:set11];
@@ -1006,14 +1424,7 @@
         - (BOOL)isEqualToNumber:(NSNumber *)number;
     `]
 
-    [Xcode tips]
-    `[
-          xcodebuild test -scheme SimpleApp -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=7.1'  // Xcode build from command line
-          /Users/cat/Library/Developer/Xcode/DerivedData  // Xcode delete cache
-          xcodebuild -scheme MyLib -destination 'platform=iphonesimulator,name=iPhone 6' -derivedDataPath build    // Xcode build from command line
-
-          AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    `]
+    
     [Xcode Format String]
     `[
             nformatting
@@ -1042,6 +1453,11 @@
             %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
             %F 64-bit float, printed in decimal notation.
             %d bool stype
+            
+    `]
+
+    [xcode file, read file, write file, xcode read file, xcode write file, x write file, x read file]
+    `[
             --------------------------------------------------------------------------------
             NSFileManager* fileManager = [[NSFileManager alloc]init];
             NSString* path = @"/dog/cat";
@@ -1084,12 +1500,12 @@
             [dataBuffer writeToFile:filePath atomically:YES];
             NSLog(@"filePath[%@]", filePath);
             --------------------------------------------------------------------------------
-            // copy file
+            // copy file, copy data, copy string
             NSString* newFilePath = [documentDirectory stringByAppendingPathComponent:@"newfile.txt"];
             [fileManager copyItemAtPath:filePath toPath:newFilePath error:&error];
             NSLog(@"newFilePath[%@]", filePath);
             --------------------------------------------------------------------------------
-            // create empty file
+            // create empty file, create file 
             NSString* emptyFilePath = [documentDirectory stringByAppendingPathComponent:@"emptyfile.txt"];
             [fileManager createFileAtPath:emptyFilePath contents:nil attributes:nil];
             NSLog(@"emptyFilePath[%@]", emptyFilePath);
@@ -1101,16 +1517,16 @@
             [myString writeToFile:myEmptyFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
             NSLog(@"myEmptyFile[%@]", myEmptyFile);
             --------------------------------------------------------------------------------
-            // read NSString from file
+            // read NSString from file, read from file
             NSString *contents = [NSString stringWithContentsOfFile:myEmptyFile];
             NSLog(@"contents=[%@]", contents);
             --------------------------------------------------------------------------------
-            // read NSData from file
+            // read NSData from file, read data from file
             NSData* dataContents = [NSData dataWithContentsOfFile:myEmptyFile];
             NSString* myStr1 = [[NSString alloc] initWithData:dataContents encoding:NSUTF8StringEncoding];
             NSLog(@"myStr1=[%@]", myStr1);
             --------------------------------------------------------------------------------
-    `]
+    `] 
 
     [Remove CAShaperLayer from parent Layer CALayer]
     `[
@@ -1140,6 +1556,54 @@
         }
     `]
 
+    [Gnuplot script, run Gnuplot, persist, gnuplot commandline]
+    `[
+        1. script 
+        - 1. Create script called hello.gp 
+        - 2. Put sin(x) inside the hello.gp file, yep, only sin(x)
+        - 3. Goto command line and run > gnuplot -p hello.gp  [-p for persist]
+    `] 
+
+    [Latex tricks]
+    `[
+        % no indention noindent for all pages 
+        \setlength\parindent{0pt}
+        \noindent
+    `] 
+
+    [Asymptote inside Latex, config file, svg file, asy]
+    `[
+        1. Use Asymptote inside Latex
+        2. Use \usepackage[inline]{asymptote}
+        3. Use \begin{asy} ... \end{asy} tag 
+
+        4. Compile Asymptote inside Latex (e.g. mydraw.tex)
+        - 1. pdflatex mydraw.tex 
+        - 2. asy mydraw-1.asy
+        - 3. pdflatex mydraw
+        - 4. open mydraw.pdf
+
+        5. output file pdf or svg [e.g. code] 
+        settings.outformat = "svg";
+        settings.outformat = "pdf";
+        label("Hello world!");
+
+        6. Add ~/.asy/config.asy file to your home dir [e.g. config.asy file]
+        import settings;
+        dvisvgm="/usr/local/texlive/2013/bin/x86_64-darwin/dvisvgm";    // dvisvgm convert dvi file to XML svg file
+        you might get following error, but you can ignore it once you add the dvisvgm path to cofig.asy
+        [processing of PostScript specials is disabled (Ghostscript not found)]
+    `] 
+
+    [How to use Mutt to add attachment to email, awesome tips for Mutt]
+    `[
+        1. In your main email screen
+        2. Pree a to select attachment
+        3. Pres <space> to open home directory
+        4. Pres / to search files directories
+    `] 
+
+
     [Vim undolist]
     `[
         set undofile                " Save undo's after file closes
@@ -1148,7 +1612,7 @@
         set undoreload=10000        " number of lines to save for undo
     `] 
 
-    [Vim Regex ObjectiveC]
+    [Vim Regex ObjectiveC, vim objectivec, vimobjectivec, objectivec method, objectivemethod]
     :replace [array objectAtIndex:index] with array[index] in ObjectiveC
     `[
         %s/\[\(\w\+\)\s\+objectAtIndex:\([^]]\+\)\]/\1\[\2\]/gc
@@ -1161,135 +1625,154 @@
         "*p Paste text from clipboard to vim 
     `]
 
-    // searchkey: vim completion, completefunc 
-    :<C-X><C-L> // line completion 
-    :<C-X><C-F> // file name completion 
-    :<C-X><C-U> // define your own completefunc function 
+    [tmux key]
+    `[
+        [` c => new window ]
+        [` n => next window]
+        [` ? => help key ]
+    `] 
 
-    :CTRL-O     //Jump Older cursor position in jump list [:h jumps]
-    :CTRL-I     //Jump newer cursor position in jump list backward
+    [vim command ]
+    `[
+        *v_newline* *vnewline* [:h <CR>]
+        :<C-V><C-M>  // add newline to string in insert mode
 
-    :vimgrep /MyString/ /home/mycode/**/*.m   // Search MyString pattern recursively[**/*.m] two arsterisks 
-    :copen      // Open your quickfix 
-    :gf         // open the file under the currsor
+        // searchkey: vim completion, completefunc 
+        :<C-X><C-L> // line completion 
+        :<C-X><C-F> // file name completion 
+        :<C-X><C-U> // define your own completefunc function 
 
-    :find will search the directories/files in path option [:h :find]
-    :vim $(find ./ -name \*.java -print)                // open all java file from find
-    :set path? //will show current path option [:h path]
-    :set path +=/home/mycode //You can add different directories to path option in Vim
-    
-    " reset to default
-    :set path& [:h set]
+        :CTRL-O     //Jump Older cursor position in jump list [:h jumps]
+        :CTRL-I     //Jump newer cursor position in jump list backward
 
-    :set complete=k/home/myfile/*,k~/home/dir
-    " auto completion search your own file
-    " [:h complete]
-    " k{dict} scan the file {dict}. Servan flags can be given
+        :vimgrep /MyString/ /home/mycode/**/*.m   // Search MyString pattern recursively[**/*.m] two arsterisks 
+        :copen      // Open your quickfix 
+        :gf         // open the file under the currsor
 
-    In Vim Script, there are many options to handle file names, paths   
-    :h cmdline
+        :find will search the directories/files in path option [:h :find]
+        :vim $(find ./ -name \*.java -print)                // open all java file from find
+        :set path? //will show current path option [:h path]
+        :set path +=/home/mycode //You can add different directories to path option in Vim
+        
+        " reset to default
+        :set path& [:h set]
 
-    :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
-    :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers
-    :zf                // Create fold under cursor
-    :zd                // Delete fold under cursor
-    :5gt               // goto tab 5, [in insert mode]
-    :tabmove 4         // move the current tab to position 4 [help :tabmove]
-    :tabc 11           // close tab 11
+        :set complete=k/home/myfile/*,k~/home/dir
+        " auto completion search your own file
+        " [:h complete]
+        " k{dict} scan the file {dict}. Servan flags can be given
 
-    :set modeline      // display file name in each tabs page
-    :set ls=2
+        In Vim Script, there are many options to handle file names, paths   
+        :h cmdline
 
-    :set modeline      // display full file name in statusline [:help :statusline]
-    :set statusline=%F
+        :wincmd p       // switch back to previous buffer, switch buffer, change buffer
+        :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
+        :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers, update all, replace all
+        :zf                // Create fold under cursor
+        :zd                // Delete fold under cursor
+        :5gt               // goto tab 5, [in insert mode]
+        :tabmove 4         // move the current tab to position 4 [help :tabmove]
+        :tabc 11           // close tab 11
 
-    :echo getline(".")                 // get current line string
-    :echo match("mystring", "st")      // return 2
-    :echo line(".")                    // line number of cursor
-    :echo line("'t")                   // line number of mark t
-    :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
-    :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
-    :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
-    :help debug-mode                   // debug vim script
-    
-    :echo getline(".")                                                                              // get current line string
-    :echo match("mystring", "st")                                                                   // return 2
-    :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
-    :\%V                                                                                             // visual selection block [:help \%V]
-    :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
-    :'< and >'                                                                  // first cursor position/last cursor position in registers in visual mode/selection
+        :set modeline      // display file name in each tabs page
+        :set ls=2
 
-    :g/^$/d                             //delete empty line 
-    :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
-    :q: or q/                          // vim command history
+        :set modeline      // display full file name in statusline [:help :statusline]
+        :set statusline=%F
 
-    :hi Search guifg=Brown guibg=Gray
-    :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
+        :\%V                                                                                             // visual selection block [:help \%V]
+        :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
+        :'< and >'                                                                  // first cursor position/last cursor position in registers in visual mode/selection
 
-    :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
-    :sort! n                           //reverse sorting
+        :g/^$/d                             //delete empty line 
+        :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
+        :q: or q/                          // vim command history
 
-    :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
-    :highlight MyKeyWord guifg=Green 
-    :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
-    :set ma                             // set file modifiable on  [:h modifiable]
-    :ctrl-]                              //class definition 
-    :ctrl-t                              //back to previous window
-    :s/pattern/\=@a.submatch(0).@b/gc   // substitute with two registers
+        :hi Search guifg=Brown guibg=Gray
+        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
 
-    :redir @a // redirect ex command to register
-    :ls
-    :redir END
-    :redir @* | ls | redir END  // redirect all the name of file to reg @* in buffer
-    :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
-    :/pattern\c #ignorecase
-    :hi clear SpellBad # Reset SpellBad bad spell highlight to default
-    :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
-    :/\(if\)\ze\(then\)         // if follows then "[if]then"
-    :/\(if\)\zs\(then\)         // then starts with if "if[then]" 
-    :g*         / search without word boundry
-    :bd *.html  <C-a>           // delete all buffer files with *.html name
-    :2,4bd                      // delete all buffers from 2 to 4 
-    :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]                                     // vim Script get background color
-    :set hidden   // hidden an unsaved file, ow, file has to be saved with !
+        :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
+        :sort! n                           //reverse sorting
 
+        :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
+        :highlight MyKeyWord guifg=Green 
+        :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+        :set ma                             // set file modifiable on  [:h modifiable]
+        :ctrl-]                              //class definition 
+        :ctrl-t                              //back to previous window
+        :s/pattern/\=@a.submatch(0).@b/gc   // substitute with two registers
+
+        :redir @a // redirect ex command to register
+        :ls
+        :redir END
+        :redir @* | ls | redir END  // redirect all the name of file to reg @* in buffer
+        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        :/pattern\c #ignorecase
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+        :/\(if\)\ze\(then\)         // if follows then "[if]then"
+        :/\(if\)\zs\(then\)         // then starts with if "if[then]" 
+        :g*         / search without word boundry
+        :bd *.html  <C-a>           // delete all buffer files with *.html name
+        :2,4bd                      // delete all buffers from 2 to 4 
+        :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]                                     // vim Script get background color
+        :set hidden   // hidden an unsaved file, ow, file has to be saved with !
+
+        :his s                      // list commands history
+        :his /                      // list search history
+
+        :CTRL-E                     // scroll window up 
+        :CTRL-Y                     // scroll window down
+
+         // display without Enter
+         exec '!ls ' 
+         :sleep 2
+         redraw
+
+         :diw // delete/yank/visual [i]nner word
+         :daw // delete/yank/visual [a] word
+         :dib // delete/yank/visual [i]nner '(' ')' block
+         :daB // ddelete/yank/visual [a] '(' ')' block
+         :diB // ddelete/yank/visual [i]nner '{' '}' block
+         :daB // ddelete/yank [a] '{' '}' block
+
+         :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
+         :syntax clear MyColorGroup                           // remove highlight
+         :%!column -t                                         // format text  ref: https: // sanctum.geek.nz/arabesque/advanced-vim-macros/
+
+        :map   :noremap   :unmap  => Normal, Visual, Select, operator-pending
+        :vmap  :vnoremap  :vunmap => Visual and Select
+        :cmap  :cnoremap  :cunmap => Command-line
+        :imap  :inoremap  :iunmap => Insert
+        :map!  :noremap!  :unmap! => Insert, Command-line
+        :xmap  :xnoremap  :xunmap => Visual
+
+        :<C-r><C-w>                => insert word under cursor
+        :<C-r>=                    => insert evaluate expression in Insert mode
+        :<C-r>=line(".")           => insert current line number
+        :<C-r><C-r>%               => insert register context %, file name
+        :<C-r><C-r>#               => insert Register context #, full path, not always have alternative path
+        :<C-r>+                    => insert "* context
+        :<C-r>*                    => save thing, insert "* context
+        :map <F3>  <C-r>=line(".") => map F3 to function line(".")
+
+        *v_hl* *highlight* *v_highlight* *h_search* *search_hl* 
+        highlight Search ctermfg=none ctermbg=yellow
+        highlight Search ctermfg=none ctermbg=gray
+        highlight Search ctermfg=none ctermbg=green
+        highlight Search ctermfg=none ctermbg=white
+    `] 
 
     [Grep command]
-    :vim $(grep -l --include="*.java" pattern .)
-    :grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* 
-    :grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+    :vim $(grep -l --include="*.java" pattern .)    
+    :grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)*  
+    :grep --include="*.java" "\"[a-zA-Z]\+\""  ./   
     :vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
     :grep -l pattern *   [print file name only]
     :grep --include="*.[mh]"  --color -Hnris CATextLayer
 
-
-    :his s                      // list commands history
-    :his /                      // list search history
-
-    :CTRL-E                     // scroll window up 
-    :CTRL-Y                     // scroll window down
-
-     // display without Enter
-     exec '!ls ' 
-     :sleep 2
-     redraw
-
-     :diw // delete/yank/visual [i]nner word
-     :daw // delete/yank/visual [a] word
-     :dib // delete/yank/visual [i]nner '(' ')' block
-     :daB // ddelete/yank/visual [a] '(' ')' block
-     :diB // ddelete/yank/visual [i]nner '{' '}' block
-     :daB // ddelete/yank [a] '{' '}' block
-
-     :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
-     :syntax clear MyColorGroup     // remove highlight
-     :%!column -t       // format text  ref: https://sanctum.geek.nz/arabesque/advanced-vim-macros/
-
-
-
-
-    [Vim Script]
-    Compile Java code inside Vim [:h expand]
+    [ *v-script* *v_scri* vimscript, vimscr, vim script]
     `[
         " Fix the missing -cp option in java
         " Assume java file is in current buffer
@@ -1304,23 +1787,17 @@
         endfunction 
 
         :str =~ "n"    //compare string, return 1 if str == "n" else return 0
+        if str =~ "\s*"
+            " str is empty or whitespace
+        endif
 
-        :expand("%")    
-        "file.txt
-
-        :expand("%:p")  
-        "/home/file.txt 
-
-        :expand("%:p:t") 
-        "file.txt
-
-        :expand("%:p:r") 
-        "/home/file
-
-        :expand("%:p:t:r") 
-        "file 
-
-        :fnamemodify('/dog/f.txt', ':h') " /dog
+        *expand-example*
+        :expand("%")       => file.txt
+        :expand("%:p")     => /home/file.txt
+        :expand("%:p:t")   => file.txt
+        :expand("%:p:r")   => /home/file
+        :expand("%:p:t:r") => file
+        :fnamemodify('/dog/f.txt', ':h') => /dog
 
         " get current file dir
         :getcwd()
@@ -1451,9 +1928,39 @@
         s:	  Local to a :source ed Vim script.
         a:	  Function argument (only inside a function).
         v:	  Global, predefined by Vim.
+
+        :let l:pos = getpos(".")    // keep cursor position, restore cursor position
+        :call setpos(".", l:pos)
+        
+        :filter /^\u\w\+/ cab    // show all first letter of command abbreviations is uppercase. 
+
+        *v_dict*  *vscr_dict* *vim_dict*
+        :if has_key(dict, 'foo')	" TRUE if dict has entry with key "foo"
+        :if empty(dict)			" TRUE if dict is empty
+        :let l = len(dict)		" number of items in dict
+        :let big = max(dict)		" maximum value in dict
+        :let small = min(dict)		" minimum value in dict
+        :let xs = count(dict, 'x')	" count nr of times 'x' appears in dict
+        :let s = string(dict)		" String representation of dict
+        :call map(dict, '">> " . v:val')  " prepend ">> " to each item
+
+        *v_change_dir* *v_dir*
+        :autochdir acd noautochdir
     `]
 
-    [Linux command]
+    [fish shell ]
+    `[
+        brew install fish
+        install fish shell 2.3.1
+        create symbol link 
+        ln -s /usr/local/bin/fish /bin/fish
+        add /bin/fish to /etc/shells.
+
+        brew location 
+        🍺  /usr/local/Cellar/fish/2.3.1: 786 files, 5.9M
+    `] 
+
+    [Linux command *linux-command* ]
     :y$                                             // copy character from cursor to the end of line     [:help yank]
     :vaw                                            // highlight word under cursor including white space [:help text-object]
     :viw                                            // hightlight word under cursor excluding white space[:help text-object]
@@ -1468,31 +1975,22 @@
     :set expandtab
     :set showcmd
 
-    :sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt
-    :sed -i -e 's/oldstring/newstring/g' *      // replace oldstring to newstring                                                        
+    :sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns
+    :sed -i -e 's/oldstring/newstring/g' *      // replace oldstring to newstring, replace all, sed replace
     :find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
     :find . -name "*.txt" -type f  -print0 | xargs -0 echo  
     :find . -name "*.m" -exec sed -i backup 's/old/new/g' {} +         // backup is extension for backup file, got unknown primary or operator error
     :find . -name "*.m" -exec sed -i '' 's/SimpleApp/DeviceInfoApp/g' '{}' \;   // man find exec 
+    :find . -name "abc*" ! -name "*.cpp"    // file start with abc except all *.cpp file
+    :find . -name "*.txt" -o -name "*.cpp"  // -o OR operator
+    :find . -name "*.txt" -exec rm -f {} \; // remove all *.txt
+    :find . -maxdepth 1 -type f -perm +111 -exec rm -f {} \; // remove all executable files in curr dir
     :sudo /usr/libexec/locate.updatedb      // update locate command, update database, update db
 
-
-
-    
-    [git branch shows on command prompt]
+    [shell script, shellscript]
     `[
-        parse_git_branch(){
-            git branch 2> /dev/null | sed -e 's/* \(.*\)/ \(\1)/'
-        }
-        export PS1="\u$(parse_git_branch)\w$"
-        \u - Username
-        \w - Full path
-        \h - Host name
-    `]
+        If else statement, Compare string, Compare integer
 
-    [shell script]
-    If else statement, Compare string, Compare integer
-    `[
         if [ $# -gt 0 ]; then 
             echo "arg $1"
             if [ $1 = "w" ]; then
@@ -1514,7 +2012,65 @@
         # change dir, spawn a new shell
         cd newdir 
         exec /bin/bash 
+
+        // passing parameter containing space, contains space, contain space, parameter space, param space, argument space
+        #!/bin/bash
+        arr=("$@")
+        para0=${arr[0]}
+        para1=${arr[1]}
+        para2=${arr[2]}
+        echo 'para0='"$para0"
+        echo 'para1='"$para1"
+        echo 'para2='"$para2"
+        #-------------------------------------------------------------------------------- 
+        # script "p1" "dog cat" "cow"
+        # output:
+        #-------------------------------------------------------------------------------- 
+        #para0=p1
+        #para1=dog cat
+        #para2=cow
+
+        :command 1 > /etc/null   # redirect stdout to /etc/null
+        :command 2 > /etc/null   # redirect stderr to /etc/null
+        :command 2 > &1          # redirect stderr to stdout
+        :command & > file        # redirect stderr and stdout to file
+
+        *shell_arg* *shell_argument* 
+        #Shell crazy symbol
+        for arg in $* 
+        do
+        echo "[\$*]=".$arg
+        done 
+        #[$*]=.n1
+        #[$*]=.n2
+        #[$*]=.n3
+
+        for arg in "$*" 
+        do
+            echo "[\$*]=".$arg
+        done
+        #[$*]=.n1 n2 n3
+
+        for arg in $@ 
+        do
+            echo "[\$@]=".$arg
+        done
+        #[$@]=.n1
+        #[$@]=.n2
+        #[$@]=.n3
+
+        for arg in "$@"
+        do
+            echo "[\$@]=".$arg
+        done
+        #[$@]=.n1 n2
+        #[$@]=.n3
+
+        // profile bashrc share environment variables user and root, share variable
+        /etc/profile
     `]
+
+
     [iOS Game Development]
     {{ src=image/gameOption.png w=50% h=50% }}
     {{ src=image/gridgrid.png w=50% h=50% }}
@@ -1544,6 +2100,7 @@
             To find the clang on your Mac
             xcrun -find clang
 
+            // clang path
             your output:
             /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 
@@ -1560,6 +2117,13 @@
             log all terminal screen[Mac OS X, Linux]
             script screen.log
     `]
+
+    [Change Terminal screen color on MacOS]
+    `[
+        Command+i   // bring up the window
+        Setting     // select your favour color theme
+    `] 
+    {{ src=image/colortheme.png w=50% h=50% }}
 
     [Chrome ShortCut key]
     `[
@@ -1809,18 +2373,28 @@
         --------------------------------------------------------------------------------
     `]
 
+    [Xcode tips, xcode build, xcodebuild, xbuild, buildxcode, build xcode]
+    `[
+          xcodebuild test -scheme SimpleApp -destination 'platform=iOS Simulator,name=iPhone Retina (4-inch 64-bit),OS=7.1'  // Xcode build from command line
+          /Users/cat/Library/Developer/Xcode/DerivedData  // Xcode delete cache
+          xcodebuild -scheme MyLib -destination 'platform=iphonesimulator,name=iPhone 6' -derivedDataPath build    // Xcode build from command line
+          AppDelegate* appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    `]
+
     [Xcode build from commcand line test cases build test cases]
     `[
           xcodebuild test -project CoreApp.xcodeproj -scheme CoreAppTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'
     `]
-    {{ src=image/testcasecmd.png w=70% h=70% }}
+    {{ src=image/addtestscheme.png w=70% h=70% }}
 
     [Xcode NSValue valueWithCGPoint]
     `[
             #NSValue
-            NSLog(@"point   =[%@]", [NSValue valueWithCGPoint:anchorPoint]);
-            NSLog(@"position=[%@]", [NSValue valueWithCATransform3D:transform]);
-            NSLog(@"Size=[%@]", [NSValue valueWithCGSize:size]);
+            // print point, print cgpoint
+            NSLog(@"point     = [%@]", [NSValue valueWithCGPoint:point]);
+            NSLog(@"Size      = [%@]", [NSValue valueWithCGSize:size]);
+            NSLog(@"rect      = [%@]", [NSValue valueWithCGRect:rect]);
+            NSLog(@"transform = [%@]", [NSValue valueWithCATransform3D:transform]);
             
             // CGPoint to NSValue and NSValue to CGPoint
             NSValue* value = [NSValue valueWithCGPoint:anchorPoint]
@@ -1989,80 +2563,83 @@
         }
     `]
 
-    [python snipplet]
+    [python snippet]
     `[
-                mode	description
-                r	read in text mode
-                w	write in text mode, overwrite old file if exists
-                a	append in text mode
-                r+	read and write
-                w+	read and write, overwrite old file/create file
-                a+	read and append
-                rb	read in binary mode
-                wb	write in binary mode, overwrite old file if exists
-                ab	append in binary mode
-                rb+	read and write in binary mode
-                wb+	write and read in binary mode, overwrite old file if exists
-                ab+	append and read in binary mode
+        mode	description
+        r	read in text mode
+        w	write in text mode, overwrite old file if exists
+        a	append in text mode
+        r+	read and write
+        w+	read and write, overwrite old file/create file
+        a+	read and append
+        rb	read in binary mode
+        wb	write in binary mode, overwrite old file if exists
+        ab	append in binary mode
+        rb+	read and write in binary mode
+        wb+	write and read in binary mode, overwrite old file if exists
+        ab+	append and read in binary mode
 
-                python -m pdb script.py              // debug python
-                str = str.strip(' \r\n\t')           // trim whitespace
-                str = str.ltrip(' \r\n\t')           // trim the left side of str
-                str = str.rtrip(' \r\n\t')           // trim the right side of str
-                is_number(mystring)                  // convert string to number/integer
-                arglist = sys.argv;                  // argument list
-                arglist[0]                           // first argument which is the script name
-                len(mystring)                        // length of string
-                len(list)                            // number of element inside the list
-                mylist = []                          // create list
-                handler = open(fileName, "r+")       // open file for read
-                int(str)                             // convert string to integer
-                list.pop(0)                          // Delete first element from list
-                list.append("str")                   // Append str to list
-                basename = ntpath.basename(path)     // Basename of path
-                os.path.basename("/dog/dog/dog.txt") // import os;
-                pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt"
-                os.path.join("/home", "cat")         // /home/cat
-                os.path.join("/home/", "cat")        // /home/cat
-                str(num)                             // String to integer
-                os.getcwd()
-                arr1 = arr[:];                       // clone list duplicate list
-                "cool\n".rstrip()                    // remove newline delete newline
-                -----------------------------------
-                // python empty open file, python empty file
-                pathfile    = "/Users/cat/myfile/github/python/pather/path.txt"
-                pathWriter  = open(pathfile, "r+")
-                pathWriter.seek(0)
-                pathWriter.truncate()
-                -----------------------------------
-                line = "some stuff"
-                regex = re.compile(r'(file\W*=\W*)(\S+)\W*(title\W*=\W*)"(.*)"')
-                    match = regex.search(line)
-                    if match:
-                        print "(0)=", match.group(0)
-                        print "(1)=", match.group(1)
-                        print "(2)=", match.group(2)
-                        print "(3)=", match.group(3)
-                        print "(4)=", match.group(4)
-                -----------------------------------
-                subprocess.call(["pygmentize", "-f", "html", "-o", htmlFile, tmpFileName])
-                -----------------------------------
-                list = []
-                list[0] = 'cat'
-                list[1] = 'cat'
-                list.append('dog')
-                list.pop()
-                list.pop(1)
-                -----------------------------------
-                dict = {}
-                dict = {'k1':'value1', 'k2':'value2'}
-                dict['k1']
-                -----------------------------------
-                string.strip()                      // trim leading and trailing whitespace
+        python -m pdb script.py              // debug python
+        str = str.strip(' \r\n\t')           // trim whitespace
+        str = str.ltrip(' \r\n\t')           // trim the left side of str
+        str = str.rtrip(' \r\n\t')           // trim the right side of str
+        is_number(mystring)                  // convert string to number/integer
+        arglist = sys.argv;                  // argument list
+        arglist[0]                           // first argument which is the script name
+        len(mystring)                        // length of string
+        len(list)                            // number of element inside the list
+        mylist = []                          // create list
+        handler = open(fileName, "r+")       // open file for read
+        int(str)                             // convert string to integer
+        list.pop(0)                          // Delete first element from list
+        list.append("str")                   // Append str to list
+        basename = ntpath.basename(path)     // Basename of path
+        os.path.basename("/dog/dog/dog.txt") // import os;
+        pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt"
+        os.path.join("/home", "cat")         // /home/cat
+        os.path.join("/home/", "cat")        // /home/cat
+        str(num)                             // String to integer
+        os.getcwd()
+        arr1 = arr[:];                       // clone list duplicate list
+        "cool\n".rstrip()                    // remove newline delete newline
+        -----------------------------------
+        // python empty open file, python empty file
+        pathfile    = "/Users/cat/myfile/github/python/pather/path.txt"
+        pathWriter  = open(pathfile, "r+")
+        pathWriter.seek(0)
+        pathWriter.truncate()
+        -----------------------------------
+        line = "some stuff"
+        regex = re.compile(r'(file\W*=\W*)(\S+)\W*(title\W*=\W*)"(.*)"')
+            match = regex.search(line)
+            if match:
+                print "(0)=", match.group(0)
+                print "(1)=", match.group(1)
+                print "(2)=", match.group(2)
+                print "(3)=", match.group(3)
+                print "(4)=", match.group(4)
+        -----------------------------------
+        subprocess.call(["pygmentize", "-f", "html", "-o", htmlFile, tmpFileName])
+        -----------------------------------
+        list = []
+        list[0] = 'cat'
+        list[1] = 'cat'
+        list.append('dog')
+        list.pop()
+        list.pop(1)
+        -----------------------------------
+        dict = {}
+        dict = {'k1':'value1', 'k2':'value2'}
+        dict['k1']
+        -----------------------------------
+        string.strip()                      // trim leading and trailing whitespace
     `]
 
-    [Vim tip]
+    [Vim tip, vim trick]
     `[
+        :record q and letter a, replay @a // vim recording 
+        :1/pat                          // search from the first line, cool tip
+        :1?pat                          // search backward, from last line, cool tip
         :zz                             // move the cursor to middle of screen
         :zt                             // move the cursor to Top of screen
         :zb                             // move the cursor to Botton screen
@@ -2126,66 +2703,70 @@
         :set modeline      // display full file name in statusline [:help :statusline]
         :set statusline=%F
 
-        :echo getline(".")                 // get current line string
-        :echo match("mystring", "st")      // return 2
-        :echo line(".")                    // line number of cursor
-        :echo line("'t")                   // line number of mark t
-        :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
-        :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
-        :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
-        :help debug-mode                   // debug vim script
         
-        :echo getline(".")                                                                              // get current line string
-        :echo match("mystring", "st")                                                                   // return 2
-        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
-        :\%V                                                                                             // visual selection block [:help \%V]
-        :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
-        :'< and >'                                                                  // first cursor position/last cursor position in registers in visual mode/selection
+        :help debug-mode                             // debug vim script                                                                                                          
+        
+        :echo getline(".")                           // get current line string                                                                                                   
+        :echo match("mystring", "st")                // return 2                                                                                                                  
+        :Align \*\zs\s\+ =                           // *'  ' and '=' separator                                                                                                   
+        :\%V                                         // visual selection block [:help \%V]                                                                                        
+        :'<,>'sort /\ze\%V/                          // sort all selected lines in visual mode                                                                                    
+        :'< and >'                                   // first cursor position/last cursor position in registers in visual mode/selection                                          
 
-        :g/^$/d                             //delete empty line 
-        :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
-        :q: or q/                          // vim command history
+        :g/^$/d                                      // delete empty line                                                                                                         
+        :let @a=substitue(@a, 'pattern', 'sub', 'g') // substitute 'pattern' with 'sub' in register @a                                                                            
+        :q: or q/                                    // vim command history                                                                                                       
 
         :hi Search guifg=Brown guibg=Gray
-        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+        :hi Search cterm=Brown ctermbg=Gray          // change search backgroun/foreground [:h hl-Search]                                                                         
 
-        :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
-        :sort! n                           //reverse sorting
+        :sort n                                      // sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]   
+        :sort! n                                     // reverse sorting                                                                                                           
 
-        :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
-        :highlight MyKeyWord guifg=Green 
-        :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
-        :set ma                             // set file modifiable on  [:h modifiable]
-        :ctrl-]                              //class definition 
-        :ctrl-t                              //back to previous window
-        :s/pattern/\=@a.submatch(0).@b/gc   // substitute with two registers
+        :syn match MyKeyWord /MyName/                // Highlight defined keyword [:help syn-match]                                                                               
+        :highlight MyKeyWord guifg=Green
+        :'<,'>s/^\s*\zs\w/#\0/gc                     // comment all selected lines in python                                                                                      
+        :set ma                                      // set file modifiable on  [:h modifiable]                                                                                   
+        :ctrl-]                                      // class definition                                                                                                          
+        :ctrl-t                                      // back to previous window                                                                                                   
+        :s/pattern/\=@a.submatch(0).@b/gc            // substitute with two registers                                                                                             
 
-        :redir @a // redirect ex command to register
+        :redir @a                                    // redirect ex command to register                                                                                           
         :ls
         :redir END
 
-        :redir @* | ls | redir END  // redirect all the name of file to reg @* in buffer
+        :redir @* | ls | redir END                   // redirect all the name of file to reg @* in buffer                                                                         
         
-        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        :tabmove 4                                   // move the current tab to position 4 [help :tabmove]                                                                        
         :/pattern\c #ignorecase
         :hi clear SpellBad # Reset SpellBad bad spell highlight to default
-        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+        :g/-\s*(\w\+)\w+/z#.1                        // print all xcode methods with line number #                                                                                 
 
-        :/\(if\)\ze\(then\)         // if follows then "[if]then"
-        :/\(if\)\zs\(then\)         // then starts with if "if[then]" 
-
+        :/\(if\)\ze\(then\)                          // if follows then "[if]then"                                                                                                 
+        :/\(if\)\zs\(then\)                          // then starts with if "if[then]"   
         :g*         / search without word boundry
 
-        :let i=1 | g/dog/s//\='cat' . i/ | let i=i+1    // g/pattern/[cmd] [h :g] [h sub-replace-expression] searchkey: increase
-        :for i in range(1,10) | if i % 2 == 0 | put = i | endif | endfor  // put even numbers from cursor position vertically
+        :let i=1 | g/dog/s//\='cat' . i/gc | let i=i+1                   //  g/pattern/[cmd] [h :g] [h sub-replace-expression] searchkey: increase
+        :let i=2 | .,$g/dog\d\+/s//\='cat' . i/gc | let i=i+1            //  vim increase number
+        :for i in range(1,10) | if i % 2 == 0 | put = i | endif | endfor //  put even numbers from cursor position vertically
+        :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]      //  get background color
+        :set hidden                                                      //  hidden an unsaved file, ow, file has to be saved with !
+        :.,$s/some\(stuff\)/& . \1/gc                                    //  copy all i think % = \0 here
+        :normal mode
+        :%s/{\zs\(\_.}\@!\)*//gc                                         //  negative operator block of code { hello world }
+        :\@!                                                             //  negative operator, subtract operator, exclusive operator
+        :echo g:colors_name                                              //  get current color scheme
+        :/usr/share/vim/vim73/colors                                     //  vim scheme, vim directory vim folder
 
-        :echo synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]      // get background color  
-        :set hidden   // hidden an unsaved file, ow, file has to be saved with !
-        :.,$s/some\(stuff\)/& . \1/gc       // copy all i think % = \0 here
-        :normal mode 
-        :%s/{\zs\(\_.}\@!\)*//gc            // negative operator block of code { hello world }
-        :\@!                                // negative operator, subtract operator, exclusive operator 
-    `]
+        :autocmd BufEnter *.*  setlocal completefunc=CompleteAbbre       //  file type evil, autocmd will not detect file without extension. e.g. "file"
+
+        // http://vim.1045645.n5.nabble.com/autocmd-pattern-exclusion-td5712330.html 
+        :autocmd BufEnter *\(.txt)\@<!  TTT exec 'echo expand("%:p")' <CR>    //  excluding file type
+
+        // start PERL mode, vim play mode
+        gQ
+
+        `]
 
     [Grep command]
     :vim $(grep -l --include="*.java" pattern .)
@@ -2198,39 +2779,42 @@
 
     :CTRL-E                     // scroll window up 
     :CTRL-Y                     // scroll window down
-     :sleep 2
-     redraw
+    :sleep 2
+    :redraw
 
-     {{ src=image/vim_operator.png w=50% h=50% }}
-     :d$  // delete to the end of line  delete line
-     :diw // delete/yank/visual [i]nner word    block       delete word
-     :daw // delete/yank/visual [a] word        block
-     :dib // delete/yank/visual [i]nner '(' ')' block
-     :daB // ddelete/yank/visual [a] '(' ')' block
-     :diB // ddelete/yank/visual [i]nner '{' '}' block
-     :daB // ddelete/yank [a] '{' '}' block
-     
-     :viw // select [i]nner word    block
-     :vaw // select [a] word        block
-     :vib // select [i]nner '(' ')' block
-     :vaB // select [a] '(' ')' block
-     :viB // select [i]nner '{' '}' block
-     :vaB // select [a] '{' '}' block
-     :V   // select line  linewise
-     :vap // [:h textobjects] select block of lines, cursor move to next line very powerful
-     :vip // [:h operator]select block of lines, cursor on the last line very powerful
+    *v_operator* *vim_operator* *v_ope*
+    :d$  // delete to the end of line  delete line
+    :diw // delete/yank/visual [i]nner word    block       delete word
+    :daw // delete/yank/visual [a] word        block
+    :dib // delete/yank/visual [i]nner '(' ')' block, delete block => insert mode
+    :daB // ddelete/yank/visual[a] '(' ')' block
+    :diB // ddelete/yank/visual[i]nner '{' '}' block
+    :daB // ddelete/yank [a] '{' '}' block
+    :ciw // delete word => insert mode
 
-     :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
-     :syntax clear MyColorGroup     // remove highlight
+    *v_textobject* *vim_obj* *vim_text_object*
+    :viw // select [i]nner word    block
+    :vaw // select [a] word        block
+    :vib // select [i]nner '(' ')' block
+    :vaB // select [a] '(' ')' block
+    :viB // select [i]nner '{' '}' block
+    :vaB // select [a] '{' '}' block
+    :V   // select line  linewise
+    :vap // [:h textobjects] select block of lines, cursor move to next line very powerful
+    :vip // [:h operator]select block of lines, cursor on the last line very powerful
 
-     :Compile Java code inside Vim [:h expand]
+    :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
+    :syntax clear MyColorGroup     // remove highlight
+
+    :Compile Java code inside Vim [:h expand]
+
+    {{ src=image/vim_operator.png w=50% h=50% }}
 
     [Vim script]
     `[
-        :h *print*()  // find all funciton, find all the function contais print
-
-        :printf("%4d: E%d %.30s", lnum, errno, msg)  // vim formator
-        exec "normal \<C-W>h" [:h normal]  // move cursor to left window
+        :h *print*()                                // find all funciton, find all the function contais print 
+        :printf("%4d: E%d %.30s", lnum, errno, msg) // vim formator                                           
+        exec "normal \<C-W>h" [:h normal]           // move cursor to left window                             
         // display without Enter
         exec '!ls ' 
 
@@ -2384,6 +2968,60 @@
         " statusline evaludate function
         statusline+=%10{expand('%:p:h')}
         :statusline=%F\ %l:%c       " full path, line column number
+
+        :echo getline(".")                           // get current line string                                                                                                 
+        :echo match("mystring", "st")                // return 2                                                                                                                
+        :echo line(".")                              // line number of cursor                                                                                                   
+        :echo line("'t")                             // line number of mark t                                                                                                   
+        :echo getpos(".")                            // [bufferNumber, col, lnum, off] [:help getpos]                                                                           
+        :echo setpos(".", {list})                    // [bufferNumber, col, lnum, off]                                                                                          
+        :echo [col, lnum] = searchpos("=")           // return = position in current line and move the cursor to =                                                              
+        *v_substring* *substring*
+        :echo strpart("cat", 0, 1)                   // 'a', vim substring, vim script substring
+        :echo getline(".")                 // get current line string
+        :echo match("mystring", "st")      // return 2
+        :echo match("dog cat.", '\w\+\ze\.',  0)  // return 4
+        :echo matchstr("dog cat.", '\w\+\ze\.', 0) // return cat
+        :echo matchlist("dog cat.", '\w\+\ze\.', 0) // return list['cat', '']
+        :echo line(".")                    // line number of cursor
+        :echo line("'t")                   // line number of mark t
+        :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
+        :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
+        :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
+        :echo getline(".")                                                                              // get current line string
+        :echo match("mystring", "st")                                                                   // return 2
+        
+
+        // let list = ['dog', 'cat', '*']
+        // output: list['dog', 'cat']
+        :call filter(list, 'v:val !~ "*")
+
+        // join list = ['dog', 'cat'], output: dog/cat
+        :call join(list, '/') 
+
+        // example from help
+        :call insert(list, 'a')		" prepend item 'a'
+        :call insert(list, 'a', 3)	" insert item 'a' before list[3]
+        :call add(list, "new")		" append String item
+        :call add(list, [1, 2])		" append a List as one new item
+        :call extend(list, [1, 2])	" extend the list with two more items
+        :let i = remove(list, 3)	" remove item 3
+        :unlet list[3]			" idem
+        :let l = remove(list, 3, -1)	" remove items 3 to last item
+        :unlet list[3 : ]		" idem
+        :call filter(list, 'v:val !~ "x"')  " remove items with an 'x'
+        :echo list[-1]              " get last item
+        :echo list[1:3]             " get [1] to [3], partical list
+        :echo list[1:]              " get [1] to last item, partical list
+
+        // Changing the order of items in a list: >
+        :call sort(list)		" sort a list alphabetically
+        :call reverse(list)		" reverse the order of items
+        :call uniq(sort(list))		" sort and remove duplicates
+
+        :h complete-functions              // get complete function completefunc
+        :h completefunc
+        :help debug-mode                   // debug vim script
     `]
 
     [Git command git branch show on command prompt]
@@ -2397,6 +3035,8 @@
         :git refloghow                                       // all the reference log
         :git reset --hard 828c8c0b1995                       // revert to previous commit
         :git diff --stat hash1  hash2                        // diff two commits from two hashes 
+        :git log -- specific_file                            // get log on specific file
+        :.git/info/exclude                                   // for local file that does't need to be shared, just add file or dir pattern
         parse_git_branch(){
             git branch 2> /dev/null | sed -e 's/* \(.*\)/ \(\1)/'
         }
@@ -2406,20 +3046,7 @@
         \h - Host name
     `]
 
-    [Shell Script]
-    If else statement, Compare string, Compare integer
-    `[
-        if [ $# -gt 0 ]; then 
-            echo "arg $1"
-            if [ $1 = "w" ]; then
-                echo "do sth" 
-            elif [ $1 = "t" ]; then 
-                echo "do other th" 
-            fi 
-        else
-            echo "Usage"
-        fi
-    `]
+    
     [iOS Game Development]
     {{ src=image/gameOption.png w=50% h=50% }}
     {{ src=image/gridgrid.png w=50% h=50% }}
@@ -2430,5 +3057,13 @@
     {{ src=image/spritekit.png w=50% h=50% }}
     [SpriteKit how to create weapon with SKSPriteNode create physicsBody]
     {{ src=image/sprite2.png w=70% h=70% }}
-     
+    {{ src=image/toparr.png w=70% h=70% }}
+
+    [bookmark]
+    `[
+        java pattern, jpattern, javapattern, http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html
+        vim open, vi url, vim url open  http://stackoverflow.com/questions/9458294/open-url-under-cursor-in-vim-with-browser
+        1. haskell module directory http://stackoverflow.com/questions/5034685/what-is-the-haskell-syntax-to-import-modules-in-subdirectories
+        2. monad, monoid, category /Users/cat/GoogleDrive/Books/Monads_in_Haskell.pdf
+    `] 
 

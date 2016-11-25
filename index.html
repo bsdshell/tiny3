@@ -1,8 +1,129 @@
-<html><head><link rel="stylesheet" type="text/css" href="mycss/style.css"/></head><body class="htmlbg"><br><span class="tit">    [Shell crazy symbol ]</span><br>
+<html><head><link rel="stylesheet" type="text/css" href="mycss/style.css"/></head><body class="htmlbg">" vim: filetype=help foldmethod=marker foldmarker=&lt;&lt;&lt;,&gt;&gt;&gt; modifiable noreadonlyYou need the noreadonly and modifiable keywords in the vim modeline above.Help files are by default regarded as readonly and nomodifiable files by vim.<br><br><span class="tit">    [Haskell import and module]</span><br>
+<pre>        import Data.List
+        import qualified Data.List as LL   // LL.
+
+        // check all the functions from module
+        <span class="bracket">[</span>:browse Data.List<span class="bracket">]</span>
+
+        // use hoogle and doc in Prelude
+        check function in which library, e.g.
+        :hoogle subsequences
+        
+        :doc subsequences  <span class="bracket">(</span>show examples, nice!<span class="bracket">)</span>
+
+        // list all Packages in Haskell
+        ghc-pkg list
+        
+        // load framework, load package 
+        ghci -package GLUT
+        ghci -framework GLUT -package GLUT
+
+</pre>
+<br>    [ *java_regex_example*  *j_regex* ]
+<pre>        *j_regex_example*
+        Pattern r = Pattern.compile<span class="bracket">(</span>"captheorem", Pattern.CASE_INSENSITIVE<span class="bracket">)</span>;
+        Matcher mat = r.matcher<span class="bracket">(</span>"CAPTHEOREM"<span class="bracket">)</span>;
+        if<span class="bracket">(</span>mat.find<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span> <span class="bracket">{</span>
+            Print.p<span class="bracket">(</span>"found=" + mat.group<span class="bracket">(</span>0<span class="bracket">)</span><span class="bracket">)</span>;
+        <span class="bracket">}</span>
+</pre>
+<br>    [MySql show database, use table, *n_database* *n_db* ]
+<pre>        mysql&gt; show databases;
+        +--------------------+
+        | Database           |
+        +--------------------+
+        | testdb             |
+        +--------------------+
+
+        mysql&gt; use testdb;
+        mysql&gt; show tables;
+        +------------------+
+        | Tables_in_testdb |
+        +------------------+
+        | item             |
+        +------------------+
+        mysql&gt; desc item;
+        +-----------------+--------------+------+-----+---------+----------------+
+        | Field           | Type         | Null | Key | Default | Extra          |
+        +-----------------+--------------+------+-----+---------+----------------+
+        | item_id         | int<span class="bracket">(</span>11<span class="bracket">)</span>      | NO   | PRI | NULL    | auto_increment |
+        | name            | varchar<span class="bracket">(</span>40<span class="bracket">)</span>  | NO   |     | NULL    |                |
+        | phone           | varchar<span class="bracket">(</span>40<span class="bracket">)</span>  | NO   |     | NULL    |                |
+        | email           | varchar<span class="bracket">(</span>100<span class="bracket">)</span> | NO   |     | NULL    |                |
+        | description     | varchar<span class="bracket">(</span>400<span class="bracket">)</span> | NO   |     | NULL    |                |
+        | submission_date | date         | YES  |     | NULL    |                |
+        +-----------------+--------------+------+-----+---------+----------------+
+</pre>
+<br><span class="tit">    [Skim]</span><br>
+<pre>        // Skim automatically reload 
+        defaults write -app Skim SKAutoReloadFileUpdate -boolean true
+</pre>
+<br><span class="tit">    [lldb debug, xcode debug]</span><br>
+<pre>        command source ~/.lldbinit                                       // debug, lldb, load init file from xcode console
+        command source /home/mycommand.txt                               // debug, lldb, load your commands file
+
+        command script import /Users/cat/myfile/<span class="bracket">git</span>hub/lldb/mycommand.py // debug, lldb, load python script
+        <span class="bracket">{</span>command script import<span class="bracket">}</span> file
+
+        command alias pi print<span class="bracket">(</span>int<span class="bracket">)</span>                                      // debug, lldb, alias your command
+        command alias allv script print lldb.frame.get_all_variables<span class="bracket">(</span><span class="bracket">)</span>   // debug, lldb, alias you script
+        br list                                                          // debug, lldb, list all breakpoints
+        f                                                                // debug, lldb, select the current frame
+        up                                                               // debug, lldb, go up one frame
+        e NSString* $str = @"dog"                                        // debug, lldb, global var with $
+        c                                                                // debug, lldb, continua
+        n next                                                           // debug, lldb, step over
+        step                                                             // debug, lldb, step into
+        finish                                                           // debug, lldb, step out
+
+        breakpoint modify -c 'i &gt; 50' l                                  // debug, lldb, conditional break add command
+        breakpoint command add 1                                         // debug, lldb, conditional break add command
+        bt
+        DONE
+
+        breakpoint set --func-regex fibona.*                             // debug, lldb, set breakpoint regex function name <span class="bracket">[</span>h br set<span class="bracket">]</span>
+        breakpoint set --name   "-<span class="bracket">[</span>NSString stringWithFormat:<span class="bracket">]</span>"          // debug, lldb, set br ObjectiveC method name <span class="bracket">[</span>h br set<span class="bracket">]</span>
+        breakpoint set --method main
+        breakpoint set -c 'i == 10'                                      // debug, lldb, conditional breakpoint  <span class="bracket">[</span>h br set<span class="bracket">]</span>
+        breakpoint set -i 10                                             // debug, lldb, ignore count, stop until the count <span class="bracket">[</span>h br set<span class="bracket">]</span>
+
+        watchpoint set variable global_var                               // debug, lldb, set watchpoint when global_var is written to
+        w s v  global_var                                                // debug, lldb, set watchpoint when global_var is written to
+        watchpoint set expression -- my_ptr                              // debug, lldb, set watchpoint when my_ptr is written to
+        w s e -- my_ptr                                                  // debug, lldb, set watchpoint when my_ptr is written to
+
+</pre>
+<br><span class="tit">    [Emacs key Emac key]</span><br>
+<pre>        C-z     // exit Emacs        
+        C-u M-! shell_command
+        C-v M-v // page up, page down
+        C-a C-e // move cursor to begin and end of line
+        C-n C-p // move line down, line up
+        C-f M-f // move cursor character/word forward
+        C-b M-b // move cursor character/word backward
+        C-k M-k // kill all word to end of line or end of sentence
+        C-_     // undo
+        C-x C-f // find file
+        C-x C-s // save file 
+        C-x b   // switch buffer
+        C-x C-b // list buffer
+        C-x 1   // remove buffer list
+        C-x 2   // split two windows <span class="bracket">(</span>horizonal<span class="bracket">)</span>
+        C-x o   // move to other window
+        C-h     // help command
+        M-x package-list-packages  i // select package to install
+</pre>
+<br><span class="tit">    [build cpp]</span><br>
+<pre>        all: 
+            clang++ -g -v -std=c++11 -stdlib=libc++ -o  MergeSortedList MergeSortedList.cpp Aron.cpp
+            clang++ -g -v -std=c++11 -stdlib=libc++ -o  DataStructure  DataStructure.cpp 
+            clang++ -g -v -std=c++11 -stdlib=libc++ -o   DecimalBinary DecimalBinary.cpp  Aron.cpp
+</pre>
+<br><span class="tit">    [Shell crazy symbol ]</span><br>
 <pre>        for arg in $* 
         do
         echo "<span class="bracket">[</span>\$*<span class="bracket">]</span>=".$arg
-        done
+        done 
         #<span class="bracket">[</span>$*<span class="bracket">]</span>=.n1
         #<span class="bracket">[</span>$*<span class="bracket">]</span>=.n2
         #<span class="bracket">[</span>$*<span class="bracket">]</span>=.n3
@@ -27,11 +148,28 @@
         done
         #<span class="bracket">[</span>$@<span class="bracket">]</span>=.n1 n2
         #<span class="bracket">[</span>$@<span class="bracket">]</span>=.n3
+
+
+        // profile bashrc share environment variables user and root, share variable
+        /etc/profile
 </pre>
-    [xcode shortcut key, xcode key, xcode shortcut]
-<pre>        // xcode shortcut key, xcode key, xcode shortcut
-        Shift ALT Command Left/Right  fold all code/unfolded all code
-        CTRL 5 search files name<span class="bracket">(</span>.h *.m<span class="bracket">)</span>
+<br><span class="tit">    [IFS internal field separator ]</span><br>
+<pre>        # IFS = interal field separator
+        # IFS default = space and tab
+        mystr="triangle angel strange"
+        for word in $mystr; do
+            echo "word=<span class="bracket">[</span>$word<span class="bracket">]</span>"
+        done
+        echo "-------------------------"
+
+        IFS=' '
+        for word in $mystr; do
+            echo "word=<span class="bracket">[</span>$word<span class="bracket">]</span>"
+        done
+</pre>
+<br><span class="tit">    [xcode debug, symbolic breakpoint]</span><br> <div class="cen"><img src=image/symbolic_break_point.png width="80%" height="80%"></div> <br><span class="tit">    [xcode shortcut key xcode key xcode, shortcut, xcode sc, xcode search]</span><br>
+<pre>        Shift ALT Command Left/Right  fold all code/unfolded all code
+        CTRL 5 search files name<span class="bracket">(</span>.h *.m<span class="bracket">)</span>                                // xcode search
         CTRL 6 type search show all current methods
         CTRL WindowKey left/right  navigate backward/backward
         CTRL 1 show recent items
@@ -50,9 +188,10 @@
         Command D mark line
         Command L goto line
         Command E, Command F use selection to find
+        Command E + Command F search word under cursor
+        Command Shift O Quick Search file
         Command Shift Y close debug window
         Command Shift 2 Open Organizer
-        Command E + Command F search word under cursor
         Command Shift f  global find
         Command Shift Left/Right  selection whole line
         Command Shift right/left highlight line
@@ -62,6 +201,31 @@
         Command CTRL F full/maximize screen mode
         Command CTRL Y debug/continue 
         Command `  window fit screen
+</pre>
+<br><span class="tit">    [Intellij shortcut key]</span><br>
+<pre>        // intellij shortcut key
+        Ctrl Shift /    // comment block code
+        Shift Tab       // move block of code<span class="bracket">(</span>code selection<span class="bracket">)</span> to left
+        Tab/Shift+Tab   // indent/unintented selected line
+        Alt Right/Left  // cycle through tabs
+        Alt Shift F7    // goto usage
+        Alt Shit f      // global search
+        Alt g           // find name
+        Alt UP/Down     // move to previous/next method
+        Ctrl F12        // show all current methods
+        Ctrl W          // select code block. e.g <span class="bracket">{</span>..<span class="bracket">}</span>
+        Ctrl-Shift F12  // max/unmaxed window
+        Ctrl UP/Down    // movine window up/down
+        Ctrl <span class="bracket">[</span>/<span class="bracket">]</span>        // Move to code block star/end
+        Ctrl Shift #    // book mark line
+        Ctrl #          // goto book mark #
+        Ctrl Alt B      // goto implementation
+        Ctrl E          // go back to implementation
+        Ctrl Alt F7     // shows usages
+        Ctrl w          // select whole word
+        Ctrl Left/Right // move cursor previous/next
+        Ctrl Shift R    // find and replace
+        Ctrl Shift j    // join line
 </pre>
 <br><span class="tit">    [iPhone iPad info ]</span><br>
 <pre>         --------------------------------------------------------------------
@@ -126,19 +290,79 @@
          --------------------------------
 </pre>
 <span class="tit">    [Regular Expression ]</span><br>
-<pre>        :negative operator
+<pre>        :negative operator *not_operator* *negative_operator* *not_follow*
         :/if \<span class="bracket">(</span>\<span class="bracket">(</span>then\<span class="bracket">)</span>\@!.\<span class="bracket">)</span>*  // if not followed then
         :%s/`<span class="bracket">[</span>\zs\<span class="bracket">(</span>`\<span class="bracket">]</span>\<span class="bracket">)</span>
         :%s/<span class="bracket">{</span>\<span class="bracket">(</span><span class="bracket">}</span>\@!\_.\<span class="bracket">)</span>*//gc   // substitue all content inside the <span class="bracket">{</span> and <span class="bracket">}</span> 
+        :%s/\dc\@!/\=submatch<span class="bracket">(</span>0<span class="bracket">)</span>-1/gc // substitue all di<span class="bracket">git</span> with not following 'c'
 </pre>
-<br>    [GPG encrypt directory, tar file, encrypt file]
+<br><span class="tit">    [GPG encrypt directory, tar file, encrypt file]</span><br>
 <pre>        *GPG encrypt directory*
-        tar -czf dir.tar.gz dir 
-        tar -xzf dir.tar.gz dir 
+        tar -czf dir.tar.gz dir   // tar file
+        tar -xzf dir.tar.gz dir   // untar file 
         gpg -c dir.tar.gz  
         gpg -c -o dir.tar.gz dir.tar.gz.gpg     //encrypt your tar file
+
+        gpg --gen-key            // generate new key
+        gpg --list-keys           // list key
+        gpg --delete-keys C3B95227   // delete key uid=C3B95227
+
 </pre>
-<br><span class="tit">    [Haskell strip whitespace]</span><br>
+     <span class="tit">    [Haskell map HashMap]</span><br>
+<pre>        import qualified Data.Map as Map
+
+        phoneBook = Map.fromList <span class="bracket">[</span><span class="bracket">(</span>1234, "Erik"<span class="bracket">)</span>, <span class="bracket">(</span>5678, "Patrik"<span class="bracket">)</span><span class="bracket">]</span>
+
+        main = do
+            print phoneBook
+            print $ Map.lookup 1234 phoneBook
+            print $ <span class="bracket">(</span>Map.empty :: Map.Map Int Int<span class="bracket">)</span>
+            print $ Map.singleton 3 5
+            print $ Map.insert 1 "abc" Map.empty
+            print $ Map.null phoneBook
+            print $ Map.size phoneBook
+            print $ Map.toList phoneBook
+            print $ Map.keys phoneBook
+            print $ Map.elems phoneBook
+</pre>
+<br><span class="tit">    [Haskell convert String to Float, Int, Integer ]</span><br>
+<pre>        read <span class="bracket">"3.14"::</span>Float
+        read <span class="bracket">"123"::</span>Int
+        read <span class="bracket">"123"::</span>Integer
+        reads <span class="bracket">"123aa"::</span><span class="bracket">[</span><span class="bracket">(</span>Int, String<span class="bracket">)</span><span class="bracket">]</span> =&gt; <span class="bracket">[</span><span class="bracket">(</span>123, "aa"<span class="bracket">)</span><span class="bracket">]</span>
+        reads <span class="bracket">"aa123"::</span><span class="bracket">[</span><span class="bracket">(</span>Int, String<span class="bracket">)</span><span class="bracket">]</span> =&gt; <span class="bracket">[</span><span class="bracket">]</span>
+        <span class="bracket">[</span> http://stackoverflow.com/questions/2468410/convert-string-to-integer-float-in-haskell <span class="bracket">]</span>
+</pre>
+<span class="tit">    [Haskell List]</span><br>
+<pre>        take 1 <span class="bracket">[</span>1, 2, 3<span class="bracket">]</span>             -- <span class="bracket">[</span>1<span class="bracket">]</span>
+        drop 1 <span class="bracket">[</span>1, 2, 3<span class="bracket">]</span>             -- <span class="bracket">[</span>2, 3<span class="bracket">]</span>
+
+        init <span class="bracket">[</span>1, 2, 3<span class="bracket">]</span>               -- <span class="bracket">[</span>1, 2<span class="bracket">]</span>
+        last <span class="bracket">[</span>1, 2, 3<span class="bracket">]</span>               -- 3
+
+        head <span class="bracket">[</span>1, 2, 3<span class="bracket">]</span>               -- 1
+        tail <span class="bracket">[</span>1, 2, 3<span class="bracket">]</span>               -- <span class="bracket">[</span>2, 3<span class="bracket">]</span>
+
+        foldr <span class="bracket">(</span>++<span class="bracket">)</span> "" <span class="bracket">[</span>"cat", "dog"<span class="bracket">]</span> -- "catdog"
+
+        concat<span class="bracket">(</span><span class="bracket">[</span><span class="bracket">[</span>1<span class="bracket">]</span>, <span class="bracket">[</span>2<span class="bracket">]</span><span class="bracket">]</span><span class="bracket">)</span> = <span class="bracket">[</span>1, 2<span class="bracket">]</span>
+
+        foldr<span class="bracket">(</span>++<span class="bracket">)</span> <span class="bracket">[</span><span class="bracket">]</span> <span class="bracket">[</span><span class="bracket">[</span>"dog"<span class="bracket">]</span>, <span class="bracket">[</span>"cat"<span class="bracket">]</span><span class="bracket">]</span>
+
+        subsequences <span class="bracket">[</span>1, 2<span class="bracket">]</span>          -- <span class="bracket">[</span><span class="bracket">[</span><span class="bracket">]</span>, <span class="bracket">[</span>1<span class="bracket">]</span>, <span class="bracket">[</span>2<span class="bracket">]</span>, <span class="bracket">[</span>1, 2<span class="bracket">]</span><span class="bracket">]</span>
+
+        <span class="bracket">takeWhile::</span><span class="bracket">(</span>a<span class="bracket">-&gt;</span>Bool<span class="bracket">)</span><span class="bracket">-&gt;</span><span class="bracket">[</span>a<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>a<span class="bracket">]</span>
+        takeWhile<span class="bracket">(</span>&lt;3<span class="bracket">)</span> <span class="bracket">[</span>1..10<span class="bracket">]</span> -- <span class="bracket">[</span>1, 2<span class="bracket">]</span>
+
+        <span class="bracket">[</span> https://hackage.haskell.org/package/filepath-1.4.1.0/docs/System-FilePath-Posix.html <span class="bracket">]</span>
+        import System.FilePath
+        takeFileName  -- "file.ext"
+        takeDirectory -- "/directory"
+        takeExtension -- ".ext"
+        dropExtension -- "/directory/file"
+        takeBaseName  -- "file"
+</pre>
+ <div class="cen"><img src=image/headtail.png width="50%" height="50%"></div> <br><span class="tit">    [Haskell strip whitespace, trim whitespace]</span><br>
 <pre>        import qualified Data.Text as Text
         let s = " ab " 
         Text.strip $ Test.pack s
@@ -167,7 +391,7 @@
         let list2 = <span class="bracket">[</span>"/tmp/name1.txt", "/tmp/name2.txt"<span class="bracket">]</span>
         mapM_ <span class="bracket">(</span>uncurry copyFile<span class="bracket">)</span> $ zip list1 list2 
 </pre>
-    <br><span class="tit">    [Haskell curry]</span><br><span class="keyword">    :curry::(a,b)-&gt;c-&gt;a-&gt;b-&gt;c</span><br>    convert uncurried function to curried function 
+    <span class="tit">    [Haskell curry]</span><br><span class="keyword">    :curry::(a,b)-&gt;c-&gt;a-&gt;b-&gt;c</span><br>    convert uncurried function to curried function 
 <pre>        let c = \<span class="bracket">(</span>x, y<span class="bracket">)</span><span class="bracket">-&gt;</span> x + y
         curry c 1 2   -- output 3 
 </pre>
@@ -176,10 +400,37 @@
         let un = \x y <span class="bracket">-&gt;</span> x*y
         uncurry un <span class="bracket">(</span>2, 3<span class="bracket">)</span>   -- output 6
 </pre>
+<br><span class="tit">    [Difference mapM and mapM_ in Haskell]</span><br>
+<pre>        let list = <span class="bracket">[</span>"Banana", "Apple"<span class="bracket">]</span>
+        mapM putStrLn list
+        -- Banana 
+        -- Apple
+        -- <span class="bracket">[</span><span class="bracket">(</span><span class="bracket">)</span>, <span class="bracket">(</span><span class="bracket">)</span><span class="bracket">]</span>
+
+        mapM_ putStrLn list
+        -- Banana 
+        -- Apple
+</pre>
+<br><span class="tit">    [Haskell regex capture email address]</span> <br>
+<pre>        let listMail = map<span class="bracket">(</span>\x <span class="bracket">-&gt;</span> x =~ "<span class="bracket">(</span><span class="bracket">[</span><span class="bracket">[</span>:alnum:<span class="bracket">]</span>\\._<span class="bracket">]</span>+@<span class="bracket">[</span><span class="bracket">[</span>:alnum:<span class="bracket">]</span><span class="bracket">]</span>+\\.<span class="bracket">[</span><span class="bracket">[</span>:alnum:<span class="bracket">]</span><span class="bracket">]</span>+<span <span class="bracket">class="bracket">)</span>"::</span>String<span class="bracket">)</span> contents 
+</pre>
+<br><span class="tit">    [Haskell regex capture email address]</span> <br>
+<pre>        -- convert list to set and set to list
+        let set = Set.fromList mylist 
+        print set
+        let mylist = Set.toList set
+</pre>
+     <span class="tit">    [Haskell read file and write to file]</span><br>
+<pre>        <span class="bracket">readFileToList::</span>FilePath<span class="bracket">-&gt;</span>IO <span class="bracket">[</span>String<span class="bracket">]</span> 
+        readFileToList f = readFile f &gt;&gt;= \contents <span class="bracket">-&gt;</span> return <span class="bracket">(</span>lines contents<span class="bracket">)</span> 
+
+        <span class="bracket">writeToFile::</span>FilePath<span class="bracket">-&gt;</span><span class="bracket">[</span>String<span class="bracket">]</span><span class="bracket">-&gt;</span>IO<span class="bracket">(</span><span class="bracket">)</span>
+        writeToFile f list = writeFile f $ unlines list 
+</pre>
 <br><span class="tit">    [Haskell merge two lists]</span><br>
 <pre>        <span class="bracket">mergeList::</span><span class="bracket">[</span>String<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>String<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>String<span class="bracket">]</span>
         mergeList <span class="bracket">[</span><span class="bracket">]</span> <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
-        mergeList  l  <span class="bracket">[</span><span class="bracket">]</span> = l 
+        mergeList  l <span class="bracket">[</span><span class="bracket">]</span> = l 
         mergeList <span class="bracket">[</span><span class="bracket">]</span>  r = r 
         mergeList <span class="bracket">(</span>x:xs<span class="bracket">)</span> <span class="bracket">(</span>y:ys<span class="bracket">)</span> = x:y:mergeList xs ys
 </pre>
@@ -207,6 +458,30 @@
                                 left =  <span class="bracket">[</span>x | x &lt;- init l, x &lt; p<span class="bracket">]</span>
                                 right = <span class="bracket">[</span>x | x &lt;- init l, x &gt;= p<span class="bracket">]</span>
                                 p = last l 
+        -- shorter version
+        <span class="bracket">qsort::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span>
+        qsort <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
+        qsort <span class="bracket">(</span>x:xs<span class="bracket">)</span> = qsort<span class="bracket">(</span>left<span class="bracket">)</span> ++ <span class="bracket">[</span>x<span class="bracket">]</span> ++ qsort<span class="bracket">(</span>right<span class="bracket">)</span>
+                            where <span class="bracket">(</span>left, right<span class="bracket">)</span> = <span class="bracket">(</span>filter<span class="bracket">(</span>&lt;=x<span class="bracket">)</span> xs, filter<span class="bracket">(</span>&gt;x<span class="bracket">)</span> xs<span class="bracket">)</span> 
+
+        -- even a shorter version
+        <span class="bracket">qsort::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span>
+        qsort <span class="bracket">[</span><span class="bracket">]</span> = <span class="bracket">[</span><span class="bracket">]</span>
+        qsort <span class="bracket">(</span>x:xs<span class="bracket">)</span> = qsort<span class="bracket">[</span>l| l &lt;- xs, l &lt; x<span class="bracket">]</span> ++<span class="bracket">[</span>x<span class="bracket">]</span>++ qsort<span class="bracket">[</span>r| r &lt;- xs, r &gt;= x<span class="bracket">]</span>
+</pre>
+<br><span class="tit">    [kth smallest element from an array]</span><br>
+<pre>        -- kth smallest element from an array
+        <span class="bracket">qsort'::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span>Int<span class="bracket">-&gt;</span>Maybe Int
+        qsort' <span class="bracket">[</span>x<span class="bracket">]</span>  1   = Just x 
+        qsort'  x   k   | k &lt;= 0 || k &gt; length x = Nothing 
+        qsort' <span class="bracket">(</span>x:xs<span class="bracket">)</span> k | k &lt; ln =  qsort' left k 
+                        | k &gt; ln =  qsort' right <span class="bracket">(</span>k - ln<span class="bracket">)</span> 
+                        | otherwise = Just x
+                       where 
+                           left  = <span class="bracket">[</span>l | l &lt;- xs, l &lt; x<span class="bracket">]</span>
+                           right = <span class="bracket">[</span>r | r &lt;- xs, r &gt; x<span class="bracket">]</span>
+                           ln    = <span class="bracket">(</span>length left<span class="bracket">)</span> + 1
+
 </pre>
 <br><span class="tit">    [Haskell Merge Sort]</span><br>
 <pre>        <span class="bracket">mergeSort::</span><span class="bracket">[</span>Int<span class="bracket">]</span><span class="bracket">-&gt;</span><span class="bracket">[</span>Int<span class="bracket">]</span>
@@ -263,7 +538,6 @@
 </pre>
 <br><span class="tit">    [Haskell check array 3]</span><br>
 <pre>        -- check sum<span class="bracket">(</span>x_0, x_1,...,x_k<span class="bracket">)</span> == sum<span class="bracket">(</span>x_k+1,...,x_n<span class="bracket">)</span>
-
         <span class="bracket">checkSum4::</span><span class="bracket">[</span>Int<span class="bracket">]</span> <span class="bracket">-&gt;</span> Bool
         checkSum4 a = go a 0 <span class="bracket">(</span>sum a<span class="bracket">)</span>
            where go <span class="bracket">[</span><span class="bracket">]</span> left right = left==right
@@ -333,47 +607,17 @@
             <span class="bracket">}</span>
             return true;
         <span class="bracket">}</span>
-
-        <span class="bracket">[</span>9 p=null
-          <span class="bracket">[</span>7 p=null
-            <span class="bracket">[</span>4 p=null
-              <span class="bracket">[</span><span class="bracket">]</span>
-              <span class="bracket">(</span>4, null<span class="bracket">)</span>
-              p = r
-              <span class="bracket">[</span> p<span class="bracket">]</span>
-            <span class="bracket">]</span>
-            <span class="bracket">(</span>7, null<span class="bracket">)</span>
-            p = r = 7
-            <span class="bracket">[</span>8 p=7
-              <span class="bracket">[</span><span class="bracket">]</span>
-              <span class="bracket">(</span>8, p=7<span class="bracket">)</span>
-              p = r = 8
-              <span class="bracket">[</span> p=8<span class="bracket">]</span>
-            <span class="bracket">]</span>
-          <span class="bracket">]</span>
-          <span class="bracket">(</span>9, p=null<span class="bracket">)</span>
-          p = r = 9
-          <span class="bracket">[</span>12 p=9
-            <span class="bracket">[</span>11 p=9
-              <span class="bracket">[</span><span class="bracket">]</span>
-              <span class="bracket">(</span>11, p=9<span class="bracket">)</span>
-              p = r = 11
-              <span class="bracket">[</span> p=11<span class="bracket">]</span>
-            <span class="bracket">]</span>
-            <span class="bracket">(</span>12, p=9<span class="bracket">)</span>
-            p = r = 12
-            <span class="bracket">[</span>13 p=12
-              <span class="bracket">[</span><span class="bracket">]</span>
-              <span class="bracket">(</span>13, p=12<span class="bracket">)</span>
-              p = r = 13
-              <span class="bracket">[</span> p=13<span class="bracket">]</span>
-            <span class="bracket">]</span>
-          <span class="bracket">]</span>
-        <span class="bracket">]</span>
 </pre>
-<br><span class="tit">    [Java compile jar file ]</span><br>
+<br><span class="tit">    [Java compile jar file class file]</span><br>
 <pre>        java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
-        javac -sourcepath /mylib/  -d .   HellowWorld.java          // Specify where to find source file and where to put class file
+        javac -sourcepath /mylib/  -d . HellowWorld.java           // Specify where to find source file and where to put class file
+        -d directory sets the destination where to put the class files. 
+           The directory must always exist, javac doesn't create the directory.
+           If -d is not specified, javac puts the class file in the same directory as the source file. 
+
+        jar cvf Aron.jar classfile/*.class                         // compile class files to jar file, create jar file
+        jar tf Aron.jar 
+        jar xf jar-file                                            // extract jar to java files 
 </pre>
 <br><span class="tit">    [Java Algorithm]</span><br>    Given a binary tree, find all the nodes that k distance from the root
 <pre>        public static void kdistance<span class="bracket">(</span>Node r, int k<span class="bracket">)</span><span class="bracket">{</span>
@@ -387,28 +631,28 @@
             <span class="bracket">}</span>
         <span class="bracket">}</span>
 </pre>
- <div class="cen"><img src=image/kdistance.png width="50%" height="50%"></div> <br><span class="tit">    [Increasing Continuous Array]</span><br> <div class="cen"><img src=image/continuousarray.png width="50%" height="50%"></div> <br><span class="tit">    [Maximum Continuous Sum]</span><br> <div class="cen"><img src=image/maxcontinuoussum.png width="50%" height="50%"></div> <br><span class="tit">    [Continuous Blocks]</span><br> <div class="cen"><img src=image/continuousblock.png width="50%" height="50%"></div> <br><span class="tit">    [Java Quick Sort]</span><br>
+ <div class="cen"><img src=image/kdistance.png width="50%" height="50%"></div> <br><span class="tit">    [Increasing Continuous Array]</span><br> <div class="cen"><img src=image/continuousarray.png width="50%" height="50%"></div>  <div class="cen"><img src=image/conlist.png width="50%" height="50%"></div> <br><span class="tit">    [Maximum Continuous Sum]</span><br> <div class="cen"><img src=image/maxcontinuoussum.png width="50%" height="50%"></div> <br><span class="tit">    [Continuous Blocks]</span><br> <div class="cen"><img src=image/continuousblock.png width="50%" height="50%"></div> <br><span class="tit">    [Java Quick Sort]</span><br>
 <pre>        public static void quickSort<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> arr, int lo, int hi<span class="bracket">)</span><span class="bracket">{</span>
             if<span class="bracket">(</span>lo &lt; hi<span class="bracket">)</span><span class="bracket">{</span>
                 int p = partition<span class="bracket">(</span>arr, lo, hi<span class="bracket">)</span>;
                 quickSort<span class="bracket">(</span>arr, lo, p-1<span class="bracket">)</span>;
-                quickSort<span class="bracket">(</span>arr, p+1, hi<span class="bracket">)</span>;
+                quickSort<span class="bracket">(</span>arr, p + 1, hi<span class="bracket">)</span>;
             <span class="bracket">}</span>
         <span class="bracket">}</span>
         public static int partition<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> arr, int lo, int hi<span class="bracket">)</span><span class="bracket">{</span>
             int len = hi - lo + 1;
-            int top = lo;
+            int big = lo;
             if<span class="bracket">(</span>lo &lt; hi<span class="bracket">)</span><span class="bracket">{</span>
                 int pivot = arr<span class="bracket">[</span>hi<span class="bracket">]</span>;
                 for<span class="bracket">(</span>int i=lo; i&lt;len; i++<span class="bracket">)</span><span class="bracket">{</span>
                     if<span class="bracket">(</span>arr<span class="bracket">[</span>i<span class="bracket">]</span> &lt; pivot<span class="bracket">)</span><span class="bracket">{</span>  
-                        swap<span class="bracket">(</span>arr, top, i<span class="bracket">)</span>;
-                        top++;
+                        swap<span class="bracket">(</span>arr, big, i<span class="bracket">)</span>;
+                        if<span class="bracket">(</span>big &lt; hi<span class="bracket">)</span>
+                            big++;
                     <span class="bracket">}</span> 
                 <span class="bracket">}</span>
-                swap<span class="bracket">(</span>arr, top, hi<span class="bracket">)</span>;
             <span class="bracket">}</span>
-            return top;
+            return big;
         <span class="bracket">}</span>
         public static void swap<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> arr, int i, int j<span class="bracket">)</span><span class="bracket">{</span>
             int tmp  = arr<span class="bracket">[</span>i<span class="bracket">]</span>;
@@ -417,9 +661,9 @@
         <span class="bracket">}</span>
 </pre>
  <div class="cen"><img src=image/partition1.png width="50%" height="50%"></div> <br><span class="tit">    [Java Kth Median Algorithm]</span><br>
-<pre>        //Find the kth median element in a unsorted array
-        //Return index for the kth smaller element
-        //Otherwise return -1 if k is invalid  
+<pre>        // Find the kth median element in a unsorted array
+        // Return index for the kth smaller element
+        // Otherwise return -1 if k is invalid  
         public static int modifiedQuickSort<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> array, int lo, int hi, int k<span class="bracket">)</span>
         <span class="bracket">{</span>
             if<span class="bracket">(</span>k &lt;= hi - lo + 1<span class="bracket">)</span> 
@@ -441,8 +685,8 @@
             return -1;
         <span class="bracket">}</span>
 
-        //use modified quicksort algorithm to find the kth median element
-        //partition an array to two parts: left_array &lt; pivot &lt; right_array
+        // use modified quicksort algorithm to find the kth median element
+        // partition an array to two parts: left_array &lt; pivot &lt; right_array
         public static int partition<span class="bracket">(</span>int<span class="bracket">[</span><span class="bracket">]</span> array, int lo, int hi<span class="bracket">)</span>
         <span class="bracket">{</span>
             int top = lo;
@@ -454,25 +698,25 @@
                     if<span class="bracket">(</span>array<span class="bracket">[</span>i<span class="bracket">]</span> &lt; pivot<span class="bracket">)</span>
                     <span class="bracket">{</span>
                         swap<span class="bracket">(</span>array, i, top<span class="bracket">)</span>;
-                        top++;
+                        if<span class="bracket">(</span>i &lt; hi<span class="bracket">)</span>
+                            top++;
                     <span class="bracket">}</span>
                 <span class="bracket">}</span>
-                swap<span class="bracket">(</span>array, top, hi<span class="bracket">)</span>; 
             <span class="bracket">}</span>
             return top;
         <span class="bracket">}</span> 
 </pre>
- <div class="cen"><img src=image/newkthmedian.png width="50%" height="50%"></div> <br><span class="tit">    [Java Data Structrue]</span><br>
+ <div class="cen"><img src=image/newkthmedian.png width="50%" height="50%"></div> <br>    [Java Data Structrue, javalist, jlist, java list *java_data_structure* ]
 <pre>        int<span class="bracket">[</span><span class="bracket">]</span> array     = <span class="bracket">{</span>1, 2, 3<span class="bracket">}</span>;
         int<span class="bracket">[</span><span class="bracket">]</span><span class="bracket">[</span><span class="bracket">]</span>  array2 = <span class="bracket">{</span><span class="bracket">{</span>1, 2, 3<span class="bracket">}</span>,
                            <span class="bracket">{</span>4, 5, 6<span class="bracket">}</span><span class="bracket">}</span>;
-        // ArrayList
-        ArrayList&lt;String&gt; alist = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>; 
+        *ArrayList*
+        List&lt;String&gt; alist = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>; 
         alist.add<span class="bracket">(</span>"dog"<span class="bracket">)</span>;
         alist.add<span class="bracket">(</span>"cat"<span class="bracket">)</span>;
 
-        // ArrayList 2D
-        ArrayList&lt;ArrayList&lt;String&gt;&gt; list2d = new ArrayList&lt;ArrayList&lt;String&gt;&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        *ArrayList_2D*
+        List&lt;ArrayList&lt;String&gt;&gt; list2d = new ArrayList&lt;ArrayList&lt;String&gt;&gt;<span class="bracket">(</span><span class="bracket">)</span>;
         list2d.add<span class="bracket">(</span>alist<span class="bracket">)</span>;
 
         // List
@@ -481,8 +725,7 @@
         list.add<span class="bracket">(</span>"continue"<span class="bracket">)</span>;
         list.add<span class="bracket">(</span>"continuous"<span class="bracket">)</span>;
 
-        // Initialize list
-        List&lt;String&gt; list = new ArrayList&lt;String&gt;<span class="bracket">(</span>Arrays.asList<span class="bracket">(</span>"dog", "cat", "cow"<span class="bracket">)</span><span class="bracket">)</span>;
+        List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;<span class="bracket">(</span><span class="bracket">)</span>; 
 
         // Vector
         Vector&lt;String&gt; vector = new Vector&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
@@ -516,7 +759,7 @@
         concurrentDeque.addFirst<span class="bracket">(</span>"first"<span class="bracket">)</span>;
         concurrentDeque.addLast<span class="bracket">(</span>"last"<span class="bracket">)</span>;
 
-        // HashMap
+        // HashMap, java map, jmap, jhash
         Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;<span class="bracket">(</span><span class="bracket">)</span>;
         map.put<span class="bracket">(</span>"cat", 1<span class="bracket">)</span>;
         map.put<span class="bracket">(</span>"dog", 2<span class="bracket">)</span>;
@@ -561,7 +804,7 @@
         <span class="bracket">}</span>
 
 
-        // HashSet
+        // HashSet java hashset java, java set, javaset
         Set&lt;Integer&gt; set = new HashSet&lt;Integer&gt;<span class="bracket">(</span>Arrays.asList<span class="bracket">(</span>1, 2<span class="bracket">)</span><span class="bracket">)</span>;
         Integer item = 1;
         if<span class="bracket">(</span>set.contains<span class="bracket">(</span>item<span class="bracket">)</span><span class="bracket">)</span>
@@ -592,14 +835,97 @@
             System.out.println<span class="bracket">(</span>"Iterator elem:=" + iterator.next<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span>; 
         <span class="bracket">}</span>
 
-        List&lt;String&gt; list1 = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
-        List&lt;String&gt; list2 = new LinkedList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
-        List&lt;String&gt; list3 = new Stack&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
-        List&lt;String&gt; list4 = new Vector&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        List&lt;String&gt; list = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        List&lt;String&gt; list = new LinkedList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        List&lt;String&gt; list = new Stack&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        List&lt;String&gt; list = new Vector&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
         Queue&lt;String&gt; queue = new ArrayList&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
-        Queue&lt;String&gt; queue2 = new PriorityQueue&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        Queue&lt;String&gt; queue = new PriorityQueue&lt;String&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        Queue&lt;Integer&gt; queue = new ArrayList&lt;Integer&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+        Queue&lt;Integer&gt; queue = new PriorityQueue&lt;Integer&gt;<span class="bracket">(</span><span class="bracket">)</span>;
+
+        // java tokenize
+        // import java.util.StringTokenizer;
+        String delims = ":";
+        String input = "Continuity:Continua:Continuous:Continuation:";
+        StringTokenizer st = new StringTokenizer<span class="bracket">(</span>input, delims<span class="bracket">)</span>;
+        while<span class="bracket">(</span>st.hasMoreElements<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>st.nextElement<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span>;
+        <span class="bracket">}</span>
+
+        // java split
+        String delims = ":";
+        String input = "what:cool:PaloAlto:Continuity:Continua:Continuous:Continuation:";
+        String<span class="bracket">[</span><span class="bracket">]</span> array = input.split<span class="bracket">(</span>delims<span class="bracket">)</span>;
+        for<span class="bracket">(</span>String str : array<span class="bracket">)</span><span class="bracket">{</span>
+            System.out.println<span class="bracket">(</span>str<span class="bracket">)</span>;
+        <span class="bracket">}</span>
+
 </pre>
-<span class="tit">    [Java Comparable]</span><br>
+<br>    [Java write file, java write file, j write file, jwf *j_write_file* ]
+<pre>        import java.io.*;
+        import java.lang.String;
+        import java.util.*;
+        class writeFile 
+        <span class="bracket">{</span>
+            public static void main<span class="bracket">(</span>String args<span class="bracket">[</span><span class="bracket">]</span><span class="bracket">)</span> <span class="bracket">{</span>
+                writeToFile<span class="bracket">(</span><span class="bracket">)</span>;
+            <span class="bracket">}</span>
+            public static void writeToFile<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">{</span>
+                try <span class="bracket">{</span>
+                    // searchkey: write to file, write file, write to text file, open file to write
+                    FileWriter fstream = new FileWriter<span class="bracket">(</span>"out.txt"<span class="bracket">)</span>;
+                    BufferedWriter out = new BufferedWriter<span class="bracket">(</span>fstream<span class="bracket">)</span>;
+                    out.write<span class="bracket">(</span>"hello java"<span class="bracket">)</span>;
+                    out.close<span class="bracket">(</span><span class="bracket">)</span>;
+                <span class="bracket">}</span>
+                catch<span class="bracket">(</span>Exception e<span class="bracket">)</span> <span class="bracket">{</span>
+                <span class="bracket">}</span>
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+
+        import java.io.*;
+        String file1 = "file1.txt";
+        try<span class="bracket">(</span>BufferedWriter bw = new BufferedWriter<span class="bracket">(</span>new FileWriter<span class="bracket">(</span>file1<span class="bracket">)</span><span class="bracket">)</span><span class="bracket">)</span><span class="bracket">{</span>
+            bw.write<span class="bracket">(</span>"dog\n"<span class="bracket">)</span>;
+            bw.write<span class="bracket">(</span>"God"<span class="bracket">)</span>;
+        <span class="bracket">}</span>catch<span class="bracket">(</span>IOException e<span class="bracket">)</span><span class="bracket">{</span>
+        <span class="bracket">}</span>
+</pre>
+<br>    [Read file, java read file, java open file, j open file, jof *j_readfile* *j_read_file* ]
+<pre>        import java.io.*;
+        class FileRead <span class="bracket">{</span>
+            public static void main<span class="bracket">(</span>String args<span class="bracket">[</span><span class="bracket">]</span><span class="bracket">)</span> <span class="bracket">{</span>
+                try <span class="bracket">{</span>
+                    FileInputStream fstream = new FileInputStream<span class="bracket">(</span>"textfile.txt"<span class="bracket">)</span>;
+                    // Get the object of DataInputStream
+                    DataInputStream in = new DataInputStream<span class="bracket">(</span>fstream<span class="bracket">)</span>;
+                    BufferedReader br = new BufferedReader<span class="bracket">(</span>new InputStreamReader<span class="bracket">(</span>in<span class="bracket">)</span><span class="bracket">)</span>;
+                    String strLine;
+                    //Read File Line By Line
+                    while <span class="bracket">(</span><span class="bracket">(</span>strLine = br.readLine<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span> != null<span class="bracket">)</span><span class="bracket">{</span>
+                        // Print the content on the console
+                        System.out.println <span class="bracket">(</span>strLine<span class="bracket">)</span>;
+                    <span class="bracket">}</span>
+                        //Close the input stream
+                        in.close<span class="bracket">(</span><span class="bracket">)</span>;
+                    <span class="bracket">}</span>catch <span class="bracket">(</span>Exception e<span class="bracket">)</span> <span class="bracket">{</span>  
+                        //Catch exception if any
+                        System.err.println<span class="bracket">(</span>"Error: " + e.getMessage<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span>;
+                    <span class="bracket">}</span>
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+
+        import java.io.*;
+        String file = "file.txt";
+        try<span class="bracket">(</span>BufferedReader br = new BufferedReader<span class="bracket">(</span>new FileReader<span class="bracket">(</span>file<span class="bracket">)</span><span class="bracket">)</span><span class="bracket">)</span><span class="bracket">{</span>
+            for<span class="bracket">(</span>String line; <span class="bracket">(</span>line = br.readLine<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span> != null;<span class="bracket">)</span><span class="bracket">{</span>
+                System.out.println<span class="bracket">(</span>"<span class="bracket">[</span>" + line + "<span class="bracket">]</span>"<span class="bracket">)</span>;
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>catch<span class="bracket">(</span>IOException io<span class="bracket">)</span><span class="bracket">{</span>
+        <span class="bracket">}</span>
+</pre>
+<br>    [Java Comparable, jcompare, jcomparable, java compare, java comparatable *j_compare* ]
 <pre>        class Contact implements Comparable&lt;Contact&gt; <span class="bracket">{</span>
             String name;
             String addr;
@@ -610,11 +936,11 @@
                 this.age = age;
             <span class="bracket">}</span>
 
-            //Minimum heap
+            // Minimum heap
             public int compareTo<span class="bracket">(</span>Contact c<span class="bracket">)</span> <span class="bracket">{</span>
                 return this.age - c.age;
-                //Maximum heap
-                //return -<span class="bracket">(</span>this.age - c.age<span class="bracket">)</span>;
+                // Maximum heap
+                // return -<span class="bracket">(</span>this.age - c.age<span class="bracket">)</span>;
             <span class="bracket">}</span>
 
             public String toString<span class="bracket">(</span><span class="bracket">)</span> <span class="bracket">{</span>
@@ -631,8 +957,6 @@
                 PriorityQueue&lt;Contact&gt; miniHeap = new PriorityQueue&lt;Contact&gt;<span class="bracket">(</span><span class="bracket">)</span>;
                 miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"David", "U.S", 3<span class="bracket">)</span><span class="bracket">)</span>;
                 miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"John", "U.S", 4<span class="bracket">)</span><span class="bracket">)</span>;
-                miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"Johnny", "U.S", 4<span class="bracket">)</span><span class="bracket">)</span>;
-                miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"Nathan", "U.S", 1<span class="bracket">)</span><span class="bracket">)</span>;
                 miniHeap.add<span class="bracket">(</span>new Contact<span class="bracket">(</span>"Micheal", "U.S", 6<span class="bracket">)</span><span class="bracket">)</span>;
 
                 while<span class="bracket">(</span>!miniHeap.isEmpty<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span> <span class="bracket">{</span>
@@ -641,8 +965,11 @@
             <span class="bracket">}</span>
         <span class="bracket">}</span>
 </pre>
-<span class="tit">    [Java LocalDateTime]</span><br>
-<pre>        LocalDateTime time = LocalDateTime.parse<span class="bracket">(</span>"2007-12-03T10:15:30", DateTimeFormatter.ISO_LOCAL_DATE_TIME<span class="bracket">)</span>;
+<br>    [Java LocalDateTime, java datetime, javatime, jtime, sort time, sorttime, compare time, comparetime, java localtime *j_date_time* ]
+<pre>
+        import java.time.LocalDateTime;
+
+        LocalDateTime time = LocalDateTime.parse<span class="bracket">(</span>"2007-12-03T10:15:30", DateTimeFormatter.ISO_LOCAL_DATE_TIME<span class="bracket">)</span>;
         int year = time.getDayOfYear<span class="bracket">(</span><span class="bracket">)</span>;
         Month month = time.getMonth<span class="bracket">(</span><span class="bracket">)</span>;
         int  day = time.getDayOfMonth<span class="bracket">(</span><span class="bracket">)</span>;
@@ -668,12 +995,37 @@
                     " minute=" + t.getMinute<span class="bracket">(</span><span class="bracket">)</span> + "  second=" + t.getSecond<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">)</span>;
         <span class="bracket">}</span>
 </pre>
-<br><span class="tit">    [Xcode]</span><br>
+<br>    [NSTimer, nstimer, timer, xcode timer, xtimer *x_timer* ]
+<pre>        NSTimer* _tickTimer;
+        @property<span class="bracket">(</span>nonatomic, retain<span class="bracket">)</span>NSTimer* tickTimer;
+        -<span class="bracket">(</span>void<span class="bracket">)</span>countineCountDownTimer<span class="bracket">{</span>
+            self.tickTimer = <span class="bracket">[</span>NSTimer scheduledTimerWithTimeInterval:1
+                                                                   target:self 
+                                                                 selector:@selector<span class="bracket">(</span>onTick:<span class="bracket">)</span> 
+                                                                 userInfo:nil 
+                                                                  repeats:YES<span class="bracket">]</span>;
+        <span class="bracket">}</span>
+        -<span class="bracket">(</span>void<span class="bracket">)</span>stopCountDownTimer<span class="bracket">{</span>
+            if <span class="bracket">(</span>self.tickTimer != nil<span class="bracket">)</span><span class="bracket">{</span>
+                <span class="bracket">[</span>self.tickTimer invalidate<span class="bracket">]</span>;
+                self.tickTimer = nil;
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+        // long _countDown;
+        -<span class="bracket">(</span>void<span class="bracket">)</span>onTick:<span class="bracket">(</span>NSTimer*<span class="bracket">)</span>timer <span class="bracket">{</span>
+            if<span class="bracket">(</span>_countDown &gt; 0<span class="bracket">)</span><span class="bracket">{</span>
+                _countDown--;
+                if<span class="bracket">(</span>_countDown == 0<span class="bracket">)</span><span class="bracket">{</span>
+                <span class="bracket">}</span>
+            <span class="bracket">}</span>
+        <span class="bracket">}</span>
+</pre>
+<br><span class="tit">    [Xcode NSUserDefaults, xcode default user, xdefault, userdefault, defaultuser]</span><br>
 <pre>        NSUserDefaults only can use NSArray, NSDictionary, NSString, NSData, NSDate, NSNumber<span class="bracket">(</span>intValue/floatValue/boolValue<span class="bracket">)</span>
         NSUserDefaults returns immutable object event though mutable object is used
         For custom object, NSCoding protocol has to be implemented in order to use in NSUserDefaults
 </pre>
-<br><span class="tit">    [Xcode NSMutableArray]</span><br>
+<br><span class="tit">    [Xcode NSMutableArray, xarray, xnsarray, xnsmutablearray]</span><br>
 <pre>        NSMutableArray* array = <span class="bracket">[</span><span class="bracket">[</span>NSMutableArray alloc<span class="bracket">]</span> initWithCapacity:2<span class="bracket">]</span>;                              // convert int to NSNumber and NSNumber to int
         <span class="bracket">[</span>array addObject:<span class="bracket">[</span>NSNumber numberWithInt:4<span class="bracket">]</span><span class="bracket">]</span>;
         <span class="bracket">[</span>array addObject:<span class="bracket">[</span>NSNumber numberWithInt:5<span class="bracket">]</span><span class="bracket">]</span>;
@@ -868,6 +1220,7 @@
         <span class="bracket">[</span>result unionSet:set12<span class="bracket">]</span>;
         
         
+        
         <span class="bracket">[</span>result intersectSet:set11<span class="bracket">]</span>;
         
         <span class="bracket">[</span>result minusSet:set11<span class="bracket">]</span>;
@@ -912,14 +1265,7 @@
         - <span class="bracket">(</span>NSComparisonResult<span class="bracket">)</span>compare:<span class="bracket">(</span>NSNumber *<span class="bracket">)</span>otherNumber;
         - <span class="bracket">(</span>BOOL<span class="bracket">)</span>isEqualToNumber:<span class="bracket">(</span>NSNumber *<span class="bracket">)</span>number;
 </pre>
-<br><span class="tit">    [Xcode tips]</span><br>
-<pre>          xcodebuild test -scheme SimpleApp -destination 'platform=iOS Simulator,name=iPhone Retina <span class="bracket">(</span>4-inch 64-bit<span class="bracket">)</span>,OS=7.1'  // Xcode build from command line
-          /Users/cat/Library/Developer/Xcode/DerivedData  // Xcode delete cache
-          xcodebuild -scheme MyLib -destination 'platform=iphonesimulator,name=iPhone 6' -derivedDataPath build    // Xcode build from command line
-
-          AppDelegate* appDelegate = <span class="bracket">(</span>AppDelegate*<span class="bracket">)</span><span class="bracket">[</span><span class="bracket">[</span>UIApplication sharedApplication<span class="bracket">]</span> delegate<span class="bracket">]</span>;
-</pre>
-<span class="tit">    [Xcode Format String]</span><br>
+<br>    <span class="tit">    [Xcode Format String]</span><br>
 <pre>            nformatting
             --------------------------------------------------------------------------------
             // one decimal for float
@@ -946,7 +1292,10 @@
             %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
             %F 64-bit float, printed in decimal notation.
             %d bool stype
-            --------------------------------------------------------------------------------
+            
+</pre>
+<br><span class="tit">    [xcode file, read file, write file, xcode read file, xcode write file, x write file, x read file]</span><br>
+<pre>            --------------------------------------------------------------------------------
             NSFileManager* fileManager = <span class="bracket">[</span><span class="bracket">[</span>NSFileManager alloc<span class="bracket">]</span>init<span class="bracket">]</span>;
             NSString* path = @"/dog/cat";
             NSString* name = @"file.txt";
@@ -988,12 +1337,12 @@
             <span class="bracket">[</span>dataBuffer writeToFile:filePath atomically:YES<span class="bracket">]</span>;
             NSLog<span class="bracket">(</span>@"filePath<span class="bracket">[</span>%@<span class="bracket">]</span>", filePath<span class="bracket">)</span>;
             --------------------------------------------------------------------------------
-            // copy file
+            // copy file, copy data, copy string
             NSString* newFilePath = <span class="bracket">[</span>documentDirectory stringByAppendingPathComponent:@"newfile.txt"<span class="bracket">]</span>;
             <span class="bracket">[</span>fileManager copyItemAtPath:filePath toPath:newFilePath error:&error<span class="bracket">]</span>;
             NSLog<span class="bracket">(</span>@"newFilePath<span class="bracket">[</span>%@<span class="bracket">]</span>", filePath<span class="bracket">)</span>;
             --------------------------------------------------------------------------------
-            // create empty file
+            // create empty file, create file 
             NSString* emptyFilePath = <span class="bracket">[</span>documentDirectory stringByAppendingPathComponent:@"emptyfile.txt"<span class="bracket">]</span>;
             <span class="bracket">[</span>fileManager createFileAtPath:emptyFilePath contents:nil attributes:nil<span class="bracket">]</span>;
             NSLog<span class="bracket">(</span>@"emptyFilePath<span class="bracket">[</span>%@<span class="bracket">]</span>", emptyFilePath<span class="bracket">)</span>;
@@ -1005,11 +1354,11 @@
             <span class="bracket">[</span>myString writeToFile:myEmptyFile atomically:YES encoding:NSUTF8StringEncoding error:nil<span class="bracket">]</span>;
             NSLog<span class="bracket">(</span>@"myEmptyFile<span class="bracket">[</span>%@<span class="bracket">]</span>", myEmptyFile<span class="bracket">)</span>;
             --------------------------------------------------------------------------------
-            // read NSString from file
+            // read NSString from file, read from file
             NSString *contents = <span class="bracket">[</span>NSString stringWithContentsOfFile:myEmptyFile<span class="bracket">]</span>;
             NSLog<span class="bracket">(</span>@"contents=<span class="bracket">[</span>%@<span class="bracket">]</span>", contents<span class="bracket">)</span>;
             --------------------------------------------------------------------------------
-            // read NSData from file
+            // read NSData from file, read data from file
             NSData* dataContents = <span class="bracket">[</span>NSData dataWithContentsOfFile:myEmptyFile<span class="bracket">]</span>;
             NSString* myStr1 = <span class="bracket">[</span><span class="bracket">[</span>NSString alloc<span class="bracket">]</span> initWithData:dataContents encoding:NSUTF8StringEncoding<span class="bracket">]</span>;
             NSLog<span class="bracket">(</span>@"myStr1=<span class="bracket">[</span>%@<span class="bracket">]</span>", myStr1<span class="bracket">)</span>;
@@ -1041,13 +1390,52 @@
             <span class="bracket">}</span>
         <span class="bracket">}</span>
 </pre>
-<br><span class="tit">    [Vim undolist]</span><br>
+<br><span class="tit">    [Gnuplot script, run Gnuplot, persist, gnuplot commandline]</span><br>
+<pre>        1. script 
+        - 1. Create script called hello.gp 
+        - 2. Put sin<span class="bracket">(</span>x<span class="bracket">)</span> inside the hello.gp file, yep, only sin<span class="bracket">(</span>x<span class="bracket">)</span>
+        - 3. Goto command line and run &gt; gnuplot -p hello.gp  <span class="bracket">[</span>-p for persist<span class="bracket">]</span>
+</pre>
+<br><span class="tit">    [Latex tricks]</span><br>
+<pre>        % no indention noindent for all pages 
+        \setlength\parindent<span class="bracket">{</span>0pt<span class="bracket">}</span>
+        \noindent
+</pre>
+<br><span class="tit">    [Asymptote inside Latex, config file, svg file, asy]</span><br>
+<pre>        1. Use Asymptote inside Latex
+        2. Use \usepackage<span class="bracket">[</span>inline<span class="bracket">]</span><span class="bracket">{</span>asymptote<span class="bracket">}</span>
+        3. Use \begin<span class="bracket">{</span>asy<span class="bracket">}</span> ... \end<span class="bracket">{</span>asy<span class="bracket">}</span> tag 
+
+        4. Compile Asymptote inside Latex <span class="bracket">(</span>e.g. mydraw.tex<span class="bracket">)</span>
+        - 1. pdflatex mydraw.tex 
+        - 2. asy mydraw-1.asy
+        - 3. pdflatex mydraw
+        - 4. open mydraw.pdf
+
+        5. output file pdf or svg <span class="bracket">[</span>e.g. code<span class="bracket">]</span> 
+        settings.outformat = "svg";
+        settings.outformat = "pdf";
+        label<span class="bracket">(</span>"Hello world!"<span class="bracket">)</span>;
+
+        6. Add ~/.asy/config.asy file to your home dir <span class="bracket">[</span>e.g. config.asy file<span class="bracket">]</span>
+        import settings;
+        dvisvgm="/usr/local/texlive/2013/bin/x86_64-darwin/dvisvgm";    // dvisvgm convert dvi file to XML svg file
+        you might get following error, but you can ignore it once you add the dvisvgm path to cofig.asy
+        <span class="bracket">[</span>processing of PostScript specials is disabled <span class="bracket">(</span>Ghostscript not found<span class="bracket">)</span><span class="bracket">]</span>
+</pre>
+<br><span class="tit">    [How to use Mutt to add attachment to email, awesome tips for Mutt]</span><br>
+<pre>        1. In your main email screen
+        2. Pree a to select attachment
+        3. Pres &lt;space&gt; to open home directory
+        4. Pres / to search files directories
+</pre>
+<br><br><span class="tit">    [Vim undolist]</span><br>
 <pre>        set undofile                " Save undo's after file closes
         set undodir=$HOME/.vim/undo " where to save undo histories
         set undolevels=1000         " How many undos
         set undoreload=10000        " number of lines to save for undo
 </pre>
-<br><span class="tit">    [Vim Regex ObjectiveC]</span><br><span class="keyword">    :replace </span>[array objectAtIndex:index] with array[index] in ObjectiveC<br>
+<br><span class="tit">    [Vim Regex ObjectiveC, vim objectivec, vimobjectivec, objectivec method, objectivemethod]</span><br><span class="keyword">    :replace </span>[array objectAtIndex:index] with array[index] in ObjectiveC<br>
 <pre>        %s/\<span class="bracket">[</span>\<span class="bracket">(</span>\w\+\<span class="bracket">)</span>\s\+objectAtIndex:\<span class="bracket">(</span><span class="bracket">[</span>^<span class="bracket">]</span><span class="bracket">]</span>\+\<span class="bracket">)</span>\<span class="bracket">]</span>/\1\<span class="bracket">[</span>\2\<span class="bracket">]</span>/gc
 </pre>
 <br><span class="tit">    [Vim Copy text from vim to clipboard]</span> [:h clipboard]<br>
@@ -1055,7 +1443,135 @@
         "*y Copy text from vim to clipboard
         "*p Paste text from clipboard to vim 
 </pre>
-<br>   <span class="comment"> // searchkey: vim completion, completefunc </span><br><span class="keyword">    :&lt;C-X&gt;&lt;C-L&gt; </span>// line completion <br><span class="keyword">    :&lt;C-X&gt;&lt;C-F&gt; </span>// file name completion <br><span class="keyword">    :&lt;C-X&gt;&lt;C-U&gt; </span>// define your own completefunc function <br><br><span class="keyword">    :CTRL-O     </span>//Jump Older cursor position in jump list [:h jumps]<br><span class="keyword">    :CTRL-I     </span>//Jump newer cursor position in jump list backward<br><br><span class="keyword">    :vimgrep </span>/MyString/ /home/mycode/**/*.m  <span class="comment"> // Search MyString pattern recursively[**/*.m] two arsterisks </span><br><span class="keyword">    :copen      </span>// Open your quickfix <br><span class="keyword">    :gf         </span>// open the file under the currsor<br><br><span class="keyword">    :find </span>will search the directories/files in path option [:h :find]<br><span class="keyword">    :vim </span>$(find ./ -name \*.java -print)               <span class="comment"> // open all java file from find</span><br><span class="keyword">    :set </span>path?<span class="comment"> //will show current path option [:h path]</span><br><span class="keyword">    :set </span>path +=/home/mycode<span class="comment"> //You can add different directories to path option in Vim</span><br>        " reset to default<span class="keyword">    :set </span>path& [:h set]<br><br><span class="keyword">    :set </span>complete=k/home/myfile/*,k~/home/dir<br>    " auto completion search your own file    " [:h complete]    " k{dict} scan the file {dict}. Servan flags can be given<br>    In Vim Script, there are many options to handle file names, paths   <span class="keyword">    :h </span>cmdline<br><br><span class="keyword">    :bufdo </span>e!                                                                                      <span class="comment"> // Save reload all buffers :syntax on  to enable syntax highlight</span><br><span class="keyword">    :bufdo </span>%s/pattern/replacement/ge | update                                                      <span class="comment"> // vim replace all buffers</span><br><span class="keyword">    :zf                </span>// Create fold under cursor<br><span class="keyword">    :zd                </span>// Delete fold under cursor<br><span class="keyword">    :5gt               </span>// goto tab 5, [in insert mode]<br><span class="keyword">    :tabmove </span>4        <span class="comment"> // move the current tab to position 4 [help :tabmove]</span><br><span class="keyword">    :tabc </span>11          <span class="comment"> // close tab 11</span><br><br><span class="keyword">    :set </span>modeline     <span class="comment"> // display file name in each tabs page</span><br><span class="keyword">    :set </span>ls=2<br><br><span class="keyword">    :set </span>modeline     <span class="comment"> // display full file name in statusline [:help :statusline]</span><br><span class="keyword">    :set </span>statusline=%F<br><br><span class="keyword">    :echo </span>getline(".")                <span class="comment"> // get current line string</span><br><span class="keyword">    :echo </span>match("mystring", "st")     <span class="comment"> // return 2</span><br><span class="keyword">    :echo </span>line(".")                   <span class="comment"> // line number of cursor</span><br><span class="keyword">    :echo </span>line("'t")                  <span class="comment"> // line number of mark t</span><br><span class="keyword">    :echo </span>getpos(".")                 <span class="comment"> // [bufferNumber, col, lnum, off] [:help getpos]</span><br><span class="keyword">    :echo </span>setpos(".", {list})         <span class="comment"> // [bufferNumber, col, lnum, off]</span><br><span class="keyword">    :echo </span>[col, lnum] = searchpos("=")<span class="comment"> // return = position in current line and move the cursor to =</span><br><span class="keyword">    :help </span>debug-mode                  <span class="comment"> // debug vim script</span><br>    <span class="keyword">    :echo </span>getline(".")                                                                             <span class="comment"> // get current line string</span><br><span class="keyword">    :echo </span>match("mystring", "st")                                                                  <span class="comment"> // return 2</span><br><span class="keyword">    :Align </span>\*\zs\s\+ =                                                                             <span class="comment"> // *'  ' and '=' separator</span><br><span class="keyword">    :\%V                                                                                             </span>// visual selection block [:help \%V]<br><span class="keyword">    :'&lt;,&gt;'sort </span>/\ze\%V/                                                                            <span class="comment"> // sort all selected lines in visual mode</span><br><span class="keyword">    :'&lt; </span>and &gt;'                                                                 <span class="comment"> // first cursor position/last cursor position in registers in visual mode/selection</span><br><br><span class="keyword">    :g/^$/d                             </span>//delete empty line <br><span class="keyword">    :let </span>@a=substitue(@a, 'pattern', 'sub', 'g')                                                   <span class="comment"> // substitute 'pattern' with 'sub' in register @a </span><br><span class="keyword">    :q: </span>or q/                         <span class="comment"> // vim command history</span><br><br><span class="keyword">    :hi </span>Search guifg=Brown guibg=Gray<br><span class="keyword">    :hi </span>Search cterm=Brown ctermbg=Gray                                                            <span class="comment"> // change search backgroun/foreground [:h hl-Search]</span><br><br><span class="keyword">    :sort </span>n                           <span class="comment"> //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]</span><br><span class="keyword">    :sort! </span>n                          <span class="comment"> //reverse sorting</span><br><br><span class="keyword">    :syn </span>match MyKeyWord /MyName/              <span class="comment"> //Highlight defined keyword [:help syn-match]</span><br><span class="keyword">    :highlight </span>MyKeyWord guifg=Green <br><span class="keyword">    :'&lt;,'&gt;s/^\s*\zs\w/#\0/gc        </span>//comment all selected lines in python<br><span class="keyword">    :set </span>ma                            <span class="comment"> // set file modifiable on  [:h modifiable]</span><br><span class="keyword">    :ctrl-]                              </span>//class definition <br><span class="keyword">    :ctrl-t                              </span>//back to previous window<br><span class="keyword">    :s/pattern/\=@a.submatch(0).@b/gc   </span>// substitute with two registers<br><br><span class="keyword">    :redir </span>@a<span class="comment"> // redirect ex command to register</span><br><span class="keyword">    :ls</span><br><span class="keyword">    :redir </span>END<br><span class="keyword">    :redir </span>@* | ls | redir END <span class="comment"> // redirect all the name of file to reg @* in buffer</span><br><span class="keyword">    :tabmove </span>4                                                                                     <span class="comment"> // move the current tab to position 4 [help :tabmove]</span><br><span class="keyword">    :/pattern\c </span>#ignorecase<br><span class="keyword">    :hi </span>clear SpellBad # Reset SpellBad bad spell highlight to default<br><span class="keyword">    :g/-\s*(\w\+)\w+/z#.1                                                                           </span>// print all xcode methods with line number #<br><span class="keyword">    :/\(if\)\ze\(then\)         </span>// if follows then "[if]then"<br><span class="keyword">    :/\(if\)\zs\(then\)         </span>// then starts with if "if[then]" <br><span class="keyword">    :g*         </span>/ search without word boundry<br><span class="keyword">    :bd </span>*.html  &lt;C-a&gt;          <span class="comment"> // delete all buffer files with *.html name</span><br><span class="keyword">    :2,4bd                      </span>// delete all buffers from 2 to 4 <br><span class="keyword">    :echo </span>synIDattr(synIDtrans(hlID("Normal")), "bg") [:h hlID]                                    <span class="comment"> // vim Script get background color</span><br><span class="keyword">    :set </span>hidden  <span class="comment"> // hidden an unsaved file, ow, file has to be saved with !</span><br><br><br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)<br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./<br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><span class="keyword">    :grep </span>-l pattern *   [print file name only]<br><span class="keyword">    :grep </span>--include="*.[mh]"  --color -Hnris CATextLayer<br><br><br><span class="keyword">    :his </span>s                     <span class="comment"> // list commands history</span><br><span class="keyword">    :his </span>/                     <span class="comment"> // list search history</span><br><br><span class="keyword">    :CTRL-E                     </span>// scroll window up <br><span class="keyword">    :CTRL-Y                     </span>// scroll window down<br><br>    <span class="comment"> // display without Enter</span><br>     exec '!ls ' <span class="keyword">     :sleep </span>2<br>     redraw<br><span class="keyword">     :diw </span>// delete/yank/visual [i]nner word<br><span class="keyword">     :daw </span>// delete/yank/visual [a] word<br><span class="keyword">     :dib </span>// delete/yank/visual [i]nner '(' ')' block<br><span class="keyword">     :daB </span>// ddelete/yank/visual [a] '(' ')' block<br><span class="keyword">     :diB </span>// ddelete/yank/visual [i]nner '{' '}' block<br><span class="keyword">     :daB </span>// ddelete/yank [a] '{' '}' block<br><br><span class="keyword">     :syntax </span>region MyColorGroup start=/\%2l/ end=/\%10l/<br><span class="keyword">     :syntax </span>clear MyColorGroup    <span class="comment"> // remove highlight</span><br><span class="keyword">     :%!column </span>-t      <span class="comment"> // format text  ref: https://sanctum.geek.nz/arabesque/advanced-vim-macros/</span><br><br><br><br><br><span class="tit">    [Vim Script]</span><br>    Compile Java code inside Vim [:h expand]
+<br><span class="tit">    [tmux key]</span><br>
+<pre>        <span class="bracket">[</span>` c =&gt; new window <span class="bracket">]</span>
+        <span class="bracket">[</span>` n =&gt; next window<span class="bracket">]</span>
+        <span class="bracket">[</span>` ? =&gt; help key <span class="bracket">]</span>
+</pre>
+<br><span class="tit">    [vim command ]</span><br>
+<pre>        // searchkey: vim completion, completefunc 
+        :&lt;C-X&gt;&lt;C-L&gt; // line completion 
+        :&lt;C-X&gt;&lt;C-F&gt; // file name completion 
+        :&lt;C-X&gt;&lt;C-U&gt; // define your own completefunc function 
+
+        :CTRL-O     //Jump Older cursor position in jump list <span class="bracket">[</span>:h jumps<span class="bracket">]</span>
+        :CTRL-I     //Jump newer cursor position in jump list backward
+
+        :vimgrep /MyString/ /home/mycode/**/*.m   // Search MyString pattern recursively<span class="bracket">[</span>**/*.m<span class="bracket">]</span> two arsterisks 
+        :copen      // Open your quickfix 
+        :gf         // open the file under the currsor
+
+        :find will search the directories/files in path option <span class="bracket">[</span>:h :find<span class="bracket">]</span>
+        :vim $<span class="bracket">(</span>find ./ -name \*.java -print<span class="bracket">)</span>                // open all java file from find
+        :set path? //will show current path option <span class="bracket">[</span>:h path<span class="bracket">]</span>
+        :set path +=/home/mycode //You can add different directories to path option in Vim
+        
+        " reset to default
+        :set path& <span class="bracket">[</span>:h set<span class="bracket">]</span>
+
+        :set complete=k/home/myfile/*,k~/home/dir
+        " auto completion search your own file
+        " <span class="bracket">[</span>:h complete<span class="bracket">]</span>
+        " k<span class="bracket">{</span>dict<span class="bracket">}</span> scan the file <span class="bracket">{</span>dict<span class="bracket">}</span>. Servan flags can be given
+
+        In Vim Script, there are many options to handle file names, paths   
+        :h cmdline
+
+        :wincmd p       // switch back to previous buffer, switch buffer, change buffer
+        :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
+        :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers, update all, replace all
+        :zf                // Create fold under cursor
+        :zd                // Delete fold under cursor
+        :5gt               // goto tab 5, <span class="bracket">[</span>in insert mode<span class="bracket">]</span>
+        :tabmove 4         // move the current tab to position 4 <span class="bracket">[</span>help :tabmove<span class="bracket">]</span>
+        :tabc 11           // close tab 11
+
+        :set modeline      // display file name in each tabs page
+        :set ls=2
+
+        :set modeline      // display full file name in statusline <span class="bracket">[</span>:help :statusline<span class="bracket">]</span>
+        :set statusline=%F
+
+        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
+        :\%V                                                                                             // visual selection block <span class="bracket">[</span>:help \%V<span class="bracket">]</span>
+        :'&lt;,&gt;'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
+        :'&lt; and &gt;'                                                                  // first cursor position/last cursor position in registers in visual mode/selection
+
+        :g/^$/d                             //delete empty line 
+        :let @a=substitue<span class="bracket">(</span>@a, 'pattern', 'sub', 'g'<span class="bracket">)</span>                                                    // substitute 'pattern' with 'sub' in register @a 
+        :q: or q/                          // vim command history
+
+        :hi Search guifg=Brown guibg=Gray
+        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground <span class="bracket">[</span>:h hl-Search<span class="bracket">]</span>
+
+        :sort n                            //sort lines by the first di<span class="bracket">git</span>al in the line, <span class="bracket">[</span>n<span class="bracket">]</span> is first decimal number, <span class="bracket">[</span>x<span class="bracket">]</span> is first hexadecimal number <span class="bracket">[</span>:help :sort<span class="bracket">]</span>
+        :sort! n                           //reverse sorting
+
+        :syn match MyKeyWord /MyName/               //Highlight defined keyword <span class="bracket">[</span>:help syn-match<span class="bracket">]</span>
+        :highlight MyKeyWord guifg=Green 
+        :'&lt;,'&gt;s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+        :set ma                             // set file modifiable on  <span class="bracket">[</span>:h modifiable<span class="bracket">]</span>
+        :ctrl-<span class="bracket">]</span>                              //class definition 
+        :ctrl-t                              //back to previous window
+        :s/pattern/\=@a.submatch<span class="bracket">(</span>0<span class="bracket">)</span>.@b/gc   // substitute with two registers
+
+        :redir @a // redirect ex command to register
+        :ls
+        :redir END
+        :redir @* | ls | redir END  // redirect all the name of file to reg @* in buffer
+        :tabmove 4                                                                                      // move the current tab to position 4 <span class="bracket">[</span>help :tabmove<span class="bracket">]</span>
+        :/pattern\c #ignorecase
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+        :g/-\s*<span class="bracket">(</span>\w\+<span class="bracket">)</span>\w+/z#.1                                                                           // print all xcode methods with line number #
+        :/\<span class="bracket">(</span>if\<span class="bracket">)</span>\ze\<span class="bracket">(</span>then\<span class="bracket">)</span>         // if follows then "<span class="bracket">[</span>if<span class="bracket">]</span>then"
+        :/\<span class="bracket">(</span>if\<span class="bracket">)</span>\zs\<span class="bracket">(</span>then\<span class="bracket">)</span>         // then starts with if "if<span class="bracket">[</span>then<span class="bracket">]</span>" 
+        :g*         / search without word boundry
+        :bd *.html  &lt;C-a&gt;           // delete all buffer files with *.html name
+        :2,4bd                      // delete all buffers from 2 to 4 
+        :echo synIDattr<span class="bracket">(</span>synIDtrans<span class="bracket">(</span>hlID<span class="bracket">(</span>"Normal"<span class="bracket">)</span><span class="bracket">)</span>, "bg"<span class="bracket">)</span> <span class="bracket">[</span>:h hlID<span class="bracket">]</span>                                     // vim Script get background color
+        :set hidden   // hidden an unsaved file, ow, file has to be saved with !
+
+        :his s                      // list commands history
+        :his /                      // list search history
+
+        :CTRL-E                     // scroll window up 
+        :CTRL-Y                     // scroll window down
+
+         // display without Enter
+         exec '!ls ' 
+         :sleep 2
+         redraw
+
+         :diw // delete/yank/visual <span class="bracket">[</span>i<span class="bracket">]</span>nner word
+         :daw // delete/yank/visual <span class="bracket">[</span>a<span class="bracket">]</span> word
+         :dib // delete/yank/visual <span class="bracket">[</span>i<span class="bracket">]</span>nner '<span class="bracket">(</span>' '<span class="bracket">)</span>' block
+         :daB // ddelete/yank/visual <span class="bracket">[</span>a<span class="bracket">]</span> '<span class="bracket">(</span>' '<span class="bracket">)</span>' block
+         :diB // ddelete/yank/visual <span class="bracket">[</span>i<span class="bracket">]</span>nner '<span class="bracket">{</span>' '<span class="bracket">}</span>' block
+         :daB // ddelete/yank <span class="bracket">[</span>a<span class="bracket">]</span> '<span class="bracket">{</span>' '<span class="bracket">}</span>' block
+
+         :syntax region MyColorGroup start=/\%2l/ end=/\%10l/
+         :syntax clear MyColorGroup                           // remove highlight
+         :%!column -t                                         // format text  ref: https: // sanctum.geek.nz/arabesque/advanced-vim-macros/
+
+        :map   :noremap   :unmap  =&gt; Normal, Visual, Select, operator-pending
+        :vmap  :vnoremap  :vunmap =&gt; Visual and Select
+        :cmap  :cnoremap  :cunmap =&gt; Command-line
+        :imap  :inoremap  :iunmap =&gt; Insert
+        :map!  :noremap!  :unmap! =&gt; Insert, Command-line
+        :xmap  :xnoremap  :xunmap =&gt; Visual
+
+        :&lt;C-r&gt;&lt;C-w&gt;                =&gt; insert word under cursor
+        :&lt;C-r&gt;=                    =&gt; insert evaluate expression in Insert mode
+        :&lt;C-r&gt;=line<span class="bracket">(</span>"."<span class="bracket">)</span>           =&gt; insert current line number
+        :&lt;C-r&gt;&lt;C-r&gt;%               =&gt; insert register context %, file name
+        :&lt;C-r&gt;&lt;C-r&gt;#               =&gt; insert Register context #, full path, not always have alternative path
+        :&lt;C-r&gt;+                    =&gt; insert "* context
+        :&lt;C-r&gt;*                    =&gt; save thing, insert "* context
+        :map &lt;F3&gt;  &lt;C-r&gt;=line<span class="bracket">(</span>"."<span class="bracket">)</span> =&gt; map F3 to function line<span class="bracket">(</span>"."<span class="bracket">)</span>
+
+
+</pre>
+<br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)    <br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)*  <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./   <br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><span class="keyword">    :grep </span>-l pattern *   [print file name only]<br><span class="keyword">    :grep </span>--include="*.[mh]"  --color -Hnris CATextLayer<br><br>    [ *v-script* vimscript, vimscr, vim script]
 <pre>        " Fix the missing -cp option in java
         " Assume java file is in current buffer
         function! CompileJava<span class="bracket">(</span><span class="bracket">)</span>
@@ -1069,23 +1585,17 @@
         endfunction 
 
         :str =~ "n"    //compare string, return 1 if str == "n" else return 0
+        if str =~ "\s*"
+            " str is empty or whitespace
+        endif
 
-        :expand<span class="bracket">(</span>"%"<span class="bracket">)</span>    
-        "file.txt
-
-        :expand<span class="bracket">(</span>"%:p"<span class="bracket">)</span>  
-        "/home/file.txt 
-
-        :expand<span class="bracket">(</span>"%:p:t"<span class="bracket">)</span> 
-        "file.txt
-
-        :expand<span class="bracket">(</span>"%:p:r"<span class="bracket">)</span> 
-        "/home/file
-
-        :expand<span class="bracket">(</span>"%:p:t:r"<span class="bracket">)</span> 
-        "file 
-
-        :fnamemodify<span class="bracket">(</span>'/dog/f.txt', ':h'<span class="bracket">)</span> " /dog
+        *expand-example*
+        :expand<span class="bracket">(</span>"%"<span class="bracket">)</span>       =&gt; file.txt
+        :expand<span class="bracket">(</span>"%:p"<span class="bracket">)</span>     =&gt; /home/file.txt
+        :expand<span class="bracket">(</span>"%:p:t"<span class="bracket">)</span>   =&gt; file.txt
+        :expand<span class="bracket">(</span>"%:p:r"<span class="bracket">)</span>   =&gt; /home/file
+        :expand<span class="bracket">(</span>"%:p:t:r"<span class="bracket">)</span> =&gt; file
+        :fnamemodify<span class="bracket">(</span>'/dog/f.txt', ':h'<span class="bracket">)</span> =&gt; /dog
 
         " get current file dir
         :getcwd<span class="bracket">(</span><span class="bracket">)</span>
@@ -1216,18 +1726,24 @@
         s:	  Local to a :source ed Vim script.
         a:	  Function argument <span class="bracket">(</span>only inside a function<span class="bracket">)</span>.
         v:	  Global, predefined by Vim.
+
+        :let l:pos = getpos<span class="bracket">(</span>"."<span class="bracket">)</span>    // keep cursor position, restore cursor position
+        :call setpos<span class="bracket">(</span>".", l:pos<span class="bracket">)</span>
 </pre>
-<br><span class="tit">    [Linux command]</span><br><span class="keyword">    :y$                                             </span>// copy character from cursor to the end of line     [:help yank]<br><span class="keyword">    :vaw                                            </span>// highlight word under cursor including white space [:help text-object]<br><span class="keyword">    :viw                                            </span>// hightlight word under cursor excluding white space[:help text-object]<br><span class="keyword">    :awk </span>'{for(i=0; i&lt;NF; i++) print $1}' inputfile<span class="comment"> // print the first column from file&gt;</span><br><span class="keyword">    :awk </span>-F ":" '{for(i=0; i&lt;NF; i++) print $1}'<br><span class="keyword">    :kill </span>-9 $(ps aux | awk '/Safari/ {print $2}') <span class="comment"> // kill Safari brower</span><br><br><span class="keyword">    :history </span>-d  xxx #remove history<br><span class="keyword">    :add </span>to vimrc file #vim change tabs to space<br><span class="keyword">    :set </span>tabstop=4<br><span class="keyword">    :set </span>shiftwidth=4<br><span class="keyword">    :set </span>expandtab<br><span class="keyword">    :set </span>showcmd<br><br><span class="keyword">    :sed </span>'s/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  &gt; /tmp/norm.txt<span class="comment"> // Match Name=xxx  and ContentFolder=xxx two columns from c.txt</span><br><span class="keyword">    :sed </span>-i -e 's/oldstring/newstring/g' *     <span class="comment"> // replace oldstring to newstring                                                        </span><br><span class="keyword">    :find </span>. -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'<br><span class="keyword">    :find </span>. -name "*.txt" -type f  -print0 | xargs -0 echo  <br><span class="keyword">    :find </span>. -name "*.m" -exec sed -i backup 's/old/new/g' {} +        <span class="comment"> // backup is extension for backup file, got unknown primary or operator error</span><br><span class="keyword">    :find </span>. -name "*.m" -exec sed -i '' 's/SimpleApp/DeviceInfoApp/g' '{}' \;  <span class="comment"> // man find exec </span><br><span class="keyword">    :sudo </span>/usr/libexec/locate.updatedb     <span class="comment"> // update locate command, update database, update db</span><br><br><br><br>    <span class="tit">    [git branch shows on command prompt]</span><br>
-<pre>        parse_<span class="bracket">git</span>_branch<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">{</span>
-            <span class="bracket">git</span> branch 2&gt; /dev/null | sed -e 's/* \<span class="bracket">(</span>.*\<span class="bracket">)</span>/ \<span class="bracket">(</span>\1<span class="bracket">)</span>/'
-        <span class="bracket">}</span>
-        export PS1="\u$<span class="bracket">(</span>parse_<span class="bracket">git</span>_branch<span class="bracket">)</span>\w$"
-        \u - Username
-        \w - Full path
-        \h - Host name
+<br><span class="tit">    [fish shell ]</span><br>
+<pre>        brew install fish
+        install fish shell 2.3.1
+        create symbol link 
+        ln -s /usr/local/bin/fish /bin/fish
+        add /bin/fish to /etc/shells.
+
+        brew location 
+        🍺  /usr/local/Cellar/fish/2.3.1: 786 files, 5.9M
 </pre>
-<br><span class="tit">    [shell script]</span><br>    If else statement, Compare string, Compare integer
-<pre>        if <span class="bracket">[</span> $# -gt 0 <span class="bracket">]</span>; then 
+<br>    [Linux command *linux-command* ]<span class="keyword">    :y$                                             </span><span class="comment">// copy character from cursor to the end of line     [:help yank]</span><br><span class="keyword">    :vaw                                            </span><span class="comment">// highlight word under cursor including white space [:help text-object]</span><br><span class="keyword">    :viw                                            </span><span class="comment">// hightlight word under cursor excluding white space[:help text-object]</span><br><span class="keyword">    :awk </span>'{for(i=0; i&lt;NF; i++) print $1}' inputfile <span class="comment">// print the first column from file&gt;</span><br><span class="keyword">    :awk </span>-F ":" '{for(i=0; i&lt;NF; i++) print $1}'<br><span class="keyword">    :kill </span>-9 $(ps aux | awk '/Safari/ {print $2}')  <span class="comment">// kill Safari brower</span><br><br><span class="keyword">    :history </span>-d  xxx #remove history<br><span class="keyword">    :add </span>to vimrc file #vim change tabs to space<br><span class="keyword">    :set </span>tabstop=4<br><span class="keyword">    :set </span>shiftwidth=4<br><span class="keyword">    :set </span>expandtab<br><span class="keyword">    :set </span>showcmd<br><br><span class="keyword">    :sed </span>'s/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  &gt; /tmp/norm.txt <span class="comment">// Match Name=xxx  and ContentFolder=xxx two columns</span><br><span class="keyword">    :sed </span>-i -e 's/oldstring/newstring/g' *      <span class="comment">// replace oldstring to newstring, replace all, sed replace</span><br><span class="keyword">    :find </span>. -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'<br><span class="keyword">    :find </span>. -name "*.txt" -type f  -print0 | xargs -0 echo  <br><span class="keyword">    :find </span>. -name "*.m" -exec sed -i backup 's/old/new/g' {} +         <span class="comment">// backup is extension for backup file, got unknown primary or operator error</span><br><span class="keyword">    :find </span>. -name "*.m" -exec sed -i '' 's/SimpleApp/DeviceInfoApp/g' '{}' \;   <span class="comment">// man find exec </span><br><span class="keyword">    :find </span>. -name "abc*" ! -name "*.cpp"    <span class="comment">// file start with abc except all *.cpp file</span><br><span class="keyword">    :find </span>. -name "*.txt" -o -name "*.cpp"  <span class="comment">// -o OR operator</span><br><span class="keyword">    :find </span>. -name "*.txt" -exec rm -f {} \; <span class="comment">// remove all *.txt</span><br><span class="keyword">    :find </span>. -maxdepth 1 -type f -perm +111 -exec rm -f {} \; <span class="comment">// remove all executable files in curr dir</span><br><span class="keyword">    :sudo </span>/usr/libexec/locate.updatedb      <span class="comment">// update locate command, update database, update db</span><br><br><span class="tit">    [shell script, shellscript]</span><br>
+<pre>        If else statement, Compare string, Compare integer
+
+        if <span class="bracket">[</span> $# -gt 0 <span class="bracket">]</span>; then 
             echo "arg $1"
             if <span class="bracket">[</span> $1 = "w" <span class="bracket">]</span>; then
                 echo "do sth" 
@@ -1248,6 +1764,28 @@
         # change dir, spawn a new shell
         cd newdir 
         exec /bin/bash 
+
+        // passing parameter containing space, contains space, contain space, parameter space, param space, argument space
+        #!/bin/bash
+        arr=<span class="bracket">(</span>"$@"<span class="bracket">)</span>
+        para0=$<span class="bracket">{</span>arr<span class="bracket">[</span>0<span class="bracket">]</span><span class="bracket">}</span>
+        para1=$<span class="bracket">{</span>arr<span class="bracket">[</span>1<span class="bracket">]</span><span class="bracket">}</span>
+        para2=$<span class="bracket">{</span>arr<span class="bracket">[</span>2<span class="bracket">]</span><span class="bracket">}</span>
+        echo 'para0='"$para0"
+        echo 'para1='"$para1"
+        echo 'para2='"$para2"
+        #-------------------------------------------------------------------------------- 
+        # script "p1" "dog cat" "cow"
+        # output:
+        #-------------------------------------------------------------------------------- 
+        #para0=p1
+        #para1=dog cat
+        #para2=cow
+
+        :command 1 &gt; /etc/null   # redirect stdout to /etc/null
+        :command 2 &gt; /etc/null   # redirect stderr to /etc/null
+        :command 2 &gt; &1          # redirect stderr to stdout
+        :command & &gt; file        # redirect stderr and stdout to file
 </pre>
 <span class="tit">    [iOS Game Development]</span><br> <div class="cen"><img src=image/gameOption.png width="50%" height="50%"></div>  <div class="cen"><img src=image/gridgrid.png width="50%" height="50%"></div> <br><br><span class="tit">    [Command tricks]</span><br>
 <pre>            rename file names with php script  // /Users/cat/myfile/<span class="bracket">git</span>hub/php/rename.php
@@ -1272,6 +1810,7 @@
             To find the clang on your Mac
             xcrun -find clang
 
+            // clang path
             your output:
             /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 
@@ -1288,7 +1827,11 @@
             log all terminal screen<span class="bracket">[</span>Mac OS X, Linux<span class="bracket">]</span>
             script screen.log
 </pre>
-<br><span class="tit">    [Chrome ShortCut key]</span><br>
+<br><span class="tit">    [Change Terminal screen color on MacOS]</span><br>
+<pre>        Command+i   // bring up the window
+        Setting     // select your favour color theme
+</pre>
+ <div class="cen"><img src=image/colortheme.png width="50%" height="50%"></div> <br><span class="tit">    [Chrome ShortCut key]</span><br>
 <pre>        Command+Option+B	// Chrome Opens the bookmark manager.
         Command+Y           // Chrome Opens history page
 </pre>
@@ -1519,14 +2062,22 @@
         --------------------------------------------------------------------------------
         --------------------------------------------------------------------------------
 </pre>
+<br><span class="tit">    [Xcode tips, xcode build, xcodebuild, xbuild, buildxcode, build xcode]</span><br>
+<pre>          xcodebuild test -scheme SimpleApp -destination 'platform=iOS Simulator,name=iPhone Retina <span class="bracket">(</span>4-inch 64-bit<span class="bracket">)</span>,OS=7.1'  // Xcode build from command line
+          /Users/cat/Library/Developer/Xcode/DerivedData  // Xcode delete cache
+          xcodebuild -scheme MyLib -destination 'platform=iphonesimulator,name=iPhone 6' -derivedDataPath build    // Xcode build from command line
+          AppDelegate* appDelegate = <span class="bracket">(</span>AppDelegate*<span class="bracket">)</span><span class="bracket">[</span><span class="bracket">[</span>UIApplication sharedApplication<span class="bracket">]</span> delegate<span class="bracket">]</span>;
+</pre>
 <br><span class="tit">    [Xcode build from commcand line test cases build test cases]</span><br>
 <pre>          xcodebuild test -project CoreApp.xcodeproj -scheme CoreAppTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3'
 </pre>
- <div class="cen"><img src=image/testcasecmd.png width="70%" height="70%"></div> <br><span class="tit">    [Xcode NSValue valueWithCGPoint]</span><br>
+ <div class="cen"><img src=image/addtestscheme.png width="70%" height="70%"></div> <br><span class="tit">    [Xcode NSValue valueWithCGPoint]</span><br>
 <pre>            #NSValue
-            NSLog<span class="bracket">(</span>@"point   =<span class="bracket">[</span>%@<span class="bracket">]</span>", <span class="bracket">[</span>NSValue valueWithCGPoint:anchorPoint<span class="bracket">]</span><span class="bracket">)</span>;
-            NSLog<span class="bracket">(</span>@"position=<span class="bracket">[</span>%@<span class="bracket">]</span>", <span class="bracket">[</span>NSValue valueWithCATransform3D:transform<span class="bracket">]</span><span class="bracket">)</span>;
-            NSLog<span class="bracket">(</span>@"Size=<span class="bracket">[</span>%@<span class="bracket">]</span>", <span class="bracket">[</span>NSValue valueWithCGSize:size<span class="bracket">]</span><span class="bracket">)</span>;
+            // print point, print cgpoint
+            NSLog<span class="bracket">(</span>@"point     = <span class="bracket">[</span>%@<span class="bracket">]</span>", <span class="bracket">[</span>NSValue valueWithCGPoint:point<span class="bracket">]</span><span class="bracket">)</span>;
+            NSLog<span class="bracket">(</span>@"Size      = <span class="bracket">[</span>%@<span class="bracket">]</span>", <span class="bracket">[</span>NSValue valueWithCGSize:size<span class="bracket">]</span><span class="bracket">)</span>;
+            NSLog<span class="bracket">(</span>@"rect      = <span class="bracket">[</span>%@<span class="bracket">]</span>", <span class="bracket">[</span>NSValue valueWithCGRect:rect<span class="bracket">]</span><span class="bracket">)</span>;
+            NSLog<span class="bracket">(</span>@"transform = <span class="bracket">[</span>%@<span class="bracket">]</span>", <span class="bracket">[</span>NSValue valueWithCATransform3D:transform<span class="bracket">]</span><span class="bracket">)</span>;
             
             // CGPoint to NSValue and NSValue to CGPoint
             NSValue* value = <span class="bracket">[</span>NSValue valueWithCGPoint:anchorPoint<span class="bracket">]</span>
@@ -1556,7 +2107,7 @@
         <span class="bracket">[</span>self.view addSubview:slowAnimationImageView<span class="bracket">]</span>;
         <span class="bracket">[</span>slowAnimationImageView startAnimating<span class="bracket">]</span>;
 </pre>
-<br>     [Xcode print format NSValue, print CGPoint, CATransform3D]
+<br><span class="tit">     [Xcode print format NSValue, print CGPoint, CATransform3D]</span><br>
 <pre>        NSString* str = <span class="bracket">[</span>NSString stringWithFormat:@"%2ld:0%ld", minute, second<span class="bracket">]</span>;
         -<span class="bracket">(</span>void<span class="bracket">)</span>printCATransform3D:<span class="bracket">(</span>CATransform3D<span class="bracket">)</span>transform<span class="bracket">{</span>
             NSLog<span class="bracket">(</span>@"-------------------------------------------------------------------------------"<span class="bracket">)</span>;
@@ -1683,78 +2234,81 @@
             <span class="bracket">}</span>
         <span class="bracket">}</span>
 </pre>
-<br><span class="tit">    [python snipplet]</span><br>
-<pre>                mode	description
-                r	read in text mode
-                w	write in text mode, overwrite old file if exists
-                a	append in text mode
-                r+	read and write
-                w+	read and write, overwrite old file/create file
-                a+	read and append
-                rb	read in binary mode
-                wb	write in binary mode, overwrite old file if exists
-                ab	append in binary mode
-                rb+	read and write in binary mode
-                wb+	write and read in binary mode, overwrite old file if exists
-                ab+	append and read in binary mode
+<br><span class="tit">    [python snippet]</span><br>
+<pre>        mode	description
+        r	read in text mode
+        w	write in text mode, overwrite old file if exists
+        a	append in text mode
+        r+	read and write
+        w+	read and write, overwrite old file/create file
+        a+	read and append
+        rb	read in binary mode
+        wb	write in binary mode, overwrite old file if exists
+        ab	append in binary mode
+        rb+	read and write in binary mode
+        wb+	write and read in binary mode, overwrite old file if exists
+        ab+	append and read in binary mode
 
-                python -m pdb script.py              // debug python
-                str = str.strip<span class="bracket">(</span>' \r\n\t'<span class="bracket">)</span>           // trim whitespace
-                str = str.ltrip<span class="bracket">(</span>' \r\n\t'<span class="bracket">)</span>           // trim the left side of str
-                str = str.rtrip<span class="bracket">(</span>' \r\n\t'<span class="bracket">)</span>           // trim the right side of str
-                is_number<span class="bracket">(</span>mystring<span class="bracket">)</span>                  // convert string to number/integer
-                arglist = sys.argv;                  // argument list
-                arglist<span class="bracket">[</span>0<span class="bracket">]</span>                           // first argument which is the script name
-                len<span class="bracket">(</span>mystring<span class="bracket">)</span>                        // length of string
-                len<span class="bracket">(</span>list<span class="bracket">)</span>                            // number of element inside the list
-                mylist = <span class="bracket">[</span><span class="bracket">]</span>                          // create list
-                handler = open<span class="bracket">(</span>fileName, "r+"<span class="bracket">)</span>       // open file for read
-                int<span class="bracket">(</span>str<span class="bracket">)</span>                             // convert string to integer
-                list.pop<span class="bracket">(</span>0<span class="bracket">)</span>                          // Delete first element from list
-                list.append<span class="bracket">(</span>"str"<span class="bracket">)</span>                   // Append str to list
-                basename = ntpath.basename<span class="bracket">(</span>path<span class="bracket">)</span>     // Basename of path
-                os.path.basename<span class="bracket">(</span>"/dog/dog/dog.txt"<span class="bracket">)</span> // import os;
-                pair = os.path.splitext<span class="bracket">(</span>"file.txt"<span class="bracket">)</span>  // pair<span class="bracket">[</span>0<span class="bracket">]</span> = file  pair<span class="bracket">[</span>1<span class="bracket">]</span>=".txt"
-                os.path.join<span class="bracket">(</span>"/home", "cat"<span class="bracket">)</span>         // /home/cat
-                os.path.join<span class="bracket">(</span>"/home/", "cat"<span class="bracket">)</span>        // /home/cat
-                str<span class="bracket">(</span>num<span class="bracket">)</span>                             // String to integer
-                os.getcwd<span class="bracket">(</span><span class="bracket">)</span>
-                arr1 = arr<span class="bracket">[</span>:<span class="bracket">]</span>;                       // clone list duplicate list
-                "cool\n".rstrip<span class="bracket">(</span><span class="bracket">)</span>                    // remove newline delete newline
-                -----------------------------------
-                // python empty open file, python empty file
-                pathfile    = "/Users/cat/myfile/<span class="bracket">git</span>hub/python/pather/path.txt"
-                pathWriter  = open<span class="bracket">(</span>pathfile, "r+"<span class="bracket">)</span>
-                pathWriter.seek<span class="bracket">(</span>0<span class="bracket">)</span>
-                pathWriter.truncate<span class="bracket">(</span><span class="bracket">)</span>
-                -----------------------------------
-                line = "some stuff"
-                regex = re.compile<span class="bracket">(</span>r'<span class="bracket">(</span>file\W*=\W*<span class="bracket">)</span><span class="bracket">(</span>\S+<span class="bracket">)</span>\W*<span class="bracket">(</span>title\W*=\W*<span class="bracket">)</span>"<span class="bracket">(</span>.*<span class="bracket">)</span>"'<span class="bracket">)</span>
-                    match = regex.search<span class="bracket">(</span>line<span class="bracket">)</span>
-                    if match:
-                        print "<span class="bracket">(</span>0<span class="bracket">)</span>=", match.group<span class="bracket">(</span>0<span class="bracket">)</span>
-                        print "<span class="bracket">(</span>1<span class="bracket">)</span>=", match.group<span class="bracket">(</span>1<span class="bracket">)</span>
-                        print "<span class="bracket">(</span>2<span class="bracket">)</span>=", match.group<span class="bracket">(</span>2<span class="bracket">)</span>
-                        print "<span class="bracket">(</span>3<span class="bracket">)</span>=", match.group<span class="bracket">(</span>3<span class="bracket">)</span>
-                        print "<span class="bracket">(</span>4<span class="bracket">)</span>=", match.group<span class="bracket">(</span>4<span class="bracket">)</span>
-                -----------------------------------
-                subprocess.call<span class="bracket">(</span><span class="bracket">[</span>"pygmentize", "-f", "html", "-o", htmlFile, tmpFileName<span class="bracket">]</span><span class="bracket">)</span>
-                -----------------------------------
-                list = <span class="bracket">[</span><span class="bracket">]</span>
-                list<span class="bracket">[</span>0<span class="bracket">]</span> = 'cat'
-                list<span class="bracket">[</span>1<span class="bracket">]</span> = 'cat'
-                list.append<span class="bracket">(</span>'dog'<span class="bracket">)</span>
-                list.pop<span class="bracket">(</span><span class="bracket">)</span>
-                list.pop<span class="bracket">(</span>1<span class="bracket">)</span>
-                -----------------------------------
-                dict = <span class="bracket">{</span><span class="bracket">}</span>
-                dict = <span class="bracket">{</span>'k1':'value1', 'k2':'value2'<span class="bracket">}</span>
-                dict<span class="bracket">[</span>'k1'<span class="bracket">]</span>
-                -----------------------------------
-                string.strip<span class="bracket">(</span><span class="bracket">)</span>                      // trim leading and trailing whitespace
+        python -m pdb script.py              // debug python
+        str = str.strip<span class="bracket">(</span>' \r\n\t'<span class="bracket">)</span>           // trim whitespace
+        str = str.ltrip<span class="bracket">(</span>' \r\n\t'<span class="bracket">)</span>           // trim the left side of str
+        str = str.rtrip<span class="bracket">(</span>' \r\n\t'<span class="bracket">)</span>           // trim the right side of str
+        is_number<span class="bracket">(</span>mystring<span class="bracket">)</span>                  // convert string to number/integer
+        arglist = sys.argv;                  // argument list
+        arglist<span class="bracket">[</span>0<span class="bracket">]</span>                           // first argument which is the script name
+        len<span class="bracket">(</span>mystring<span class="bracket">)</span>                        // length of string
+        len<span class="bracket">(</span>list<span class="bracket">)</span>                            // number of element inside the list
+        mylist = <span class="bracket">[</span><span class="bracket">]</span>                          // create list
+        handler = open<span class="bracket">(</span>fileName, "r+"<span class="bracket">)</span>       // open file for read
+        int<span class="bracket">(</span>str<span class="bracket">)</span>                             // convert string to integer
+        list.pop<span class="bracket">(</span>0<span class="bracket">)</span>                          // Delete first element from list
+        list.append<span class="bracket">(</span>"str"<span class="bracket">)</span>                   // Append str to list
+        basename = ntpath.basename<span class="bracket">(</span>path<span class="bracket">)</span>     // Basename of path
+        os.path.basename<span class="bracket">(</span>"/dog/dog/dog.txt"<span class="bracket">)</span> // import os;
+        pair = os.path.splitext<span class="bracket">(</span>"file.txt"<span class="bracket">)</span>  // pair<span class="bracket">[</span>0<span class="bracket">]</span> = file  pair<span class="bracket">[</span>1<span class="bracket">]</span>=".txt"
+        os.path.join<span class="bracket">(</span>"/home", "cat"<span class="bracket">)</span>         // /home/cat
+        os.path.join<span class="bracket">(</span>"/home/", "cat"<span class="bracket">)</span>        // /home/cat
+        str<span class="bracket">(</span>num<span class="bracket">)</span>                             // String to integer
+        os.getcwd<span class="bracket">(</span><span class="bracket">)</span>
+        arr1 = arr<span class="bracket">[</span>:<span class="bracket">]</span>;                       // clone list duplicate list
+        "cool\n".rstrip<span class="bracket">(</span><span class="bracket">)</span>                    // remove newline delete newline
+        -----------------------------------
+        // python empty open file, python empty file
+        pathfile    = "/Users/cat/myfile/<span class="bracket">git</span>hub/python/pather/path.txt"
+        pathWriter  = open<span class="bracket">(</span>pathfile, "r+"<span class="bracket">)</span>
+        pathWriter.seek<span class="bracket">(</span>0<span class="bracket">)</span>
+        pathWriter.truncate<span class="bracket">(</span><span class="bracket">)</span>
+        -----------------------------------
+        line = "some stuff"
+        regex = re.compile<span class="bracket">(</span>r'<span class="bracket">(</span>file\W*=\W*<span class="bracket">)</span><span class="bracket">(</span>\S+<span class="bracket">)</span>\W*<span class="bracket">(</span>title\W*=\W*<span class="bracket">)</span>"<span class="bracket">(</span>.*<span class="bracket">)</span>"'<span class="bracket">)</span>
+            match = regex.search<span class="bracket">(</span>line<span class="bracket">)</span>
+            if match:
+                print "<span class="bracket">(</span>0<span class="bracket">)</span>=", match.group<span class="bracket">(</span>0<span class="bracket">)</span>
+                print "<span class="bracket">(</span>1<span class="bracket">)</span>=", match.group<span class="bracket">(</span>1<span class="bracket">)</span>
+                print "<span class="bracket">(</span>2<span class="bracket">)</span>=", match.group<span class="bracket">(</span>2<span class="bracket">)</span>
+                print "<span class="bracket">(</span>3<span class="bracket">)</span>=", match.group<span class="bracket">(</span>3<span class="bracket">)</span>
+                print "<span class="bracket">(</span>4<span class="bracket">)</span>=", match.group<span class="bracket">(</span>4<span class="bracket">)</span>
+        -----------------------------------
+        subprocess.call<span class="bracket">(</span><span class="bracket">[</span>"pygmentize", "-f", "html", "-o", htmlFile, tmpFileName<span class="bracket">]</span><span class="bracket">)</span>
+        -----------------------------------
+        list = <span class="bracket">[</span><span class="bracket">]</span>
+        list<span class="bracket">[</span>0<span class="bracket">]</span> = 'cat'
+        list<span class="bracket">[</span>1<span class="bracket">]</span> = 'cat'
+        list.append<span class="bracket">(</span>'dog'<span class="bracket">)</span>
+        list.pop<span class="bracket">(</span><span class="bracket">)</span>
+        list.pop<span class="bracket">(</span>1<span class="bracket">)</span>
+        -----------------------------------
+        dict = <span class="bracket">{</span><span class="bracket">}</span>
+        dict = <span class="bracket">{</span>'k1':'value1', 'k2':'value2'<span class="bracket">}</span>
+        dict<span class="bracket">[</span>'k1'<span class="bracket">]</span>
+        -----------------------------------
+        string.strip<span class="bracket">(</span><span class="bracket">)</span>                      // trim leading and trailing whitespace
 </pre>
-<br><span class="tit">    [Vim tip]</span><br>
-<pre>        :zz                             // move the cursor to middle of screen
+<br><span class="tit">    [Vim tip, vim trick]</span><br>
+<pre>        :record q and letter a, replay @a // vim recording 
+        :1/pat                          // search from the first line, cool tip
+        :1?pat                          // search backward, from last line, cool tip
+        :zz                             // move the cursor to middle of screen
         :zt                             // move the cursor to Top of screen
         :zb                             // move the cursor to Botton screen
 
@@ -1817,71 +2371,74 @@
         :set modeline      // display full file name in statusline <span class="bracket">[</span>:help :statusline<span class="bracket">]</span>
         :set statusline=%F
 
-        :echo getline<span class="bracket">(</span>"."<span class="bracket">)</span>                 // get current line string
-        :echo match<span class="bracket">(</span>"mystring", "st"<span class="bracket">)</span>      // return 2
-        :echo line<span class="bracket">(</span>"."<span class="bracket">)</span>                    // line number of cursor
-        :echo line<span class="bracket">(</span>"'t"<span class="bracket">)</span>                   // line number of mark t
-        :echo getpos<span class="bracket">(</span>"."<span class="bracket">)</span>                  // <span class="bracket">[</span>bufferNumber, col, lnum, off<span class="bracket">]</span> <span class="bracket">[</span>:help getpos<span class="bracket">]</span>
-        :echo setpos<span class="bracket">(</span>".", <span class="bracket">{</span>list<span class="bracket">}</span><span class="bracket">)</span>          // <span class="bracket">[</span>bufferNumber, col, lnum, off<span class="bracket">]</span>
-        :echo <span class="bracket">[</span>col, lnum<span class="bracket">]</span> = searchpos<span class="bracket">(</span>"="<span class="bracket">)</span> // return = position in current line and move the cursor to =
-        :help debug-mode                   // debug vim script
         
-        :echo getline<span class="bracket">(</span>"."<span class="bracket">)</span>                                                                              // get current line string
-        :echo match<span class="bracket">(</span>"mystring", "st"<span class="bracket">)</span>                                                                   // return 2
-        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
-        :\%V                                                                                             // visual selection block <span class="bracket">[</span>:help \%V<span class="bracket">]</span>
-        :'&lt;,&gt;'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
-        :'&lt; and &gt;'                                                                  // first cursor position/last cursor position in registers in visual mode/selection
+        :help debug-mode                             // debug vim script                                                                                                          
+        
+        :echo getline<span class="bracket">(</span>"."<span class="bracket">)</span>                           // get current line string                                                                                                   
+        :echo match<span class="bracket">(</span>"mystring", "st"<span class="bracket">)</span>                // return 2                                                                                                                  
+        :Align \*\zs\s\+ =                           // *'  ' and '=' separator                                                                                                   
+        :\%V                                         // visual selection block <span class="bracket">[</span>:help \%V<span class="bracket">]</span>                                                                                        
+        :'&lt;,&gt;'sort /\ze\%V/                          // sort all selected lines in visual mode                                                                                    
+        :'&lt; and &gt;'                                   // first cursor position/last cursor position in registers in visual mode/selection                                          
 
-        :g/^$/d                             //delete empty line 
-        :let @a=substitue<span class="bracket">(</span>@a, 'pattern', 'sub', 'g'<span class="bracket">)</span>                                                    // substitute 'pattern' with 'sub' in register @a 
-        :q: or q/                          // vim command history
+        :g/^$/d                                      // delete empty line                                                                                                         
+        :let @a=substitue<span class="bracket">(</span>@a, 'pattern', 'sub', 'g'<span class="bracket">)</span> // substitute 'pattern' with 'sub' in register @a                                                                            
+        :q: or q/                                    // vim command history                                                                                                       
 
         :hi Search guifg=Brown guibg=Gray
-        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground <span class="bracket">[</span>:h hl-Search<span class="bracket">]</span>
+        :hi Search cterm=Brown ctermbg=Gray          // change search backgroun/foreground <span class="bracket">[</span>:h hl-Search<span class="bracket">]</span>                                                                         
 
-        :sort n                            //sort lines by the first di<span class="bracket">git</span>al in the line, <span class="bracket">[</span>n<span class="bracket">]</span> is first decimal number, <span class="bracket">[</span>x<span class="bracket">]</span> is first hexadecimal number <span class="bracket">[</span>:help :sort<span class="bracket">]</span>
-        :sort! n                           //reverse sorting
+        :sort n                                      // sort lines by the first di<span class="bracket">git</span>al in the line, <span class="bracket">[</span>n<span class="bracket">]</span> is first decimal number, <span class="bracket">[</span>x<span class="bracket">]</span> is first hexadecimal number <span class="bracket">[</span>:help :sort<span class="bracket">]</span>   
+        :sort! n                                     // reverse sorting                                                                                                           
 
-        :syn match MyKeyWord /MyName/               //Highlight defined keyword <span class="bracket">[</span>:help syn-match<span class="bracket">]</span>
-        :highlight MyKeyWord guifg=Green 
-        :'&lt;,'&gt;s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
-        :set ma                             // set file modifiable on  <span class="bracket">[</span>:h modifiable<span class="bracket">]</span>
-        :ctrl-<span class="bracket">]</span>                              //class definition 
-        :ctrl-t                              //back to previous window
-        :s/pattern/\=@a.submatch<span class="bracket">(</span>0<span class="bracket">)</span>.@b/gc   // substitute with two registers
+        :syn match MyKeyWord /MyName/                // Highlight defined keyword <span class="bracket">[</span>:help syn-match<span class="bracket">]</span>                                                                               
+        :highlight MyKeyWord guifg=Green
+        :'&lt;,'&gt;s/^\s*\zs\w/#\0/gc                     // comment all selected lines in python                                                                                      
+        :set ma                                      // set file modifiable on  <span class="bracket">[</span>:h modifiable<span class="bracket">]</span>                                                                                   
+        :ctrl-<span class="bracket">]</span>                                      // class definition                                                                                                          
+        :ctrl-t                                      // back to previous window                                                                                                   
+        :s/pattern/\=@a.submatch<span class="bracket">(</span>0<span class="bracket">)</span>.@b/gc            // substitute with two registers                                                                                             
 
-        :redir @a // redirect ex command to register
+        :redir @a                                    // redirect ex command to register                                                                                           
         :ls
         :redir END
 
-        :redir @* | ls | redir END  // redirect all the name of file to reg @* in buffer
+        :redir @* | ls | redir END                   // redirect all the name of file to reg @* in buffer                                                                         
         
-        :tabmove 4                                                                                      // move the current tab to position 4 <span class="bracket">[</span>help :tabmove<span class="bracket">]</span>
+        :tabmove 4                                   // move the current tab to position 4 <span class="bracket">[</span>help :tabmove<span class="bracket">]</span>                                                                        
         :/pattern\c #ignorecase
         :hi clear SpellBad # Reset SpellBad bad spell highlight to default
-        :g/-\s*<span class="bracket">(</span>\w\+<span class="bracket">)</span>\w+/z#.1                                                                           // print all xcode methods with line number #
+        :g/-\s*<span class="bracket">(</span>\w\+<span class="bracket">)</span>\w+/z#.1                        // print all xcode methods with line number #                                                                                 
 
-        :/\<span class="bracket">(</span>if\<span class="bracket">)</span>\ze\<span class="bracket">(</span>then\<span class="bracket">)</span>         // if follows then "<span class="bracket">[</span>if<span class="bracket">]</span>then"
-        :/\<span class="bracket">(</span>if\<span class="bracket">)</span>\zs\<span class="bracket">(</span>then\<span class="bracket">)</span>         // then starts with if "if<span class="bracket">[</span>then<span class="bracket">]</span>" 
-
+        :/\<span class="bracket">(</span>if\<span class="bracket">)</span>\ze\<span class="bracket">(</span>then\<span class="bracket">)</span>                          // if follows then "<span class="bracket">[</span>if<span class="bracket">]</span>then"                                                                                                 
+        :/\<span class="bracket">(</span>if\<span class="bracket">)</span>\zs\<span class="bracket">(</span>then\<span class="bracket">)</span>                          // then starts with if "if<span class="bracket">[</span>then<span class="bracket">]</span>"   
         :g*         / search without word boundry
 
-        :let i=1 | g/dog/s//\='cat' . i/ | let i=i+1    // g/pattern/<span class="bracket">[</span>cmd<span class="bracket">]</span> <span class="bracket">[</span>h :g<span class="bracket">]</span> <span class="bracket">[</span>h sub-replace-expression<span class="bracket">]</span> searchkey: increase
-        :for i in range<span class="bracket">(</span>1,10<span class="bracket">)</span> | if i % 2 == 0 | put = i | endif | endfor  // put even numbers from cursor position vertically
+        :let i=1 | g/dog/s//\='cat' . i/gc | let i=i+1                   //  g/pattern/<span class="bracket">[</span>cmd<span class="bracket">]</span> <span class="bracket">[</span>h :g<span class="bracket">]</span> <span class="bracket">[</span>h sub-replace-expression<span class="bracket">]</span> searchkey: increase
+        :let i=2 | .,$g/dog\d\+/s//\='cat' . i/gc | let i=i+1            //  vim increase number
+        :for i in range<span class="bracket">(</span>1,10<span class="bracket">)</span> | if i % 2 == 0 | put = i | endif | endfor //  put even numbers from cursor position vertically
+        :echo synIDattr<span class="bracket">(</span>synIDtrans<span class="bracket">(</span>hlID<span class="bracket">(</span>"Normal"<span class="bracket">)</span><span class="bracket">)</span>, "bg"<span class="bracket">)</span> <span class="bracket">[</span>:h hlID<span class="bracket">]</span>      //  get background color
+        :set hidden                                                      //  hidden an unsaved file, ow, file has to be saved with !
+        :.,$s/some\<span class="bracket">(</span>stuff\<span class="bracket">)</span>/& . \1/gc                                    //  copy all i think % = \0 here
+        :normal mode
+        :%s/<span class="bracket">{</span>\zs\<span class="bracket">(</span>\_.<span class="bracket">}</span>\@!\<span class="bracket">)</span>*//gc                                         //  negative operator block of code <span class="bracket">{</span> hello world <span class="bracket">}</span>
+        :\@!                                                             //  negative operator, subtract operator, exclusive operator
+        :echo g:colors_name                                              //  get current color scheme
+        :/usr/share/vim/vim73/colors                                     //  vim scheme, vim directory vim folder
 
-        :echo synIDattr<span class="bracket">(</span>synIDtrans<span class="bracket">(</span>hlID<span class="bracket">(</span>"Normal"<span class="bracket">)</span><span class="bracket">)</span>, "bg"<span class="bracket">)</span> <span class="bracket">[</span>:h hlID<span class="bracket">]</span>      // get background color  
-        :set hidden   // hidden an unsaved file, ow, file has to be saved with !
-        :.,$s/some\<span class="bracket">(</span>stuff\<span class="bracket">)</span>/& . \1/gc       // copy all i think % = \0 here
-        :normal mode 
-        :%s/<span class="bracket">{</span>\zs\<span class="bracket">(</span>\_.<span class="bracket">}</span>\@!\<span class="bracket">)</span>*//gc            // negative operator block of code <span class="bracket">{</span> hello world <span class="bracket">}</span>
-        :\@!                                // negative operator, subtract operator, exclusive operator 
+        :autocmd BufEnter *.*  setlocal completefunc=CompleteAbbre       //  file type evil, autocmd will not detect file without extension. e.g. "file"
+
+        // http://vim.1045645.n5.nabble.com/autocmd-pattern-exclusion-td5712330.html 
+        :autocmd BufEnter *\<span class="bracket">(</span>.txt<span class="bracket">)</span>\@&lt;!  TTT exec 'echo expand<span class="bracket">(</span>"%:p"<span class="bracket">)</span>' &lt;CR&gt;    //  excluding file type
+
+        // start PERL mode, vim play mode
+        gQ
+
 </pre>
-<br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)<br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./<br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><br><span class="keyword">    :his </span>s                     <span class="comment"> // list commands history</span><br><span class="keyword">    :his </span>/                     <span class="comment"> // list search history</span><br><br><span class="keyword">    :CTRL-E                     </span>// scroll window up <br><span class="keyword">    :CTRL-Y                     </span>// scroll window down<br><span class="keyword">     :sleep </span>2<br>     redraw<br> <div class="cen"><img src=image/vim_operator.png width="50%" height="50%"></div> <span class="keyword">     :d$  </span>// delete to the end of line  delete line<br><span class="keyword">     :diw </span>// delete/yank/visual [i]nner word    block       delete word<br><span class="keyword">     :daw </span>// delete/yank/visual [a] word        block<br><span class="keyword">     :dib </span>// delete/yank/visual [i]nner '(' ')' block<br><span class="keyword">     :daB </span>// ddelete/yank/visual [a] '(' ')' block<br><span class="keyword">     :diB </span>// ddelete/yank/visual [i]nner '{' '}' block<br><span class="keyword">     :daB </span>// ddelete/yank [a] '{' '}' block<br>     <span class="keyword">     :viw </span>// select [i]nner word    block<br><span class="keyword">     :vaw </span>// select [a] word        block<br><span class="keyword">     :vib </span>// select [i]nner '(' ')' block<br><span class="keyword">     :vaB </span>// select [a] '(' ')' block<br><span class="keyword">     :viB </span>// select [i]nner '{' '}' block<br><span class="keyword">     :vaB </span>// select [a] '{' '}' block<br><span class="keyword">     :V   </span>// select line  linewise<br><span class="keyword">     :vap </span>// [:h textobjects] select block of lines, cursor move to next line very powerful<br><span class="keyword">     :vip </span>// [:h operator]select block of lines, cursor on the last line very powerful<br><br><span class="keyword">     :syntax </span>region MyColorGroup start=/\%2l/ end=/\%10l/<br><span class="keyword">     :syntax </span>clear MyColorGroup    <span class="comment"> // remove highlight</span><br><br><span class="keyword">     :Compile </span>Java code inside Vim [:h expand]<br><br><span class="tit">    [Vim script]</span><br>
-<pre>        :h *print*<span class="bracket">(</span><span class="bracket">)</span>  // find all funciton, find all the function contais print
-
-        :printf<span class="bracket">(</span>"%4d: E%d %.30s", lnum, errno, msg<span class="bracket">)</span>  // vim formator
-        exec "normal \&lt;C-W&gt;h" <span class="bracket">[</span>:h normal<span class="bracket">]</span>  // move cursor to left window
+<br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)<br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./<br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><br><span class="keyword">    :his </span>s                      <span class="comment">// list commands history</span><br><span class="keyword">    :his </span>/                      <span class="comment">// list search history</span><br><br><span class="keyword">    :CTRL-E                     </span><span class="comment">// scroll window up </span><br><span class="keyword">    :CTRL-Y                     </span><span class="comment">// scroll window down</span><br><span class="keyword">    :sleep </span>2<br><span class="keyword">    :redraw</span><br><br><span class="keyword">    :d$  </span><span class="comment">// delete to the end of line  delete line</span><br><span class="keyword">    :diw </span><span class="comment">// delete/yank/visual [i]nner word    block       delete word</span><br><span class="keyword">    :daw </span><span class="comment">// delete/yank/visual [a] word        block</span><br><span class="keyword">    :dib </span><span class="comment">// delete/yank/visual [i]nner '(' ')' block</span><br><span class="keyword">    :daB </span><span class="comment">// ddelete/yank/visual [a] '(' ')' block</span><br><span class="keyword">    :diB </span><span class="comment">// ddelete/yank/visual [i]nner '{' '}' block</span><br><span class="keyword">    :daB </span><span class="comment">// ddelete/yank [a] '{' '}' block</span><br><br><span class="keyword">    :viw </span><span class="comment">// select [i]nner word    block</span><br><span class="keyword">    :vaw </span><span class="comment">// select [a] word        block</span><br><span class="keyword">    :vib </span><span class="comment">// select [i]nner '(' ')' block</span><br><span class="keyword">    :vaB </span><span class="comment">// select [a] '(' ')' block</span><br><span class="keyword">    :viB </span><span class="comment">// select [i]nner '{' '}' block</span><br><span class="keyword">    :vaB </span><span class="comment">// select [a] '{' '}' block</span><br><span class="keyword">    :V   </span><span class="comment">// select line  linewise</span><br><span class="keyword">    :vap </span><span class="comment">// [:h textobjects] select block of lines, cursor move to next line very powerful</span><br><span class="keyword">    :vip </span><span class="comment">// [:h operator]select block of lines, cursor on the last line very powerful</span><br><br><span class="keyword">    :syntax </span>region MyColorGroup start=/\%2l/ end=/\%10l/<br><span class="keyword">    :syntax </span>clear MyColorGroup     <span class="comment">// remove highlight</span><br><br><span class="keyword">    :Compile </span>Java code inside Vim [:h expand]<br><br> <div class="cen"><img src=image/vim_operator.png width="50%" height="50%"></div> <br><span class="tit">    [Vim script]</span><br>
+<pre>        :h *print*<span class="bracket">(</span><span class="bracket">)</span>                                // find all funciton, find all the function contais print 
+        :printf<span class="bracket">(</span>"%4d: E%d %.30s", lnum, errno, msg<span class="bracket">)</span> // vim formator                                           
+        exec "normal \&lt;C-W&gt;h" <span class="bracket">[</span>:h normal<span class="bracket">]</span>           // move cursor to left window                             
         // display without Enter
         exec '!ls ' 
 
@@ -2035,6 +2592,60 @@
         " statusline evaludate function
         statusline+=%10<span class="bracket">{</span>expand<span class="bracket">(</span>'%:p:h'<span class="bracket">)</span><span class="bracket">}</span>
         :statusline=%F\ %l:%c       " full path, line column number
+
+        :echo getline<span class="bracket">(</span>"."<span class="bracket">)</span>                           // get current line string                                                                                                 
+        :echo match<span class="bracket">(</span>"mystring", "st"<span class="bracket">)</span>                // return 2                                                                                                                
+        :echo line<span class="bracket">(</span>"."<span class="bracket">)</span>                              // line number of cursor                                                                                                   
+        :echo line<span class="bracket">(</span>"'t"<span class="bracket">)</span>                             // line number of mark t                                                                                                   
+        :echo getpos<span class="bracket">(</span>"."<span class="bracket">)</span>                            // <span class="bracket">[</span>bufferNumber, col, lnum, off<span class="bracket">]</span> <span class="bracket">[</span>:help getpos<span class="bracket">]</span>                                                                           
+        :echo setpos<span class="bracket">(</span>".", <span class="bracket">{</span>list<span class="bracket">}</span><span class="bracket">)</span>                    // <span class="bracket">[</span>bufferNumber, col, lnum, off<span class="bracket">]</span>                                                                                          
+        :echo <span class="bracket">[</span>col, lnum<span class="bracket">]</span> = searchpos<span class="bracket">(</span>"="<span class="bracket">)</span>           // return = position in current line and move the cursor to =                                                              
+        *v_substring* *substring*
+        :echo strpart<span class="bracket">(</span>"cat", 0, 1<span class="bracket">)</span>                   // 'a', vim substring, vim script substring
+        :echo getline<span class="bracket">(</span>"."<span class="bracket">)</span>                 // get current line string
+        :echo match<span class="bracket">(</span>"mystring", "st"<span class="bracket">)</span>      // return 2
+        :echo match<span class="bracket">(</span>"dog cat.", '\w\+\ze\.',  0<span class="bracket">)</span>  // return 4
+        :echo matchstr<span class="bracket">(</span>"dog cat.", '\w\+\ze\.', 0<span class="bracket">)</span> // return cat
+        :echo matchlist<span class="bracket">(</span>"dog cat.", '\w\+\ze\.', 0<span class="bracket">)</span> // return list<span class="bracket">[</span>'cat', ''<span class="bracket">]</span>
+        :echo line<span class="bracket">(</span>"."<span class="bracket">)</span>                    // line number of cursor
+        :echo line<span class="bracket">(</span>"'t"<span class="bracket">)</span>                   // line number of mark t
+        :echo getpos<span class="bracket">(</span>"."<span class="bracket">)</span>                  // <span class="bracket">[</span>bufferNumber, col, lnum, off<span class="bracket">]</span> <span class="bracket">[</span>:help getpos<span class="bracket">]</span>
+        :echo setpos<span class="bracket">(</span>".", <span class="bracket">{</span>list<span class="bracket">}</span><span class="bracket">)</span>          // <span class="bracket">[</span>bufferNumber, col, lnum, off<span class="bracket">]</span>
+        :echo <span class="bracket">[</span>col, lnum<span class="bracket">]</span> = searchpos<span class="bracket">(</span>"="<span class="bracket">)</span> // return = position in current line and move the cursor to =
+        :echo getline<span class="bracket">(</span>"."<span class="bracket">)</span>                                                                              // get current line string
+        :echo match<span class="bracket">(</span>"mystring", "st"<span class="bracket">)</span>                                                                   // return 2
+        
+
+        // let list = <span class="bracket">[</span>'dog', 'cat', '*'<span class="bracket">]</span>
+        // output: list<span class="bracket">[</span>'dog', 'cat'<span class="bracket">]</span>
+        :call filter<span class="bracket">(</span>list, 'v:val !~ "*"<span class="bracket">)</span>
+
+        // join list = <span class="bracket">[</span>'dog', 'cat'<span class="bracket">]</span>, output: dog/cat
+        :call join<span class="bracket">(</span>list, '/'<span class="bracket">)</span> 
+
+        // example from help
+        :call insert<span class="bracket">(</span>list, 'a'<span class="bracket">)</span>		" prepend item 'a'
+        :call insert<span class="bracket">(</span>list, 'a', 3<span class="bracket">)</span>	" insert item 'a' before list<span class="bracket">[</span>3<span class="bracket">]</span>
+        :call add<span class="bracket">(</span>list, "new"<span class="bracket">)</span>		" append String item
+        :call add<span class="bracket">(</span>list, <span class="bracket">[</span>1, 2<span class="bracket">]</span><span class="bracket">)</span>		" append a List as one new item
+        :call extend<span class="bracket">(</span>list, <span class="bracket">[</span>1, 2<span class="bracket">]</span><span class="bracket">)</span>	" extend the list with two more items
+        :let i = remove<span class="bracket">(</span>list, 3<span class="bracket">)</span>	" remove item 3
+        :unlet list<span class="bracket">[</span>3<span class="bracket">]</span>			" idem
+        :let l = remove<span class="bracket">(</span>list, 3, -1<span class="bracket">)</span>	" remove items 3 to last item
+        :unlet list<span class="bracket">[</span>3 : <span class="bracket">]</span>		" idem
+        :call filter<span class="bracket">(</span>list, 'v:val !~ "x"'<span class="bracket">)</span>  " remove items with an 'x'
+        :echo list<span class="bracket">[</span>-1<span class="bracket">]</span>              " get last item
+        :echo list<span class="bracket">[</span>1:3<span class="bracket">]</span>             " get <span class="bracket">[</span>1<span class="bracket">]</span> to <span class="bracket">[</span>3<span class="bracket">]</span>, partical list
+        :echo list<span class="bracket">[</span>1:<span class="bracket">]</span>              " get <span class="bracket">[</span>1<span class="bracket">]</span> to last item, partical list
+
+        // Changing the order of items in a list: &gt;
+        :call sort<span class="bracket">(</span>list<span class="bracket">)</span>		" sort a list alphabetically
+        :call reverse<span class="bracket">(</span>list<span class="bracket">)</span>		" reverse the order of items
+        :call uniq<span class="bracket">(</span>sort<span class="bracket">(</span>list<span class="bracket">)</span><span class="bracket">)</span>		" sort and remove duplicates
+
+        :h complete-functions              // get complete function completefunc
+        :h completefunc
+        :help debug-mode                   // debug vim script
 </pre>
 <br><span class="tit">    [Git command git branch show on command prompt]</span><br>
 <pre>        :<span class="bracket">git</span> branch myfeature_branchcreate                   // <span class="bracket">git</span> feature branch
@@ -2046,6 +2657,8 @@
         :<span class="bracket">git</span> refloghow                                       // all the reference log
         :<span class="bracket">git</span> reset --hard 828c8c0b1995                       // revert to previous commit
         :<span class="bracket">git</span> diff --stat hash1  hash2                        // diff two commits from two hashes 
+        :<span class="bracket">git</span> log -- specific_file                            // get log on specific file
+        :.<span class="bracket">git</span>/info/exclude                                   // for local file that does't need to be shared, just add file or dir pattern
         parse_<span class="bracket">git</span>_branch<span class="bracket">(</span><span class="bracket">)</span><span class="bracket">{</span>
             <span class="bracket">git</span> branch 2&gt; /dev/null | sed -e 's/* \<span class="bracket">(</span>.*\<span class="bracket">)</span>/ \<span class="bracket">(</span>\1<span class="bracket">)</span>/'
         <span class="bracket">}</span>
@@ -2054,17 +2667,11 @@
         \w - Full path
         \h - Host name
 </pre>
-<br><span class="tit">    [Shell Script]</span><br>    If else statement, Compare string, Compare integer
-<pre>        if <span class="bracket">[</span> $# -gt 0 <span class="bracket">]</span>; then 
-            echo "arg $1"
-            if <span class="bracket">[</span> $1 = "w" <span class="bracket">]</span>; then
-                echo "do sth" 
-            elif <span class="bracket">[</span> $1 = "t" <span class="bracket">]</span>; then 
-                echo "do other th" 
-            fi 
-        else
-            echo "Usage"
-        fi
+<br>    <span class="tit">    [iOS Game Development]</span><br> <div class="cen"><img src=image/gameOption.png width="50%" height="50%"></div>  <div class="cen"><img src=image/gridgrid.png width="50%" height="50%"></div>  <div class="cen"><img src=image/gridgridstack.png width="50%" height="50%"></div>  <div class="cen"><img src=image/calayer.png width="50%" height="50%"></div> <br><span class="tit">    [SpriteKit Development SKView SKScene SCNNode]</span><br> <div class="cen"><img src=image/spritekit.png width="50%" height="50%"></div> <span class="tit">    [SpriteKit how to create weapon with SKSPriteNode create physicsBody]</span><br> <div class="cen"><img src=image/sprite2.png width="70%" height="70%"></div>  <div class="cen"><img src=image/toparr.png width="70%" height="70%"></div> <br><span class="tit">    [bookmark]</span><br>
+<pre>        java pattern, jpattern, javapattern, http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html
+        vim open, vi url, vim url open  http://stackoverflow.com/questions/9458294/open-url-under-cursor-in-vim-with-browser
+        1. haskell module directory http://stackoverflow.com/questions/5034685/what-is-the-haskell-syntax-to-import-modules-in-subdirectories
+        2. monad, monoid, category /Users/cat/GoogleDrive/Books/Monads_in_Haskell.pdf
 </pre>
-<span class="tit">    [iOS Game Development]</span><br> <div class="cen"><img src=image/gameOption.png width="50%" height="50%"></div>  <div class="cen"><img src=image/gridgrid.png width="50%" height="50%"></div>  <div class="cen"><img src=image/gridgridstack.png width="50%" height="50%"></div>  <div class="cen"><img src=image/calayer.png width="50%" height="50%"></div> <br><span class="tit">    [SpriteKit Development SKView SKScene SCNNode]</span><br> <div class="cen"><img src=image/spritekit.png width="50%" height="50%"></div> <span class="tit">    [SpriteKit how to create weapon with SKSPriteNode create physicsBody]</span><br> <div class="cen"><img src=image/sprite2.png width="70%" height="70%"></div>      <br>
+<br>
 </body></html>
