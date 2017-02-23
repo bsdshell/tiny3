@@ -1,4 +1,21 @@
-<html><head><link rel="stylesheet" type="text/css" href="mycss/style.css"/></head><body class="htmlbg">" vim: filetype=help foldmethod=marker foldmarker=&lt;&lt;&lt;,&gt;&gt;&gt; modifiable noreadonlyYou need the noreadonly and modifiable keywords in the vim modeline above.Help files are by default regarded as readonly and nomodifiable files by vim.<br><br><span class="tit">    [Haskell import and module]</span><br>
+<html><head><link rel="stylesheet" type="text/css" href="mycss/style.css"/></head><body class="htmlbg">": vim: filetype=help foldmethod=marker foldmarker=&lt;&lt;&lt;,&gt;&gt;&gt; modifiable noreadonlyYou need the noreadonly and modifiable keywords in the vim modeline above.Help files are by default regarded as readonly and nomodifiable files by vim.<br>    [what I'm working on]
+<pre>        <span class="bracket">[</span>Tue Feb  7 15:33:36 PST 2017<span class="bracket">]</span>
+        Reading multiple thread in linkedlist, queue and hashmap. 
+        /Users/cat/GoogleDrive/Books/thread_concurrent_linkedlist.pdf
+
+        <span class="bracket">[</span>Tue Feb  7 15:33:36 PST 2017<span class="bracket">]</span>
+        Finished Animal Logic task with Markov Chain algorithm to generate text
+        Use JavaFX API for UI, interesting project.
+        prefix: two words, suffix: one word, can be extended to arbitrary long prefix 
+
+        <span class="bracket">[</span>Tue Feb  7 15:33:36 PST 2017<span class="bracket">]</span>
+        Krita tab to enable and disable scroll bar.
+
+        <span class="bracket">[</span>Tue Jan 31 19:45:53 PST 2017<span class="bracket">]</span>
+        haskell file gethtml_2.hs, 
+        generate html static file
+</pre>
+<br><span class="tit">    [Haskell import and module]</span><br>
 <pre>        import Data.List
         import qualified Data.List as LL   // LL.
 
@@ -18,6 +35,13 @@
         ghci -package GLUT
         ghci -framework GLUT -package GLUT
 
+</pre>
+<br>    [ latex to png *latex_to_png* *latex2png* ]
+<pre>        convert -density 600x600 tryg1.pdf -quality 90 -resize 1080x800 tryg1.png
+
+        // use it in documentclass  
+        \documentclass<span class="bracket">[</span>border=4pt,convert=<span class="bracket">{</span>density=600,size=300x300,outext=.png<span class="bracket">}</span><span class="bracket">]</span><span class="bracket">{</span>standalone<span class="bracket">}</span>
+        pdflatex -shell-escape file.tex
 </pre>
 <br>    [ *java_regex_example*  *j_regex* ]
 <pre>        *j_regex_example*
@@ -118,6 +142,15 @@
             clang++ -g -v -std=c++11 -stdlib=libc++ -o  MergeSortedList MergeSortedList.cpp Aron.cpp
             clang++ -g -v -std=c++11 -stdlib=libc++ -o  DataStructure  DataStructure.cpp 
             clang++ -g -v -std=c++11 -stdlib=libc++ -o   DecimalBinary DecimalBinary.cpp  Aron.cpp
+</pre>
+<span class="tit">    [build GLFW and OpenGL on MacOSX]</span><br>
+<pre>        Install GLFW with brew
+        brew install --static glfw3
+        /usr/local/include
+        /usr/local/lib
+
+        g++ hello_flew.cpp -I/usr/local/include -L/usr/local/lib -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit 
+        -framework CoreFoundation -framework CoreVideo
 </pre>
 <br><span class="tit">    [Shell crazy symbol ]</span><br>
 <pre>        for arg in $* 
@@ -227,6 +260,12 @@
         Ctrl Shift R    // find and replace
         Ctrl Shift j    // join line
 </pre>
+<br>    [ *maven* *mvn* ]
+<pre>        mvn archetype:generate -DgroupId=MyApp -DartifactId=MyCompany -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+        cd MyCompany
+        mvn install
+        java -cp target/MyCompany-1.0-SNAPSHOT.jar MyApp.App
+</pre>
 <br><span class="tit">    [iPhone iPad info ]</span><br>
 <pre>         --------------------------------------------------------------------
          iPhone 4s
@@ -297,22 +336,21 @@
         :%s/\dc\@!/\=submatch<span class="bracket">(</span>0<span class="bracket">)</span>-1/gc // substitue all di<span class="bracket">git</span> with not following 'c'
 </pre>
 <br><span class="tit">    [GPG encrypt directory, tar file, encrypt file]</span><br>
-<pre>        *GPG encrypt directory*
-        tar -czf dir.tar.gz dir   // tar file
-        tar -xzf dir.tar.gz dir   // untar file 
-        gpg -c dir.tar.gz  
-        gpg -c -o dir.tar.gz dir.tar.gz.gpg     //encrypt your tar file
+<pre>        *GPG* *gpg* *gpg_key* *gen_key*
+       gpg -d -o password.txt password.txt.gpg // decrypt gpg file to password.txt
+        gpg -c dir.tar.gz
+        gpg -c -o dir.tar.gz dir.tar.gz.gpg     // encrypt your tar file
 
-        gpg --gen-key            // generate new key
-        gpg --list-keys           // list key
-        gpg --delete-keys C3B95227   // delete key uid=C3B95227
-
+        gpg --gen-key                           // generate new key
+        gpg --list-keys                         // list key
+        gpg --delete-keys C3B95227              // delete key uid=C3B95227
+        tar -czf dir.tar.gz dir                 // tar file
+        tar -xzf dir.tar.gz dir                 // untar file
 </pre>
      <span class="tit">    [Haskell map HashMap]</span><br>
-<pre>        import qualified Data.Map as Map
-
+<pre>        *h_hash* *h_hashmap* *h_map*
+        import qualified Data.Map as Map
         phoneBook = Map.fromList <span class="bracket">[</span><span class="bracket">(</span>1234, "Erik"<span class="bracket">)</span>, <span class="bracket">(</span>5678, "Patrik"<span class="bracket">)</span><span class="bracket">]</span>
-
         main = do
             print phoneBook
             print $ Map.lookup 1234 phoneBook
@@ -333,7 +371,7 @@
         reads <span class="bracket">"aa123"::</span><span class="bracket">[</span><span class="bracket">(</span>Int, String<span class="bracket">)</span><span class="bracket">]</span> =&gt; <span class="bracket">[</span><span class="bracket">]</span>
         <span class="bracket">[</span> http://stackoverflow.com/questions/2468410/convert-string-to-integer-float-in-haskell <span class="bracket">]</span>
 </pre>
-<span class="tit">    [Haskell List]</span><br>
+<br><span class="tit">    [Haskell foldr and foldl]</span><br> <div class="cen"><img src=image/fold_left_right.png width="80%" height="80%"></div> <br><span class="tit">    [Haskell List]</span><br>
 <pre>        take 1 <span class="bracket">[</span>1, 2, 3<span class="bracket">]</span>             -- <span class="bracket">[</span>1<span class="bracket">]</span>
         drop 1 <span class="bracket">[</span>1, 2, 3<span class="bracket">]</span>             -- <span class="bracket">[</span>2, 3<span class="bracket">]</span>
 
@@ -1400,6 +1438,20 @@
 <pre>        % no indention noindent for all pages 
         \setlength\parindent<span class="bracket">{</span>0pt<span class="bracket">}</span>
         \noindent
+
+        gr_greek_letter : *.tex,*.html  
+        \begin<span class="bracket">{</span>tabular<span class="bracket">}</span><span class="bracket">{</span>|c|c|c|c|c|c|c|c|<span class="bracket">}</span> \hline
+        alpha    & $\alpha$    & theta   & $\theta$   & tau        & $\tau$        & beta   & $\beta$   \\ \hline
+        vartheta & $\vartheta$ & pi      & $\pi$      & upsilon    & $\upsilon$    & gamma  & $\gamma$  \\ \hline
+        varpi    & $\varpi$    & phi     & $\phi$     & delta      & $\delta$      & kappa  & $\kappa$  \\ \hline
+        rho      & $\rho$      & varphi  & $\varphi$  & epsilon    & $\epsilon$    & lambda & $\lambda$ \\ \hline
+        varrho   & $\varrho$   & chi     & $\chi$     & varepsilon & $\varepsilon$ & mu     & $\mu$     \\ \hline
+        sigma    & $\sigma$    & psi     & $\psi$     & zeta       & $\zeta$       & nu     & $\nu$     \\ \hline
+        varsigma & $\varsigma$ & omega   & $\omega$   & eta        & $\eta$        & xi     & $\xi$     \\ \hline
+        Gamma    & $\Gamma$    & Lambda  & $\Lambda$  & Sigma      & $\Sigma$      & Psi    & $\Psi$    \\ \hline
+        Delta    & $\Delta$    & Upsilon & $\Upsilon$ & Omega      & $\Omega$      & Theta  & $\Theta$  \\ \hline
+        Pi       & $\Pi$       & Phi     & $\Phi$     & 0          & 0             & 1      & 1         \\ \hline
+        \end<span class="bracket">{</span>tabular<span class="bracket">}</span> 
 </pre>
 <br><span class="tit">    [Asymptote inside Latex, config file, svg file, asy]</span><br>
 <pre>        1. Use Asymptote inside Latex
@@ -1449,7 +1501,10 @@
         <span class="bracket">[</span>` ? =&gt; help key <span class="bracket">]</span>
 </pre>
 <br><span class="tit">    [vim command ]</span><br>
-<pre>        // searchkey: vim completion, completefunc 
+<pre>        *v_newline* *vnewline* <span class="bracket">[</span>:h &lt;CR&gt;<span class="bracket">]</span>
+        :&lt;C-V&gt;&lt;C-M&gt;  // add newline to string in insert mode
+
+        // searchkey: vim completion, completefunc 
         :&lt;C-X&gt;&lt;C-L&gt; // line completion 
         :&lt;C-X&gt;&lt;C-F&gt; // file name completion 
         :&lt;C-X&gt;&lt;C-U&gt; // define your own completefunc function 
@@ -1569,9 +1624,13 @@
         :&lt;C-r&gt;*                    =&gt; save thing, insert "* context
         :map &lt;F3&gt;  &lt;C-r&gt;=line<span class="bracket">(</span>"."<span class="bracket">)</span> =&gt; map F3 to function line<span class="bracket">(</span>"."<span class="bracket">)</span>
 
-
+        *v_hl* *highlight* *v_highlight* *h_search* *search_hl* 
+        highlight Search ctermfg=none ctermbg=yellow
+        highlight Search ctermfg=none ctermbg=gray
+        highlight Search ctermfg=none ctermbg=green
+        highlight Search ctermfg=none ctermbg=white
 </pre>
-<br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)    <br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)*  <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./   <br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><span class="keyword">    :grep </span>-l pattern *   [print file name only]<br><span class="keyword">    :grep </span>--include="*.[mh]"  --color -Hnris CATextLayer<br><br>    [ *v-script* vimscript, vimscr, vim script]
+<br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)    <br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)*  <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./   <br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><span class="keyword">    :grep </span>-l pattern *   [print file name only]<br><span class="keyword">    :grep </span>--include="*.[mh]"  --color -Hnris CATextLayer<br><br>    [ *v-script* *v_scri* vimscript, vimscr, vim script]
 <pre>        " Fix the missing -cp option in java
         " Assume java file is in current buffer
         function! CompileJava<span class="bracket">(</span><span class="bracket">)</span>
@@ -1729,6 +1788,21 @@
 
         :let l:pos = getpos<span class="bracket">(</span>"."<span class="bracket">)</span>    // keep cursor position, restore cursor position
         :call setpos<span class="bracket">(</span>".", l:pos<span class="bracket">)</span>
+        
+        :filter /^\u\w\+/ cab    // show all first letter of command abbreviations is uppercase. 
+
+        *v_dict*  *vscr_dict* *vim_dict*
+        :if has_key<span class="bracket">(</span>dict, 'foo'<span class="bracket">)</span>	" TRUE if dict has entry with key "foo"
+        :if empty<span class="bracket">(</span>dict<span class="bracket">)</span>			" TRUE if dict is empty
+        :let l = len<span class="bracket">(</span>dict<span class="bracket">)</span>		" number of items in dict
+        :let big = max<span class="bracket">(</span>dict<span class="bracket">)</span>		" maximum value in dict
+        :let small = min<span class="bracket">(</span>dict<span class="bracket">)</span>		" minimum value in dict
+        :let xs = count<span class="bracket">(</span>dict, 'x'<span class="bracket">)</span>	" count nr of times 'x' appears in dict
+        :let s = string<span class="bracket">(</span>dict<span class="bracket">)</span>		" String representation of dict
+        :call map<span class="bracket">(</span>dict, '"&gt;&gt; " . v:val'<span class="bracket">)</span>  " prepend "&gt;&gt; " to each item
+
+        *v_change_dir* *v_dir*
+        :autochdir acd noautochdir
 </pre>
 <br><span class="tit">    [fish shell ]</span><br>
 <pre>        brew install fish
@@ -1786,8 +1860,42 @@
         :command 2 &gt; /etc/null   # redirect stderr to /etc/null
         :command 2 &gt; &1          # redirect stderr to stdout
         :command & &gt; file        # redirect stderr and stdout to file
+
+        *shell_arg* *shell_argument* 
+        #Shell crazy symbol
+        for arg in $* 
+        do
+        echo "<span class="bracket">[</span>\$*<span class="bracket">]</span>=".$arg
+        done 
+        #<span class="bracket">[</span>$*<span class="bracket">]</span>=.n1
+        #<span class="bracket">[</span>$*<span class="bracket">]</span>=.n2
+        #<span class="bracket">[</span>$*<span class="bracket">]</span>=.n3
+
+        for arg in "$*" 
+        do
+            echo "<span class="bracket">[</span>\$*<span class="bracket">]</span>=".$arg
+        done
+        #<span class="bracket">[</span>$*<span class="bracket">]</span>=.n1 n2 n3
+
+        for arg in $@ 
+        do
+            echo "<span class="bracket">[</span>\$@<span class="bracket">]</span>=".$arg
+        done
+        #<span class="bracket">[</span>$@<span class="bracket">]</span>=.n1
+        #<span class="bracket">[</span>$@<span class="bracket">]</span>=.n2
+        #<span class="bracket">[</span>$@<span class="bracket">]</span>=.n3
+
+        for arg in "$@"
+        do
+            echo "<span class="bracket">[</span>\$@<span class="bracket">]</span>=".$arg
+        done
+        #<span class="bracket">[</span>$@<span class="bracket">]</span>=.n1 n2
+        #<span class="bracket">[</span>$@<span class="bracket">]</span>=.n3
+
+        // profile bashrc share environment variables user and root, share variable
+        /etc/profile
 </pre>
-<span class="tit">    [iOS Game Development]</span><br> <div class="cen"><img src=image/gameOption.png width="50%" height="50%"></div>  <div class="cen"><img src=image/gridgrid.png width="50%" height="50%"></div> <br><br><span class="tit">    [Command tricks]</span><br>
+<br><br><span class="tit">    [iOS Game Development]</span><br> <div class="cen"><img src=image/gameOption.png width="50%" height="50%"></div>  <div class="cen"><img src=image/gridgrid.png width="50%" height="50%"></div> <br><br><span class="tit">    [Command tricks]</span><br>
 <pre>            rename file names with php script  // /Users/cat/myfile/<span class="bracket">git</span>hub/php/rename.php
             Change default location of Mac OSX screenshots, Open your Terminal and type:
                     defaults write com.apple.screencapture location ~/myScreenShots
@@ -2435,7 +2543,7 @@
         gQ
 
 </pre>
-<br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)<br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./<br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><br><span class="keyword">    :his </span>s                      <span class="comment">// list commands history</span><br><span class="keyword">    :his </span>/                      <span class="comment">// list search history</span><br><br><span class="keyword">    :CTRL-E                     </span><span class="comment">// scroll window up </span><br><span class="keyword">    :CTRL-Y                     </span><span class="comment">// scroll window down</span><br><span class="keyword">    :sleep </span>2<br><span class="keyword">    :redraw</span><br><br><span class="keyword">    :d$  </span><span class="comment">// delete to the end of line  delete line</span><br><span class="keyword">    :diw </span><span class="comment">// delete/yank/visual [i]nner word    block       delete word</span><br><span class="keyword">    :daw </span><span class="comment">// delete/yank/visual [a] word        block</span><br><span class="keyword">    :dib </span><span class="comment">// delete/yank/visual [i]nner '(' ')' block</span><br><span class="keyword">    :daB </span><span class="comment">// ddelete/yank/visual [a] '(' ')' block</span><br><span class="keyword">    :diB </span><span class="comment">// ddelete/yank/visual [i]nner '{' '}' block</span><br><span class="keyword">    :daB </span><span class="comment">// ddelete/yank [a] '{' '}' block</span><br><br><span class="keyword">    :viw </span><span class="comment">// select [i]nner word    block</span><br><span class="keyword">    :vaw </span><span class="comment">// select [a] word        block</span><br><span class="keyword">    :vib </span><span class="comment">// select [i]nner '(' ')' block</span><br><span class="keyword">    :vaB </span><span class="comment">// select [a] '(' ')' block</span><br><span class="keyword">    :viB </span><span class="comment">// select [i]nner '{' '}' block</span><br><span class="keyword">    :vaB </span><span class="comment">// select [a] '{' '}' block</span><br><span class="keyword">    :V   </span><span class="comment">// select line  linewise</span><br><span class="keyword">    :vap </span><span class="comment">// [:h textobjects] select block of lines, cursor move to next line very powerful</span><br><span class="keyword">    :vip </span><span class="comment">// [:h operator]select block of lines, cursor on the last line very powerful</span><br><br><span class="keyword">    :syntax </span>region MyColorGroup start=/\%2l/ end=/\%10l/<br><span class="keyword">    :syntax </span>clear MyColorGroup     <span class="comment">// remove highlight</span><br><br><span class="keyword">    :Compile </span>Java code inside Vim [:h expand]<br><br> <div class="cen"><img src=image/vim_operator.png width="50%" height="50%"></div> <br><span class="tit">    [Vim script]</span><br>
+<br><span class="tit">    [Grep command]</span><br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .)<br><span class="keyword">    :grep </span>--color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* <br><span class="keyword">    :grep </span>--include="*.java" "\"[a-zA-Z]\+\""  ./<br><span class="keyword">    :vim </span>$(grep -l --include="*.java" pattern .) #vim open all files from grep<br><br><span class="keyword">    :his </span>s                      <span class="comment">// list commands history</span><br><span class="keyword">    :his </span>/                      <span class="comment">// list search history</span><br><br><span class="keyword">    :CTRL-E                     </span><span class="comment">// scroll window up </span><br><span class="keyword">    :CTRL-Y                     </span><span class="comment">// scroll window down</span><br><span class="keyword">    :sleep </span>2<br><span class="keyword">    :redraw</span><br><br>    *v_operator* *vim_operator* *v_ope*<span class="keyword">    :d$  </span><span class="comment">// delete to the end of line  delete line</span><br><span class="keyword">    :diw </span><span class="comment">// delete/yank/visual [i]nner word    block       delete word</span><br><span class="keyword">    :daw </span><span class="comment">// delete/yank/visual [a] word        block</span><br><span class="keyword">    :dib </span><span class="comment">// delete/yank/visual [i]nner '(' ')' block, delete block =&gt; insert mode</span><br><span class="keyword">    :daB </span><span class="comment">// ddelete/yank/visual[a] '(' ')' block</span><br><span class="keyword">    :diB </span><span class="comment">// ddelete/yank/visual[i]nner '{' '}' block</span><br><span class="keyword">    :daB </span><span class="comment">// ddelete/yank [a] '{' '}' block</span><br><span class="keyword">    :ciw </span><span class="comment">// delete word =&gt; insert mode</span><br><br>    *v_textobject* *vim_obj* *vim_text_object*<span class="keyword">    :viw </span><span class="comment">// select [i]nner word    block</span><br><span class="keyword">    :vaw </span><span class="comment">// select [a] word        block</span><br><span class="keyword">    :vib </span><span class="comment">// select [i]nner '(' ')' block</span><br><span class="keyword">    :vaB </span><span class="comment">// select [a] '(' ')' block</span><br><span class="keyword">    :viB </span><span class="comment">// select [i]nner '{' '}' block</span><br><span class="keyword">    :vaB </span><span class="comment">// select [a] '{' '}' block</span><br><span class="keyword">    :V   </span><span class="comment">// select line  linewise</span><br><span class="keyword">    :vap </span><span class="comment">// [:h textobjects] select block of lines, cursor move to next line very powerful</span><br><span class="keyword">    :vip </span><span class="comment">// [:h operator]select block of lines, cursor on the last line very powerful</span><br><br><span class="keyword">    :syntax </span>region MyColorGroup start=/\%2l/ end=/\%10l/<br><span class="keyword">    :syntax </span>clear MyColorGroup     <span class="comment">// remove highlight</span><br><br><span class="keyword">    :Compile </span>Java code inside Vim [:h expand]<br><br> <div class="cen"><img src=image/vim_operator.png width="50%" height="50%"></div> <br><span class="tit">    [Vim script]</span><br>
 <pre>        :h *print*<span class="bracket">(</span><span class="bracket">)</span>                                // find all funciton, find all the function contais print 
         :printf<span class="bracket">(</span>"%4d: E%d %.30s", lnum, errno, msg<span class="bracket">)</span> // vim formator                                           
         exec "normal \&lt;C-W&gt;h" <span class="bracket">[</span>:h normal<span class="bracket">]</span>           // move cursor to left window                             

@@ -1,7 +1,25 @@
-" vim: filetype=help foldmethod=marker foldmarker=<<<,>>> modifiable noreadonly
+": vim: filetype=help foldmethod=marker foldmarker=<<<,>>> modifiable noreadonly
 You need the noreadonly and modifiable keywords in the vim modeline above.
 Help files are by default regarded as readonly and nomodifiable files by vim.
 
+    [what I'm working on]
+    `[
+        [Tue Feb  7 15:33:36 PST 2017]
+        Reading multiple thread in linkedlist, queue and hashmap. 
+        /Users/cat/GoogleDrive/Books/thread_concurrent_linkedlist.pdf
+
+        [Tue Feb  7 15:33:36 PST 2017]
+        Finished Animal Logic task with Markov Chain algorithm to generate text
+        Use JavaFX API for UI, interesting project.
+        prefix: two words, suffix: one word, can be extended to arbitrary long prefix 
+
+        [Tue Feb  7 15:33:36 PST 2017]
+        Krita tab to enable and disable scroll bar.
+
+        [Tue Jan 31 19:45:53 PST 2017]
+        haskell file gethtml_2.hs, 
+        generate html static file
+    `] 
 
     [Haskell import and module]
     `[
@@ -146,6 +164,16 @@ Help files are by default regarded as readonly and nomodifiable files by vim.
             clang++ -g -v -std=c++11 -stdlib=libc++ -o  DataStructure  DataStructure.cpp 
             clang++ -g -v -std=c++11 -stdlib=libc++ -o   DecimalBinary DecimalBinary.cpp  Aron.cpp
     `] 
+    [build GLFW and OpenGL on MacOSX]
+    `[
+        Install GLFW with brew
+        brew install --static glfw3
+        /usr/local/include
+        /usr/local/lib
+
+        g++ hello_flew.cpp -I/usr/local/include -L/usr/local/lib -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit 
+        -framework CoreFoundation -framework CoreVideo
+    `] 
 
     [Shell crazy symbol ]
     `[
@@ -253,10 +281,10 @@ Help files are by default regarded as readonly and nomodifiable files by vim.
         Ctrl F12        // show all current methods
         Ctrl W          // select code block. e.g {..}
         Ctrl-Shift F12  // max/unmaxed window
-        Ctrl UP/Down    // movine window up/down
+        Ctrl UP/Down    // move window up/down
         Ctrl [/]        // Move to code block star/end
-        Ctrl Shift #    // book mark line
-        Ctrl #          // goto book mark #
+        Ctrl Shift #    // book mark line, bookmark line
+        Ctrl #          // goto bookmark #, goto book mark #
         Ctrl Alt B      // goto implementation
         Ctrl E          // go back to implementation
         Ctrl Alt F7     // shows usages
@@ -349,14 +377,15 @@ Help files are by default regarded as readonly and nomodifiable files by vim.
     [GPG encrypt directory, tar file, encrypt file]
     `[
         *GPG* *gpg* *gpg_key* *gen_key*
-        tar -czf dir.tar.gz dir             // tar file
-        tar -xzf dir.tar.gz dir             // untar file
+       gpg -d -o password.txt password.txt.gpg // decrypt gpg file to password.txt
         gpg -c dir.tar.gz
-        gpg -c -o dir.tar.gz dir.tar.gz.gpg // encrypt your tar file
+        gpg -c -o dir.tar.gz dir.tar.gz.gpg     // encrypt your tar file
 
-        gpg --gen-key                       // generate new key
-        gpg --list-keys                     // list key
-        gpg --delete-keys C3B95227          // delete key uid=C3B95227
+        gpg --gen-key                           // generate new key
+        gpg --list-keys                         // list key
+        gpg --delete-keys C3B95227              // delete key uid=C3B95227
+        tar -czf dir.tar.gz dir                 // tar file
+        tar -xzf dir.tar.gz dir                 // untar file
     `]
      
     [Haskell map HashMap]
@@ -386,6 +415,10 @@ Help files are by default regarded as readonly and nomodifiable files by vim.
         reads "aa123"::[(Int, String)] => []
         [ http://stackoverflow.com/questions/2468410/convert-string-to-integer-float-in-haskell ]
     `] 
+
+    [Haskell foldr and foldl]
+    {{ src=image/fold_left_right.png w=80% h=80% }}
+
     [Haskell List]
     `[
         take 1 [1, 2, 3]             -- [1]
@@ -1569,6 +1602,20 @@ Help files are by default regarded as readonly and nomodifiable files by vim.
         % no indention noindent for all pages 
         \setlength\parindent{0pt}
         \noindent
+
+        gr_greek_letter : *.tex,*.html  
+        \begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+        alpha    & $\alpha$    & theta   & $\theta$   & tau        & $\tau$        & beta   & $\beta$   \\ \hline
+        vartheta & $\vartheta$ & pi      & $\pi$      & upsilon    & $\upsilon$    & gamma  & $\gamma$  \\ \hline
+        varpi    & $\varpi$    & phi     & $\phi$     & delta      & $\delta$      & kappa  & $\kappa$  \\ \hline
+        rho      & $\rho$      & varphi  & $\varphi$  & epsilon    & $\epsilon$    & lambda & $\lambda$ \\ \hline
+        varrho   & $\varrho$   & chi     & $\chi$     & varepsilon & $\varepsilon$ & mu     & $\mu$     \\ \hline
+        sigma    & $\sigma$    & psi     & $\psi$     & zeta       & $\zeta$       & nu     & $\nu$     \\ \hline
+        varsigma & $\varsigma$ & omega   & $\omega$   & eta        & $\eta$        & xi     & $\xi$     \\ \hline
+        Gamma    & $\Gamma$    & Lambda  & $\Lambda$  & Sigma      & $\Sigma$      & Psi    & $\Psi$    \\ \hline
+        Delta    & $\Delta$    & Upsilon & $\Upsilon$ & Omega      & $\Omega$      & Theta  & $\Theta$  \\ \hline
+        Pi       & $\Pi$       & Phi     & $\Phi$     & 0          & 0             & 1      & 1         \\ \hline
+        \end{tabular} 
     `] 
 
     [Asymptote inside Latex, config file, svg file, asy]
@@ -1634,6 +1681,7 @@ Help files are by default regarded as readonly and nomodifiable files by vim.
 
     [vim command ]
     `[
+        :setlocal spell     // enable spell check, spelling checking, enable dictionary 
         *v_newline* *vnewline* [:h <CR>]
         :<C-V><C-M>  // add newline to string in insert mode
 
@@ -3026,7 +3074,7 @@ Help files are by default regarded as readonly and nomodifiable files by vim.
 
     [Git command git branch show on command prompt]
     `[
-        :git branch myfeature_branchcreate                   // git feature branch
+        :git branch myfeature_branchcreate                   // create new feature branch
         :git branch -d delete_branchdelete                   // [git delete] feature branch
         :git branch -D delete_branchdelete                   // unmerged feature branch
         :git checkout master 
@@ -3036,6 +3084,15 @@ Help files are by default regarded as readonly and nomodifiable files by vim.
         :git reset --hard 828c8c0b1995                       // revert to previous commit
         :git diff --stat hash1  hash2                        // diff two commits from two hashes 
         :git log -- specific_file                            // get log on specific file
+        :git commit --amend -m "new message"                 // change the most recent message, amend your most recent message.
+        :git stash                                           // save your modified tracked files to a stack and that you can reapply late. 
+        :git stash list                                      // list all the stashes
+
+        :git rm -r myfile                                    // remove file from local repository and file system.
+
+        :git rm --cached rm_repos_file                       // remove file only from local repository but from file system. 
+        :git commit -m "msg" 
+
         :.git/info/exclude                                   // for local file that does't need to be shared, just add file or dir pattern
         parse_git_branch(){
             git branch 2> /dev/null | sed -e 's/* \(.*\)/ \(\1)/'
